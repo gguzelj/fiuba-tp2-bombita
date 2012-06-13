@@ -1,7 +1,9 @@
 package com.bombitarodriguez.dominio;
 
 import java.util.Iterator;
+
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
+import com.bombitarodriguez.utils.Constante;
 
 /**
  * 
@@ -15,7 +17,7 @@ public class Bombita extends Personaje {
 	public Bombita(Integer vida) {
 		this.vida = vida;
 		this.resistencia = 0;
-		this.velocidad = Juego.VELOCIDAD_CAMINA;
+		this.velocidad = Constante.VELOCIDAD_CAMINA;
 		this.factoryArma = new FactoryMolotov();
 	}
 	
