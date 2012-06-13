@@ -105,11 +105,6 @@ public abstract class Personaje implements ObjetoReaccionable, Armado{
 	}
 
 	@Override
-	public void usarArma() {
-		getCasillero().agregarObjeto(factoryArma.getArmaInstanciada());
-	}
-
-	@Override
 	public Boolean reaccionarCon(Bombita bombita){
 		return false;
 	}

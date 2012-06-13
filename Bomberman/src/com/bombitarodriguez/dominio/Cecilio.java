@@ -35,4 +35,15 @@ public class Cecilio extends Personaje {
 		// TODO Reacciona con todos¿?
 		return null;
 	}
+	
+	@Override
+	public void usarArma() {
+		plantarBomba();
+		
+	}
+
+	private void plantarBomba() {
+		getCasillero().agregarObjeto(factoryArma.getArmaInstanciada());
+		
+	}
 }
