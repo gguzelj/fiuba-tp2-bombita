@@ -96,6 +96,17 @@ public class LosLopezReggaeAlado extends Personaje {
 		}
 		return permitePasar;
 	}
+	
+	@Override
+	public void usarArma() {
+		plantarBomba();
+		
+	}
+
+	private void plantarBomba() {
+		getCasillero().agregarObjeto(factoryArma.getArmaInstanciada());
+		
+	}
 
 
 }

@@ -65,4 +65,15 @@ public class Bombita extends Personaje {
 	public void setVida(Integer vida) {
 		this.vida = vida;
 	}
+
+	@Override
+	public void usarArma() {
+		plantarBomba();
+		
+	}
+
+	private void plantarBomba() {
+		getCasillero().agregarObjeto(factoryArma.getArmaInstanciada());
+		
+	}
 }

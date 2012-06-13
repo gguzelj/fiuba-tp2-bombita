@@ -12,9 +12,6 @@ import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 public class LosLopezReggae extends Personaje {
 
 	
-	public void lanzarProyectil() {
-		this.usarArma();		
-	}
 
 	@Override
 	public Boolean reaccionarCon(Bombita bombita) {
@@ -28,4 +25,15 @@ public class LosLopezReggae extends Personaje {
 		// TODO Definir
 		return null;
 	}
+	
+	@Override
+	public void usarArma() {
+		lanzarProyectil();
+		
+	}
+	
+	public void lanzarProyectil() {
+		getCasillero().agregarObjeto(factoryArma.getArmaInstanciada());		
+	}
+
 }
