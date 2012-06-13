@@ -1,5 +1,7 @@
 package com.bombitarodriguez.dominio;
 
+import com.bombitarodriguez.utils.Constante;
+
 /**
  * 
  * @author Mauro 
@@ -9,7 +11,7 @@ public class Chala extends Articulo {
 
 	@Override
 	public Boolean reaccionarCon(Bombita bombita) {
-		bombita.setVelocidad(Juego.VELOCIDAD_CORRE);
+		bombita.setVelocidad(Constante.VELOCIDAD_CORRE);
 		casilleroContenedor.quitarObjeto(this);
 		return true;
 	}

@@ -3,6 +3,7 @@ package com.bombitarodriguez.dominio;
 import java.util.Iterator;
 
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
+import com.bombitarodriguez.utils.Constante;
 
 /**
  * 
@@ -12,8 +13,8 @@ import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 public class Cecilio extends Personaje {
 	
 	public Cecilio(Integer velocidad) {
-		this.resistencia = Juego.RESISTENCIA_CECILIO;
-		this.velocidad = Juego.VELOCIDAD_CAMINA;
+		this.resistencia = Constante.RESISTENCIA_CECILIO;
+		this.velocidad = Constante.VELOCIDAD_CAMINA;
 	}	
 
 	@Override

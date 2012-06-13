@@ -1,6 +1,7 @@
 package com.bombitarodriguez.dominio;
 
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
+import com.bombitarodriguez.utils.Constante;
 
 /**
  * 
@@ -11,7 +12,7 @@ public class BloqueCemento extends Obstaculo {
 	
 	public BloqueCemento(ObjetoReaccionable objeto) {
 		this.objeto = objeto;
-		this.durabilidad = Juego.DURABILIDAD_BLOQUE_CEMENTO;
+		this.durabilidad = Constante.DURABILIDAD_BLOQUE_CEMENTO;
 	}
 	
 	public void destruirse() {
