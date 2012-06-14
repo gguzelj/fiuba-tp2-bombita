@@ -23,19 +23,19 @@ public class Bombita extends Personaje {
 	
 	@Override
 	public Boolean reaccionarCon(Cecilio cecilio) {
-		// TODO Acá se termina el juego!!
+		cecilio.reaccionarCon(this);
 		return true;
 	}
 
 	@Override
 	public Boolean reaccionarCon(LosLopezReggae losLopezReggae) {
-		// TODO Acá se termina el juego!!
+		losLopezReggae.reaccionarCon(this);
 		return true;
 	}
 
 	@Override
 	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado) {
-		// TODO Acá se termina el juego!!
+		losLopezReggaeAlado.reaccionarCon(this);
 		return true;
 	}
 

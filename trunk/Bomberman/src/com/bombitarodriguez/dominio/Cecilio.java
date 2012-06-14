@@ -17,12 +17,7 @@ public class Cecilio extends Personaje {
 		this.velocidad = Constante.VELOCIDAD_CAMINA;
 	}	
 
-	@Override
-	public Boolean reaccionarCon(Bombita bombita) {
-		// TODO Acá se termina el juego
-		bombita.quitarVida();
-		return false;
-	}
+	
 
 //	@Override
 //	public Boolean reaccionarCon(Proyectil proyectil) {

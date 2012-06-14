@@ -12,11 +12,7 @@ import com.bombitarodriguez.interfaces.ObjetoReaccionable;
  */
 public class LosLopezReggaeAlado extends Personaje {
 
-	@Override
-	public Boolean reaccionarCon(Bombita bombita) {
-		// TODO Acá se termina el juego
-		return false;
-	}
+	
 
 //	@Override
 //	public Boolean reaccionarCon(Proyectil proyectil) {
