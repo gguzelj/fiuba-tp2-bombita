@@ -32,10 +32,30 @@ public class BombitaTest {
 		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);	
 		bombita.moverArriba();
-		assertEquals(bombita.getPosicion(), posicionFinal);		
+		assertEquals(bombita.getPosicion(), posicionFinal);			
 	}
 	
+	@Test
+	public void testMeMuevoYCasilleroQuedaVacio(){
+		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
+		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);	
+		bombita.moverArriba();		
+		Integer cantidadDeObjetos = casilleroInicial.getObjetos().size();
+		assertEquals(cantidadDeObjetos, new Integer(0));
+	}
+	
+	
+	
 
+	@Test
+	public void testQuitarVidaBombita() {		
+		Integer vidaInicial = bombita.getVida();
+		bombita.quitarVida();
+		assertEquals(bombita.getVida(),new Integer(vidaInicial-1));		
+	}
+	
+	
+	
 	@Test
 	public void testMover_CasilleroBloqueAcero() {
 		casilleroFinal.agregarObjeto(new BloqueAcero());
@@ -65,8 +85,13 @@ public class BombitaTest {
 	public void testPlantarBomba() {
 		bombita.usarArma();
 		Integer cantidadObjetos = bombita.getCasillero().getObjetos().size();
-		
 		assertEquals(cantidadObjetos, new Integer(2));
+		
+	}
+	
+	@Test
+	public void testPorDefaultColocaMolotov(){
+		bombita.usarArma();
 		assertTrue(bombita.getCasillero().getObjetos().get(1) instanceof Molotov);
 	}
 	
@@ -89,5 +114,16 @@ public class BombitaTest {
 		FactoryArma arma = bombita.getFactoryArma();
 		
 		assertTrue( arma.getArmaInstanciada() instanceof ToleTole);
+	}
+	
+	@Test
+	public void testBombitaColocaBombaYSeMueve(){
+		
+		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
+		bombita.usarArma();
+		bombita.moverArriba();
+		Integer cantidadDeObjetos = casilleroInicial.getObjetos().size();
+		assertEquals(cantidadDeObjetos, new Integer(1));
+		
 	}
 }

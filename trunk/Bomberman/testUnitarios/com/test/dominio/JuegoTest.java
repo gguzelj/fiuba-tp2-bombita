@@ -16,5 +16,5 @@ public class JuegoTest {
 		
 		assertEquals(Mapa.getMapa().getMapaCasillero().size(), 225);
 	}
-
+	
 }
