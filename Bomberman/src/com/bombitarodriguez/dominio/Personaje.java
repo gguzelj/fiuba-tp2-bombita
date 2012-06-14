@@ -121,9 +121,16 @@ public abstract class Personaje implements ObjetoReaccionable, Armado{
 		return false;
 	}
 	@Override
-	public Boolean reaccionarCon(Proyectil proyectil){
+	public Boolean reaccionarCon(Arma arma) {
 		return false;
 	}
+
+	@Override
+	public Boolean reaccionarCon(Explosion explosion) {
+		// TODO pensar
+		return null;
+	}	
+	
 	@Override
 	public Boolean reaccionarCon(BloqueCemento bloqueCemento){
 		return false;

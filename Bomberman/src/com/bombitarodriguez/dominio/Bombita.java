@@ -39,11 +39,11 @@ public class Bombita extends Personaje {
 		return true;
 	}
 
-	@Override
-	public Boolean reaccionarCon(Proyectil proyectil) {
-		// TODO Acá se termina el juego!!
-		return true;
-	}
+//	@Override
+//	public Boolean reaccionarCon(Proyectil proyectil) {
+//		// TODO Acá se termina el juego!!
+//		return true;
+//	}
 
 	public void quitarVida() {
 		vida -= 1;

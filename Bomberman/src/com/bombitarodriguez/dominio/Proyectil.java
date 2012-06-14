@@ -30,10 +30,4 @@ public class Proyectil extends Arma {
 		// TODO Como se relacionan?
 		return null;
 	}
-
-	@Override
-	public Boolean reaccionarCon(Proyectil proyectil) {
-		// TODO Como se relacionan?
-		return null;
-	}
 }

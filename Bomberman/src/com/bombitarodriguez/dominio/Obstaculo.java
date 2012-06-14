@@ -9,7 +9,7 @@ import com.bombitarodriguez.interfaces.ObjetoReaccionable;
  */
 public abstract class Obstaculo implements ObjetoReaccionable{
 
-	protected Casillero casilleroContenedor;
+	protected Casillero casillero;
 	
 	protected Integer durabilidad;
 	
@@ -23,12 +23,12 @@ public abstract class Obstaculo implements ObjetoReaccionable{
 		this.durabilidad = durabilidad;
 	}
 	
-	public Casillero getCasilleroContenedor() {
-		return casilleroContenedor;
+	public Casillero getCasillero() {
+		return casillero;
 	}
 
 	public void setCasillero(Casillero casillero) {
-		this.casilleroContenedor = casillero;
+		this.casillero = casillero;
 	}
 
 	public ObjetoReaccionable getObjeto() {
@@ -41,7 +41,7 @@ public abstract class Obstaculo implements ObjetoReaccionable{
 	
 	@Override
 	public Posicion getPosicion() {
-		return casilleroContenedor.getPosicion();
+		return casillero.getPosicion();
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public abstract class Obstaculo implements ObjetoReaccionable{
 		return false;
 	}
 	@Override
-	public Boolean reaccionarCon(Proyectil proyectil){
+	public Boolean reaccionarCon(Arma arma){
 		return false;
 	}
 	@Override
@@ -89,4 +89,27 @@ public abstract class Obstaculo implements ObjetoReaccionable{
 		return false;
 	}	
 	
+	@Override
+	public Boolean reaccionarCon(Explosion explosion){
+		Integer durabilidadRestante;
+		durabilidadRestante = getDurabilidad() - explosion.getDestruccion();
+		if(durabilidadRestante <= 0){
+			this.destruirse();
+			return true;
+		}			
+		return false;
+	}	
+	
+	public void destruirse() {
+		if(objeto != null)
+			casillero.agregarObjeto(objeto);
+		quitarObjeto();
+	}
+	
+	/**
+	 * Desvincula el objeto que contiene el obstaculo
+	 */
+	public void quitarObjeto() {
+		objeto = null;	
+	}
 }

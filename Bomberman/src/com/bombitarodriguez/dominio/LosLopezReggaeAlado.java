@@ -18,11 +18,11 @@ public class LosLopezReggaeAlado extends Personaje {
 		return false;
 	}
 
-	@Override
-	public Boolean reaccionarCon(Proyectil proyectil) {
-		// TODO Analizar caso
-		return null;
-	}
+//	@Override
+//	public Boolean reaccionarCon(Proyectil proyectil) {
+//		// TODO Analizar caso
+//		return null;
+//	}
 
 	@Override
 	public void moverArriba(){

@@ -15,4 +15,10 @@ public abstract class Bomba extends Arma {
 	 */
 	abstract Bomba detonar();
 
+	@Override
+	public Boolean reaccionarCon(Explosion explosion){
+		this.explotar();
+		return false;
+	}
+	
 }

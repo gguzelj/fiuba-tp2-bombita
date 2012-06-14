@@ -17,6 +17,15 @@ public abstract class Arma implements ObjetoReaccionable {
 	
 	protected Integer ondaExpansiva;
 
+	public void explotar(){
+		Explosion explosion = new Explosion(getDestruccion(),getOndaExpansiva());
+		
+		this.getCasillero().agregarObjeto(explosion);
+		this.getCasillero().quitarObjeto(this);
+		
+		explosion.causarEstragos();
+	}
+	
 	public Integer getDestruccion() {
 		return destruccion;
 	}
@@ -72,7 +81,12 @@ public abstract class Arma implements ObjetoReaccionable {
 		return false;
 	}
 	@Override
-	public Boolean reaccionarCon(Proyectil proyectil){
+	public Boolean reaccionarCon(Arma arma){
+		return false;
+	}
+	@Override
+	public Boolean reaccionarCon(Explosion explosion){
+		this.explotar();
 		return false;
 	}
 	@Override

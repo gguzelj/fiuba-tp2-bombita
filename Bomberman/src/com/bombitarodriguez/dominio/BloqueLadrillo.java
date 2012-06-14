@@ -15,11 +15,6 @@ public class BloqueLadrillo extends Obstaculo {
 		this.durabilidad = Constante.DURABILIDAD_BLOQUE_LADRILLO;
 	}
 	
-	public void destruirse() {
-		casilleroContenedor.agregarObjeto(objeto);
-		quitarObjeto();
-	}
-	
 	/**
 	 * El obstaculo pasa a contener el objeto recibido por 
 	 * parametro
@@ -29,10 +24,4 @@ public class BloqueLadrillo extends Obstaculo {
 		this.objeto = objeto;
 	}
 	
-	/**
-	 * Desvincula el objeto que contiene el obstaculo
-	 */
-	public void quitarObjeto() {
-		objeto = null;	
-	}
 }

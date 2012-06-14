@@ -17,8 +17,6 @@ public interface ObjetoReaccionable {
 	
 	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado);
 	
-	public Boolean reaccionarCon(Proyectil proyectil);
-	
 	public Boolean reaccionarCon(BloqueCemento bloqueCemento);
 	
 	public Boolean reaccionarCon(BloqueAcero bloqueAcero);
@@ -30,6 +28,10 @@ public interface ObjetoReaccionable {
 	public Boolean reaccionarCon(ArticuloToleTole articuloBombaToleTole);
 	
 	public Boolean reaccionarCon(Timer timer);
+	
+	public Boolean reaccionarCon(Arma arma);
+	
+	public Boolean reaccionarCon(Explosion explosion);
 
 	public Posicion getPosicion();
 	
