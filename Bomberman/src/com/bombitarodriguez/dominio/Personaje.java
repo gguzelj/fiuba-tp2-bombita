@@ -106,6 +106,7 @@ public abstract class Personaje implements ObjetoReaccionable, Armado{
 
 	@Override
 	public Boolean reaccionarCon(Bombita bombita){
+		bombita.quitarVida();
 		return false;
 	}
 	@Override

@@ -13,11 +13,7 @@ public class LosLopezReggae extends Personaje {
 
 	
 
-	@Override
-	public Boolean reaccionarCon(Bombita bombita) {
-		// TODO Acá se termina el juego
-		return false;
-	}
+
 
 
 	@Override
