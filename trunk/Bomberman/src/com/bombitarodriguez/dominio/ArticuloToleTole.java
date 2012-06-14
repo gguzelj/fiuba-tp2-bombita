@@ -34,10 +34,4 @@ public class ArticuloToleTole extends Articulo {
 		this.getCasillero().quitarObjeto(this);
 		return true;
 	}
-
-	@Override
-	public Boolean reaccionarCon(Proyectil proyectil) {
-		// TODO Que pasa cuando soy tocado por un proyectil?
-		return null;
-	}
 }

@@ -43,7 +43,7 @@ public abstract class Articulo implements ObjetoReaccionable {
 		return false;
 	}
 	@Override
-	public Boolean reaccionarCon(Proyectil proyectil){
+	public Boolean reaccionarCon(Arma arma){
 		return false;
 	}
 	@Override
@@ -70,4 +70,10 @@ public abstract class Articulo implements ObjetoReaccionable {
 	public Boolean reaccionarCon(Timer timer){
 		return false;
 	}		
+
+	@Override
+	public Boolean reaccionarCon(Explosion explosion) {
+		this.getCasillero().quitarObjeto(this);
+		return true;
+	}
 }

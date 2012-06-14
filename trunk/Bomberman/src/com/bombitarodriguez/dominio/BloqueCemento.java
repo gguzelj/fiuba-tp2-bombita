@@ -15,12 +15,6 @@ public class BloqueCemento extends Obstaculo {
 		this.durabilidad = Constante.DURABILIDAD_BLOQUE_CEMENTO;
 	}
 	
-	public void destruirse() {
-		if(objeto != null)
-			casilleroContenedor.agregarObjeto(objeto);
-		quitarObjeto();
-	}
-	
 	/**
 	 * El obstaculo pasa a contener el objeto recibido por 
 	 * parametro
@@ -29,11 +23,5 @@ public class BloqueCemento extends Obstaculo {
 	public void agregarObjeto(ObjetoReaccionable objeto) {
 		this.objeto = objeto;
 	}
-	
-	/**
-	 * Desvincula el objeto que contiene el obstaculo
-	 */
-	public void quitarObjeto() {
-		objeto = null;	
-	}
+
 }

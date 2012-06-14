@@ -24,11 +24,11 @@ public class Cecilio extends Personaje {
 		return false;
 	}
 
-	@Override
-	public Boolean reaccionarCon(Proyectil proyectil) {
-		// TODO Debería atacar a Cecilio?
-		return false;
-	}
+//	@Override
+//	public Boolean reaccionarCon(Proyectil proyectil) {
+//		// TODO Debería atacar a Cecilio?
+//		return false;
+//	}
 
 	@Override
 	protected Boolean reaccionarConTodos(Iterator<ObjetoReaccionable> iterador) {

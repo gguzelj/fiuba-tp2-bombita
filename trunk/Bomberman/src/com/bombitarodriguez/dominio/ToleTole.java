@@ -49,12 +49,6 @@ public class ToleTole extends Bomba {
 	}
 
 	@Override
-	public Boolean reaccionarCon(Proyectil proyectil) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Boolean reaccionarCon(BloqueCemento bloqueCemento) {
 		// TODO Auto-generated method stub
 		return null;

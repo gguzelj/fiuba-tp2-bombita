@@ -41,9 +41,8 @@ public class Molotov extends Bomba {
 	}
 
 	@Override
-	public Boolean reaccionarCon(Proyectil proyectil) {
-		// TODO Explota, no explota ?
-		return null;
+	public Boolean reaccionarCon(Arma arma) {
+		return true;
 	}
 
 	@Override

@@ -37,10 +37,7 @@ public class Salida implements ObjetoReaccionable {
 	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado){
 		return true;
 	}
-	@Override
-	public Boolean reaccionarCon(Proyectil proyectil){
-		return true;
-	}
+
 	@Override
 	public Boolean reaccionarCon(BloqueCemento bloqueCemento){
 		return false;
@@ -64,5 +61,15 @@ public class Salida implements ObjetoReaccionable {
 	@Override
 	public Boolean reaccionarCon(Timer timer){
 		return false;
+	}
+
+	@Override
+	public Boolean reaccionarCon(Arma arma) {
+		return false;
+	}
+
+	@Override
+	public Boolean reaccionarCon(Explosion explosion) {
+		return true;
 	}	
 }
