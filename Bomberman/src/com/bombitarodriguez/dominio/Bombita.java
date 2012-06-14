@@ -24,6 +24,7 @@ public class Bombita extends Personaje {
 	@Override
 	public Boolean reaccionarCon(Cecilio cecilio) {
 		quitarVida();
+		getCasillero().quitarObjeto(cecilio);
 		return true;
 	}
 

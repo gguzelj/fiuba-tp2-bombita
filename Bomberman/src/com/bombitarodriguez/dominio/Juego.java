@@ -36,7 +36,7 @@ public class Juego {
 		agregarPersonajes();
 	}
 
-	private void crearCasillerosVacios(Integer numColumnas) {
+	public void crearCasillerosVacios(Integer numColumnas) {
 		Casillero casillero = null;
 		Posicion posicion = null;
 		
