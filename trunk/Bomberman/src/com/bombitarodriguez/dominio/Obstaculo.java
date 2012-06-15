@@ -92,8 +92,8 @@ public abstract class Obstaculo implements ObjetoReaccionable{
 	@Override
 	public Boolean reaccionarCon(Explosion explosion){
 		Integer durabilidadRestante;
-		durabilidadRestante = getDurabilidad() - explosion.getDestruccion();
-		if(durabilidadRestante <= 0){
+		durabilidadRestante = (getDurabilidad() - explosion.getDestruccion());
+		if(durabilidadRestante <= 0){ 
 			this.destruirse();
 			return true;
 		}			
@@ -103,7 +103,9 @@ public abstract class Obstaculo implements ObjetoReaccionable{
 	public void destruirse() {
 		if(objeto != null)
 			casillero.agregarObjeto(objeto);
-		quitarObjeto();
+		casillero.quitarObjeto(this);
+		
+		
 	}
 	
 	/**
@@ -111,5 +113,6 @@ public abstract class Obstaculo implements ObjetoReaccionable{
 	 */
 	public void quitarObjeto() {
 		objeto = null;	
+		
 	}
 }
