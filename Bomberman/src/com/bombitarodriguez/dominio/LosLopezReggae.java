@@ -44,13 +44,6 @@ public class LosLopezReggae extends Personaje {
 		
 	}
 
-
-	@Override
-	public Boolean reaccionarCon(Arma arma) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Override
 	public Boolean reaccionarCon(Explosion explosion) {
 		// TODO Auto-generated method stub

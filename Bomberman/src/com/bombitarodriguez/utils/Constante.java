@@ -18,7 +18,9 @@ public class Constante {
 	//constantes de las armas
 	public final static Integer ONDA_EXPANSIVA_MOLOTOV = 3;
 	public final static Integer ONDA_EXPANSIVA_TOLETOLE = 6;
-	public final static Integer TIMER_MOLOTOV = 1;
-	public final static Integer TIMER_TOLETOLE = 5;
+	public final static Double TIMER_MOLOTOV = 1D;
+	public final static Double TIMER_TOLETOLE = 5D;
+	public final static Integer DESTRUCCION_MOLOTOV = 5;
+	public final static Integer DESTRUCCION_TOLETOLE = 0;
 
 }

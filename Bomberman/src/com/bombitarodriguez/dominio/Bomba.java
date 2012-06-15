@@ -7,18 +7,33 @@ package com.bombitarodriguez.dominio;
  */
 public abstract class Bomba extends Arma {
 	
-	Boolean estaActiva = false;
-	
-	/**
-	 * Activa la bomba.
-	 * @return la bomba con su nuevo estado.
-	 */
-	abstract Bomba detonar();
+	@Override
+	public Boolean reaccionarCon(Bombita bombita) {
+		return true;
+	}
 
 	@Override
-	public Boolean reaccionarCon(Explosion explosion){
-		this.explotar();
+	public Boolean reaccionarCon(Cecilio cecilio) {
+		return true;
+	}
+
+	@Override
+	public Boolean reaccionarCon(LosLopezReggae losLopezReggae) {
+		return true;
+	}
+
+	@Override
+	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado) {
+		return true;
+	}
+
+	@Override
+	public Boolean reaccionarCon(Bomba bomba) {
+		return true;
+	}	
+	
+	@Override
+	public Boolean reaccionarCon(Proyectil proyectil) {
 		return false;
 	}
-	
 }

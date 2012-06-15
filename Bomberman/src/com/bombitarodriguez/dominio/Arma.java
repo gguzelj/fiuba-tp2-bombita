@@ -13,7 +13,7 @@ public abstract class Arma implements ObjetoReaccionable {
 	
 	protected Integer destruccion;
 	
-	protected Integer retardo;
+	protected Double retardo;
 	
 	protected Integer ondaExpansiva;
 
@@ -34,11 +34,11 @@ public abstract class Arma implements ObjetoReaccionable {
 		this.destruccion = destruccion;
 	}
 
-	public Integer getRetardo() {
+	public Double getRetardo() {
 		return retardo;
 	}
 
-	public void setRetardo(Integer retardo) {
+	public void setRetardo(Double retardo) {
 		this.retardo = retardo;
 	}
 
@@ -81,7 +81,11 @@ public abstract class Arma implements ObjetoReaccionable {
 		return false;
 	}
 	@Override
-	public Boolean reaccionarCon(Arma arma){
+	public Boolean reaccionarCon(Bomba bomba){
+		return false;
+	}
+	@Override
+	public Boolean reaccionarCon(Proyectil proyectil){
 		return false;
 	}
 	@Override

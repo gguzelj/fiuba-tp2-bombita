@@ -12,30 +12,28 @@ public class Chala extends Articulo {
 	@Override
 	public Boolean reaccionarCon(Bombita bombita) {
 		bombita.setVelocidad(Constante.VELOCIDAD_CORRE);
-		casilleroContenedor.quitarObjeto(this);
+		casillero.quitarObjeto(this);
 		return true;
 	}
 
 	@Override
 	public Boolean reaccionarCon(Cecilio cecilio) {
-		// TODO Definir
-		return null;
+		cecilio.setVelocidad(Constante.VELOCIDAD_CORRE);
+		casillero.quitarObjeto(this);
+		return true;
 	}
 
 	@Override
 	public Boolean reaccionarCon(LosLopezReggae losLopezReggae) {
-		// TODO Definir
-		return null;
+		losLopezReggae.setVelocidad(Constante.VELOCIDAD_CORRE);
+		casillero.quitarObjeto(this);
+		return true;
 	}
 
 	@Override
 	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado) {
-		// TODO Definir
-		return null;
-	}
-
-	@Override
-	public Posicion getPosicion() {
-		return casilleroContenedor.getPosicion();
+		losLopezReggaeAlado.setVelocidad(Constante.VELOCIDAD_CORRE);
+		casillero.quitarObjeto(this);
+		return true;
 	}
 }

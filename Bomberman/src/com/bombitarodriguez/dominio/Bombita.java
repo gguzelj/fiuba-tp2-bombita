@@ -26,29 +26,35 @@ public class Bombita extends Personaje {
 	
 	@Override
 	public Boolean reaccionarCon(Cecilio cecilio) {
-		quitarVida();
+		this.quitarVida();
 		getCasillero().quitarObjeto(cecilio);
 		return true;
 	}
 
 	@Override
 	public Boolean reaccionarCon(LosLopezReggae losLopezReggae) {
-		quitarVida();
+		this.quitarVida();
 		return true;
 	}
 
 	@Override
 	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado) {
-		quitarVida();
+		this.quitarVida();
 		return true;
 	}
 
-//	@Override
-//	public Boolean reaccionarCon(Proyectil proyectil) {
-//		// TODO Acá se termina el juego!!
-//		return true;
-//	}
+	@Override
+	public Boolean reaccionarCon(Proyectil proyectil) {
+		this.quitarVida();
+		return false;
+	}
 
+	@Override
+	public Boolean reaccionarCon(Explosion explosion) {
+		this.quitarVida();
+		return true;
+	}
+	
 	public void quitarVida() {
 		vida -= 1;
 	}
@@ -73,12 +79,10 @@ public class Bombita extends Personaje {
 	@Override
 	public void usarArma() {
 		plantarBomba();
-		
 	}
 
 	private void plantarBomba() {
 		getCasillero().agregarObjeto(factoryArma.getArmaInstanciada());
-		
 	}
 
 
@@ -94,17 +98,5 @@ public class Bombita extends Personaje {
 			Mapa.getMapa().reposicionar(this, casilleroProximo);
 		}
 		
-	}
-
-	@Override
-	public Boolean reaccionarCon(Arma arma) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Boolean reaccionarCon(Explosion explosion) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

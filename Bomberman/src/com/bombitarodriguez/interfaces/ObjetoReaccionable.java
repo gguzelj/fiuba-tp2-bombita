@@ -29,7 +29,9 @@ public interface ObjetoReaccionable {
 	
 	public Boolean reaccionarCon(Timer timer);
 	
-	public Boolean reaccionarCon(Arma arma);
+	public Boolean reaccionarCon(Bomba bomba);
+	
+	public Boolean reaccionarCon(Proyectil proyectil);
 	
 	public Boolean reaccionarCon(Explosion explosion);
 

@@ -67,7 +67,7 @@ public class BombitaTest {
 	
 	@Test
 	public void testMover_CasilleroBombaMolotov() {
-		casilleroFinal.agregarObjeto(new Molotov());
+		casilleroFinal.agregarObjeto(new Molotov(new Double(1)));
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);	
 		bombita.moverseConEstrategia(Direccion.ARRIBA);	
 		assertEquals(bombita.getPosicion(),posicionFinal);		
@@ -106,7 +106,7 @@ public class BombitaTest {
 	}
 	
 	@Test
-	public void testAtributoToleTole(){
+	public void testRecogerArticuloToleTole(){
 		casilleroFinal.agregarObjeto(new ArticuloToleTole());
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
 		
@@ -114,7 +114,7 @@ public class BombitaTest {
 		
 		FactoryArma arma = bombita.getFactoryArma();
 		
-		assertTrue( arma.getArmaInstanciada() instanceof ToleTole);
+		assertTrue(arma.getArmaInstanciada() instanceof ToleTole);
 	}
 	
 	@Test

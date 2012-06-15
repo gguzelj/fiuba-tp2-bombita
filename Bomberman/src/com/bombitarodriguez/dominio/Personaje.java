@@ -86,29 +86,49 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado){
 		return false;
 	}
+	
+	@Override
+	public Boolean reaccionarCon(Bomba bomba) {
+		return false;
+	}
 
+	@Override
+	public Boolean reaccionarCon(Explosion explosion) {
+		return true;
+	}	
+	
 	@Override
 	public Boolean reaccionarCon(BloqueCemento bloqueCemento){
 		return false;
 	}
+	
 	@Override
 	public Boolean reaccionarCon(BloqueAcero bloqueAcero){
 		return false;
 	}
+	
 	@Override
 	public Boolean reaccionarCon(BloqueLadrillo bloqueLadrillo){
 		return false;
 	}
+	
 	@Override
 	public Boolean reaccionarCon(Chala chala){
 		return false;
 	}
+	
 	@Override
 	public Boolean reaccionarCon(ArticuloToleTole articuloBombaToleTole){
 		return false;
 	}
+	
 	@Override
 	public Boolean reaccionarCon(Timer timer){
 		return false;
 	}	
+	
+	@Override
+	public Boolean reaccionarCon(Proyectil proyectil) {
+		return false;
+	}
 }
