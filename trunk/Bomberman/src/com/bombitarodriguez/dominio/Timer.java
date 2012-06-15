@@ -9,74 +9,37 @@ public class Timer extends Articulo {
 
 	@Override
 	public Boolean reaccionarCon(Bombita bombita) {
-		return null;
-		
+		Double nuevoRetardo = aplicarRetardo(bombita);
+		bombita.getFactoryArma().setNuevoRetardo(nuevoRetardo);
+		return true;
 	}
 
 	@Override
 	public Boolean reaccionarCon(Cecilio cecilio) {
-		// TODO Auto-generated method stub
-		return null;
+		Double nuevoRetardo = aplicarRetardo(cecilio);
+		cecilio.getFactoryArma().setNuevoRetardo(nuevoRetardo);
+		return true;
 	}
 
 	@Override
 	public Boolean reaccionarCon(LosLopezReggae losLopezReggae) {
-		// TODO Auto-generated method stub
-		return null;
+		Double nuevoRetardo = aplicarRetardo(losLopezReggae);
+		losLopezReggae.getFactoryArma().setNuevoRetardo(nuevoRetardo);
+		return true;
 	}
 
 	@Override
 	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado) {
-		// TODO Auto-generated method stub
-		return null;
+		Double nuevoRetardo = aplicarRetardo(losLopezReggaeAlado);
+		losLopezReggaeAlado.getFactoryArma().setNuevoRetardo(nuevoRetardo);
+		return true;
 	}
 
-	@Override
-	public Boolean reaccionarCon(BloqueCemento bloqueCemento) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public Boolean reaccionarCon(BloqueAcero bloqueAcero) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Boolean reaccionarCon(BloqueLadrillo bloqueLadrillo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Boolean reaccionarCon(Chala chala) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Boolean reaccionarCon(ArticuloToleTole articuloBombaToleTole) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Boolean reaccionarCon(Timer timer) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Posicion getPosicion() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setCasillero(Casillero casillero) {
-		// TODO Auto-generated method stub
-		
+	private Double aplicarRetardo(Personaje personaje) {
+		Double retardoActual = personaje.getFactoryArma().getNuevoRetardo();
+		Double porcentajeRetardo = (retardoActual * 0.85);
+		return (retardoActual - porcentajeRetardo);
 	}
 
 }

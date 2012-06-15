@@ -60,10 +60,18 @@ public abstract class Obstaculo implements ObjetoReaccionable{
 	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado){
 		return false;
 	}
+
 	@Override
-	public Boolean reaccionarCon(Arma arma){
+	public Boolean reaccionarCon(Bomba bomba) {
 		return false;
 	}
+
+	@Override
+	public Boolean reaccionarCon(Proyectil proyectil) {
+		return false;
+	}
+	
+	
 	@Override
 	public Boolean reaccionarCon(BloqueCemento bloqueCemento){
 		return false;
@@ -91,8 +99,7 @@ public abstract class Obstaculo implements ObjetoReaccionable{
 	
 	@Override
 	public Boolean reaccionarCon(Explosion explosion){
-		Integer durabilidadRestante;
-		durabilidadRestante = (getDurabilidad() - explosion.getDestruccion());
+		Integer durabilidadRestante = (getDurabilidad() - explosion.getDestruccion());
 		if(durabilidadRestante <= 0){ 
 			this.destruirse();
 			return true;

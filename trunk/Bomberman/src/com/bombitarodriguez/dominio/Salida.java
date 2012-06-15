@@ -64,12 +64,17 @@ public class Salida implements ObjetoReaccionable {
 	}
 
 	@Override
-	public Boolean reaccionarCon(Arma arma) {
+	public Boolean reaccionarCon(Bomba bomba) {
 		return false;
 	}
 
 	@Override
+	public Boolean reaccionarCon(Proyectil proyectil) {
+		return false;
+	}	
+
+	@Override
 	public Boolean reaccionarCon(Explosion explosion) {
 		return true;
-	}	
+	}
 }
