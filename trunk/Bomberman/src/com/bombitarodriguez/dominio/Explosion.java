@@ -1,6 +1,7 @@
 package com.bombitarodriguez.dominio;
 
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
+import com.bombitarodriguez.utils.Direccion;
 
 public class Explosion implements ObjetoReaccionable{
 
@@ -110,7 +111,7 @@ public class Explosion implements ObjetoReaccionable{
 	}	
 	
 	public void causarEstragos() {
-		
+		//TODO revisar logica
 		Boolean puedoContinuar;
 		Casillero casilleroActual = this.getCasillero();
 		Integer ondaExpansivaDerecha = ondaExpansiva;
@@ -125,7 +126,8 @@ public class Explosion implements ObjetoReaccionable{
 		//Reacciono hacia la derecha
 		puedoContinuar = true;
 		while(puedoContinuar){
-			Casillero casilleroDerecha = Mapa.getMapa().getCasillero(Posicion.calcularPosicionDerecha(this, 1));
+			Posicion posicion = Mapa.getMapa().getNuevaPosicion(this.getPosicion(), Direccion.DERECHA);
+			Casillero casilleroDerecha = Mapa.getMapa().getCasillero(posicion);
 			puedoContinuar = reaccionarConTodos(casilleroDerecha);
 			ondaExpansivaDerecha --;
 			puedoContinuar = (ondaExpansivaDerecha == 0);
@@ -134,7 +136,8 @@ public class Explosion implements ObjetoReaccionable{
 		//Reacciono hacia la izquierda
 		puedoContinuar = true;
 		while(puedoContinuar){
-			Casillero casilleroIzquierda = Mapa.getMapa().getCasillero(Posicion.calcularPosicionIzquierda(this, 1));
+			Posicion posicion = Mapa.getMapa().getNuevaPosicion(this.getPosicion(), Direccion.IZQUIERDA);
+			Casillero casilleroIzquierda = Mapa.getMapa().getCasillero(posicion);
 			puedoContinuar = reaccionarConTodos(casilleroIzquierda);
 			ondaExpansivaIzquierda --;
 			puedoContinuar = (ondaExpansivaIzquierda == 0);
@@ -143,7 +146,8 @@ public class Explosion implements ObjetoReaccionable{
 		//Reacciono hacia la arriba
 		puedoContinuar = true;
 		while(puedoContinuar){
-			Casillero casilleroArriba = Mapa.getMapa().getCasillero(Posicion.calcularPosicionArriba(this, 1));
+			Posicion posicion = Mapa.getMapa().getNuevaPosicion(this.getPosicion(), Direccion.ARRIBA);
+			Casillero casilleroArriba = Mapa.getMapa().getCasillero(posicion);
 			puedoContinuar = reaccionarConTodos(casilleroArriba);
 			ondaExpansivaArriba --;
 			puedoContinuar = (ondaExpansivaArriba == 0);
@@ -152,7 +156,8 @@ public class Explosion implements ObjetoReaccionable{
 		//Reacciono hacia la abajo
 		puedoContinuar = true;
 		while(puedoContinuar){
-			Casillero casilleroAbajo = Mapa.getMapa().getCasillero(Posicion.calcularPosicionAbajo(this, 1));
+			Posicion posicion = Mapa.getMapa().getNuevaPosicion(this.getPosicion(), Direccion.ABAJO);
+			Casillero casilleroAbajo = Mapa.getMapa().getCasillero(posicion);
 			puedoContinuar = reaccionarConTodos(casilleroAbajo);
 			ondaExpansivaAbajo --;
 			puedoContinuar = (ondaExpansivaAbajo == 0);
@@ -169,5 +174,4 @@ public class Explosion implements ObjetoReaccionable{
 		
 		return puedoContinuar;
 	}
-
 }

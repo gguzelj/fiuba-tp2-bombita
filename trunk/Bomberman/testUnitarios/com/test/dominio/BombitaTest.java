@@ -45,9 +45,6 @@ public class BombitaTest {
 		assertEquals(cantidadDeObjetos, new Integer(0));
 	}
 	
-	
-	
-
 	@Test
 	public void testQuitarVidaBombita() {		
 		Integer vidaInicial = bombita.getVida();
