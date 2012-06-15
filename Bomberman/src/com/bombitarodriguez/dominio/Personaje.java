@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.bombitarodriguez.interfaces.Armado;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
+import com.bombitarodriguez.interfaces.StrategyMovimiento;
 
 
 /**
@@ -13,7 +14,7 @@ import com.bombitarodriguez.interfaces.ObjetoReaccionable;
  * @author Mauro
  *
  */
-public abstract class Personaje implements ObjetoReaccionable, Armado{
+public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyMovimiento{
 	
 	protected Casillero casilleroContenedor;
 	
@@ -23,42 +24,6 @@ public abstract class Personaje implements ObjetoReaccionable, Armado{
 	
 	protected FactoryArma factoryArma;
 		
-	public void moverArriba() {
-		Casillero casilleroProximo = Mapa.getMapa().getCasillero(Posicion.calcularPosicionArriba(this, 1));
-		// Creo una copia de la lista sobre la cual voy a iterar, ya que se puede modificar
-		List<ObjetoReaccionable> copiaObjetosCasillero = new ArrayList<ObjetoReaccionable>();
-		copiaObjetosCasillero.addAll(casilleroProximo.getObjetos());
-		Iterator<ObjetoReaccionable> iterador = copiaObjetosCasillero.iterator();
-		if (reaccionarConTodos(iterador)) {
-			Mapa.getMapa().reposicionar(this, casilleroProximo);
-		}
-	}
-	
-	public void moverDerecha() {
-		Casillero casilleroProximo = Mapa.getMapa().getCasillero(Posicion.calcularPosicionDerecha(this, 1));
-		Iterator<ObjetoReaccionable> iterador = casilleroProximo.getObjetos().iterator();
-		if (reaccionarConTodos(iterador)) {
-			Mapa.getMapa().reposicionar(this, casilleroProximo);
-		}		
-	}
-	
-	public void moverAbajo() {
-		Casillero casilleroProximo = Mapa.getMapa().getCasillero(Posicion.calcularPosicionAbajo(this, 1));
-		Iterator<ObjetoReaccionable> iterador = casilleroProximo.getObjetos().iterator();
-		if (reaccionarConTodos(iterador)) {
-			Mapa.getMapa().reposicionar(this, casilleroProximo);
-		}
-		
-	}
-	
-	public void moverIzquierda() {
-		Casillero casilleroProximo = Mapa.getMapa().getCasillero(Posicion.calcularPosicionIzquierda(this, 1));
-		Iterator<ObjetoReaccionable> iterador = casilleroProximo.getObjetos().iterator();
-		if (reaccionarConTodos(iterador)) {
-			Mapa.getMapa().reposicionar(this, casilleroProximo);
-		}	
-	}
-
 	/**
 	 * Permite reaccionar con todos los objetos de un casillero
 	 * @param iterador
@@ -121,17 +86,7 @@ public abstract class Personaje implements ObjetoReaccionable, Armado{
 	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado){
 		return false;
 	}
-	@Override
-	public Boolean reaccionarCon(Arma arma) {
-		return false;
-	}
 
-	@Override
-	public Boolean reaccionarCon(Explosion explosion) {
-		// TODO pensar
-		return null;
-	}	
-	
 	@Override
 	public Boolean reaccionarCon(BloqueCemento bloqueCemento){
 		return false;

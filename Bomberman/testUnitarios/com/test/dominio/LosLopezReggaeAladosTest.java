@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import com.bombitarodriguez.dominio.*;
+import com.bombitarodriguez.utils.Direccion;
 
 public class LosLopezReggaeAladosTest {
 
@@ -27,7 +28,7 @@ public class LosLopezReggaeAladosTest {
 		Casillero casilleroFinal = new Casillero(posicionFinal);
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
 		
-		lopezReggaeAlado.moverArriba();
+		lopezReggaeAlado.moverseConEstrategia(Direccion.ARRIBA);
 		assertEquals(lopezReggaeAlado.getPosicion(), posicionFinal);	
 	}
 	
@@ -43,7 +44,7 @@ public class LosLopezReggaeAladosTest {
 		Mapa.getMapa().agregarCasillero(posicionMedio, casilleroMedio);
 		Mapa.getMapa().agregarCasillero(posicionDondeCae, casilleroDondeCae);
 		
-		lopezReggaeAlado.moverArriba();
+		lopezReggaeAlado.moverseConEstrategia(Direccion.ARRIBA);
 		assertEquals(lopezReggaeAlado.getPosicion(), posicionDondeCae);
 		}
 	
@@ -68,7 +69,7 @@ public class LosLopezReggaeAladosTest {
 		
 		Mapa.getMapa().agregarCasillero(posicionDondeCae, DondeCae);
 		
-		lopezReggaeAlado.moverArriba();
+		lopezReggaeAlado.moverseConEstrategia(Direccion.ARRIBA);
 		assertEquals(lopezReggaeAlado.getPosicion(), posicionDondeCae);
 		}
 }

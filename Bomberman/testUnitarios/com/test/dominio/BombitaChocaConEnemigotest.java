@@ -11,8 +11,9 @@ import com.bombitarodriguez.dominio.LosLopezReggae;
 import com.bombitarodriguez.dominio.LosLopezReggaeAlado;
 import com.bombitarodriguez.dominio.Mapa;
 import com.bombitarodriguez.dominio.Posicion;
+import com.bombitarodriguez.utils.Direccion;
 
-public class BombitaChocaConEnemigotest {
+public class BombitaChocaConEnemigoTest {
 
 	@Test
 	public void testMoverHastaUnCecilio() {
@@ -33,8 +34,8 @@ public class BombitaChocaConEnemigotest {
 		Mapa.getMapa().agregarCasillero(posicionFinal,casilleroFinal);
 		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
 	
-		bombita.moverArriba();
-		assertEquals(bombita.getVida(),new Integer(3));
+		bombita.moverseConEstrategia(Direccion.ARRIBA);
+		assertEquals(bombita.getVida(), new Integer(3));
 		
 	}
 	
@@ -57,8 +58,8 @@ public class BombitaChocaConEnemigotest {
 		Mapa.getMapa().agregarCasillero(posicionFinal,casilleroFinal);
 		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
 	
-		bombita.moverArriba();
-		assertEquals(bombita.getVida(),new Integer(3));
+		bombita.moverseConEstrategia(Direccion.ARRIBA);
+		assertEquals(bombita.getVida(), new Integer(3));
 		
 	}
 	
@@ -81,8 +82,8 @@ public class BombitaChocaConEnemigotest {
 		Mapa.getMapa().agregarCasillero(posicionFinal,casilleroFinal);
 		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
 	
-		bombita.moverArriba();
-		assertEquals(bombita.getVida(),new Integer(3));
+		bombita.moverseConEstrategia(Direccion.ARRIBA);
+		assertEquals(bombita.getVida(), new Integer(3));
 		
 	}
 

@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.bombitarodriguez.dominio.*;
+import com.bombitarodriguez.utils.Direccion;
 
 public class MapaTest {
 
@@ -33,7 +34,7 @@ public class MapaTest {
 		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
 		
-		Mapa.getMapa().reposicionar(bombitaPosicionInicial, casilleroFinal);
+		Mapa.getMapa().intentarMovimiento(bombitaPosicionInicial, Direccion.ARRIBA);
 		
 		casilleroFinal = Mapa.getMapa().getCasillero(posicionFinal);
 		Bombita bombitaPosicionFinal = (Bombita) casilleroFinal.getObjetos().get(0);

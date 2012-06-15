@@ -3,6 +3,7 @@ package com.bombitarodriguez.dominio;
 import java.util.Iterator;
 
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
+import com.bombitarodriguez.utils.Direccion;
 
 
 /**
@@ -11,78 +12,6 @@ import com.bombitarodriguez.interfaces.ObjetoReaccionable;
  *
  */
 public class LosLopezReggaeAlado extends Personaje {
-
-	
-
-//	@Override
-//	public Boolean reaccionarCon(Proyectil proyectil) {
-//		// TODO Analizar caso
-//		return null;
-//	}
-
-	@Override
-	public void moverArriba(){
-		Integer aumento = 1;
-		Boolean encontrado = false;
-		Casillero casilleroProximo = Mapa.getMapa().getCasillero(Posicion.calcularPosicionArriba(this, aumento));
-
-		Iterator<ObjetoReaccionable> iterador; 
-		while (!encontrado){
-			iterador = casilleroProximo.getObjetos().iterator();
-			if (reaccionarConTodos(iterador)) encontrado = true;
-			else casilleroProximo = Mapa.getMapa().getCasillero(Posicion.calcularPosicionArriba(this, aumento++));
-			}	
-		
-	 	Mapa.getMapa().reposicionar(this, casilleroProximo);
-	}
-
-	@Override
-	public void moverAbajo(){
-		Integer aumento = 1;
-		Boolean encontrado = false;
-		Casillero casilleroProximo = Mapa.getMapa().getCasillero(Posicion.calcularPosicionAbajo(this, aumento));
-
-		Iterator<ObjetoReaccionable> iterador; 
-		while (!encontrado){
-			iterador = casilleroProximo.getObjetos().iterator();
-			if (reaccionarConTodos(iterador)) encontrado = true;
-			else casilleroProximo = Mapa.getMapa().getCasillero(Posicion.calcularPosicionAbajo(this, aumento++));
-			}	
-		
-	 	Mapa.getMapa().reposicionar(this, casilleroProximo);
-	}
-
-	@Override
-	public void moverDerecha(){
-		Integer aumento = 1;
-		Boolean encontrado = false;
-		Casillero casilleroProximo = Mapa.getMapa().getCasillero(Posicion.calcularPosicionDerecha(this, aumento));
-
-		Iterator<ObjetoReaccionable> iterador; 
-		while (!encontrado){
-			iterador = casilleroProximo.getObjetos().iterator();
-			if (reaccionarConTodos(iterador)) encontrado = true;
-			else casilleroProximo = Mapa.getMapa().getCasillero(Posicion.calcularPosicionDerecha(this, aumento++));
-			}	
-		
-	 	Mapa.getMapa().reposicionar(this, casilleroProximo);
-	}	
-	
-	@Override
-	public void moverIzquierda(){
-		Integer aumento = 1;
-		Boolean encontrado = false;
-		Casillero casilleroProximo = Mapa.getMapa().getCasillero(Posicion.calcularPosicionIzquierda(this, aumento));
-
-		Iterator<ObjetoReaccionable> iterador; 
-		while (!encontrado){
-			iterador = casilleroProximo.getObjetos().iterator();
-			if (reaccionarConTodos(iterador)) encontrado = true;
-			else casilleroProximo = Mapa.getMapa().getCasillero(Posicion.calcularPosicionIzquierda(this, aumento++));
-			}	
-		
-	 	Mapa.getMapa().reposicionar(this, casilleroProximo);
-	}		
 	
 	@Override
 	protected Boolean reaccionarConTodos(Iterator<ObjetoReaccionable> iterador) {
@@ -102,6 +31,41 @@ public class LosLopezReggaeAlado extends Personaje {
 	private void plantarBomba() {
 		getCasillero().agregarObjeto(factoryArma.getArmaInstanciada());
 		
+	}
+
+
+	@Override
+	public void moverseConEstrategia(Direccion direccion) {
+		Boolean casilleroValido = false;
+		Posicion nuevaPosicion = Mapa.getMapa().getNuevaPosicion(this.getPosicion(), direccion);
+		Casillero casilleroProximo = Mapa.getMapa().getCasillero(nuevaPosicion);
+		Posicion posicionParcial;
+		Iterator<ObjetoReaccionable> iterador; 
+		while (!casilleroValido){
+			iterador = casilleroProximo.getObjetos().iterator();
+			if (reaccionarConTodos(iterador)) {
+				casilleroValido = true;
+			}
+			else {
+				posicionParcial = nuevaPosicion;
+				nuevaPosicion = Mapa.getMapa().getNuevaPosicion(posicionParcial, direccion);
+				casilleroProximo = Mapa.getMapa().getCasillero(nuevaPosicion);
+			}
+		}	
+	 	Mapa.getMapa().reposicionar(this, casilleroProximo);
+		
+	}
+
+	@Override
+	public Boolean reaccionarCon(Arma arma) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean reaccionarCon(Explosion explosion) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

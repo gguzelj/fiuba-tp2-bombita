@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import com.bombitarodriguez.dominio.*;
+import com.bombitarodriguez.utils.Direccion;
 
 public class BombitaTest {
 	
@@ -31,7 +32,7 @@ public class BombitaTest {
 	public void testMover_CasilleroVacio() {
 		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);	
-		bombita.moverArriba();
+		bombita.moverseConEstrategia(Direccion.ARRIBA);
 		assertEquals(bombita.getPosicion(), posicionFinal);			
 	}
 	
@@ -39,7 +40,7 @@ public class BombitaTest {
 	public void testMeMuevoYCasilleroQuedaVacio(){
 		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);	
-		bombita.moverArriba();		
+		bombita.moverseConEstrategia(Direccion.ARRIBA);		
 		Integer cantidadDeObjetos = casilleroInicial.getObjetos().size();
 		assertEquals(cantidadDeObjetos, new Integer(0));
 	}
@@ -60,7 +61,7 @@ public class BombitaTest {
 	public void testMover_CasilleroBloqueAcero() {
 		casilleroFinal.agregarObjeto(new BloqueAcero());
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);		
-		bombita.moverArriba();
+		bombita.moverseConEstrategia(Direccion.ARRIBA);
 		assertEquals(bombita.getPosicion(),posicionInicial);		
 	}
 	
@@ -68,7 +69,7 @@ public class BombitaTest {
 	public void testMover_CasilleroBombaMolotov() {
 		casilleroFinal.agregarObjeto(new Molotov());
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);	
-		bombita.moverArriba();	
+		bombita.moverseConEstrategia(Direccion.ARRIBA);	
 		assertEquals(bombita.getPosicion(),posicionFinal);		
 	}
 	
@@ -76,7 +77,7 @@ public class BombitaTest {
 	public void testMover_CasilleroCecilio() {
 		casilleroFinal.agregarObjeto(new Cecilio(2));
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
-		bombita.moverArriba();	
+		bombita.moverseConEstrategia(Direccion.ARRIBA);	
 		assertEquals(bombita.getVida() , new Integer(0));		
 
 	}	
@@ -99,7 +100,7 @@ public class BombitaTest {
 	public void testAtributoChala(){
 		casilleroFinal.agregarObjeto(new Chala());
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
-		bombita.moverArriba();
+		bombita.moverseConEstrategia(Direccion.ARRIBA);
 		
 		assertEquals(bombita.getVelocidad(),new Integer(2));
 	}
@@ -109,7 +110,7 @@ public class BombitaTest {
 		casilleroFinal.agregarObjeto(new ArticuloToleTole());
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
 		
-		bombita.moverArriba();
+		bombita.moverseConEstrategia(Direccion.ARRIBA);
 		
 		FactoryArma arma = bombita.getFactoryArma();
 		
@@ -121,7 +122,7 @@ public class BombitaTest {
 		
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
 		bombita.usarArma();
-		bombita.moverArriba();
+		bombita.moverseConEstrategia(Direccion.ARRIBA);
 		Integer cantidadDeObjetos = casilleroInicial.getObjetos().size();
 		assertEquals(cantidadDeObjetos, new Integer(1));
 		
