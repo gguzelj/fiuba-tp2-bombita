@@ -31,8 +31,8 @@ public class Casillero {
 	}
 	
 	public void quitarObjeto(ObjetoReaccionable objeto) {
-		objeto.setCasillero(null);
 		objetos.remove(objeto);
+		objeto.setCasillero(null);
 	}
 	
 	public Posicion getPosicion() {

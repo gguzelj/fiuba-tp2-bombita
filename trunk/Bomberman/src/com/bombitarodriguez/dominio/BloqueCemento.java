@@ -10,6 +10,11 @@ import com.bombitarodriguez.utils.Constante;
  */
 public class BloqueCemento extends Obstaculo {
 	
+	public BloqueCemento(){
+		this.objeto = null;
+		this.durabilidad = Constante.DURABILIDAD_BLOQUE_CEMENTO;
+	}
+	
 	public BloqueCemento(ObjetoReaccionable objeto) {
 		this.objeto = objeto;
 		this.durabilidad = Constante.DURABILIDAD_BLOQUE_CEMENTO;

@@ -31,9 +31,4 @@ public abstract class Bomba extends Arma {
 	public Boolean reaccionarCon(Bomba bomba) {
 		return true;
 	}	
-	
-	@Override
-	public Boolean reaccionarCon(Proyectil proyectil) {
-		return false;
-	}
 }

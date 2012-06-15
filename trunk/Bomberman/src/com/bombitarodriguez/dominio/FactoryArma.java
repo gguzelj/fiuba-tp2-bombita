@@ -4,7 +4,6 @@ public abstract class FactoryArma {
 	
 	protected Double nuevoRetardo;
 	
-	
 	public Arma getArmaInstanciada() {
 		return instanciarArma();
 	}
