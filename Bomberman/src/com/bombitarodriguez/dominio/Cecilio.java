@@ -62,7 +62,7 @@ public class Cecilio extends Personaje {
 
 	@Override
 	public Boolean reaccionarCon(Explosion explosion) {
-		// TODO Auto-generated method stub
-		return null;
+		resistencia = resistencia - (explosion.getDestruccion());
+		return true;
 	}
 }

@@ -94,6 +94,7 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 
 	@Override
 	public Boolean reaccionarCon(Explosion explosion) {
+		resistencia = resistencia - explosion.getDestruccion();
 		return true;
 	}	
 	
