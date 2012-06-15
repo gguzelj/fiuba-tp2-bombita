@@ -47,9 +47,7 @@ public class BloqueLadrilloTest {
 		
 		bloqueLadrillo.destruirse();
 		
-		assertEquals(casillero.getObjetos().size(), 2);
-		assertNull(bloqueLadrillo.getObjeto());
-
+		assertEquals(casillero.getObjetos().size(), 1);
 	}
 
 }
