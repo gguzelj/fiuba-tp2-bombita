@@ -124,45 +124,28 @@ public class Explosion implements ObjetoReaccionable{
 			objeto.reaccionarCon(this);
 		
 		//Reacciono hacia la derecha
-		puedoContinuar = true;
-		while(puedoContinuar){
-			Posicion posicion = Mapa.getMapa().getNuevaPosicion(this.getPosicion(), Direccion.DERECHA);
-			Casillero casilleroDerecha = Mapa.getMapa().getCasillero(posicion);
-			puedoContinuar = reaccionarConTodos(casilleroDerecha);
-			ondaExpansivaDerecha --;
-			puedoContinuar = (ondaExpansivaDerecha == 0);
-		}		
+		this.recorrerCasilleros(ondaExpansiva,Direccion.DERECHA);		
 
 		//Reacciono hacia la izquierda
-		puedoContinuar = true;
-		while(puedoContinuar){
-			Posicion posicion = Mapa.getMapa().getNuevaPosicion(this.getPosicion(), Direccion.IZQUIERDA);
-			Casillero casilleroIzquierda = Mapa.getMapa().getCasillero(posicion);
-			puedoContinuar = reaccionarConTodos(casilleroIzquierda);
-			ondaExpansivaIzquierda --;
-			puedoContinuar = (ondaExpansivaIzquierda == 0);
-		}		
+		this.recorrerCasilleros(ondaExpansiva,Direccion.IZQUIERDA);
 		
 		//Reacciono hacia la arriba
-		puedoContinuar = true;
-		while(puedoContinuar){
-			Posicion posicion = Mapa.getMapa().getNuevaPosicion(this.getPosicion(), Direccion.ARRIBA);
-			Casillero casilleroArriba = Mapa.getMapa().getCasillero(posicion);
-			puedoContinuar = reaccionarConTodos(casilleroArriba);
-			ondaExpansivaArriba --;
-			puedoContinuar = (ondaExpansivaArriba == 0);
-		}		
+		this.recorrerCasilleros(ondaExpansiva,Direccion.ARRIBA);
 		
 		//Reacciono hacia la abajo
-		puedoContinuar = true;
-		while(puedoContinuar){
-			Posicion posicion = Mapa.getMapa().getNuevaPosicion(this.getPosicion(), Direccion.ABAJO);
-			Casillero casilleroAbajo = Mapa.getMapa().getCasillero(posicion);
-			puedoContinuar = reaccionarConTodos(casilleroAbajo);
-			ondaExpansivaAbajo --;
-			puedoContinuar = (ondaExpansivaAbajo == 0);
-		}				
+		this.recorrerCasilleros(ondaExpansiva,Direccion.ABAJO);
 	}	
+	
+	protected void recorrerCasilleros(Integer ondaExpansiva, Direccion direccion){
+		Boolean puedoContinuar = true;
+		while(puedoContinuar){
+			Posicion posicion = Mapa.getMapa().getNuevaPosicion(this.getPosicion(), direccion);
+			Casillero casilleroDerecha = Mapa.getMapa().getCasillero(posicion);
+			puedoContinuar = reaccionarConTodos(casilleroDerecha);
+			ondaExpansiva --;
+			puedoContinuar = (ondaExpansiva == 0);
+		}	
+	}
 	
 	protected Boolean reaccionarConTodos(Casillero casillero) {
 		Boolean puedoContinuar = true;
