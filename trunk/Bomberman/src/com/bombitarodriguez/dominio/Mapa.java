@@ -2,6 +2,7 @@ package com.bombitarodriguez.dominio;
 
 import java.util.HashMap;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
+import com.bombitarodriguez.utils.Direccion;
 
 /**
  * 
@@ -33,6 +34,11 @@ public class Mapa {
 		return mapa.mapaCasillero.get(posicion);
 	}
 	
+	public void intentarMovimiento(Personaje personaje, Direccion direccion) {
+		personaje.moverseConEstrategia(direccion);
+
+	}
+	
 	public void reposicionar(ObjetoReaccionable objetoAMover, Casillero casilleroAOcupar) {
 		Casillero casilleroObj = getCasillero(objetoAMover.getPosicion());
 		casilleroObj.quitarObjeto(objetoAMover);
@@ -48,6 +54,29 @@ public class Mapa {
 		this.mapaCasillero = mapaCasillero;
 	}
 	
-	
+	 public Posicion getNuevaPosicion(Posicion posicionActual, Direccion direccion) {
+		 switch (direccion) {
+	     	case ABAJO : {
+	            return new Posicion(posicionActual.getPosX(), posicionActual.getPosY() - 1);
+	        }
 
+	        case IZQUIERDA : {
+	            return new Posicion(posicionActual.getPosX() - 1, posicionActual.getPosY());
+	        }
+
+	        case ARRIBA : {
+	            return new Posicion(posicionActual.getPosX() , posicionActual.getPosY() + 1);
+	        }
+
+	        case DERECHA : {
+	            return new Posicion(posicionActual.getPosX() + 1, posicionActual.getPosY());
+	        }
+
+	        default : {
+	            throw new AssertionError("direccion no soportada");
+	        }
+	    }
+	}
+	
+	
 }

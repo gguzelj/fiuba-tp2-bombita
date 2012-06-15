@@ -9,8 +9,8 @@ public class Timer extends Articulo {
 
 	@Override
 	public Boolean reaccionarCon(Bombita bombita) {
-		// TODO Auto-generated method stub
 		return null;
+		
 	}
 
 	@Override
