@@ -1,7 +1,5 @@
 package com.bombitarodriguez.dominio;
 
-import com.bombitarodriguez.interfaces.ObjetoReaccionable;
-
 /**
  * 
  * @author Mauro
@@ -44,23 +42,4 @@ public class Posicion {
 		this.posY = posY;
 	}
 	
-	public static Posicion calcularPosicionDerecha(ObjetoReaccionable objeto, Integer aumento) {
-		Posicion posicionActual = objeto.getPosicion();
-		return new Posicion(posicionActual.getPosX() + aumento,posicionActual.getPosY());
-	}
-
-	public static Posicion calcularPosicionIzquierda(ObjetoReaccionable objeto, Integer aumento) {
-		Posicion posicionActual = objeto.getPosicion();
-		return new Posicion(posicionActual.getPosX() - aumento,posicionActual.getPosY());
-	}
-
-	public static Posicion calcularPosicionArriba(ObjetoReaccionable objeto, Integer aumento) {
-		Posicion posicionActual = objeto.getPosicion();
-		return new Posicion(posicionActual.getPosX(),posicionActual.getPosY() + aumento);
-	}
-
-	public static Posicion calcularPosicionAbajo(ObjetoReaccionable objeto, Integer aumento) {
-		Posicion posicionActual = objeto.getPosicion();
-		return new Posicion(posicionActual.getPosX(),posicionActual.getPosY() - aumento);
-	}
 }

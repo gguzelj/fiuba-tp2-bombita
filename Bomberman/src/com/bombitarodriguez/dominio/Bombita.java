@@ -97,6 +97,5 @@ public class Bombita extends Personaje {
 		if (reaccionarConTodos(iterador)) {
 			Mapa.getMapa().reposicionar(this, casilleroProximo);
 		}
-		
 	}
 }
