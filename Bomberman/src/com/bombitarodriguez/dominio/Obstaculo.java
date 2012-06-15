@@ -103,7 +103,8 @@ public abstract class Obstaculo implements ObjetoReaccionable{
 		if(durabilidadRestante <= 0){ 
 			this.destruirse();
 			return true;
-		}			
+		}
+		this.setDurabilidad(durabilidadRestante);
 		return false;
 	}	
 	

@@ -9,7 +9,7 @@ import com.bombitarodriguez.interfaces.ObjetoReaccionable;
  */
 public abstract class Arma implements ObjetoReaccionable {
 	
-	protected Casillero casilleroContenedor;
+	protected Casillero casillero;
 	
 	protected Integer destruccion;
 	
@@ -51,64 +51,75 @@ public abstract class Arma implements ObjetoReaccionable {
 	}
 	
 	public Casillero getCasillero() {
-		return casilleroContenedor;
+		return casillero;
 	}
 	
 	@Override
 	public void setCasillero(Casillero casillero) {
-		casilleroContenedor = casillero;
+		this.casillero = casillero;
 	}
 
 	@Override
 	public Posicion getPosicion() {
-		return casilleroContenedor.getPosicion();
+		return casillero.getPosicion();
 	}
 
 	@Override
 	public Boolean reaccionarCon(Bombita bombita){
 		return false;
 	}
+	
 	@Override
 	public Boolean reaccionarCon(Cecilio cecilio){
 		return false;
 	}
+	
 	@Override
 	public Boolean reaccionarCon(LosLopezReggae losLopezReggae){
 		return false;
 	}
+	
 	@Override
 	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado){
 		return false;
 	}
+	
 	@Override
 	public Boolean reaccionarCon(Bomba bomba){
 		return false;
 	}
+	
 	@Override
 	public Boolean reaccionarCon(Proyectil proyectil){
 		return false;
 	}
+	
 	@Override
 	public Boolean reaccionarCon(Explosion explosion){
 		this.explotar();
 		return false;
 	}
+	
 	@Override
 	public Boolean reaccionarCon(BloqueCemento bloqueCemento){
 		return false;
 	}
+	
 	@Override
 	public Boolean reaccionarCon(BloqueAcero bloqueAcero){
 		return false;
 	}
+	
 	@Override
 	public Boolean reaccionarCon(BloqueLadrillo bloqueLadrillo){
 		return false;
 	}
+	
 	@Override
 	public Boolean reaccionarCon(Chala chala){
 		return false;
 	}
+	
 	@Override
 	public Boolean reaccionarCon(ArticuloToleTole articuloBombaToleTole){
 		return false;

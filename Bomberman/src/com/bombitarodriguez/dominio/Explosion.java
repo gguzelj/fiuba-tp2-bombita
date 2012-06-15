@@ -1,5 +1,8 @@
 package com.bombitarodriguez.dominio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Direccion;
 
@@ -111,16 +114,9 @@ public class Explosion implements ObjetoReaccionable{
 	}	
 	
 	public void causarEstragos() {
-		//TODO revisar logica
-		Boolean puedoContinuar;
-		Casillero casilleroActual = this.getCasillero();
-		Integer ondaExpansivaDerecha = ondaExpansiva;
-		Integer ondaExpansivaIzquierda = ondaExpansiva;
-		Integer ondaExpansivaArriba = ondaExpansiva;
-		Integer ondaExpansivaAbajo = ondaExpansiva;
 		
 		//Reaaciono con los objetos del casillero principal
-		for( ObjetoReaccionable objeto : casilleroActual.getObjetos())
+		for( ObjetoReaccionable objeto : this.getCasillero().getObjetos())
 			objeto.reaccionarCon(this);
 		
 		//Reacciono hacia la derecha
@@ -148,9 +144,13 @@ public class Explosion implements ObjetoReaccionable{
 	}
 	
 	protected Boolean reaccionarConTodos(Casillero casillero) {
-		Boolean puedoContinuar = true;
 		
-		for( ObjetoReaccionable objeto : casillero.getObjetos()){
+		Boolean puedoContinuar = true;
+		// Creo una copia de la lista sobre la cual voy a iterar, ya que se puede modificar
+		List<ObjetoReaccionable> copiaObjetosCasillero = new ArrayList<ObjetoReaccionable>();
+		copiaObjetosCasillero.addAll(casillero.getObjetos());
+		
+		for( ObjetoReaccionable objeto : copiaObjetosCasillero){
 			if(!objeto.reaccionarCon(this))
 				puedoContinuar = false;
 		}		
