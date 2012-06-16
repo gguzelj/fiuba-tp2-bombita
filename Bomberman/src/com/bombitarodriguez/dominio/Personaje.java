@@ -132,4 +132,10 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 	public Boolean reaccionarCon(Proyectil proyectil) {
 		return false;
 	}
+	
+	public void destruirse(){
+		getCasillero().quitarObjeto(this);
+	}
+	
+
 }

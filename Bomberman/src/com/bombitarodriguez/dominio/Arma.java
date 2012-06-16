@@ -128,5 +128,10 @@ public abstract class Arma implements ObjetoReaccionable {
 	public Boolean reaccionarCon(Timer timer){
 		return false;
 	}	
+	
+	public void destruirse(ObjetoReaccionable objeto){
+		
+	}
+	
 
 }

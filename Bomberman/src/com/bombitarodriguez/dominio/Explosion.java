@@ -27,7 +27,7 @@ public class Explosion implements ObjetoReaccionable{
 		bombita.reaccionarCon(this);
 		return true;
 	}
-
+	
 	@Override
 	public Boolean reaccionarCon(Cecilio cecilio) {
 		cecilio.reaccionarCon(this);
@@ -156,5 +156,9 @@ public class Explosion implements ObjetoReaccionable{
 		}		
 		
 		return puedoContinuar;
+	}
+
+	public void destruirse(ObjetoReaccionable objeto){
+		
 	}
 }

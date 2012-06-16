@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
+import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
 
 /**
@@ -13,6 +14,12 @@ import com.bombitarodriguez.utils.Direccion;
  *
  */
 public class LosLopezReggae extends Personaje {
+	
+	
+	public LosLopezReggae() {
+		this.resistencia = Constante.RESISTENCIA_LOSLOPEZREGGAE;
+		this.velocidad = Constante.VELOCIDAD_CAMINA;
+	}	
 
 	@Override
 	protected Boolean reaccionarConTodos(Iterator<ObjetoReaccionable> iterador) {
@@ -46,8 +53,11 @@ public class LosLopezReggae extends Personaje {
 
 	@Override
 	public Boolean reaccionarCon(Explosion explosion) {
-		// TODO Auto-generated method stub
-		return null;
+		resistencia = resistencia - (explosion.getDestruccion());
+		if (resistencia <= 0) destruirse();
+		return true;
 	}
+
+
 
 }

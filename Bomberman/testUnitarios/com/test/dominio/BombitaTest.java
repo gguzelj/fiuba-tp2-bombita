@@ -72,7 +72,7 @@ public class BombitaTest {
 	
 	@Test
 	public void testMover_CasilleroCecilio() {
-		casilleroFinal.agregarObjeto(new Cecilio(2));
+		casilleroFinal.agregarObjeto(new Cecilio());
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
 		bombita.moverseConEstrategia(Direccion.ARRIBA);	
 		assertEquals(bombita.getVida() , new Integer(0));		

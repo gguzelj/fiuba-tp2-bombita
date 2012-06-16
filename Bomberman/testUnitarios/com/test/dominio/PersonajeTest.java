@@ -6,6 +6,8 @@ import org.junit.Test;
 
 import com.bombitarodriguez.dominio.Bombita;
 import com.bombitarodriguez.dominio.Casillero;
+import com.bombitarodriguez.dominio.Cecilio;
+import com.bombitarodriguez.dominio.Mapa;
 import com.bombitarodriguez.dominio.Posicion;
 
 public class PersonajeTest {
@@ -20,5 +22,18 @@ public class PersonajeTest {
 		assertEquals (bombi.getPosicion().getPosY(),new Integer(5));
 		
 	}
-
+	
+	public void destruirseTest(){
+		Posicion posicionEnemigo = new Posicion(5,3);
+		Casillero casilleroEnemigo = new Casillero(posicionEnemigo);
+		
+		Cecilio cecilio = new Cecilio();
+		casilleroEnemigo.agregarObjeto(cecilio);
+		Mapa.getMapa().agregarCasillero(posicionEnemigo, casilleroEnemigo);
+		cecilio.destruirse();
+		Casillero casilleroLuegoDeDestruccion = Mapa.getMapa().getCasillero(posicionEnemigo);
+		
+		assertTrue(casilleroLuegoDeDestruccion.estaVacio());
+		
+	}
 }

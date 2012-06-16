@@ -77,4 +77,8 @@ public class Salida implements ObjetoReaccionable {
 	public Boolean reaccionarCon(Explosion explosion) {
 		return true;
 	}
+	
+	public void destruirse(ObjetoReaccionable objeto){
+		
+	}
 }
