@@ -27,7 +27,7 @@ public class BombitaChocaConEnemigoTest {
 		//Creo al enemigo y lo agrego al casillero de arriba del que está bombita
 		Posicion posicionFinal = new Posicion(1,2);
 		Casillero casilleroFinal = new Casillero(posicionFinal);
-		Cecilio ceci = new Cecilio(5);
+		Cecilio ceci = new Cecilio();
 		casilleroFinal.agregarObjeto(ceci);
 		
 		//Agrego ambos Casilleros

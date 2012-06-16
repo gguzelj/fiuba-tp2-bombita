@@ -90,4 +90,9 @@ public abstract class Articulo implements ObjetoReaccionable {
 		this.getCasillero().quitarObjeto(this);
 		return true;
 	}
+	
+	public void destruirse(ObjetoReaccionable objeto){
+		
+	}
+
 }

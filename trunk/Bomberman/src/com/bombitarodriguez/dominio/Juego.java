@@ -142,7 +142,7 @@ public class Juego {
 		for (int x = 0; x <= cantidadEnemigos/3; x ++) {
 			posicion = Random.getPosicionAlAzar(numColumnas);
 			casillero = Mapa.getMapa().getCasillero(posicion);
-			casillero.agregarObjeto(new Cecilio(1));
+			casillero.agregarObjeto(new Cecilio());
 		}
 		// Agrego los lopezReggae
 		for (int x = 0; x <= cantidadEnemigos/3; x ++) {

@@ -113,9 +113,8 @@ public abstract class Obstaculo implements ObjetoReaccionable{
 			casillero.agregarObjeto(objeto);
 		casillero.quitarObjeto(this);
 		
-		
 	}
-	
+
 	/**
 	 * Desvincula el objeto que contiene el obstaculo
 	 */
@@ -123,4 +122,6 @@ public abstract class Obstaculo implements ObjetoReaccionable{
 		objeto = null;	
 		
 	}
+
+
 }

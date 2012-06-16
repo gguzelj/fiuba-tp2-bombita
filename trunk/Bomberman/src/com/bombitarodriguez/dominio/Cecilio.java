@@ -15,7 +15,7 @@ import com.bombitarodriguez.utils.Direccion;
  */
 public class Cecilio extends Personaje {
 	
-	public Cecilio(Integer velocidad) {
+	public Cecilio() {
 		this.resistencia = Constante.RESISTENCIA_CECILIO;
 		this.velocidad = Constante.VELOCIDAD_CAMINA;
 	}	
@@ -63,6 +63,7 @@ public class Cecilio extends Personaje {
 	@Override
 	public Boolean reaccionarCon(Explosion explosion) {
 		resistencia = resistencia - (explosion.getDestruccion());
+		if (resistencia <= 0) destruirse();
 		return true;
 	}
 }

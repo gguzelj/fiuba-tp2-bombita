@@ -54,6 +54,9 @@ public class Mapa {
 		this.mapaCasillero = mapaCasillero;
 	}
 	
+	public void chequearEstado (Casillero casillero){
+		
+	}
 	 public Posicion getNuevaPosicion(Posicion posicionActual, Direccion direccion) {
 		 switch (direccion) {
 	     	case ABAJO : {
