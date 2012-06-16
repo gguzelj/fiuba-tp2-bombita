@@ -2,6 +2,7 @@ package com.bombitarodriguez.dominio;
 
 import java.util.Iterator;
 
+import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Direccion;
 
@@ -37,7 +38,13 @@ public class LosLopezReggaeAlado extends Personaje {
 	@Override
 	public void moverseConEstrategia(Direccion direccion) {
 		Boolean casilleroValido = false;
-		Posicion nuevaPosicion = Mapa.getMapa().getNuevaPosicion(this.getPosicion(), direccion);
+		Posicion nuevaPosicion;
+		try {
+			nuevaPosicion = Mapa.getMapa().getNuevaPosicion(this.getPosicion(), direccion);
+		} catch (FueraDelMapaException e) {
+			// No se relaciona con los objetos del mapa
+			return;
+		}
 		Casillero casilleroProximo = Mapa.getMapa().getCasillero(nuevaPosicion);
 		Posicion posicionParcial;
 		Iterator<ObjetoReaccionable> iterador; 
@@ -48,7 +55,12 @@ public class LosLopezReggaeAlado extends Personaje {
 			}
 			else {
 				posicionParcial = nuevaPosicion;
-				nuevaPosicion = Mapa.getMapa().getNuevaPosicion(posicionParcial, direccion);
+				try {
+					nuevaPosicion = Mapa.getMapa().getNuevaPosicion(posicionParcial, direccion);
+				} catch (FueraDelMapaException e) {
+					// No se relaciona con los objetos del mapa
+					return;
+				}
 				casilleroProximo = Mapa.getMapa().getCasillero(nuevaPosicion);
 			}
 		}	

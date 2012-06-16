@@ -1,7 +1,10 @@
 package com.bombitarodriguez.dominio;
 
 import java.util.HashMap;
+
+import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
+import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
 
 /**
@@ -54,31 +57,42 @@ public class Mapa {
 		this.mapaCasillero = mapaCasillero;
 	}
 	
-	public void chequearEstado (Casillero casillero){
-		
-	}
-	 public Posicion getNuevaPosicion(Posicion posicionActual, Direccion direccion) {
+	 public Posicion getNuevaPosicion(Posicion posicionActual, Direccion direccion) throws FueraDelMapaException {
+		 Posicion posicion = null;
 		 switch (direccion) {
 	     	case ABAJO : {
-	            return new Posicion(posicionActual.getPosX(), posicionActual.getPosY() - 1);
+	            posicion = new Posicion(posicionActual.getPosX(), posicionActual.getPosY() - 1);
+	            break;
 	        }
 
 	        case IZQUIERDA : {
-	            return new Posicion(posicionActual.getPosX() - 1, posicionActual.getPosY());
+	        	posicion = new Posicion(posicionActual.getPosX() - 1, posicionActual.getPosY());
+	        	break;
 	        }
 
 	        case ARRIBA : {
-	            return new Posicion(posicionActual.getPosX() , posicionActual.getPosY() + 1);
+	        	posicion = new Posicion(posicionActual.getPosX() , posicionActual.getPosY() + 1);
+	        	break;
 	        }
 
 	        case DERECHA : {
-	            return new Posicion(posicionActual.getPosX() + 1, posicionActual.getPosY());
-	        }
-
-	        default : {
-	            throw new AssertionError("direccion no soportada");
+	            posicion = new Posicion(posicionActual.getPosX() + 1, posicionActual.getPosY());
+	            break;
 	        }
 	    }
+	    
+		 if (fueraDeRango(posicion)) {
+			 throw new FueraDelMapaException("Posicion fuera del mapa");
+	     }
+		 
+		 return posicion;
+	}
+
+	private Boolean fueraDeRango(Posicion posicion) {
+		if( (posicion.getPosX() < 0) || ( posicion.getPosY() < 0 ))
+			return true;
+		
+		return ( this.getCasillero(posicion) == null );
 	}
 	
 	

@@ -3,6 +3,7 @@ package com.bombitarodriguez.dominio;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Direccion;
 
@@ -120,30 +121,42 @@ public class Explosion implements ObjetoReaccionable{
 			objeto.reaccionarCon(this);
 		
 		//Reacciono hacia la derecha
-		this.recorrerCasilleros(ondaExpansiva,Direccion.DERECHA);		
+		this.recorrerCasilleros(ondaExpansiva, Direccion.DERECHA);		
 
 		//Reacciono hacia la izquierda
-		this.recorrerCasilleros(ondaExpansiva,Direccion.IZQUIERDA);
+		this.recorrerCasilleros(ondaExpansiva, Direccion.IZQUIERDA);
 		
 		//Reacciono hacia la arriba
-		this.recorrerCasilleros(ondaExpansiva,Direccion.ARRIBA);
+		this.recorrerCasilleros(ondaExpansiva, Direccion.ARRIBA);
 		
 		//Reacciono hacia la abajo
-		this.recorrerCasilleros(ondaExpansiva,Direccion.ABAJO);
+		this.recorrerCasilleros(ondaExpansiva, Direccion.ABAJO);
+		
+		this.casilleroContenedor.quitarObjeto(this);
 	}	
 	
-	protected void recorrerCasilleros(Integer ondaExpansiva, Direccion direccion){
+	//Metodo public solamente para poder ser testeado
+	//Recorre todos los casilleros en la direccion indicada, hasta la onda expansiva recibida,
+	//o hasta que algun objeto no nos permita pasar
+	public void recorrerCasilleros(Integer ondaExpansiva, Direccion direccion){
 		Boolean puedoContinuar = true;
-		while(puedoContinuar){
-			Posicion posicion = Mapa.getMapa().getNuevaPosicion(this.getPosicion(), direccion);
-			Casillero casilleroDerecha = Mapa.getMapa().getCasillero(posicion);
-			puedoContinuar = reaccionarConTodos(casilleroDerecha);
+		Posicion posicionActual = this.getPosicion();
+		
+		while((puedoContinuar) && (ondaExpansiva > 0)){
+			try {
+				posicionActual = Mapa.getMapa().getNuevaPosicion(posicionActual, direccion);
+			} catch (FueraDelMapaException e) {
+				return;
+			}
+			Casillero casilleroActual = Mapa.getMapa().getCasillero(posicionActual);
+			puedoContinuar = reaccionarConTodos(casilleroActual);
 			ondaExpansiva --;
-			puedoContinuar = (ondaExpansiva == 0);
-		}	
+		}
 	}
 	
-	protected Boolean reaccionarConTodos(Casillero casillero) {
+	//Metodo public solamente para poder ser testeado
+	//Reaaciona con todos los objetos del casillero
+	public Boolean reaccionarConTodos(Casillero casillero) {
 		
 		Boolean puedoContinuar = true;
 		// Creo una copia de la lista sobre la cual voy a iterar, ya que se puede modificar

@@ -100,9 +100,9 @@ import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 			casilleroEnemigo.agregarObjeto(ceci);
 			
 			Posicion posicionBloque = new Posicion(5,4);
-			Casillero casilleroBloque = new Casillero(posicionEnemigo);
+			Casillero casilleroBloque = new Casillero(posicionBloque);
 			BloqueAcero bloque = new BloqueAcero();
-			casilleroEnemigo.agregarObjeto(bloque);
+			casilleroBloque.agregarObjeto(bloque);
 			
 			Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
 			Mapa.getMapa().agregarCasillero(posicionEnemigo, casilleroEnemigo);
@@ -119,6 +119,9 @@ import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 		
 		
 		@Test
+		/**
+		 * 
+		 */
 		public void BombitaMataADosEnemigosUnoDetrasDelOtroConMolotov(){
 			
 			Integer vida = new Integer(4);
