@@ -2,92 +2,61 @@ package com.test.dominio;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import com.bombitarodriguez.dominio.*;
+import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.utils.Direccion;
 
 public class ExplosionTest {
-
-	Posicion posicionInicial;
-	Posicion posicionIzquierda;
-	Posicion posicionDerecha;
-	Posicion posicionArriba;
-	Posicion posicionAbajo;
-	Casillero casilleroInicial;
-	Casillero casilleroIzquierda;
-	Casillero casilleroDerecha;
-	Casillero casilleroArriba;
-	Casillero casilleroAbajo;
-	Molotov molotov;
-	
-	@Before
-	public void setUp(){
-		posicionInicial = new Posicion(1,1);
-		posicionAbajo = new Posicion(1,2);
-		posicionArriba = new Posicion(1,0);
-		posicionIzquierda = new Posicion(0,1);
-		posicionDerecha = new Posicion(2,1);
-		casilleroIzquierda = new Casillero(posicionIzquierda);
-		casilleroDerecha = new Casillero(posicionDerecha);
-		casilleroArriba = new Casillero(posicionArriba);
-		casilleroAbajo = new Casillero(posicionAbajo);
-		molotov = new Molotov();
-		casilleroInicial = new Casillero(posicionInicial);
-	}
 	
 	@Test
-	public void explosionMolotovConBloqueLadrillo(){
-		casilleroIzquierda.agregarObjeto(new BloqueLadrillo());
-		casilleroDerecha.agregarObjeto(new BloqueLadrillo());
-		casilleroArriba.agregarObjeto(new BloqueLadrillo());
-		casilleroAbajo.agregarObjeto(new BloqueLadrillo());
+	public void testReaccionarConTodos(){
 		
-		Mapa.getMapa().agregarCasillero(posicionIzquierda, casilleroIzquierda);
-		Mapa.getMapa().agregarCasillero(posicionDerecha, casilleroDerecha);
-		Mapa.getMapa().agregarCasillero(posicionArriba, casilleroArriba);
-		Mapa.getMapa().agregarCasillero(posicionAbajo, casilleroAbajo);
+		Posicion posicion = new Posicion(1,1);
+		Casillero casillero = new Casillero(posicion);
+		Explosion explosion = new Explosion(Constante.DESTRUCCION_MOLOTOV, Constante.ONDA_EXPANSIVA_MOLOTOV);
 		
-		casilleroInicial.agregarObjeto(molotov);
-		molotov.explotar();
-		
-		//Luego de esta explosion no deberia quedar ningun bloque en los casilleros aledaños
-		assertTrue(Mapa.getMapa().getCasillero(posicionIzquierda).getObjetos().isEmpty());
-		assertTrue(Mapa.getMapa().getCasillero(posicionDerecha).getObjetos().isEmpty());
-		assertTrue(Mapa.getMapa().getCasillero(posicionArriba).getObjetos().isEmpty());
-		assertTrue(Mapa.getMapa().getCasillero(posicionAbajo).getObjetos().isEmpty());
-	}
-	
-	@Test
-	public void explosionMolotovConBloqueCemento(){
-		casilleroIzquierda.agregarObjeto(new BloqueCemento());
-		casilleroDerecha.agregarObjeto(new BloqueCemento());
-		casilleroArriba.agregarObjeto(new BloqueCemento());
-		casilleroAbajo.agregarObjeto(new BloqueCemento());
-		
-		Mapa.getMapa().agregarCasillero(posicionIzquierda, casilleroIzquierda);
-		Mapa.getMapa().agregarCasillero(posicionDerecha, casilleroDerecha);
-		Mapa.getMapa().agregarCasillero(posicionArriba, casilleroArriba);
-		Mapa.getMapa().agregarCasillero(posicionAbajo, casilleroAbajo);
-		
-		casilleroInicial.agregarObjeto(molotov);
-		molotov.explotar();
-		
-		//Luego de esta primer explosion, deberian quedar todos los bloque en los casilleros aledaños
-		assertFalse(Mapa.getMapa().getCasillero(posicionIzquierda).getObjetos().isEmpty());
-		assertFalse(Mapa.getMapa().getCasillero(posicionDerecha).getObjetos().isEmpty());
-		assertFalse(Mapa.getMapa().getCasillero(posicionArriba).getObjetos().isEmpty());
-		assertFalse(Mapa.getMapa().getCasillero(posicionAbajo).getObjetos().isEmpty());
-	
-		casilleroInicial.agregarObjeto(molotov);
-		molotov.explotar();
-		
-		//Luego de esta segunda explosion, deberian desaparecer todos los obstaculos del mapa
-		assertTrue(Mapa.getMapa().getCasillero(posicionIzquierda).getObjetos().isEmpty());
-		assertTrue(Mapa.getMapa().getCasillero(posicionDerecha).getObjetos().isEmpty());
-		assertTrue(Mapa.getMapa().getCasillero(posicionArriba).getObjetos().isEmpty());
-		assertTrue(Mapa.getMapa().getCasillero(posicionAbajo).getObjetos().isEmpty());
+		//En este caso, la onda destruccion de la explosion es mayor a la resistencia del bloque,
+		//y deberia devolver true
+		casillero.agregarObjeto(new BloqueLadrillo());
+		assertTrue(explosion.reaccionarConTodos(casillero));
 
-	}
+		//En este caso, la onda destruccion de la explosion es menor a la resistencia del bloque,
+		//y deberia devolver false
+		casillero.agregarObjeto(new BloqueAcero());
+		assertFalse(explosion.reaccionarConTodos(casillero));
 			
+	}
+	
+	@Test
+	public void testRecorrerCasilleros(){
+		
+		Casillero primerCasillero = new Casillero(new Posicion(1,1));
+		Casillero segundoCasillero = new Casillero(new Posicion(1,2));
+		Casillero tercerCasillero = new Casillero(new Posicion(1,3));
+		Casillero cuartoCasillero = new Casillero(new Posicion(1,4));
+		Casillero quintoCasillero = new Casillero(new Posicion(1,5));
+		Explosion explosion = new Explosion(Constante.DESTRUCCION_MOLOTOV, Constante.ONDA_EXPANSIVA_MOLOTOV);
+		
+		primerCasillero.agregarObjeto(explosion);
+		segundoCasillero.agregarObjeto(new BloqueLadrillo());
+		tercerCasillero.agregarObjeto(new BloqueLadrillo());
+		cuartoCasillero.agregarObjeto(new BloqueLadrillo());
+		quintoCasillero.agregarObjeto(new BloqueLadrillo());
+		
+		Mapa.getMapa().agregarCasillero(new Posicion(1,1), primerCasillero);
+		Mapa.getMapa().agregarCasillero(new Posicion(1,2), segundoCasillero);
+		Mapa.getMapa().agregarCasillero(new Posicion(1,3), tercerCasillero);
+		Mapa.getMapa().agregarCasillero(new Posicion(1,4), cuartoCasillero);
+		Mapa.getMapa().agregarCasillero(new Posicion(1,5), quintoCasillero);
+		
+		//La explosion deberia reaccionar con todos los objetos de todos los casilleros(hasta el cuarto)
+		explosion.recorrerCasilleros(Constante.ONDA_EXPANSIVA_MOLOTOV, Direccion.ARRIBA);
+	
+		assertTrue(segundoCasillero.getObjetos().size() == 0);
+		assertTrue(tercerCasillero.getObjetos().size() == 0);
+		assertTrue(cuartoCasillero.getObjetos().size() == 0);
+		assertTrue(quintoCasillero.getObjetos().size() == 1);
+	}
 }

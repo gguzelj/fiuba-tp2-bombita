@@ -71,7 +71,6 @@ public abstract class Obstaculo implements ObjetoReaccionable{
 		return false;
 	}
 	
-	
 	@Override
 	public Boolean reaccionarCon(BloqueCemento bloqueCemento){
 		return false;
