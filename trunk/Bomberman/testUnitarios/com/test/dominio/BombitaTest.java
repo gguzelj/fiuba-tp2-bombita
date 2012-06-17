@@ -144,7 +144,6 @@ public class BombitaTest {
 	
 	@Test
 	public void testReaccionarConTodos() throws Exception{
-		
 		Boolean metodoResultado;
 		Method metodoPrivado = null;
 		

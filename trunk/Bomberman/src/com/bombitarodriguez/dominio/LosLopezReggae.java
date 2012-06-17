@@ -10,11 +10,10 @@ import com.bombitarodriguez.utils.Constante;
  *
  */
 public class LosLopezReggae extends Personaje {
-	
-	
+		
 	public LosLopezReggae() {
 		this.resistencia = Constante.RESISTENCIA_LOSLOPEZREGGAE;
-		this.velocidad = Constante.VELOCIDAD_CAMINA;
+		this.velocidad = Constante.VELOCIDAD_CORRE;
 		this.factoryArma = new FactoryProyectil();
 	}	
 

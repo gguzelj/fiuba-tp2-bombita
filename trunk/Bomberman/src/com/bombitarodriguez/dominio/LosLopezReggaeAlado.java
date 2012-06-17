@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
+import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
 
 
@@ -13,6 +14,18 @@ import com.bombitarodriguez.utils.Direccion;
  *
  */
 public class LosLopezReggaeAlado extends Personaje {
+	
+	public LosLopezReggaeAlado() {
+		this.resistencia = Constante.RESISTENCIA_LOSLOPEZREGGAE_ALADO;
+		this.velocidad = Constante.VELOCIDAD_CAMINA;
+		this.factoryArma = new FactoryMolotov();
+	}	
+	
+	@Override
+	public Boolean reaccionarCon(Bombita bombita) {
+		bombita.reaccionarCon(this);
+		return true;
+	}
 	
 	@Override
 	protected Boolean reaccionarConTodos(Iterator<ObjetoReaccionable> iterador) {
@@ -26,14 +39,11 @@ public class LosLopezReggaeAlado extends Personaje {
 	@Override
 	public void usarArma() {
 		plantarBomba();
-		
 	}
 
 	private void plantarBomba() {
 		getCasillero().agregarObjeto(factoryArma.getArmaInstanciada());
-		
 	}
-
 
 	@Override
 	public void moverseConEstrategia(Direccion direccion) {
@@ -65,16 +75,5 @@ public class LosLopezReggaeAlado extends Personaje {
 			}
 		}	
 	 	Mapa.getMapa().reposicionar(this, casilleroProximo);
-		
 	}
-
-
-
-	@Override
-	public Boolean reaccionarCon(Explosion explosion) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 }
