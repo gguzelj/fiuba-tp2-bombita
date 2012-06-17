@@ -28,7 +28,6 @@ public class Bombita extends Personaje {
 	@Override
 	public Boolean reaccionarCon(Cecilio cecilio) {
 		this.quitarVida();
-		getCasillero().quitarObjeto(cecilio);
 		return true;
 	}
 
@@ -42,12 +41,6 @@ public class Bombita extends Personaje {
 	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado) {
 		this.quitarVida();
 		return true;
-	}
-
-	@Override
-	public Boolean reaccionarCon(Proyectil proyectil) {
-		this.quitarVida();
-		return false;
 	}
 
 	@Override

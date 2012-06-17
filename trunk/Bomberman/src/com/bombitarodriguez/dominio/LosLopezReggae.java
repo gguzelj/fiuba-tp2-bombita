@@ -18,6 +18,7 @@ public class LosLopezReggae extends Personaje {
 	public LosLopezReggae() {
 		this.resistencia = Constante.RESISTENCIA_LOSLOPEZREGGAE;
 		this.velocidad = Constante.VELOCIDAD_CAMINA;
+		this.factoryArma = new FactoryProyectil();
 	}	
 
 	@Override
@@ -31,7 +32,7 @@ public class LosLopezReggae extends Personaje {
 		lanzarProyectil();
 	}
 	
-	public void lanzarProyectil() {
+	public void lanzarProyectil(){
 		getCasillero().agregarObjeto(factoryArma.getArmaInstanciada());		
 	}
 	
@@ -41,7 +42,12 @@ public class LosLopezReggae extends Personaje {
 		if (resistencia <= 0) destruirse();
 		return true;
 	}
-
+	
+	@Override
+	public Boolean reaccionarCon(Bombita bombita) {
+		bombita.reaccionarCon(this);
+		return true;
+	}
 
 
 }

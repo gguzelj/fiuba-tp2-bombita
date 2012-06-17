@@ -1,11 +1,25 @@
 package com.bombitarodriguez.dominio;
 
+import com.bombitarodriguez.utils.Constante;
+
 /**
  * 
  * @author Mauro
  *
  */
 public class Proyectil extends Arma {
+
+	public Proyectil(Double retardo) {
+		this.ondaExpansiva = Constante.ONDA_EXPANSIVA_PROYECTIL;
+		this.destruccion = Constante.DESTRUCCION_PROYECTIL;
+		this.retardo = retardo;
+	}
+
+	public Proyectil() {
+		this.ondaExpansiva = Constante.ONDA_EXPANSIVA_PROYECTIL;
+		this.destruccion = Constante.DESTRUCCION_PROYECTIL;
+		this.retardo = Constante.TIMER_PROYECTIL;
+	}
 
 	@Override
 	public Boolean reaccionarCon(Bombita bombita) {

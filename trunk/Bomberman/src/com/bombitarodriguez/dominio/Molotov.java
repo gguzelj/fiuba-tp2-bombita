@@ -20,5 +20,4 @@ public class Molotov extends Bomba {
 		this.destruccion = Constante.DESTRUCCION_MOLOTOV;
 		this.retardo = retardo;
 	}
-
 }
