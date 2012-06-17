@@ -48,6 +48,11 @@ public class CecilioTest {
 	}
 	
 	@Test
+	public void testReaccionarConBloqueAcero() {
+		assertFalse(new Cecilio().reaccionarCon(new BloqueAcero()));
+	}
+	
+	@Test
 	public void testReaccionarConChala(){
 		Cecilio cecilio = new Cecilio();
 		assertFalse(cecilio.reaccionarCon(new Chala()));

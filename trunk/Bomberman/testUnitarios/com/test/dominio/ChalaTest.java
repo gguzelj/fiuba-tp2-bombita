@@ -66,6 +66,11 @@ public class ChalaTest {
 	public void testReaccionarConBloqueLadrillo() {
 		assertFalse(new Chala().reaccionarCon(new BloqueLadrillo()));
 	}
+	
+	@Test
+	public void testReaccionarConBloqueAcero() {
+		assertFalse(new Chala().reaccionarCon(new BloqueAcero()));
+	}
 
 	@Test
 	public void testReaccionarConChala() {

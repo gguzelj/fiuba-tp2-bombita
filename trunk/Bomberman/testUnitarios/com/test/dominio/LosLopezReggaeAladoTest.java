@@ -48,6 +48,12 @@ public class LosLopezReggaeAladoTest {
 	}
 	
 	@Test
+	public void testReaccionarConBloqueAcero(){
+		LosLopezReggaeAlado lopezReggaeAlado = new LosLopezReggaeAlado();
+		assertFalse(lopezReggaeAlado.reaccionarCon(new BloqueAcero()));
+	}
+	
+	@Test
 	public void testReaccionarConChala(){
 		LosLopezReggaeAlado lopezReggaeAlado = new LosLopezReggaeAlado();
 		assertFalse(lopezReggaeAlado.reaccionarCon(new Chala()));

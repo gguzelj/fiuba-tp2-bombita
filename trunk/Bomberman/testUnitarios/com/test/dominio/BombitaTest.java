@@ -59,6 +59,13 @@ public class BombitaTest {
 	}
 	
 	@Test
+	public void testReaccionarConBloqueAcero() {
+		Integer vida = new Integer(3);
+		Bombita bombita = new Bombita(vida);
+		assertFalse(bombita.reaccionarCon(new BloqueAcero()));
+	}
+	
+	@Test
 	public void testReaccionarConChala(){
 		Integer vida = new Integer(3);
 		Bombita bombita = new Bombita(vida);

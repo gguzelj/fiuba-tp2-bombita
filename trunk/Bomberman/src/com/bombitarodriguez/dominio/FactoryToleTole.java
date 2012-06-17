@@ -6,12 +6,11 @@ public class FactoryToleTole extends FactoryArma {
 	}
 	
 	public FactoryToleTole(Double nuevoRetardo) {
-		this.nuevoRetardo = nuevoRetardo;
+		this.retardo = nuevoRetardo;
 	}
 		
 	@Override
 	public Arma instanciarArma() {
-		return new ToleTole(nuevoRetardo);
+		return new ToleTole(retardo);
 	}
-
 }
