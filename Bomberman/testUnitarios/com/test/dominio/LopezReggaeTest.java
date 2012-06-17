@@ -51,6 +51,12 @@ public class LopezReggaeTest {
 	}
 	
 	@Test
+	public void testReaccionarConBloqueAcero(){
+		LosLopezReggae lopezReggae = new LosLopezReggae();
+		assertFalse(lopezReggae.reaccionarCon(new BloqueAcero()));
+	}
+	
+	@Test
 	public void testReaccionarConChala(){
 		LosLopezReggae lopezReggae = new LosLopezReggae();
 		assertFalse(lopezReggae.reaccionarCon(new Chala()));

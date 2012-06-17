@@ -78,7 +78,12 @@ public class ArticuloToleToleTest {
 	public void testReaccionarConBloqueLadrillo() {
 		assertFalse(new ArticuloToleTole().reaccionarCon(new BloqueLadrillo()));
 	}
-
+	
+	@Test
+	public void testReaccionarConBloqueAcero() {
+		assertFalse(new ArticuloToleTole().reaccionarCon(new BloqueAcero()));
+	}
+	
 	@Test
 	public void testReaccionarConChala() {
 		assertFalse(new ArticuloToleTole().reaccionarCon(new Chala()));

@@ -2,7 +2,7 @@ package com.bombitarodriguez.dominio;
 
 public abstract class FactoryArma {
 	
-	protected Double nuevoRetardo;
+	protected Double retardo;
 	
 	public Arma getArmaInstanciada() {
 		return instanciarArma();
@@ -10,12 +10,12 @@ public abstract class FactoryArma {
 	
 	public abstract Arma instanciarArma();
 	
-	protected void setNuevoRetardo(Double nuevoRetardo) {
-		this.nuevoRetardo = nuevoRetardo;
+	public void setRetardo(Double nuevoRetardo) {
+		this.retardo = nuevoRetardo;
 	}
 	
-	protected Double getNuevoRetardo() {
-		return nuevoRetardo;
+	public Double getRetardo() {
+		return retardo;
 	}
 		
 }

@@ -9,37 +9,33 @@ public class Timer extends Articulo {
 
 	@Override
 	public Boolean reaccionarCon(Bombita bombita) {
-		Double nuevoRetardo = aplicarRetardo(bombita);
-		bombita.getFactoryArma().setNuevoRetardo(nuevoRetardo);
+		bombita.getFactoryArma().setRetardo(aplicarRetardo(bombita));
+		casillero.quitarObjeto(this);
 		return true;
 	}
 
 	@Override
 	public Boolean reaccionarCon(Cecilio cecilio) {
-		Double nuevoRetardo = aplicarRetardo(cecilio);
-		cecilio.getFactoryArma().setNuevoRetardo(nuevoRetardo);
+		cecilio.getFactoryArma().setRetardo(aplicarRetardo(cecilio));
+		casillero.quitarObjeto(this);
 		return true;
 	}
 
 	@Override
 	public Boolean reaccionarCon(LosLopezReggae losLopezReggae) {
-		Double nuevoRetardo = aplicarRetardo(losLopezReggae);
-		losLopezReggae.getFactoryArma().setNuevoRetardo(nuevoRetardo);
+ 		losLopezReggae.getFactoryArma().setRetardo(aplicarRetardo(losLopezReggae));
+		casillero.quitarObjeto(this);
 		return true;
 	}
 
 	@Override
 	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado) {
-		Double nuevoRetardo = aplicarRetardo(losLopezReggaeAlado);
-		losLopezReggaeAlado.getFactoryArma().setNuevoRetardo(nuevoRetardo);
+		losLopezReggaeAlado.getFactoryArma().setRetardo(aplicarRetardo(losLopezReggaeAlado));
+		casillero.quitarObjeto(this);
 		return true;
 	}
-
-
+	
 	private Double aplicarRetardo(Personaje personaje) {
-		Double retardoActual = personaje.getFactoryArma().getNuevoRetardo();
-		Double porcentajeRetardo = (retardoActual * 0.85);
-		return (retardoActual - porcentajeRetardo);
+		return (personaje.getFactoryArma().getRetardo() * 0.85);
 	}
-
 }
