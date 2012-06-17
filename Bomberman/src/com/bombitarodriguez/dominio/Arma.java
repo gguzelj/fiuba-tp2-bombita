@@ -97,7 +97,7 @@ public abstract class Arma implements ObjetoReaccionable {
 	@Override
 	public Boolean reaccionarCon(Explosion explosion){
 		this.explotar();
-		return false;
+		return true;
 	}
 	
 	@Override
