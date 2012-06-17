@@ -18,12 +18,6 @@ public class Cecilio extends Personaje {
 	}	
 
 	@Override
-	protected Boolean reaccionarConTodos(Iterator<ObjetoReaccionable> iterador) {
-		// TODO Reacciona con todos¿?
-		return null;
-	}
-	
-	@Override
 	public void usarArma() {
 		plantarBomba();
 	}
@@ -43,5 +37,14 @@ public class Cecilio extends Personaje {
 	public Boolean reaccionarCon(Bombita bombita) {
 		bombita.reaccionarCon(this);
 		return true;
+	}
+	
+	@Override
+	protected Boolean reaccionarConTodos(Iterator<ObjetoReaccionable> iterador) {
+		Boolean permitePasar = true;
+		while (iterador.hasNext() && (permitePasar)) {
+			permitePasar = iterador.next().reaccionarCon(this);
+		}
+		return permitePasar;
 	}
 }

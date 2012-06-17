@@ -2,8 +2,13 @@ package com.test.dominio;
 
 import static org.junit.Assert.*;
 
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 import com.bombitarodriguez.dominio.*;
+import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
 
 public class BombitaTest {
@@ -138,7 +143,26 @@ public class BombitaTest {
 	}
 	
 	@Test
-	public void testReaccionarConTodos(){
-		//TODO El metodo es protected
+	public void testReaccionarConTodos() throws Exception{
+		
+		Boolean metodoResultado;
+		Method metodoPrivado = null;
+		
+		Integer vida = new Integer(3);
+		Bombita bombita = new Bombita(vida);
+		List<ObjetoReaccionable> listaObjetos = new ArrayList<ObjetoReaccionable>();
+
+		metodoPrivado = bombita.getClass().getDeclaredMethod("reaccionarConTodos", new Class[]{java.util.Iterator.class});
+		metodoPrivado.setAccessible(true);
+
+		//Reaccionar con la molotov deberia devolvernos true
+		listaObjetos.add(new Molotov());
+		metodoResultado = (Boolean) metodoPrivado.invoke(bombita, listaObjetos.iterator());
+		assertTrue(metodoResultado);
+		
+		//Reaccionar con el bloqueAcero deberia devolvernos false
+		listaObjetos.add(new BloqueAcero());
+		metodoResultado = (Boolean) metodoPrivado.invoke(bombita, listaObjetos.iterator());
+		assertFalse(metodoResultado);
 	}
 }

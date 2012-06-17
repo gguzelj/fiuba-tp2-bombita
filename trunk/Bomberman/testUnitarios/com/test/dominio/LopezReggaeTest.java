@@ -94,7 +94,7 @@ public class LopezReggaeTest {
 		
 		assertTrue(lopezReggae.reaccionarCon(new Explosion(Constante.DESTRUCCION_MOLOTOV, Constante.ONDA_EXPANSIVA_MOLOTOV)));
 		assertTrue(casillero.getObjetos().size() == 1);
-		assertTrue(lopezReggae.getResistencia() == 5);
+		assertTrue(lopezReggae.getResistencia() == (Constante.RESISTENCIA_LOSLOPEZREGGAE - Constante.DESTRUCCION_MOLOTOV));
 	}
 	
 	@Test

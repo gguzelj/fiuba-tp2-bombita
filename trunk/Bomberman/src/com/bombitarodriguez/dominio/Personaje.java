@@ -27,7 +27,7 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 	protected FactoryArma factoryArma;
 		
 	/**
-	 * Permite reaccionar con todos los objetos de un casillero
+	 * Permite reaccionar con todos los objetos de un casillero(Public solamente para ser testead)
 	 * @param iterador
 	 * @return true si se puede mover, false caso contrario
 	 */

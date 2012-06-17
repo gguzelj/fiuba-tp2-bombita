@@ -2,30 +2,45 @@ package com.test.dominio;
 
 import static org.junit.Assert.*;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
 import com.bombitarodriguez.dominio.*;
+import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
 
 public class ExplosionTest {
 	
 	@Test
-	public void testReaccionarConTodos(){
+	public void testReaccionarConTodos() throws Exception{
 		
+		//Variables para testear metodo privado
+		Boolean metodoResultado;
+		Method metodoPrivado = null;
+
 		Posicion posicion = new Posicion(1,1);
 		Casillero casillero = new Casillero(posicion);
 		Explosion explosion = new Explosion(Constante.DESTRUCCION_MOLOTOV, Constante.ONDA_EXPANSIVA_MOLOTOV);
 		
+		metodoPrivado = explosion.getClass().getDeclaredMethod("reaccionarConTodos", new Class[]{Casillero.class});
+		metodoPrivado.setAccessible(true);
+		
 		//En este caso, la onda destruccion de la explosion es mayor a la resistencia del bloque,
 		//y deberia devolver true
 		casillero.agregarObjeto(new BloqueLadrillo());
-		assertTrue(explosion.reaccionarConTodos(casillero));
+		metodoResultado = (Boolean) metodoPrivado.invoke(explosion, casillero);
+		assertTrue(metodoResultado);
 
 		//En este caso, la onda destruccion de la explosion es menor a la resistencia del bloque,
 		//y deberia devolver false
 		casillero.agregarObjeto(new BloqueAcero());
-		assertFalse(explosion.reaccionarConTodos(casillero));
+		metodoResultado = (Boolean) metodoPrivado.invoke(explosion, casillero);
+		assertFalse(metodoResultado);
 			
 	}
 	
