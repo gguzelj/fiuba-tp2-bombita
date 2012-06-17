@@ -1,13 +1,8 @@
 package com.bombitarodriguez.dominio;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-
-import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
-import com.bombitarodriguez.utils.Direccion;
 
 /**
  * 
@@ -53,15 +48,6 @@ public class Bombita extends Personaje {
 		vida -= 1;
 	}
 
-	@Override
-	protected Boolean reaccionarConTodos(Iterator<ObjetoReaccionable> iterador) {
-		Boolean permitePasar = true;
-		while (iterador.hasNext() && (permitePasar)) {
-			permitePasar = iterador.next().reaccionarCon(this);
-		}
-		return permitePasar;
-	}
-
 	public Integer getVida() {
 		return vida;
 	}
@@ -77,5 +63,14 @@ public class Bombita extends Personaje {
 
 	private void plantarBomba() {
 		getCasillero().agregarObjeto(factoryArma.getArmaInstanciada());
+	}
+	
+	@Override
+	protected Boolean reaccionarConTodos(Iterator<ObjetoReaccionable> iterador) {
+		Boolean permitePasar = true;
+		while (iterador.hasNext() && (permitePasar)) {
+			permitePasar = iterador.next().reaccionarCon(this);
+		}
+		return permitePasar;
 	}
 }

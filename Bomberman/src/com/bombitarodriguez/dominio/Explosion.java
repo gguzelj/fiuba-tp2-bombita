@@ -154,9 +154,8 @@ public class Explosion implements ObjetoReaccionable{
 		}
 	}
 	
-	//Metodo public solamente para poder ser testeado
 	//Reaaciona con todos los objetos del casillero
-	public Boolean reaccionarConTodos(Casillero casillero) {
+	private Boolean reaccionarConTodos(Casillero casillero) {
 		
 		Boolean puedoContinuar = true;
 		// Creo una copia de la lista sobre la cual voy a iterar, ya que se puede modificar

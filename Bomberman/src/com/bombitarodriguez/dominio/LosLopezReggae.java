@@ -1,11 +1,8 @@
 package com.bombitarodriguez.dominio;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
-import com.bombitarodriguez.utils.Direccion;
 
 /**
  * 
@@ -21,12 +18,6 @@ public class LosLopezReggae extends Personaje {
 		this.factoryArma = new FactoryProyectil();
 	}	
 
-	@Override
-	protected Boolean reaccionarConTodos(Iterator<ObjetoReaccionable> iterador) {
-		// TODO Definir
-		return null;
-	}
-	
 	@Override
 	public void usarArma() {
 		lanzarProyectil();
@@ -48,6 +39,13 @@ public class LosLopezReggae extends Personaje {
 		bombita.reaccionarCon(this);
 		return true;
 	}
-
-
+	
+	@Override
+	protected Boolean reaccionarConTodos(Iterator<ObjetoReaccionable> iterador) {
+		Boolean permitePasar = true;
+		while (iterador.hasNext() && (permitePasar)) {
+			permitePasar = iterador.next().reaccionarCon(this);
+		}
+		return permitePasar;
+	}
 }
