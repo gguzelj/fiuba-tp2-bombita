@@ -15,7 +15,7 @@ public class JuegoTest {
 		Juego juego = new Juego();
 		juego.inicializarJuego();
 		
-		assertEquals(Mapa.getMapa().getMapaCasillero().size(), 225);
+		assertEquals(Mapa.getMapa().getMapaCasillero().size(), 400);
 	}
 	
 	@Test

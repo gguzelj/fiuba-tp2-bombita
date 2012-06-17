@@ -2,126 +2,143 @@ package com.test.dominio;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
 import org.junit.Test;
 import com.bombitarodriguez.dominio.*;
-import com.bombitarodriguez.utils.Direccion;
+import com.bombitarodriguez.utils.Constante;
 
 public class BombitaTest {
-	
-	Posicion posicionInicial;
-	Posicion posicionFinal;   	
-	Casillero casilleroInicial;
-	Casillero casilleroFinal;	
-	Bombita bombita;
-	Integer vida;
-	
-	@Before
-	public void setUp(){
-		vida = new Integer(1);
-		posicionInicial = new Posicion(1, 1);
-		posicionFinal = new Posicion(1,2);
-		casilleroInicial = new Casillero(posicionInicial);
-		casilleroFinal = new Casillero(posicionFinal);
-		bombita = new Bombita(vida);
-		casilleroInicial.agregarObjeto(bombita);
-		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
+
+	@Test
+	public void testReaccionarConBombita(){
+		Integer vida = new Integer(3);
+		Bombita bombita = new Bombita(vida);
+		assertFalse(bombita.reaccionarCon(new Bombita(vida)));
 	}
 	
 	@Test
-	public void testMover_CasilleroVacio() {
-		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
-		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);	
-		bombita.moverseConEstrategia(Direccion.ARRIBA);
-		assertEquals(bombita.getPosicion(), posicionFinal);			
+	public void testReaccionarConCecilio(){
+		Integer vida = new Integer(3);
+		Bombita bombita = new Bombita(vida);
+		assertTrue(bombita.reaccionarCon(new Cecilio()));
+		assertTrue(bombita.getVida() == 2);
 	}
 	
 	@Test
-	public void testMeMuevoYCasilleroQuedaVacio(){
-		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
-		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);	
-		bombita.moverseConEstrategia(Direccion.ARRIBA);		
-		Integer cantidadDeObjetos = casilleroInicial.getObjetos().size();
-		assertEquals(cantidadDeObjetos, new Integer(0));
+	public void testReaccionarConLopezReggae(){
+		Integer vida = new Integer(3);
+		Bombita bombita = new Bombita(vida);
+		assertTrue(bombita.reaccionarCon(new LosLopezReggae()));
+		assertTrue(bombita.getVida() == 2);
 	}
 	
 	@Test
-	public void testQuitarVidaBombita() {		
-		Integer vidaInicial = bombita.getVida();
+	public void testReaccionarConLopezReggaeAlado(){
+		Integer vida = new Integer(3);
+		Bombita bombita = new Bombita(vida);
+		assertTrue(bombita.reaccionarCon(new LosLopezReggaeAlado()));
+		assertTrue(bombita.getVida() == 2);
+	}
+	
+	@Test
+	public void testReaccionarConBloqueCemento(){
+		Integer vida = new Integer(3);
+		Bombita bombita = new Bombita(vida);
+		assertFalse(bombita.reaccionarCon(new BloqueCemento()));
+	}
+	
+	@Test
+	public void testReaccionarConBloqueLadrillo(){
+		Integer vida = new Integer(3);
+		Bombita bombita = new Bombita(vida);
+		assertFalse(bombita.reaccionarCon(new BloqueLadrillo()));
+	}
+	
+	@Test
+	public void testReaccionarConChala(){
+		Integer vida = new Integer(3);
+		Bombita bombita = new Bombita(vida);
+		assertFalse(bombita.reaccionarCon(new Chala()));
+	}
+	
+	@Test
+	public void testReaccionarConArticuloToleTole(){
+		Integer vida = new Integer(3);
+		Bombita bombita = new Bombita(vida);
+		assertFalse(bombita.reaccionarCon(new ArticuloToleTole()));
+	}
+	
+	@Test
+	public void testReaccionarConTimer(){
+		Integer vida = new Integer(3);
+		Bombita bombita = new Bombita(vida);
+		assertFalse(bombita.reaccionarCon(new Timer()));
+	}
+	
+	@Test
+	public void testReaccionarConBombaMolotov(){
+		Integer vida = new Integer(3);
+		Bombita bombita = new Bombita(vida);
+		assertFalse(bombita.reaccionarCon(new Molotov()));
+	}
+	
+	@Test
+	public void testReaccionarConBombaToleTole(){
+		Integer vida = new Integer(3);
+		Bombita bombita = new Bombita(vida);
+		assertFalse(bombita.reaccionarCon(new ToleTole()));
+	}
+	
+	@Test
+	public void testReaccionarConProyectil(){
+		Integer vida = new Integer(3);
+		Bombita bombita = new Bombita(vida);
+		assertFalse(bombita.reaccionarCon(new Proyectil()));		
+	}
+	
+	@Test
+	public void testReaccionarConExplosion(){
+		Integer vida = new Integer(3);
+		Bombita bombita = new Bombita(vida);
+		assertTrue(bombita.reaccionarCon(new Explosion(Constante.DESTRUCCION_MOLOTOV, Constante.ONDA_EXPANSIVA_MOLOTOV)));
+		assertTrue(bombita.getVida() == 2);
+	}
+	
+	@Test
+	public void testGetPosicion(){
+		Integer vida = new Integer(3);
+		Bombita bombita = new Bombita(vida);
+		Posicion posicion = new Posicion(1,1);
+		Casillero casillero = new Casillero(posicion);
+		
+		casillero.agregarObjeto(bombita);
+		assertEquals(bombita.getPosicion(),posicion);	
+	}
+	
+	@Test
+	public void testUsarArma(){
+		Integer vida = new Integer(3);
+		Bombita bombita = new Bombita(vida);
+		Posicion posicion = new Posicion(1,1);
+		Casillero casillero = new Casillero(posicion);
+		
+		casillero.agregarObjeto(bombita);
+		assertTrue(casillero.getObjetos().size() == 1);
+		
+		bombita.usarArma();
+		assertTrue(casillero.getObjetos().size() == 2);
+	}
+	
+	@Test
+	public void testQuitarVida() {		
+		Integer vida = new Integer(3);
+		Bombita bombita = new Bombita(vida);
+
 		bombita.quitarVida();
-		assertEquals(bombita.getVida(),new Integer(vidaInicial-1));		
-	}
-	
-	
-	
-	@Test
-	public void testMover_CasilleroBloqueAcero() {
-		casilleroFinal.agregarObjeto(new BloqueAcero());
-		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);		
-		bombita.moverseConEstrategia(Direccion.ARRIBA);
-		assertEquals(bombita.getPosicion(),posicionInicial);		
+		assertEquals(bombita.getVida(),new Integer(vida-1));		
 	}
 	
 	@Test
-	public void testMover_CasilleroBombaMolotov() {
-		casilleroFinal.agregarObjeto(new Molotov(new Double(1)));
-		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);	
-		bombita.moverseConEstrategia(Direccion.ARRIBA);	
-		assertEquals(bombita.getPosicion(),posicionFinal);		
-	}
-	
-	@Test
-	public void testMover_CasilleroCecilio() {
-		casilleroFinal.agregarObjeto(new Cecilio());
-		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
-		bombita.moverseConEstrategia(Direccion.ARRIBA);	
-		assertEquals(bombita.getVida() , new Integer(0));		
-
-	}	
-
-	@Test
-	public void testPlantarBomba() {
-		bombita.usarArma();
-		Integer cantidadObjetos = bombita.getCasillero().getObjetos().size();
-		assertEquals(cantidadObjetos, new Integer(2));
-		
-	}
-	
-	@Test
-	public void testPorDefaultColocaMolotov(){
-		bombita.usarArma();
-		assertTrue(bombita.getCasillero().getObjetos().get(1) instanceof Molotov);
-	}
-	
-	@Test
-	public void testAtributoChala(){
-		casilleroFinal.agregarObjeto(new Chala());
-		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
-		bombita.moverseConEstrategia(Direccion.ARRIBA);
-		
-		assertEquals(bombita.getVelocidad(),new Integer(2));
-	}
-	
-	@Test
-	public void testRecogerArticuloToleTole(){
-		casilleroFinal.agregarObjeto(new ArticuloToleTole());
-		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
-		
-		bombita.moverseConEstrategia(Direccion.ARRIBA);
-		
-		FactoryArma arma = bombita.getFactoryArma();
-		
-		assertTrue(arma.getArmaInstanciada() instanceof ToleTole);
-	}
-	
-	@Test
-	public void testBombitaColocaBombaYSeMueve(){
-		
-		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
-		bombita.usarArma();
-		bombita.moverseConEstrategia(Direccion.ARRIBA);
-		Integer cantidadDeObjetos = casilleroInicial.getObjetos().size();
-		assertEquals(cantidadDeObjetos, new Integer(1));
-		
+	public void testReaccionarConTodos(){
+		//TODO El metodo es protected
 	}
 }
