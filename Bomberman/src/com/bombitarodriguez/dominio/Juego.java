@@ -2,7 +2,6 @@ package com.bombitarodriguez.dominio;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 
 import com.bombitarodriguez.utils.Random;
