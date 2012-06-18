@@ -20,7 +20,7 @@ public class AtaqueAEnemigoTest {
 		Integer vida = new Integer(4);
 		//Creo a Bombita y lo agrego a un casillero
 		Juego juego = new Juego();
-		juego.crearCasillerosVacios(10);
+		Mapa.getMapa().crearCasillerosVacios(10);
 		
 		Posicion posicionInicial = new Posicion(5, 5);
 		Casillero casilleroInicial = new Casillero(posicionInicial);
@@ -50,7 +50,7 @@ public class AtaqueAEnemigoTest {
 		Integer vida = new Integer(4);
 		//Creo a Bombita y lo agrego a un casillero
 		Juego juego = new Juego();
-		juego.crearCasillerosVacios(10);
+		Mapa.getMapa().crearCasillerosVacios(10);
 		
 		Posicion posicionInicial = new Posicion(5, 5);
 		Casillero casilleroInicial = new Casillero(posicionInicial);

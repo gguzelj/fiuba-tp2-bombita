@@ -3,6 +3,7 @@ package com.bombitarodriguez.dominio;
 import java.util.Iterator;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.utils.Direccion;
 
 /**
  * 
@@ -16,7 +17,7 @@ public class LosLopezReggae extends Personaje {
 		this.velocidad = Constante.VELOCIDAD_CORRE;
 		this.factoryArma = new FactoryProyectil();
 	}	
-
+	
 	@Override
 	public void usarArma() {
 		lanzarProyectil();

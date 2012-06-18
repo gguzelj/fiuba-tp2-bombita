@@ -1,10 +1,14 @@
 package com.bombitarodriguez.dominio;
 
+import java.io.File;
 import java.util.HashMap;
+import java.util.List;
+
 
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Direccion;
+import com.bombitarodriguez.utils.Parser;
 
 /**
  * 
@@ -56,6 +60,104 @@ public class Mapa {
 		this.mapaCasillero = mapaCasillero;
 	}
 	
+	public void crearMapa(File file) {
+		List<String> objetosACrear = Parser.parsearMapXML(file);
+		crearCasillerosVacios(objetosACrear.size());
+		Integer coordenadaY = 0;
+		for (Integer y = 0; y < objetosACrear.size(); y ++) {
+			String[] objetosDeUnaFila = Parser.parsearLista(objetosACrear.get(y));
+			crearObjetosEnElMapa(objetosDeUnaFila, ++ coordenadaY);
+		}		
+	}
+	
+	public void crearCasillerosVacios(Integer numColumnas) {
+		Casillero casillero = null;
+		Posicion posicion = null;
+		
+		for (int x = 1; x <= numColumnas; x++) {
+
+			for (int y = 1; y <= numColumnas; y++) {
+				posicion = new Posicion(x, y);
+				casillero = new Casillero(posicion);
+				Mapa.getMapa().agregarCasillero(posicion, casillero);
+			}
+		}
+	}
+	
+	private void crearObjetosEnElMapa(String[] objetosDeUnaFila, Integer y) {
+		Integer coordenadaX = 0;
+		for (Integer x = 0; x < objetosDeUnaFila.length; x ++) {
+			Integer codigoObjeto = Integer.parseInt(objetosDeUnaFila[x]);
+			Casillero casillero = null;
+			switch(codigoObjeto) {
+			case -3:  
+				casillero = getCasillero(new Posicion(++ coordenadaX,y));
+				casillero.agregarObjeto(new LosLopezReggaeAlado());
+				break;
+			case -2:  
+				casillero = getCasillero(new Posicion(++ coordenadaX,y));
+				casillero.agregarObjeto(new LosLopezReggae());
+				break;
+			case -1:  
+				casillero = getCasillero(new Posicion(++ coordenadaX,y));
+				casillero.agregarObjeto(new Cecilio());
+				break;
+			case 0:  
+				++ coordenadaX;
+				break;
+			case 1:  
+				casillero = getCasillero(new Posicion(++ coordenadaX,y));
+				casillero.agregarObjeto(new Bombita(3));
+				break;
+			case 2:  
+				casillero = getCasillero(new Posicion(++ coordenadaX,y));
+				casillero.agregarObjeto(new BloqueLadrillo());
+				break;
+			case 3:  
+				casillero = getCasillero(new Posicion(++ coordenadaX,y));
+				casillero.agregarObjeto(new BloqueCemento());
+				break;
+			case 4:  
+				casillero = getCasillero(new Posicion(++ coordenadaX,y));
+				casillero.agregarObjeto(new BloqueAcero());
+				break;
+			case 21:  
+				casillero = getCasillero(new Posicion(++ coordenadaX,y));
+				casillero.agregarObjeto(new BloqueLadrillo(new Chala()));
+				break;
+			case 22:  
+				casillero = getCasillero(new Posicion(++ coordenadaX,y));
+				casillero.agregarObjeto(new BloqueLadrillo(new Timer()));
+				break;
+			case 23:  
+				casillero = getCasillero(new Posicion(++ coordenadaX,y));
+				casillero.agregarObjeto(new BloqueLadrillo(new ArticuloToleTole()));
+				break;
+			case 24:  
+				casillero = getCasillero(new Posicion(++ coordenadaX,y));
+				casillero.agregarObjeto(new BloqueLadrillo(new Salida()));
+				break;
+			case 31:  
+				casillero = getCasillero(new Posicion(++ coordenadaX,y));
+				casillero.agregarObjeto(new BloqueCemento(new Chala()));
+				break;
+			case 32:  
+				casillero = getCasillero(new Posicion(++ coordenadaX,y));
+				casillero.agregarObjeto(new BloqueCemento(new Timer()));
+				break;
+			case 33:  
+				casillero = getCasillero(new Posicion(++ coordenadaX,y));
+				casillero.agregarObjeto(new BloqueCemento(new ArticuloToleTole()));
+				break;
+			case 34:  
+				casillero = getCasillero(new Posicion(++ coordenadaX,y));
+				casillero.agregarObjeto(new BloqueCemento(new Salida()));
+				break;
+			default: throw new AssertionError("no existe objeto para este codigo: " + codigoObjeto);
+			}
+		}	
+	}
+	
 	 public Posicion getNuevaPosicion(Posicion posicionActual, Direccion direccion) throws FueraDelMapaException {
 		 Posicion posicion = null;
 		 switch (direccion) {
@@ -93,6 +195,5 @@ public class Mapa {
 		
 		return ( this.getCasillero(posicion) == null );
 	}
-	
 	
 }

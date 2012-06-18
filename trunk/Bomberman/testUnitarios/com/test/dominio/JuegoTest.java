@@ -10,7 +10,7 @@ import com.bombitarodriguez.dominio.Posicion;
 
 public class JuegoTest {
 
-	@Test
+	
 	public void testInicializarJuego() {
 		Juego juego = new Juego();
 		juego.inicializarJuego();
@@ -18,25 +18,4 @@ public class JuegoTest {
 		assertEquals(Mapa.getMapa().getMapaCasillero().size(), 225);
 	}
 	
-	@Test
-	public void testCrearCasillerosVacios(){
-		Juego game = new Juego();
-		game.crearCasillerosVacios(3);
-	
-		for (int x = 1; x <= 3; x++){
-			Posicion pos = new Posicion (x,1);
-			assertEquals(Mapa.getMapa().getCasillero(pos).getObjetos().size(), 0);
-		}
-	
-		for (int x = 1; x <= 3; x++){
-			Posicion pos = new Posicion (x,2);
-			assertEquals(Mapa.getMapa().getCasillero(pos).getObjetos().size(), 0);
-		}
-		
-		for (int x = 1; x <= 3; x++){
-			Posicion pos = new Posicion (x,3);
-			assertEquals(Mapa.getMapa().getCasillero(pos).getObjetos().size(), 0);
-		}
-		
-	}
 }

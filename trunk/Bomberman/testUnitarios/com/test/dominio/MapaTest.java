@@ -2,6 +2,10 @@ package com.test.dominio;
 
 import static org.junit.Assert.*;
 
+import java.lang.reflect.Array;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import org.junit.Test;
 
 import com.bombitarodriguez.dominio.*;
@@ -40,6 +44,92 @@ public class MapaTest {
 		Bombita bombitaPosicionFinal = (Bombita) casilleroFinal.getObjetos().get(0);
 		
 		assertEquals(bombitaPosicionInicial, bombitaPosicionFinal);
+		
+	}
+	
+	@Test
+	public void testCrearCasillerosVacios(){
+		Juego game = new Juego();
+		Mapa.getMapa().crearCasillerosVacios(3);
+	
+		for (int x = 1; x <= 3; x++){
+			Posicion pos = new Posicion (x,1);
+			assertEquals(Mapa.getMapa().getCasillero(pos).getObjetos().size(), 0);
+		}
+	
+		for (int x = 1; x <= 3; x++){
+			Posicion pos = new Posicion (x,2);
+			assertEquals(Mapa.getMapa().getCasillero(pos).getObjetos().size(), 0);
+		}
+		
+		for (int x = 1; x <= 3; x++){
+			Posicion pos = new Posicion (x,3);
+			assertEquals(Mapa.getMapa().getCasillero(pos).getObjetos().size(), 0);
+		}
+		
+	}
+	
+	@Test
+	public void testCrearObjetosEnElMapa() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		String[] codigos = {"1", "2", "-1", "-2", "-3", "0", "21", "31", "34", "22"};
+		System.out.println(codigos.getClass().getName());
+        Method crearObjetosEnElMapa = Mapa.getMapa().getClass().getDeclaredMethod("crearObjetosEnElMapa", new Class[]{String[].class, Integer.class});
+        crearObjetosEnElMapa.setAccessible(true);
+        Mapa.getMapa().crearCasillerosVacios(10);
+      
+        crearObjetosEnElMapa.invoke(Mapa.getMapa(), new Object[]{codigos, 1});
+        
+        Casillero casillero = Mapa.getMapa().getCasillero(new Posicion(1,1));
+        assertTrue(casillero.getObjetos().size() == 1);
+        assertTrue(casillero.getObjetos().get(0) instanceof Bombita);
+        
+        casillero = Mapa.getMapa().getCasillero(new Posicion(2,1));
+        assertTrue(casillero.getObjetos().size() == 1);
+        assertTrue(casillero.getObjetos().get(0) instanceof BloqueLadrillo);
+        
+        casillero = Mapa.getMapa().getCasillero(new Posicion(3,1));
+        assertTrue(casillero.getObjetos().size() == 1);
+        assertTrue(casillero.getObjetos().get(0) instanceof Cecilio);
+        
+        casillero = Mapa.getMapa().getCasillero(new Posicion(4,1));
+        assertTrue(casillero.getObjetos().size() == 1);
+        assertTrue(casillero.getObjetos().get(0) instanceof LosLopezReggae);
+        
+        casillero = Mapa.getMapa().getCasillero(new Posicion(5,1));
+        assertTrue(casillero.getObjetos().size() == 1);
+        assertTrue(casillero.getObjetos().get(0) instanceof LosLopezReggaeAlado);
+        
+        casillero = Mapa.getMapa().getCasillero(new Posicion(6,1));
+        assertTrue(casillero.getObjetos().size() == 0);
+        
+        casillero = Mapa.getMapa().getCasillero(new Posicion(7,1));
+        assertTrue(casillero.getObjetos().size() == 1);
+        assertTrue(casillero.getObjetos().get(0) instanceof BloqueLadrillo);
+        BloqueLadrillo bl = (BloqueLadrillo) casillero.getObjetos().get(0);
+        assertTrue(bl.getObjeto() instanceof Chala);
+        
+        casillero = Mapa.getMapa().getCasillero(new Posicion(8,1));
+        assertTrue(casillero.getObjetos().size() == 1);
+        assertTrue(casillero.getObjetos().get(0) instanceof BloqueCemento);
+        BloqueCemento bc = (BloqueCemento) casillero.getObjetos().get(0);
+        assertTrue(bc.getObjeto() instanceof Chala);
+        
+        casillero = Mapa.getMapa().getCasillero(new Posicion(9,1));
+        assertTrue(casillero.getObjetos().size() == 1);
+        assertTrue(casillero.getObjetos().get(0) instanceof BloqueCemento);
+        bc = (BloqueCemento) casillero.getObjetos().get(0);
+        assertTrue(bc.getObjeto() instanceof Salida);
+        
+        casillero = Mapa.getMapa().getCasillero(new Posicion(10,1));
+        assertTrue(casillero.getObjetos().size() == 1);
+        assertTrue(casillero.getObjetos().get(0) instanceof BloqueLadrillo);
+        bl = (BloqueLadrillo) casillero.getObjetos().get(0);
+        assertTrue(bl.getObjeto() instanceof Timer);
+      
+	}
+
+	@Test
+	public void testCrearMapa() {
 		
 	}
 	
