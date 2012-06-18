@@ -29,10 +29,11 @@ public class BombitaIntegracionTest {
 
 	
 	/**
-	 * Se testea que bombita pueda moverse a un casillero vacio
+	 * Se testea que Bombita pueda moverse para arriba
+	 * En la prueba, el casillero final no contiene ningun objeto
 	 */
 	@Test
-	public void testMoverCaso1() {
+	public void testMoverArriba() {
 		Integer vida = new Integer(3);
 		Posicion posicionInicial = new Posicion(1,1);
 		Posicion posicionFinal = new Posicion(1,2);
@@ -49,13 +50,82 @@ public class BombitaIntegracionTest {
 		assertEquals(bombita.getPosicion(), posicionFinal);
 		assertTrue(casilleroInicial.getObjetos().isEmpty());
 	}
-
+	
 	/**
-	 * Se testea que bombita pueda no moverse a un casillero ocupado 
-	 * por un bloque de acero
+	 * Se testea que Bombita pueda moverse para abajo
+	 * En la prueba, el casillero final no contiene ningun objeto
 	 */
 	@Test
-	public void testMoverCaso2() {
+	public void testMoverAbajo() {
+		Integer vida = new Integer(3);
+		Posicion posicionInicial = new Posicion(1,1);
+		Posicion posicionFinal = new Posicion(1,0);
+		Casillero casilleroInicial = new Casillero(posicionInicial);
+		Casillero casilleroFinal = new Casillero(posicionFinal);
+		Bombita bombita = new Bombita(vida);
+		
+		casilleroInicial.agregarObjeto(bombita);
+		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
+		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
+		
+		bombita.moverseConEstrategia(Direccion.ABAJO);
+		
+		assertEquals(bombita.getPosicion(), posicionFinal);
+		assertTrue(casilleroInicial.getObjetos().isEmpty());
+	}
+	
+	/**
+	 * Se testea que Bombita pueda moverse a la Izquierda
+	 * En la prueba, el casillero final no contiene ningun objeto
+	 */
+	@Test
+	public void testMoverIzquierda() {
+		Integer vida = new Integer(3);
+		Posicion posicionInicial = new Posicion(1,1);
+		Posicion posicionFinal = new Posicion(0,1);
+		Casillero casilleroInicial = new Casillero(posicionInicial);
+		Casillero casilleroFinal = new Casillero(posicionFinal);
+		Bombita bombita = new Bombita(vida);
+		
+		casilleroInicial.agregarObjeto(bombita);
+		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
+		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
+		
+		bombita.moverseConEstrategia(Direccion.IZQUIERDA);
+		
+		assertEquals(bombita.getPosicion(), posicionFinal);
+		assertTrue(casilleroInicial.getObjetos().isEmpty());
+	}
+	
+	/**
+	 * Se testea que Bombita pueda moverse a la Derecha
+	 * En la prueba, el casillero final no contiene ningun objeto
+	 */
+	@Test
+	public void testMoverDerecha() {
+		Integer vida = new Integer(3);
+		Posicion posicionInicial = new Posicion(1,1);
+		Posicion posicionFinal = new Posicion(2,1);
+		Casillero casilleroInicial = new Casillero(posicionInicial);
+		Casillero casilleroFinal = new Casillero(posicionFinal);
+		Bombita bombita = new Bombita(vida);
+		
+		casilleroInicial.agregarObjeto(bombita);
+		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
+		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
+		
+		bombita.moverseConEstrategia(Direccion.DERECHA);
+		
+		assertEquals(bombita.getPosicion(), posicionFinal);
+		assertTrue(casilleroInicial.getObjetos().isEmpty());
+	}
+	
+	/**
+	 * Se testea que bombita la interaccion entre bombita y un bloqueAcero
+	 * En este caso, bombita no deberia poder cambiar de casillero
+	 */
+	@Test
+	public void testInteraccionCaso1() {
 		Integer vida = new Integer(3);
 		Posicion posicionInicial = new Posicion(1,1);
 		Posicion posicionFinal = new Posicion(1,2);
@@ -78,7 +148,7 @@ public class BombitaIntegracionTest {
 	 * por un bloque de Ladrillos
 	 */
 	@Test
-	public void testMoverCaso3() {
+	public void testInteraccionCaso2() {
 		Integer vida = new Integer(3);
 		Posicion posicionInicial = new Posicion(1,1);
 		Posicion posicionFinal = new Posicion(1,2);
@@ -101,7 +171,7 @@ public class BombitaIntegracionTest {
 	 * por un bloque de Cemento
 	 */
 	@Test
-	public void testMoverCaso4() {
+	public void testInteraccionCaso3() {
 		Integer vida = new Integer(3);
 		Posicion posicionInicial = new Posicion(1,1);
 		Posicion posicionFinal = new Posicion(1,2);
@@ -124,7 +194,7 @@ public class BombitaIntegracionTest {
 	 * por una bomba Molotov
 	 */
 	@Test
-	public void testMoverCaso5() {
+	public void testInteraccionCaso4() {
 		Integer vida = new Integer(3);
 		Posicion posicionInicial = new Posicion(1,1);
 		Posicion posicionFinal = new Posicion(1,2);
@@ -148,7 +218,7 @@ public class BombitaIntegracionTest {
 	 * por una bomba ToleTole
 	 */
 	@Test
-	public void testMoverCaso6() {
+	public void testInteraccionCaso5() {
 		Integer vida = new Integer(3);
 		Posicion posicionInicial = new Posicion(1,1);
 		Posicion posicionFinal = new Posicion(1,2);
@@ -174,7 +244,7 @@ public class BombitaIntegracionTest {
 	 * proyectil se detonara
 	 */
 	@Test
-	public void testMoverCaso7() {
+	public void testInteraccionCaso6() {
 		Integer vida = new Integer(3);
 		Posicion posicionInicial = new Posicion(1,1);
 		Posicion posicionFinal = new Posicion(1,2);
@@ -189,26 +259,185 @@ public class BombitaIntegracionTest {
 		
 		bombita.moverseConEstrategia(Direccion.ARRIBA);
 		
-		assertTrue(casilleroInicial.getObjetos().isEmpty());
+		assertTrue(bombita.getVida() == 2);
 		assertTrue(casilleroFinal.getObjetos().isEmpty());
 	}
+	
+	/**
+ 	* Se testea que Bombita pueda moverse a un casillero ocupado
+ 	* por un Cecilio, y al hacerlo, pierda una vida
+ 	*/
 	@Test
-	public void testMover_CasilleroBombaMolotov() {
-		casilleroFinal.agregarObjeto(new Molotov(new Double(1)));
+	public void testInteraccionCaso7() {
+		Integer vida = new Integer(3);
+		Posicion posicionInicial = new Posicion(1,1);
+		Posicion posicionFinal = new Posicion(1,2);
+		Casillero casilleroInicial = new Casillero(posicionInicial);
+		Casillero casilleroFinal = new Casillero(posicionFinal);
+		Bombita bombita = new Bombita(vida);
+		
+		casilleroInicial.agregarObjeto(bombita);
+		casilleroFinal.agregarObjeto(new Cecilio());
+		
+		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
+		
 		bombita.moverseConEstrategia(Direccion.ARRIBA);
+		
+		assertTrue(bombita.getVida() == 2);
+		assertEquals(bombita.getPosicion(), posicionFinal);
+	}
+	
+	/**
+ 	* Se testea que Bombita pueda moverse a un casillero ocupado
+ 	* por un LopezReggae, y al hacerlo, pierda una vida
+ 	*/
+	@Test
+	public void testInteraccionCaso8() {
+		Integer vida = new Integer(3);
+		Posicion posicionInicial = new Posicion(1,1);
+		Posicion posicionFinal = new Posicion(1,2);
+		Casillero casilleroInicial = new Casillero(posicionInicial);
+		Casillero casilleroFinal = new Casillero(posicionFinal);
+		Bombita bombita = new Bombita(vida);
+		
+		casilleroInicial.agregarObjeto(bombita);
+		casilleroFinal.agregarObjeto(new LosLopezReggae());
+		
+		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
+		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
+		
+		bombita.moverseConEstrategia(Direccion.ARRIBA);
+		
+		assertTrue(bombita.getVida() == 2);
+		assertEquals(bombita.getPosicion(), posicionFinal);
+	}
+	
+	/**
+ 	* Se testea que Bombita pueda moverse a un casillero ocupado
+ 	* por un LopezReggaeAlado, y al hacerlo, pierda una vida
+ 	*/
+	@Test
+	public void testInteraccionCaso9() {
+		Integer vida = new Integer(3);
+		Posicion posicionInicial = new Posicion(1,1);
+		Posicion posicionFinal = new Posicion(1,2);
+		Casillero casilleroInicial = new Casillero(posicionInicial);
+		Casillero casilleroFinal = new Casillero(posicionFinal);
+		Bombita bombita = new Bombita(vida);
+		
+		casilleroInicial.agregarObjeto(bombita);
+		casilleroFinal.agregarObjeto(new LosLopezReggaeAlado());
+		
+		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
+		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
+		
+		bombita.moverseConEstrategia(Direccion.ARRIBA);
+		
+		assertTrue(bombita.getVida() == 2);
 		assertEquals(bombita.getPosicion(), posicionFinal);
 	}
 
+	/**
+ 	* Se testea que Bombita pueda moverse a un casillero ocupado
+ 	* por una explosion, y al hacerlo, pierda una vida
+ 	*/
 	@Test
-	public void testMover_CasilleroCecilio() {
-		casilleroFinal.agregarObjeto(new Cecilio());
+	public void testInteraccionCaso10() {
+		Integer vida = new Integer(3);
+		Posicion posicionInicial = new Posicion(1,1);
+		Posicion posicionFinal = new Posicion(1,2);
+		Casillero casilleroInicial = new Casillero(posicionInicial);
+		Casillero casilleroFinal = new Casillero(posicionFinal);
+		Bombita bombita = new Bombita(vida);
+		
+		casilleroInicial.agregarObjeto(bombita);
+		casilleroFinal.agregarObjeto(new Explosion(Constante.DESTRUCCION_MOLOTOV,Constante.ONDA_EXPANSIVA_MOLOTOV));
+		
+		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
+		
 		bombita.moverseConEstrategia(Direccion.ARRIBA);
-		assertEquals(bombita.getVida(), new Integer(0));
-
+		
+		assertTrue(bombita.getVida() == 2);
+		assertEquals(bombita.getPosicion(), posicionFinal);
+	}
+	
+	/**
+ 	* Se testea que Bombita pueda moverse a un casillero ocupado
+ 	* por una Chala, y al hacerlo, modifique su velocidad
+ 	*/
+	@Test
+	public void testInteraccionCaso11() {
+		Integer vida = new Integer(3);
+		Posicion posicionInicial = new Posicion(1,1);
+		Posicion posicionFinal = new Posicion(1,2);
+		Casillero casilleroInicial = new Casillero(posicionInicial);
+		Casillero casilleroFinal = new Casillero(posicionFinal);
+		Bombita bombita = new Bombita(vida);
+		
+		casilleroInicial.agregarObjeto(bombita);
+		casilleroFinal.agregarObjeto(new Chala());
+		
+		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
+		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
+		
+		bombita.moverseConEstrategia(Direccion.ARRIBA);
+		
+		assertTrue(bombita.getVelocidad() == Constante.VELOCIDAD_CORRE);
+		assertEquals(bombita.getPosicion(), posicionFinal);
+	}
+	
+	/**
+ 	* Se testea que Bombita pueda moverse a un casillero ocupado
+ 	* por un Timer, y al hacerlo, modifique su velocidad
+ 	*/
+	@Test
+	public void testInteraccionCaso12() {
+		Integer vida = new Integer(3);
+		Posicion posicionInicial = new Posicion(1,1);
+		Posicion posicionFinal = new Posicion(1,2);
+		Casillero casilleroInicial = new Casillero(posicionInicial);
+		Casillero casilleroFinal = new Casillero(posicionFinal);
+		Bombita bombita = new Bombita(vida);
+		
+		casilleroInicial.agregarObjeto(bombita);
+		casilleroFinal.agregarObjeto(new Timer());
+		
+		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
+		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
+		
+		bombita.moverseConEstrategia(Direccion.ARRIBA);
+		
+		assertTrue(bombita.getFactoryArma().getRetardo() == (Constante.TIMER_MOLOTOV * 0.85));
+		assertEquals(bombita.getPosicion(), posicionFinal);
 	}
 
+	/**
+ 	* Se testea que Bombita pueda moverse a un casillero ocupado
+ 	* por un ArticuloToleTole, y al hacerlo, cambie su factory de armas
+ 	*/
+	@Test
+	public void testInteraccionCaso13() {
+		Integer vida = new Integer(3);
+		Posicion posicionInicial = new Posicion(1,1);
+		Posicion posicionFinal = new Posicion(1,2);
+		Casillero casilleroInicial = new Casillero(posicionInicial);
+		Casillero casilleroFinal = new Casillero(posicionFinal);
+		Bombita bombita = new Bombita(vida);
+		
+		casilleroInicial.agregarObjeto(bombita);
+		casilleroFinal.agregarObjeto(new ArticuloToleTole());
+		
+		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
+		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
+		
+		bombita.moverseConEstrategia(Direccion.ARRIBA);
+		
+		assertTrue(bombita.getFactoryArma().getArmaInstanciada() instanceof ToleTole);
+		assertEquals(bombita.getPosicion(), posicionFinal);
+	}
+	
 	@Test
 	public void testPorDefaultColocaMolotov() {
 		bombita.usarArma();
