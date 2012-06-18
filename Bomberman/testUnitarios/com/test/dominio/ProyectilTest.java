@@ -110,4 +110,16 @@ public class ProyectilTest {
 		assertTrue(proyectil.reaccionarCon(new Explosion(Constante.DESTRUCCION_MOLOTOV, Constante.ONDA_EXPANSIVA_MOLOTOV)));
 		assertTrue(casillero.getObjetos().isEmpty());
 	}
+	
+	@Test
+	public void testExplotar(){
+		Proyectil proyectil = new Proyectil();
+		Casillero casillero = new Casillero(new Posicion(1,1));
+		
+		casillero.agregarObjeto(proyectil);
+				
+		proyectil.explotar();
+		
+		assertTrue(casillero.getObjetos().isEmpty());
+	}
 }
