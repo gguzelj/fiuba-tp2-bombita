@@ -86,4 +86,16 @@ public class ToleToleTest {
 		assertTrue(toleTole.reaccionarCon(new Explosion(Constante.DESTRUCCION_MOLOTOV, Constante.ONDA_EXPANSIVA_MOLOTOV)));
 		assertTrue(casillero.getObjetos().isEmpty());
 	}
+
+	@Test
+	public void testExplotar(){
+		ToleTole toleTole = new ToleTole();
+		Casillero casillero = new Casillero(new Posicion(1,1));
+		
+		casillero.agregarObjeto(toleTole);
+				
+		toleTole.explotar();
+		
+		assertTrue(casillero.getObjetos().isEmpty());
+	}
 }
