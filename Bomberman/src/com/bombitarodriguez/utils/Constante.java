@@ -1,5 +1,7 @@
 package com.bombitarodriguez.utils;
 
+import java.io.File;
+
 public class Constante {
 	
 	/**
@@ -24,6 +26,17 @@ public class Constante {
 	public final static Double TIMER_PROYECTIL = 5D;
 	public final static Integer DESTRUCCION_MOLOTOV = 5;
 	public final static Integer DESTRUCCION_TOLETOLE = 0;
-	public static final Integer DESTRUCCION_PROYECTIL = 10;
+	public static final Integer DESTRUCCION_PROYECTIL = 10;	//lista con los nombres de los mapa
+	public static final Integer PRIMER_MAPA = 1;
+	//directorio de los mapas
+	public static File DIRECTORIO_MAPAS;
+	static{
+	        String path = Constante.class.getProtectionDomain()
+	                        .getCodeSource().getLocation().getPath();
+	        File f = new File(path);
+	        f = f.getParentFile();
+	        f = new File(f.getPath() + "/resources/mapas");
+	        DIRECTORIO_MAPAS = f;
+	    }
 
 }
