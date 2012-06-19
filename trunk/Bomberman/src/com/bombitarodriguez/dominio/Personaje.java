@@ -8,6 +8,7 @@ import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.Armado;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.interfaces.StrategyMovimiento;
+import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
 
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
@@ -98,8 +99,16 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 	}
 
 	@Override
-	public Boolean reaccionarCon(Explosion explosion) {
-		resistencia = resistencia - explosion.getDestruccion();
+	public Boolean reaccionarCon(Explosion explosion){
+		if (explosion.destruccion == Constante.DESTRUCCION_TOLETOLE){
+			destruirse();
+		}else{
+			resistencia = resistencia - explosion.getDestruccion();
+			if (resistencia == 0){
+				destruirse();
+			}
+		}
+		
 		return true;
 	}	
 	

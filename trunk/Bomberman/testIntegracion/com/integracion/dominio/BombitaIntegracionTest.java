@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import com.bombitarodriguez.dominio.*;
+import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.*;
 
 public class BombitaIntegracionTest {
@@ -465,8 +466,13 @@ public class BombitaIntegracionTest {
 		assertTrue(arma.getArmaInstanciada() instanceof ToleTole);
 	}
 
+	
+		/**
+		 * Bombita planta bomba y se mueve
+		 */
+	
 	@Test
-	public void testBombitaColocaBombaYSeMueve() {
+	public void testBombitaPlantarBombaCaso1() {
 
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
 		bombita.usarArma();
@@ -475,12 +481,16 @@ public class BombitaIntegracionTest {
 		assertEquals(cantidadDeObjetos, new Integer(1));
 
 	}
+	
+	
+		/**
+		 * Bombita planta Molotov pero no afecta a Cecilio dada su lejania.
+		 */
 
 	@Test
-	public void testEnemigoEstaFueraDelAlcanceYNoPierdeResistencia() {
+	public void testBombitaPlantarBombaCaso2() {
 		Integer vida = new Integer(4);
 		// Creo a Bombita y lo agrego a un casillero
-		Juego juego = new Juego();
 		Mapa.getMapa().crearCasillerosVacios(10);
 
 		Posicion posicionInicial = new Posicion(5, 5);
@@ -502,16 +512,17 @@ public class BombitaIntegracionTest {
 		ceci = (Cecilio) Mapa.getMapa().getCasillero(posicionEnemigo)
 				.getObjetos().get(0);
 		assertEquals(ceci.getResistencia(), new Integer(5));
-		// assertTrue(bombita.getCasillero().getObjetos().get(1) instanceof
-		// null);
-
+		
 	}
+	
+		/**
+		 * Bombita planta Molotov, y el enemigo pierde vida.
+		 */
 
 	@Test
-	public void testEnemigoEstaEnElAlcanceYSIPierdeResistencia() {
+	public void testBombitaPlantarBombaCaso3() {
 		Integer vida = new Integer(4);
 		// Creo a Bombita y lo agrego a un casillero
-		Juego juego = new Juego();
 		Mapa.getMapa().crearCasillerosVacios(10);
 
 		Posicion posicionInicial = new Posicion(5, 5);
@@ -536,12 +547,16 @@ public class BombitaIntegracionTest {
 		assertEquals(tamaño, new Integer(0));
 
 	}
-
+		
+		/**
+		 * Bombita planta Molotov. Cecilio no muere porque entre el y
+		 * la bomba hay un BloqueAcero
+		 */
+		
 	@Test
-	public void testEnemigoEstaEnElAlcancePeroLoCubreUnBloqueAcero() {
+	public void testBombitaPlantarBombaCaso4() {
 		Integer vida = new Integer(4);
 		// Creo a Bombita y lo agrego a un casillero
-		Juego juego = new Juego();
 		Mapa.getMapa().crearCasillerosVacios(10);
 
 		Posicion posicionInicial = new Posicion(5, 5);
@@ -574,13 +589,12 @@ public class BombitaIntegracionTest {
 
 	@Test
 	/**
-	 * 
+	 * Bombita planta molotov y con eso mata a dos enemigos alineados
 	 */
-	public void BombitaMataADosEnemigosUnoDetrasDelOtroConMolotov() {
+	public void testBombitaPlantarBombaCaso5() {
 
 		Integer vida = new Integer(4);
 		// Creo a Bombita y lo agrego a un casillero
-		Juego juego = new Juego();
 		Mapa.getMapa().crearCasillerosVacios(10);
 
 		Posicion posicionInicial = new Posicion(10, 10);
@@ -616,13 +630,16 @@ public class BombitaIntegracionTest {
 		assertEquals(tamaño2, new Integer(0));
 
 	}
-
+		
+		/**
+		 * Bombita mata a dos enemigos que estan situados a distancia y direcciones 
+		 * distintas.
+		 */
 	@Test
-	public void BombitaMataADosEnemigosEnDiferentesDireccionesYDostanciasConMolotov() {
+	public void testBombitaPlantarBombaCaso6() {
 
 		Integer vida = new Integer(4);
 		// Creo a Bombita y lo agrego a un casillero
-		Juego juego = new Juego();
 		Mapa.getMapa().crearCasillerosVacios(10);
 
 		Posicion posicionInicial = new Posicion(10, 10);
@@ -658,13 +675,16 @@ public class BombitaIntegracionTest {
 		assertEquals(tamaño2, new Integer(0));
 
 	}
+		/**
+		 * Bombita planta bomba Molotov. Mata a un cecilio y le saca
+		 * vida a un LopezReggae
+		 */
 
 	@Test
-	public void BombitaMataACecilioYLopezPierdeVida() {
+	public void testBombitaPlantarBombaCaso7() {
 
 		Integer vida = new Integer(4);
 		// Creo a Bombita y lo agrego a un casillero
-		Juego juego = new Juego();
 		Mapa.getMapa().crearCasillerosVacios(10);
 
 		Posicion posicionInicial = new Posicion(10, 10);
@@ -703,9 +723,12 @@ public class BombitaIntegracionTest {
 		assertEquals(tamaño2, new Integer(0));
 
 	}
-
+	/**
+	 * Bombita planta la bomba Molotov, rompo un ladrillo y el atributo+
+	 *  queda en el piso
+	 */
 	@Test
-	public void BombitaRompeUnLadrilloYQuedaAtributoToletoleEnElPiso() {
+	public void testBombitaPlantarBombaCaso8() {
 
 		Integer vida = new Integer(4);
 		// Creo a Bombita y lo agrego a un casillero
@@ -731,5 +754,80 @@ public class BombitaIntegracionTest {
 		assertTrue(Mapa.getMapa().getCasillero(posicionBloque).getObjetos()
 				.get(0) instanceof BloqueLadrillo);
 	}
+	
+	/**
+	 * BOMBITA Planta la bomba, se mueve un casillero y muere por la explosión.
+	 */
 
+		@Test
+		public void testBombitaPlantarBombaCaso9(){
+			
+			Integer vida = new Integer(5);
+			// Creo a Bombita y lo agrego a un casillero
+			
+			Mapa.getMapa().crearCasillerosVacios(20);
+			
+			Posicion posicionFinal = new Posicion (6, 4);
+			Posicion posicionInicial = new Posicion(7, 4);
+			Casillero casilleroInicial = new Casillero(posicionInicial);
+			Bombita bombita = new Bombita(vida);
+			casilleroInicial.agregarObjeto(bombita);
+			Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
+
+			bombita.usarArma();
+			bombita.moverseConEstrategia(Direccion.IZQUIERDA);
+			
+			Arma arma = (Molotov) Mapa.getMapa().getCasillero(posicionInicial)
+					.getObjetos().get(0);
+			assertTrue(Mapa.getMapa().getCasillero(posicionInicial).getObjetos()
+					.get(0) instanceof Molotov);
+			arma.explotar();
+			assertTrue(Mapa.getMapa().getCasillero(posicionInicial).estaVacio());
+			assertTrue(Mapa.getMapa().getCasillero(posicionFinal).getObjetos()
+					.get(0) instanceof Bombita);
+			Bombita personajeBombita = (Bombita)Mapa.getMapa()
+					.getCasillero(posicionFinal).getObjetos().get(0);
+			assertEquals(personajeBombita.getVida(), new Integer(4));	
+		}
+		
+		/**
+		 * BOMBITA planta una TOLETOLE, se mueve.  Muere el, y barre a un Cecilio
+		 */
+		
+
+		@Test
+		public void testBombitaPlantarBombaCaso10(){
+			Integer vida = new Integer(5);
+			// Creo a Bombita y lo agrego a un casillero
+	
+			Mapa.getMapa().crearCasillerosVacios(20);
+			
+			Posicion posicionFinal = new Posicion (6, 4);
+			Posicion posicionInicial = new Posicion(7, 4);
+			
+			Casillero casilleroInicial = new Casillero(posicionInicial);
+			Casillero casilleroFinal = new Casillero(posicionFinal);
+			
+			Bombita bombita = new Bombita(vida);
+			bombita.setFactoryArma(new FactoryToleTole(new Double(5)));
+			casilleroInicial.agregarObjeto(bombita);
+			casilleroFinal.agregarObjeto(new Cecilio());
+			
+			Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
+			Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
+			
+			
+			bombita.usarArma();
+			bombita.moverseConEstrategia(Direccion.ABAJO);
+			ToleTole arma = (ToleTole) Mapa.getMapa().getCasillero(posicionInicial)
+					.getObjetos().get(0);
+			arma.explotar();
+			assertEquals(bombita.getVida(), new Integer(4));
+
+			Integer cantidadDeObjetosReaccionables = Mapa.getMapa().
+					getCasillero(posicionFinal).getObjetos().size();
+			assertEquals(cantidadDeObjetosReaccionables, new Integer(0));
+			
+			
+		}
 }

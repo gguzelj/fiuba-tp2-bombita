@@ -111,7 +111,8 @@ public class BombitaTest {
 	public void testReaccionarConExplosion(){
 		Integer vida = new Integer(3);
 		Bombita bombita = new Bombita(vida);
-		assertTrue(bombita.reaccionarCon(new Explosion(Constante.DESTRUCCION_MOLOTOV, Constante.ONDA_EXPANSIVA_MOLOTOV)));
+		assertTrue(bombita.reaccionarCon(new Explosion(Constante.DESTRUCCION_MOLOTOV,
+				Constante.ONDA_EXPANSIVA_MOLOTOV)));
 		assertTrue(bombita.getVida() == 2);
 	}
 	
@@ -158,7 +159,8 @@ public class BombitaTest {
 		Bombita bombita = new Bombita(vida);
 		List<ObjetoReaccionable> listaObjetos = new ArrayList<ObjetoReaccionable>();
 
-		metodoPrivado = bombita.getClass().getDeclaredMethod("reaccionarConTodos", new Class[]{java.util.Iterator.class});
+		metodoPrivado = bombita.getClass().getDeclaredMethod("reaccionarConTodos", 
+				new Class[]{java.util.Iterator.class});
 		metodoPrivado.setAccessible(true);
 
 		//Reaccionar con la molotov deberia devolvernos true

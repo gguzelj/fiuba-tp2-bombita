@@ -96,7 +96,7 @@ public class LosLopezReggaeAladoTest {
 		casillero.agregarObjeto(lopezReggaeAlado);
 		
 		assertTrue(lopezReggaeAlado.reaccionarCon(new Explosion(Constante.DESTRUCCION_MOLOTOV, Constante.ONDA_EXPANSIVA_MOLOTOV)));
-		assertTrue(casillero.getObjetos().size() == 1);
+		assertTrue(casillero.getObjetos().size() == 0);
 		assertTrue(lopezReggaeAlado.getResistencia() == (Constante.RESISTENCIA_LOSLOPEZREGGAE_ALADO - Constante.DESTRUCCION_MOLOTOV));
 	}
 	
