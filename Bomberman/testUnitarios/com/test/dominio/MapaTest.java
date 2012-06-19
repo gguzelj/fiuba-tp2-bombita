@@ -72,7 +72,6 @@ public class MapaTest {
 	@Test
 	public void testCrearObjetosEnElMapa() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		String[] codigos = {"1", "2", "-1", "-2", "-3", "0", "21", "31", "34", "22"};
-		System.out.println(codigos.getClass().getName());
         Method crearObjetosEnElMapa = Mapa.getMapa().getClass().getDeclaredMethod("crearObjetosEnElMapa", new Class[]{String[].class, Integer.class});
         crearObjetosEnElMapa.setAccessible(true);
         Mapa.getMapa().crearCasillerosVacios(10);
