@@ -26,12 +26,6 @@ public class Cecilio extends Personaje {
 		getCasillero().agregarObjeto(factoryArma.getArmaInstanciada());
 	}
 
-	@Override
-	public Boolean reaccionarCon(Explosion explosion) {
-		resistencia = resistencia - (explosion.getDestruccion());
-		if (resistencia <= 0) destruirse();
-		return true;
-	}
 	
 	@Override
 	public Boolean reaccionarCon(Bombita bombita) {
