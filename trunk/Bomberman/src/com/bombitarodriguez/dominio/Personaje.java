@@ -10,13 +10,16 @@ import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.interfaces.StrategyMovimiento;
 import com.bombitarodriguez.utils.Direccion;
 
+import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
+import fiuba.algo3.titiritero.modelo.ObjetoVivo;
+
 
 /**
  * 
  * @author Mauro
  *
  */
-public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyMovimiento{
+public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyMovimiento, ObjetoVivo, ObjetoPosicionable{
 	
 	protected Casillero casilleroContenedor;
 	
@@ -156,5 +159,21 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 		if (reaccionarConTodos(iterador)) {
 			Mapa.getMapa().reposicionar(this, casilleroProximo);
 		}
+	}
+	
+	@Override
+	public void vivir() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getX() {
+		return getPosicion().getPosX();
+	}
+
+	@Override
+	public int getY() {	
+		return getPosicion().getPosY();
 	}
 }

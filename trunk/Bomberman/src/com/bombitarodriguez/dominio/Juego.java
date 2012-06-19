@@ -16,6 +16,7 @@ public class Juego {
 	
 	public void inicializarJuego() {
 		
+		crearMapa(Constante.DIRECTORIO_MAPAS, 1);
 	}
 
 	private void crearMapa(File f, Integer nivelJuego) {

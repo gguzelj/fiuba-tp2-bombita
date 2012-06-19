@@ -12,8 +12,8 @@ public class AccionMovimiento extends AccionAbstracta {
 
 	@Override
 	public void ejectuarAccion() {
-		// TODO Auto-generated method stub
-
+		Personaje personaje = (Personaje) ejecutor;
+		personaje.moverseConEstrategia(direccion);
 	}
 
 }
