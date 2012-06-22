@@ -1,11 +1,18 @@
 package com.bombitarodriguez.dominio;
 
 import java.io.File;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import javax.swing.text.html.HTMLDocument.Iterator;
 
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
+import ar.uba.fi.algo3.titiritero.Posicionable;
+import ar.uba.fi.algo3.titiritero.vista.Imagen;
 import ar.uba.fi.algo3.titiritero.vista.KeyPressedController;
 
 import com.bombitarodriguez.controller.ControladorBomberman;
+import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.vista.VentanaPrincipal;
 import com.bombitarodriguez.vista.factory.VistaBloqueAcero;
@@ -22,7 +29,7 @@ import com.bombitarodriguez.vista.factory.VistaNivel;
 public class Juego {
 	
 	private static ControladorJuego controlador = new ControladorJuego(false);
-	private static Bombita bombita = new Bombita(new Integer(1));
+	private static Bombita bombita = null;
 
 	public static void main(String[] args){
 		
@@ -31,70 +38,59 @@ public class Juego {
 		ventanaPrincipal.setVisible(true);
 		ventanaPrincipal.setResizable(false);
 		ventanaPrincipal.addKeyListener(new KeyPressedController(controlador));
-
+		
+		/*Creamos el mapa*/
+		Juego.crearMapa(Constante.DIRECTORIO_MAPAS, 1);
+		
+		/*Obtener Bombita*/
+		bombita = Juego.obtenerBombita();		
 		
 		/*Controlador del jugador*/
 		controlador.agregarKeyPressObservador(new ControladorBomberman(bombita));
 		controlador.setSuperficieDeDibujo(ventanaPrincipal.getSuperficieDeDibujo());
 		
+		/*Asignamos las vistas de cada objeto del mapa al controlador*/
+		Juego.agregarDibujables();
 		
 		/* Vista del Jugador */
 		VistaBombita vistaBombita = new VistaBombita();
 		vistaBombita.setPosicionable(bombita);
 		
-		/* Vista del Nivel */
-		Nivel nivel = new Nivel(800,600);
-		VistaNivel vistaNivel = new VistaNivel();
-		vistaNivel.setPosicionable(nivel);
-		
-		/*Vista un bloque de Ladrillo*/
-		BloqueLadrillo bloqueLadrillo = new BloqueLadrillo();
-		VistaBloqueLadrillo vistaBloqueLadrillo = new VistaBloqueLadrillo();
-		vistaBloqueLadrillo.setPosicionable(bloqueLadrillo);
-		
-		/*Vista un bloque de Cemento*/
-		BloqueLadrillo bloqueCemento = new BloqueLadrillo();
-		VistaBloqueCemento vistaBloqueCemento = new VistaBloqueCemento();
-		vistaBloqueCemento.setPosicionable(bloqueCemento);
-		
-		/*Vista un bloque de Acero*/
-		BloqueAcero bloqueAcero = new BloqueAcero();
-		VistaBloqueAcero vistaBloqueAcero = new VistaBloqueAcero();
-		vistaBloqueAcero.setPosicionable(bloqueAcero);
-		
-		
-		Casillero casilleroBombita = new Casillero(new Posicion(1,1));
-		casilleroBombita.agregarObjeto(bombita);
-		
-		Casillero casilleroBloqueLadrillo = new Casillero(new Posicion(6,7));
-		casilleroBloqueLadrillo.agregarObjeto(bloqueLadrillo);
-		
-		Casillero casilleroBloqueCemento = new Casillero(new Posicion(3,1));
-		casilleroBloqueCemento.agregarObjeto(bloqueCemento);
-		
-		Casillero casilleroBloqueAcero= new Casillero(new Posicion(4,5));
-		casilleroBloqueAcero.agregarObjeto(bloqueAcero);
-				
-		Cecilio cecilio = new Cecilio();
-		Casillero casilleroCecilio = new Casillero(new Posicion(7,7));
-		casilleroCecilio.agregarObjeto(cecilio);
-		cecilio.setCasillero(casilleroCecilio);
-		
-		VistaBombita vistaCecilio = new VistaBombita();
-		vistaCecilio.setPosicionable(cecilio);
-		
-		controlador.agregarDibujable(vistaCecilio);
-		controlador.agregarDibujable(vistaBombita);
-		controlador.agregarDibujable(vistaBloqueLadrillo);
-		controlador.agregarDibujable(vistaBloqueCemento);
-		controlador.agregarDibujable(vistaBloqueAcero);
-				
-		controlador.agregarObjetoVivo(cecilio);
 		controlador.agregarObjetoVivo(bombita);
 		
-		Juego.crearMapa(Constante.DIRECTORIO_MAPAS, 1);
 		controlador.setIntervaloSimulacion(10);
 		controlador.comenzarJuego();
+	}
+
+	
+	/**
+	 * Se asume que cada vez que se crea el mapa,
+	 * bombita comienza el juego ubicado en el casillero (1,1)
+	 * Para esto es necesario que el Mapa ya este creado.
+	 */
+	private static Bombita obtenerBombita() {
+		Casillero casillero = Mapa.getMapa().getCasillero(new Posicion(1,1));
+		return (Bombita) casillero.getObjetos().get(0);
+	}
+
+	private static void agregarDibujables() {
+		
+		java.util.Iterator<Entry<Posicion, Casillero>> it = Mapa.getMapa().getMapaCasillero().entrySet().iterator();
+        Casillero casillero;
+        
+		while (it.hasNext()) {
+            Map.Entry e = (Map.Entry)it.next();
+            casillero = (Casillero) e.getValue();
+            
+            for(ObjetoReaccionable objeto : casillero.getObjetos()){
+
+            	Imagen vistaObjeto = objeto.vistaDeObjeto();
+            	vistaObjeto.setPosicionable((Posicionable) objeto);
+            	controlador.agregarDibujable(vistaObjeto);
+            	
+            }   
+		}
+		
 	}
 
 	private static void crearMapa(File f, Integer nivelJuego) {

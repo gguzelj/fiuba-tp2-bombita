@@ -1,5 +1,9 @@
 package com.bombitarodriguez.dominio;
 
+import com.bombitarodriguez.vista.factory.VistaBloqueAcero;
+
+import ar.uba.fi.algo3.titiritero.vista.Imagen;
+
 /**
  * 
  * @author Mauro
@@ -16,4 +20,10 @@ public class BloqueAcero extends Obstaculo {
 		}
 		return false;
 	}
+
+	@Override
+	public Imagen vistaDeObjeto() {
+		return new VistaBloqueAcero();
+	}
+
 }

@@ -1,6 +1,10 @@
 package com.bombitarodriguez.dominio;
 
+import ar.uba.fi.algo3.titiritero.vista.Imagen;
+
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
+import com.bombitarodriguez.vista.factory.VistaSalida;
+
 
 /**
  * 
@@ -80,5 +84,10 @@ public class Salida implements ObjetoReaccionable {
 	
 	public void destruirse(ObjetoReaccionable objeto){
 		
+	}
+
+	@Override
+	public Imagen vistaDeObjeto() {
+		return new VistaSalida();
 	}
 }

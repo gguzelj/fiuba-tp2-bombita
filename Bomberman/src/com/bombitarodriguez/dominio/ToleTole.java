@@ -1,6 +1,9 @@
 package com.bombitarodriguez.dominio;
 
+import ar.uba.fi.algo3.titiritero.vista.Imagen;
+
 import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.vista.factory.VistaToleTole;
 
 /**
  * 
@@ -19,6 +22,11 @@ public class ToleTole extends Bomba {
 		this.destruccion = Constante.DESTRUCCION_TOLETOLE;
 		this.retardo = retardo;
 		this.ondaExpansiva = Constante.ONDA_EXPANSIVA_TOLETOLE;
+	}
+
+	@Override
+	public Imagen vistaDeObjeto() {
+		return new VistaToleTole();
 	}
 	
 }

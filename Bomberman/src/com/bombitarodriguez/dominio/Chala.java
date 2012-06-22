@@ -1,6 +1,9 @@
 package com.bombitarodriguez.dominio;
 
+import ar.uba.fi.algo3.titiritero.vista.Imagen;
+
 import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.vista.factory.VistaChala;
 
 /**
  * 
@@ -35,5 +38,10 @@ public class Chala extends Articulo {
 		losLopezReggaeAlado.setVelocidad(Constante.VELOCIDAD_CORRE);
 		casillero.quitarObjeto(this);
 		return true;
+	}
+
+	@Override
+	public Imagen vistaDeObjeto() {
+		return new VistaChala();
 	}
 }

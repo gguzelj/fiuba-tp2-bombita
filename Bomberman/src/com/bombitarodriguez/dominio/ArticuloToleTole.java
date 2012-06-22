@@ -1,5 +1,9 @@
 package com.bombitarodriguez.dominio;
 
+import com.bombitarodriguez.vista.factory.VistaArticuloToleTole;
+
+import ar.uba.fi.algo3.titiritero.vista.Imagen;
+
 /**
  * 
  * @author Mauro
@@ -33,5 +37,10 @@ public class ArticuloToleTole extends Articulo {
 		losLopezReggaeAlado.setFactoryArma(new FactoryToleTole());
 		this.getCasillero().quitarObjeto(this);
 		return true;
+	}
+
+	@Override
+	public Imagen vistaDeObjeto() {
+		return new VistaArticuloToleTole();
 	}
 }
