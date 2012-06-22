@@ -1,7 +1,11 @@
 package com.bombitarodriguez.dominio;
 
+import ar.uba.fi.algo3.titiritero.vista.Imagen;
+
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.vista.factory.VistaBloqueAcero;
+import com.bombitarodriguez.vista.factory.VistaBloqueCemento;
 
 /**
  * 
@@ -29,4 +33,9 @@ public class BloqueCemento extends Obstaculo {
 		this.objeto = objeto;
 	}
 
+	@Override
+	public Imagen vistaDeObjeto() {
+		return new VistaBloqueCemento();
+	}
+	
 }

@@ -1,8 +1,12 @@
 package com.bombitarodriguez.dominio;
 
 import java.util.Iterator;
+
+import ar.uba.fi.algo3.titiritero.vista.Imagen;
+
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.vista.factory.VistaCecilio;
 
 /**
  * 
@@ -40,5 +44,10 @@ public class Cecilio extends Personaje {
 			permitePasar = iterador.next().reaccionarCon(this);
 		}
 		return permitePasar;
+	}
+
+	@Override
+	public Imagen vistaDeObjeto() {
+		return new VistaCecilio();
 	}
 }

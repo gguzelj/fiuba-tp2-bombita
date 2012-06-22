@@ -3,9 +3,12 @@ package com.bombitarodriguez.dominio;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.uba.fi.algo3.titiritero.vista.Imagen;
+
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Direccion;
+import com.bombitarodriguez.vista.factory.VistaExplosion;
 
 public class Explosion implements ObjetoReaccionable{
 
@@ -172,5 +175,9 @@ public class Explosion implements ObjetoReaccionable{
 
 	public void destruirse(ObjetoReaccionable objeto){
 		
+	}
+	@Override
+	public Imagen vistaDeObjeto() {
+		return new VistaExplosion();
 	}
 }

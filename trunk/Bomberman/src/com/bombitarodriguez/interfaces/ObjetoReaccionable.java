@@ -1,5 +1,7 @@
 package com.bombitarodriguez.interfaces;
 
+import ar.uba.fi.algo3.titiritero.vista.Imagen;
+
 import com.bombitarodriguez.dominio.*;
 
 /**
@@ -7,7 +9,7 @@ import com.bombitarodriguez.dominio.*;
  * @author Mauro
  *
  */
-public interface ObjetoReaccionable {
+public interface ObjetoReaccionable{
 
 	public Boolean reaccionarCon(Bombita bombita);
 	
@@ -38,5 +40,7 @@ public interface ObjetoReaccionable {
 	public Posicion getPosicion();
 	
 	public void setCasillero(Casillero casillero);
+	
+	public Imagen vistaDeObjeto();
 
 }

@@ -10,7 +10,7 @@ import com.bombitarodriguez.utils.Transformacion;
  * @author Mauro
  * 
  */
-public abstract class Obstaculo implements ObjetoReaccionable, Posicionable {
+public abstract class Obstaculo implements ObjetoReaccionable, Posicionable{
 
 	protected Casillero casillero;
 

@@ -9,5 +9,4 @@ public class VistaBloqueAcero extends Imagen{
 		this.setNombreArchivoImagen("/com/bombitarodriguez/vista/Bloque_Acero.png");
 		
 	}
-	
 }

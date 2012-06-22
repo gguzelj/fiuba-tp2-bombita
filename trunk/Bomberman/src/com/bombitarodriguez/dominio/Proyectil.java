@@ -1,6 +1,9 @@
 package com.bombitarodriguez.dominio;
 
+import ar.uba.fi.algo3.titiritero.vista.Imagen;
+
 import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.vista.factory.VistaProyectil;
 
 /**
  * 
@@ -43,5 +46,10 @@ public class Proyectil extends Arma {
 	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado) {
 		this.explotar();
 		return false;
+	}
+
+	@Override
+	public Imagen vistaDeObjeto() {
+		return new VistaProyectil();
 	}
 }

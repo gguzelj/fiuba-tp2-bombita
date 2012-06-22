@@ -1,5 +1,9 @@
 package com.bombitarodriguez.dominio;
 
+import com.bombitarodriguez.vista.factory.VistaTimer;
+
+import ar.uba.fi.algo3.titiritero.vista.Imagen;
+
 /**
  * 
  * @author Mauro
@@ -37,5 +41,10 @@ public class Timer extends Articulo {
 	
 	private Double aplicarRetardo(Personaje personaje) {
 		return (personaje.getFactoryArma().getRetardo() * 0.85);
+	}
+
+	@Override
+	public Imagen vistaDeObjeto() {
+		return new VistaTimer();
 	}
 }
