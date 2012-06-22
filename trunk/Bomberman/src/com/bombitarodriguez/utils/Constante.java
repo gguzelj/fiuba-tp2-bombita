@@ -38,5 +38,8 @@ public class Constante {
 	        f = new File(f.getPath() + "/resources/mapas");
 	        DIRECTORIO_MAPAS = f;
 	    }
+	
+	//
+	public static final Integer PIXELS_POR_CASILLERO = 50;
 
 }

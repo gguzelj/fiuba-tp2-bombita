@@ -63,25 +63,34 @@ public class Juego {
 		vistaBloqueAcero.setPosicionable(bloqueAcero);
 		
 		
-		Casillero casilleroBombita = new Casillero(new Posicion(10,0));
+		Casillero casilleroBombita = new Casillero(new Posicion(1,1));
 		casilleroBombita.agregarObjeto(bombita);
 		
-		Casillero casilleroBloqueLadrillo = new Casillero(new Posicion(10,50));
+		Casillero casilleroBloqueLadrillo = new Casillero(new Posicion(6,7));
 		casilleroBloqueLadrillo.agregarObjeto(bloqueLadrillo);
 		
-		Casillero casilleroBloqueCemento = new Casillero(new Posicion(10,150));
+		Casillero casilleroBloqueCemento = new Casillero(new Posicion(3,1));
 		casilleroBloqueCemento.agregarObjeto(bloqueCemento);
 		
-		Casillero casilleroBloqueAcero= new Casillero(new Posicion(10,250));
+		Casillero casilleroBloqueAcero= new Casillero(new Posicion(4,5));
 		casilleroBloqueAcero.agregarObjeto(bloqueAcero);
 				
-		controlador.agregarDibujable(vistaNivel);
+		Cecilio cecilio = new Cecilio();
+		Casillero casilleroCecilio = new Casillero(new Posicion(7,7));
+		casilleroCecilio.agregarObjeto(cecilio);
+		cecilio.setCasillero(casilleroCecilio);
+		
+		VistaBombita vistaCecilio = new VistaBombita();
+		vistaCecilio.setPosicionable(cecilio);
+		
+		controlador.agregarDibujable(vistaCecilio);
 		controlador.agregarDibujable(vistaBombita);
 		controlador.agregarDibujable(vistaBloqueLadrillo);
 		controlador.agregarDibujable(vistaBloqueCemento);
 		controlador.agregarDibujable(vistaBloqueAcero);
-		
-		
+				
+		controlador.agregarObjetoVivo(cecilio);
+		controlador.agregarObjetoVivo(bombita);
 		
 		Juego.crearMapa(Constante.DIRECTORIO_MAPAS, 1);
 		controlador.setIntervaloSimulacion(10);
@@ -96,27 +105,10 @@ public class Juego {
 		file = new File(f.getPath() + File.separatorChar
 	                + nombreContenedorMapa + File.separatorChar + nivelJuego.toString() + ".xml");
 		
-		Mapa.getMapa().crearMapa(f); 
+		Mapa.getMapa().crearMapa(file); 
 		
 		
 	}
-
-//	public void crearCasillerosVacios(Integer numColumnas) {
-//		Casillero casillero = null;
-//		Posicion posicion = null;
-//		
-//		for (int x = 1; x <= numColumnas; x++) {
-//
-//			for (int y = 1; y <= numColumnas; y++) {
-//				posicion = new Posicion(x, y);
-//				casillero = new Casillero(posicion);
-//				Mapa.getMapa().agregarCasillero(posicion, casillero);
-//			}
-//		}
-//
-//	}
-
-	
 }
 
 

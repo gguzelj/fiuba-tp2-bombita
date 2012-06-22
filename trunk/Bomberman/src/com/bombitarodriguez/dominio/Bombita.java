@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.utils.Direccion;
 
 /**
  * 
@@ -13,6 +14,8 @@ import com.bombitarodriguez.utils.Constante;
 public class Bombita extends Personaje{
 	
 	private Integer vida;
+	private Direccion direccionAMover = null;
+	private Boolean atacar = false;
 	
 	public Bombita(Integer vida) {
 		this.vida = vida;
@@ -73,6 +76,38 @@ public class Bombita extends Personaje{
 			permitePasar = iterador.next().reaccionarCon(this);
 		}
 		return permitePasar;
+	}
+
+	
+	/**
+	 * Guardo la direccion a la que tengo que moverme.
+	 * Cuando el juego ejecute el metodo vivir(), se ejecuta la accion de 
+	 * moverConEstrategia() 
+	 */
+	public void setDireccionAMover(Direccion direccionAMover){
+		this.direccionAMover  = direccionAMover;
+	}
+	
+	/**
+	 * Guardo la sentencia de atacar. Cuando el juego ejecute vivir(),
+	 * se llama al metodo usarArma()
+	 */
+	public void atacar(){
+		this.atacar = true;
+	}
+	
+	@Override
+	public void vivir() {
+		
+		if(this.direccionAMover != null){
+			this.moverseConEstrategia(direccionAMover);
+			direccionAMover = null;
+		}
+		
+		if(this.atacar == true){
+			this.usarArma();
+			this.atacar = false;
+		}
 	}
 
 }

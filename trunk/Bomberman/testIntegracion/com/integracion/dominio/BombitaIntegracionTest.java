@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import com.bombitarodriguez.dominio.*;
-import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.*;
 
 public class BombitaIntegracionTest {
@@ -542,9 +541,9 @@ public class BombitaIntegracionTest {
 		Arma arma = (Molotov) bombita.getCasillero().getObjetos().get(1);
 		arma.explotar();
 
-		Integer tamaño = Mapa.getMapa().getCasillero(posicionEnemigo)
+		Integer tamanio = Mapa.getMapa().getCasillero(posicionEnemigo)
 				.getObjetos().size();
-		assertEquals(tamaño, new Integer(0));
+		assertEquals(tamanio, new Integer(0));
 
 	}
 		
@@ -621,13 +620,13 @@ public class BombitaIntegracionTest {
 
 		arma.explotar();
 
-		Integer tamaño = Mapa.getMapa().getCasillero(posicionEnemigo)
+		Integer tamanio = Mapa.getMapa().getCasillero(posicionEnemigo)
 				.getObjetos().size();
-		assertEquals(tamaño, new Integer(0));
+		assertEquals(tamanio, new Integer(0));
 
-		Integer tamaño2 = Mapa.getMapa().getCasillero(posicionEnemigo2)
+		Integer tamanio2 = Mapa.getMapa().getCasillero(posicionEnemigo2)
 				.getObjetos().size();
-		assertEquals(tamaño2, new Integer(0));
+		assertEquals(tamanio2, new Integer(0));
 
 	}
 		
@@ -666,13 +665,13 @@ public class BombitaIntegracionTest {
 
 		arma.explotar();
 
-		Integer tamaño = Mapa.getMapa().getCasillero(posicionEnemigo)
+		Integer tamanio = Mapa.getMapa().getCasillero(posicionEnemigo)
 				.getObjetos().size();
-		assertEquals(tamaño, new Integer(0));
+		assertEquals(tamanio, new Integer(0));
 
-		Integer tamaño2 = Mapa.getMapa().getCasillero(posicionEnemigo2)
+		Integer tamanio2 = Mapa.getMapa().getCasillero(posicionEnemigo2)
 				.getObjetos().size();
-		assertEquals(tamaño2, new Integer(0));
+		assertEquals(tamanio2, new Integer(0));
 
 	}
 		/**
@@ -713,14 +712,14 @@ public class BombitaIntegracionTest {
 
 		LosLopezReggae enemigo = (LosLopezReggae) Mapa.getMapa()
 				.getCasillero(posicionEnemigo).getObjetos().get(0);
-		Integer tamaño = Mapa.getMapa().getCasillero(posicionEnemigo)
+		Integer tamanio = Mapa.getMapa().getCasillero(posicionEnemigo)
 				.getObjetos().size();
-		assertEquals(tamaño, new Integer(1));
+		assertEquals(tamanio, new Integer(1));
 		assertEquals(enemigo.getResistencia(), new Integer(5));
 
-		Integer tamaño2 = Mapa.getMapa().getCasillero(posicionEnemigo2)
+		Integer tamanio2 = Mapa.getMapa().getCasillero(posicionEnemigo2)
 				.getObjetos().size();
-		assertEquals(tamaño2, new Integer(0));
+		assertEquals(tamanio2, new Integer(0));
 
 	}
 	/**
@@ -756,7 +755,7 @@ public class BombitaIntegracionTest {
 	}
 	
 	/**
-	 * BOMBITA Planta la bomba, se mueve un casillero y muere por la explosión.
+	 * BOMBITA Planta la bomba, se mueve un casillero y muere por la explosiï¿½n.
 	 */
 
 		@Test
