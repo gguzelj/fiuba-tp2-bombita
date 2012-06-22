@@ -1,5 +1,7 @@
 package com.bombitarodriguez.dominio;
 
+import ar.uba.fi.algo3.titiritero.Posicionable;
+
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 
 /**
@@ -7,7 +9,7 @@ import com.bombitarodriguez.interfaces.ObjetoReaccionable;
  * @author Mauro
  * 
  */
-public abstract class Obstaculo implements ObjetoReaccionable {
+public abstract class Obstaculo implements ObjetoReaccionable, Posicionable {
 
 	protected Casillero casillero;
 
@@ -126,5 +128,15 @@ public abstract class Obstaculo implements ObjetoReaccionable {
 	 */
 	public void quitarObjeto() {
 		objeto = null;
+	}
+	
+	@Override
+	public int getX() {
+		return this.getPosicion().getPosX();
+	}
+
+	@Override
+	public int getY() {
+		return this.getPosicion().getPosY();
 	}
 }

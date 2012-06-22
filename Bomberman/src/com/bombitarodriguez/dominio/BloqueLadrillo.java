@@ -3,15 +3,12 @@ package com.bombitarodriguez.dominio;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
 
-import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
-import fiuba.algo3.titiritero.modelo.ObjetoVivo;
-
 /**
  * 
  * @author Mauro
  *
  */
-public class BloqueLadrillo extends Obstaculo implements ObjetoVivo, ObjetoPosicionable {
+public class BloqueLadrillo extends Obstaculo{
 
 	public BloqueLadrillo(){
 		this.objeto = null;
@@ -30,24 +27,6 @@ public class BloqueLadrillo extends Obstaculo implements ObjetoVivo, ObjetoPosic
 	 */
 	public void agregarObjeto(ObjetoReaccionable objeto) {
 		this.objeto = objeto;
-	}
-
-	@Override
-	public void vivir() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int getX() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getY() {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 	
 }

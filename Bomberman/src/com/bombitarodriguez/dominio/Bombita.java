@@ -1,18 +1,16 @@
 package com.bombitarodriguez.dominio;
 
 import java.util.Iterator;
+
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
-
-import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
-import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 
 /**
  * 
  * @author Mauro
  *
  */
-public class Bombita extends Personaje implements ObjetoVivo, ObjetoPosicionable {
+public class Bombita extends Personaje{
 	
 	private Integer vida;
 	
