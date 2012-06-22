@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import ar.uba.fi.algo3.titiritero.Posicionable;
+
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.Armado;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
@@ -11,16 +13,13 @@ import com.bombitarodriguez.interfaces.StrategyMovimiento;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
 
-import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
-import fiuba.algo3.titiritero.modelo.ObjetoVivo;
-
 
 /**
  * 
  * @author Mauro
  *
  */
-public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyMovimiento, ObjetoVivo, ObjetoPosicionable{
+public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyMovimiento, Posicionable{
 	
 	protected Casillero casilleroContenedor;
 	
@@ -153,28 +152,31 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 	
 	@Override
 	public void moverseConEstrategia(Direccion direccion) {
-		Posicion nuevaPosicion;
-		try {
-			nuevaPosicion = Mapa.getMapa().getNuevaPosicion(this.getPosicion(), direccion);
-		} catch (FueraDelMapaException e) {
-			// No se relaciona con los objetos del mapa
-			return;
-		}
-		Casillero casilleroProximo = Mapa.getMapa().getCasillero(nuevaPosicion);
-		// Creo una copia de la lista sobre la cual voy a iterar, ya que se puede modificar
-		List<ObjetoReaccionable> copiaObjetosCasillero = new ArrayList<ObjetoReaccionable>();
-		copiaObjetosCasillero.addAll(casilleroProximo.getObjetos());
-		Iterator<ObjetoReaccionable> iterador = copiaObjetosCasillero.iterator();
-		if (reaccionarConTodos(iterador)) {
-			Mapa.getMapa().reposicionar(this, casilleroProximo);
-		}
+		
+//		this.setDireccion(direccion);
+		
+//		Posicion nuevaPosicion;
+//		try {
+//			nuevaPosicion = Mapa.getMapa().getNuevaPosicion(this.getPosicion(), direccion);
+//		} catch (FueraDelMapaException e) {
+//			// No se relaciona con los objetos del mapa
+//			return;
+//		}
+//		Casillero casilleroProximo = Mapa.getMapa().getCasillero(nuevaPosicion);
+//		// Creo una copia de la lista sobre la cual voy a iterar, ya que se puede modificar
+//		List<ObjetoReaccionable> copiaObjetosCasillero = new ArrayList<ObjetoReaccionable>();
+//		copiaObjetosCasillero.addAll(casilleroProximo.getObjetos());
+//		Iterator<ObjetoReaccionable> iterador = copiaObjetosCasillero.iterator();
+//		if (reaccionarConTodos(iterador)) {
+//			Mapa.getMapa().reposicionar(this, casilleroProximo);
+//		}
 	}
 	
-	@Override
-	public void vivir() {
-		// TODO Auto-generated method stub
-		
-	}
+//	@Override
+//	public void vivir() {
+//		// TODO Auto-generated method stub
+//		
+//	}
 
 	@Override
 	public int getX() {
