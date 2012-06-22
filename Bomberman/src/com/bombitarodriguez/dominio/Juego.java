@@ -8,6 +8,8 @@ import ar.uba.fi.algo3.titiritero.vista.KeyPressedController;
 import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.vista.VentanaPrincipal;
+import com.bombitarodriguez.vista.factory.VistaBloqueAcero;
+import com.bombitarodriguez.vista.factory.VistaBloqueCemento;
 import com.bombitarodriguez.vista.factory.VistaBloqueLadrillo;
 import com.bombitarodriguez.vista.factory.VistaBombita;
 import com.bombitarodriguez.vista.factory.VistaNivel;
@@ -50,15 +52,35 @@ public class Juego {
 		VistaBloqueLadrillo vistaBloqueLadrillo = new VistaBloqueLadrillo();
 		vistaBloqueLadrillo.setPosicionable(bloqueLadrillo);
 		
-		Casillero casilleroBombita = new Casillero(new Posicion(1,1));
+		/*Vista un bloque de Cemento*/
+		BloqueLadrillo bloqueCemento = new BloqueLadrillo();
+		VistaBloqueCemento vistaBloqueCemento = new VistaBloqueCemento();
+		vistaBloqueCemento.setPosicionable(bloqueCemento);
+		
+		/*Vista un bloque de Acero*/
+		BloqueAcero bloqueAcero = new BloqueAcero();
+		VistaBloqueAcero vistaBloqueAcero = new VistaBloqueAcero();
+		vistaBloqueAcero.setPosicionable(bloqueAcero);
+		
+		
+		Casillero casilleroBombita = new Casillero(new Posicion(10,0));
 		casilleroBombita.agregarObjeto(bombita);
 		
-		Casillero casilleroBloqueLadrillo = new Casillero(new Posicion(40,29));
+		Casillero casilleroBloqueLadrillo = new Casillero(new Posicion(10,50));
 		casilleroBloqueLadrillo.agregarObjeto(bloqueLadrillo);
 		
+		Casillero casilleroBloqueCemento = new Casillero(new Posicion(10,150));
+		casilleroBloqueCemento.agregarObjeto(bloqueCemento);
+		
+		Casillero casilleroBloqueAcero= new Casillero(new Posicion(10,250));
+		casilleroBloqueAcero.agregarObjeto(bloqueAcero);
+				
 		controlador.agregarDibujable(vistaNivel);
 		controlador.agregarDibujable(vistaBombita);
 		controlador.agregarDibujable(vistaBloqueLadrillo);
+		controlador.agregarDibujable(vistaBloqueCemento);
+		controlador.agregarDibujable(vistaBloqueAcero);
+		
 		
 		
 //		Juego.crearMapa(Constante.DIRECTORIO_MAPAS, 1);
