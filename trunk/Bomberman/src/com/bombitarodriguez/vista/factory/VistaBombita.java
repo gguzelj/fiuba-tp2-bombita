@@ -7,8 +7,4 @@ public class VistaBombita extends Imagen {
 	public VistaBombita(){
 		this.setNombreArchivoImagen("/com/bombitarodriguez/vista/imagen.png");
 	}
-
-//	public VistaBombita() throws IOException{
-//	this.setNombreArchivoImagen("/imagen.png");
-//}
 }

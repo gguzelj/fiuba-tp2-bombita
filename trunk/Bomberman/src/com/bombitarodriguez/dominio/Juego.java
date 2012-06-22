@@ -83,7 +83,7 @@ public class Juego {
 		
 		
 		
-//		Juego.crearMapa(Constante.DIRECTORIO_MAPAS, 1);
+		Juego.crearMapa(Constante.DIRECTORIO_MAPAS, 1);
 		controlador.setIntervaloSimulacion(10);
 		controlador.comenzarJuego();
 	}
