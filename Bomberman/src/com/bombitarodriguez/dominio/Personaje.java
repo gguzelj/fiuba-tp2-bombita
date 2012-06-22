@@ -3,7 +3,9 @@ package com.bombitarodriguez.dominio;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
+import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
@@ -12,6 +14,7 @@ import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.interfaces.StrategyMovimiento;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
+import com.bombitarodriguez.utils.Transformacion;
 
 
 /**
@@ -19,7 +22,7 @@ import com.bombitarodriguez.utils.Direccion;
  * @author Mauro
  *
  */
-public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyMovimiento, Posicionable{
+public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyMovimiento, Posicionable, ObjetoVivo{
 	
 	protected Casillero casilleroContenedor;
 	
@@ -153,38 +156,54 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 	@Override
 	public void moverseConEstrategia(Direccion direccion) {
 		
-//		this.setDireccion(direccion);
-		
-//		Posicion nuevaPosicion;
-//		try {
-//			nuevaPosicion = Mapa.getMapa().getNuevaPosicion(this.getPosicion(), direccion);
-//		} catch (FueraDelMapaException e) {
-//			// No se relaciona con los objetos del mapa
-//			return;
-//		}
-//		Casillero casilleroProximo = Mapa.getMapa().getCasillero(nuevaPosicion);
-//		// Creo una copia de la lista sobre la cual voy a iterar, ya que se puede modificar
-//		List<ObjetoReaccionable> copiaObjetosCasillero = new ArrayList<ObjetoReaccionable>();
-//		copiaObjetosCasillero.addAll(casilleroProximo.getObjetos());
-//		Iterator<ObjetoReaccionable> iterador = copiaObjetosCasillero.iterator();
-//		if (reaccionarConTodos(iterador)) {
-//			Mapa.getMapa().reposicionar(this, casilleroProximo);
-//		}
+		Posicion nuevaPosicion;
+		try {
+			nuevaPosicion = Mapa.getMapa().getNuevaPosicion(this.getPosicion(), direccion);
+		} catch (FueraDelMapaException e) {
+			// No se relaciona con los objetos del mapa
+			return;
+		}
+		Casillero casilleroProximo = Mapa.getMapa().getCasillero(nuevaPosicion);
+		// Creo una copia de la lista sobre la cual voy a iterar, ya que se puede modificar
+		List<ObjetoReaccionable> copiaObjetosCasillero = new ArrayList<ObjetoReaccionable>();
+		copiaObjetosCasillero.addAll(casilleroProximo.getObjetos());
+		Iterator<ObjetoReaccionable> iterador = copiaObjetosCasillero.iterator();
+		if (reaccionarConTodos(iterador)) {
+			Mapa.getMapa().reposicionar(this, casilleroProximo);
+		}
 	}
 	
-//	@Override
-//	public void vivir() {
-//		// TODO Auto-generated method stub
-//		
-//	}
+	@Override
+	public void vivir() {
+		Integer random = new Random().nextInt(5);
+		
+		switch(random){
+		case 1:
+			this.moverseConEstrategia(Direccion.DERECHA);
+			break;
+		case 2:
+			this.moverseConEstrategia(Direccion.IZQUIERDA);
+			break;
+		case 3:
+			this.moverseConEstrategia(Direccion.ARRIBA);
+			break;
+		case 4:
+			this.moverseConEstrategia(Direccion.ABAJO);
+			break;
+		case 5:
+			this.usarArma();
+			break;
+		}
+		
+	}
 
 	@Override
 	public int getX() {
-		return getPosicion().getPosX();
+		return Transformacion.transformarAPixeles(this.getPosicion().getPosX());
 	}
 
 	@Override
 	public int getY() {	
-		return getPosicion().getPosY();
+		return Transformacion.transformarAPixeles(this.getPosicion().getPosY());
 	}
 }

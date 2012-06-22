@@ -3,6 +3,7 @@ package com.bombitarodriguez.dominio;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
+import com.bombitarodriguez.utils.Transformacion;
 
 /**
  * 
@@ -132,11 +133,11 @@ public abstract class Obstaculo implements ObjetoReaccionable, Posicionable {
 	
 	@Override
 	public int getX() {
-		return this.getPosicion().getPosX();
+		return Transformacion.transformarAPixeles(casillero.getPosicion().getPosX());
 	}
 
 	@Override
 	public int getY() {
-		return this.getPosicion().getPosY();
+		return Transformacion.transformarAPixeles(casillero.getPosicion().getPosY());
 	}
 }

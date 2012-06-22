@@ -1,13 +1,16 @@
 package com.bombitarodriguez.dominio;	
 
+import ar.uba.fi.algo3.titiritero.Posicionable;
+
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
+import com.bombitarodriguez.utils.Transformacion;
 
 /**
  * 
  * @author Mauro
  *
  */
-public abstract class Articulo implements ObjetoReaccionable {
+public abstract class Articulo implements ObjetoReaccionable, Posicionable {
 
 	protected Casillero casillero;
 	
@@ -90,4 +93,16 @@ public abstract class Articulo implements ObjetoReaccionable {
 		this.getCasillero().quitarObjeto(this);
 		return true;
 	}
+	
+	@Override
+	public int getX() {
+		return Transformacion.transformarAPixeles(casillero.getPosicion().getPosX());
+	}
+
+	@Override
+	public int getY() {
+		return Transformacion.transformarAPixeles(casillero.getPosicion().getPosY());
+	}
+	
+	
 }
