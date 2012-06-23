@@ -25,16 +25,20 @@ public class VentanaPrincipal extends JFrame {
 	 * Create the application.
 	 * @throws IOException 
 	 */
-	public VentanaPrincipal(){
+	public VentanaPrincipal(int alto, int ancho){
 		super();
-		VentanaPrincipal.ancho = 800;
-		VentanaPrincipal.alto = 600;
+		VentanaPrincipal.ancho = alto;
+		VentanaPrincipal.alto = ancho;
 
 		try {
 			initialize();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		this.setVisible(true);
+		this.setResizable(true);
+		
 	}
 
 	/**
@@ -77,6 +81,7 @@ public class VentanaPrincipal extends JFrame {
 			panel.setLayout(new GridBagLayout());
 			panel.setBounds(new Rectangle(0, 0, VentanaPrincipal.ancho, VentanaPrincipal.alto));
 			panel.setBackground(new Color(0, 0, 0));
+			panel.setForeground(new Color(0,255,0));
 		}
 		return panel;
 	}
