@@ -11,6 +11,10 @@ import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import com.bombitarodriguez.AndarDeBombita;
+
+import ar.uba.fi.algo3.titiritero.SuperficieDeDibujo;
 import ar.uba.fi.algo3.titiritero.vista.Panel;
 
 public class VentanaPrincipal extends JFrame {
@@ -18,7 +22,7 @@ public class VentanaPrincipal extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private static int ancho;
 	private static int alto;
-	private JPanel jContentPane = null;
+	private JPanel jContentPanel = null;
 	private Panel panel = null;
 
 	/**
@@ -29,7 +33,8 @@ public class VentanaPrincipal extends JFrame {
 		super();
 		VentanaPrincipal.ancho = alto;
 		VentanaPrincipal.alto = ancho;
-
+		
+		
 		try {
 			initialize();
 		} catch (IOException e) {
@@ -47,12 +52,11 @@ public class VentanaPrincipal extends JFrame {
 	 * @throws IOException
 	 */
 	private void initialize() throws IOException {
-
+		
 		this.setSize(VentanaPrincipal.ancho, VentanaPrincipal.alto);
 		this.setBackground(new Color(0, 0, 0));
-		this.setContentPane(getJContentPane());
+		this.setContentPane(getSuperficieDeDibujo());
 		this.setTitle("Bombita Rodriguez");
-				
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 			@Override
 			public void windowClosing(java.awt.event.WindowEvent e) {
@@ -64,14 +68,15 @@ public class VentanaPrincipal extends JFrame {
 		});
 	}
 
-	private JPanel getJContentPane(){
-		if (jContentPane == null)
+	private JPanel getJContentPanel(){
+		if (jContentPanel == null)
 		{
-			jContentPane = new JPanel();
-			jContentPane.setLayout(null);
-			jContentPane.add(getSuperficieDeDibujo(), null);
+		
+			jContentPanel.setLayout(null);
+			jContentPanel.add(getSuperficieDeDibujo(), null);
+			
 		}
-		return jContentPane;
+		return jContentPanel;
 	}
 	
 	public Panel getSuperficieDeDibujo(){
@@ -85,4 +90,6 @@ public class VentanaPrincipal extends JFrame {
 		}
 		return panel;
 	}
+	
+	
 }

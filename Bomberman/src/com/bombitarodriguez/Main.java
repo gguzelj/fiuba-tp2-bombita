@@ -15,10 +15,9 @@ public class Main {
 		StringBuilder nombreContenedorMapa = new StringBuilder();
 		nombreContenedorMapa.append(nivelJuego.toString());
 		nombreContenedorMapa.append(".mapa");
-		File f = new File(Constante.DIRECTORIO_MAPAS.getPath() + File.separatorChar
-	                + nombreContenedorMapa + File.separatorChar + nivelJuego.toString() + ".xml");
+		
 		Mapa.getMapa().crearCasillerosVacios(10);
-		Mapa.getMapa().crearMapa(f); 
+		Mapa.getMapa().crearMapa(null); 
 	}
 
 }

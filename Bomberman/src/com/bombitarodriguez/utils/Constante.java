@@ -29,16 +29,7 @@ public class Constante {
 	public static final Integer DESTRUCCION_PROYECTIL = 10;	//lista con los nombres de los mapa
 	public static final Integer PRIMER_MAPA = 1;
 	//directorio de los mapas
-	public static File DIRECTORIO_MAPAS;
-	static{
-	        String path = Constante.class.getProtectionDomain()
-	                        .getCodeSource().getLocation().getPath();
-	        File f = new File(path);
-	        f = f.getParentFile();
-	        f = new File(f.getPath() + "/resources/mapas");
-	        DIRECTORIO_MAPAS = f;
-	    }
-	
+	public static String DIRECTORIO_MAPAS = "/resources/mapas";
 	//
 	public static final Integer PIXELS_POR_CASILLERO = 50;
 
