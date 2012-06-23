@@ -12,17 +12,17 @@ import javax.swing.JFrame;
  */
 public class MainFrame extends JFrame {
 
-    private StagePanel stagePanel = new StagePanel();
-
-    public MainFrame() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(320, 330);
-        setLocationRelativeTo(null);
-        add(stagePanel);
-        addKeyListener(stagePanel);
-    }
-
-    public static void main(String[] args) {
-        new MainFrame().setVisible(true);
-    }
+//    private StagePanel stagePanel = new StagePanel();
+//
+//    public MainFrame() {
+//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        setSize(320, 330);
+//        setLocationRelativeTo(null);
+//        add(stagePanel);
+//        addKeyListener(stagePanel);
+//    }
+//
+//    public static void main(String[] args) {
+//        new MainFrame().setVisible(true);
+//    }
 }

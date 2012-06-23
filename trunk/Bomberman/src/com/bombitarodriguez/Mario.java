@@ -10,6 +10,7 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 
 import com.bombitarodriguez.utils.ImageUtils;
+import com.test.utils.PathFile;
 
 /**
  *
@@ -22,7 +23,7 @@ public class Mario {
     public Mario() {
 
         BufferedImage imgFromUrl = null;
-        BufferedImage imgFromResources = ImageUtils.loadImage(getClass().getResource("/resources/caminarBombita.png").getPath());
+        BufferedImage imgFromResources = ImageUtils.loadImage(PathFile.getPathActual("/resources/caminarBombita.png"));
 
         try {
 //            imgFromUrl = ImageIO.read(new URL("http://java-friki-tutorials.googlecode.com/svn/trunk/SpriteAnimation/src/resources/mario.png"));

@@ -15,6 +15,7 @@ import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Transformacion;
 import com.bombitarodriguez.vista.VentanaPrincipal;
 import com.bombitarodriguez.vista.factory.VistaBombita;
+import com.test.utils.PathFile;
 
 /**
  * 
@@ -29,7 +30,7 @@ public class Juego {
 	public static void main(String[] args){
 		
 		/*Creamos el mapa*/
-		Juego.crearMapa(Constante.DIRECTORIO_MAPAS, 1);
+		Juego.crearMapa(1);
 		
 		/*Obtener Bombita*/
 		bombita = Juego.obtenerBombita();	
@@ -37,8 +38,8 @@ public class Juego {
 		/*Ventana que encapsula al Juego*/
 		Integer dimensionDelMapa =  Transformacion.transformarAPixeles(Mapa.getDimension() + 2);
 		
-		VentanaPrincipal ventanaPrincipal;
-		ventanaPrincipal= new VentanaPrincipal(dimensionDelMapa,dimensionDelMapa);
+		
+		VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(dimensionDelMapa, dimensionDelMapa);
 		ventanaPrincipal.addKeyListener(new KeyPressedController(controlador));
 		
 		/*Controlador del jugador*/
@@ -90,15 +91,14 @@ public class Juego {
 		
 	}
 
-	private static void crearMapa(File f, Integer nivelJuego) {
+	private static void crearMapa(Integer nivelJuego) {
 		StringBuilder nombreContenedorMapa = new StringBuilder();
 		nombreContenedorMapa.append(nivelJuego.toString());
 		nombreContenedorMapa.append(".mapa");
-		File file = Constante.DIRECTORIO_MAPAS;
-		file = new File(f.getPath() + File.separatorChar
-	                + nombreContenedorMapa + File.separatorChar + nivelJuego.toString() + ".xml");
+		String filePath = PathFile.getPathActual(Constante.DIRECTORIO_MAPAS, File.separatorChar + nombreContenedorMapa.toString(), 
+				File.separatorChar + nivelJuego.toString() + ".xml");
 		
-		Mapa.getMapa().crearMapa(file); 
+		Mapa.getMapa().crearMapa(new File(filePath)); 
 		
 		
 	}

@@ -120,7 +120,7 @@ public class ControladorBomberman extends ControladorJuego {
      }
 	
 	public void setBombita(Bombita bombita2) {
-		// TODO Auto-generated method stub
+		bombita = bombita2;
 		
 	}
 
