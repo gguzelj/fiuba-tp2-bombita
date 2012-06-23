@@ -77,9 +77,9 @@ public class VentanaPrincipal extends JFrame {
 	public Panel getSuperficieDeDibujo(){
 		if (panel == null) 
 		{
-			panel = new Panel(900, 800);
+			panel = new Panel(800, 800);
 			panel.setLayout(new GridBagLayout());
-			panel.setBounds(new Rectangle(0, 0, VentanaPrincipal.ancho, VentanaPrincipal.alto));
+			panel.setBounds(new Rectangle(20, 20, VentanaPrincipal.ancho, VentanaPrincipal.alto));
 			panel.setBackground(new Color(0, 0, 0));
 			panel.setForeground(new Color(0,255,0));
 		}

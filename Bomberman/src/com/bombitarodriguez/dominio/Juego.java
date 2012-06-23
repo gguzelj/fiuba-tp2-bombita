@@ -4,23 +4,17 @@ import java.io.File;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.swing.text.html.HTMLDocument.Iterator;
-
-import ar.uba.fi.algo3.titiritero.ControladorJuego;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 import ar.uba.fi.algo3.titiritero.vista.KeyPressedController;
 
 import com.bombitarodriguez.controller.ControladorBomberman;
+import com.bombitarodriguez.controller.ControladorBombita;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Transformacion;
 import com.bombitarodriguez.vista.VentanaPrincipal;
-import com.bombitarodriguez.vista.factory.VistaBloqueAcero;
-import com.bombitarodriguez.vista.factory.VistaBloqueCemento;
-import com.bombitarodriguez.vista.factory.VistaBloqueLadrillo;
 import com.bombitarodriguez.vista.factory.VistaBombita;
-import com.bombitarodriguez.vista.factory.VistaNivel;
 
 /**
  * 
@@ -29,7 +23,7 @@ import com.bombitarodriguez.vista.factory.VistaNivel;
  */
 public class Juego {
 	
-	private static ControladorJuego controlador = new ControladorJuego(false);
+	private static ControladorBomberman controlador = new ControladorBomberman(false);
 	private static Bombita bombita = null;
 
 	public static void main(String[] args){
@@ -48,7 +42,7 @@ public class Juego {
 		ventanaPrincipal.addKeyListener(new KeyPressedController(controlador));
 		
 		/*Controlador del jugador*/
-		controlador.agregarKeyPressObservador(new ControladorBomberman(bombita));
+		controlador.agregarKeyPressObservador(new ControladorBombita(bombita));
 		controlador.setSuperficieDeDibujo(ventanaPrincipal.getSuperficieDeDibujo());
 		
 		/*Asignamos las vistas de cada objeto del mapa al controlador*/
@@ -58,6 +52,7 @@ public class Juego {
 		VistaBombita vistaBombita = new VistaBombita();
 		vistaBombita.setPosicionable(bombita);
 		
+		controlador.setBombita(bombita);
 		controlador.agregarObjetoVivo(bombita);
 		
 		controlador.setIntervaloSimulacion(10);
