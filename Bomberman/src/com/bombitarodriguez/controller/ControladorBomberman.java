@@ -1,7 +1,9 @@
 package com.bombitarodriguez.controller;
 
 
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
 import ar.uba.fi.algo3.titiritero.KeyPressedObservador;
@@ -9,7 +11,7 @@ import ar.uba.fi.algo3.titiritero.KeyPressedObservador;
 import com.bombitarodriguez.dominio.Bombita;
 import com.bombitarodriguez.utils.Direccion;
 
-public class ControladorBomberman implements KeyPressedObservador {
+public class ControladorBomberman implements KeyPressedObservador{
 
 	private final Bombita bombita;
 	
@@ -22,19 +24,19 @@ public class ControladorBomberman implements KeyPressedObservador {
 		switch (event.getKeyCode())
 		{
 			case KeyEvent.VK_DOWN:
-				bombita.moverseConEstrategia(Direccion.ABAJO);
+				bombita.setDireccionAMover(Direccion.ABAJO);
 				break;
 			
 			case KeyEvent.VK_LEFT:
-				bombita.moverseConEstrategia(Direccion.IZQUIERDA);
+				bombita.setDireccionAMover(Direccion.IZQUIERDA);
 				break;
 			
 			case KeyEvent.VK_UP:
-				bombita.moverseConEstrategia(Direccion.ARRIBA);
+				bombita.setDireccionAMover(Direccion.ARRIBA);
 				break;
 		
 			case KeyEvent.VK_RIGHT:
-				bombita.moverseConEstrategia(Direccion.DERECHA);
+				bombita.setDireccionAMover(Direccion.DERECHA);
 				break;
 			
 			case KeyEvent.VK_SPACE:
@@ -45,4 +47,6 @@ public class ControladorBomberman implements KeyPressedObservador {
 				break;
 		}
 	}
+
+	
 }

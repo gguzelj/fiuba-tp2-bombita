@@ -19,7 +19,16 @@ public class Mapa {
 	
 	static private Mapa mapa;
 	HashMap<Posicion, Casillero> mapaCasillero;
+	static private Integer dimension;
 	
+	public static Integer getDimension() {
+		return dimension;
+	}
+
+	public static void setDimension(Integer dimension) {
+		Mapa.dimension = dimension;
+	}
+
 	private Mapa() {
 		mapaCasillero = new HashMap<Posicion, Casillero>();
 	}
@@ -62,6 +71,10 @@ public class Mapa {
 	
 	public void crearMapa(File file) {
 		List<String> objetosACrear = Parser.parsearMapXML(file);
+		
+		//Durante la creacion del mapa, guardo su dimension
+		Mapa.setDimension(objetosACrear.size());
+		
 		crearCasillerosVacios(objetosACrear.size());
 		Integer coordenadaY = 0;
 		for (Integer y = 0; y < objetosACrear.size(); y ++) {
@@ -86,6 +99,7 @@ public class Mapa {
 	
 	private void crearObjetosEnElMapa(String[] objetosDeUnaFila, Integer y) {
 		Integer coordenadaX = 0;
+		
 		for (Integer x = 0; x < objetosDeUnaFila.length; x ++) {
 			Integer codigoObjeto = Integer.parseInt(objetosDeUnaFila[x]);
 			Casillero casillero = null;

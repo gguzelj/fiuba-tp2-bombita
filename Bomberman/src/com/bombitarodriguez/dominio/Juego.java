@@ -14,6 +14,7 @@ import ar.uba.fi.algo3.titiritero.vista.KeyPressedController;
 import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.utils.Transformacion;
 import com.bombitarodriguez.vista.VentanaPrincipal;
 import com.bombitarodriguez.vista.factory.VistaBloqueAcero;
 import com.bombitarodriguez.vista.factory.VistaBloqueCemento;
@@ -33,17 +34,18 @@ public class Juego {
 
 	public static void main(String[] args){
 		
-		/*Ventana que encapsula al Juego*/
-		VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
-		ventanaPrincipal.setVisible(true);
-		ventanaPrincipal.setResizable(false);
-		ventanaPrincipal.addKeyListener(new KeyPressedController(controlador));
-		
 		/*Creamos el mapa*/
 		Juego.crearMapa(Constante.DIRECTORIO_MAPAS, 1);
 		
 		/*Obtener Bombita*/
-		bombita = Juego.obtenerBombita();		
+		bombita = Juego.obtenerBombita();	
+		
+		/*Ventana que encapsula al Juego*/
+		Integer dimensionDelMapa =  Transformacion.transformarAPixeles(Mapa.getDimension() + 2);
+		
+		VentanaPrincipal ventanaPrincipal;
+		ventanaPrincipal= new VentanaPrincipal(dimensionDelMapa,dimensionDelMapa);
+		ventanaPrincipal.addKeyListener(new KeyPressedController(controlador));
 		
 		/*Controlador del jugador*/
 		controlador.agregarKeyPressObservador(new ControladorBomberman(bombita));
