@@ -18,7 +18,7 @@ import com.bombitarodriguez.dominio.LosLopezReggaeAlado;
 import com.bombitarodriguez.dominio.Proyectil;
 import com.bombitarodriguez.dominio.Timer;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
-import com.bombitarodriguez.interfaces.VistaInicializacion;
+
 
 public class VistaAbstracta extends Imagen{
 	

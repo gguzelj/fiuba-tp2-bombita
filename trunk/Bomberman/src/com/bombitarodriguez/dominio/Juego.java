@@ -1,10 +1,12 @@
 package com.bombitarodriguez.dominio;
 
 import java.io.File;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import ar.uba.fi.algo3.titiritero.Posicionable;
+
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 import ar.uba.fi.algo3.titiritero.vista.KeyPressedController;
 
@@ -12,11 +14,13 @@ import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.controller.ControladorBombita;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.menues.MenuPrincipal;
+import com.bombitarodriguez.persistencia.PersistenciaPartidaXML;
 import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.utils.PathFile;
 import com.bombitarodriguez.utils.Transformacion;
 import com.bombitarodriguez.vista.VentanaPrincipal;
 import com.bombitarodriguez.vista.factory.dominio.VistaAbstracta;
-import com.test.utils.PathFile;
+
 
 /**
  * 
@@ -33,7 +37,7 @@ public class Juego {
 	public void iniciarJuego() {
 		
 		/*Creamos la ventana principal del juego*/
-		VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(this, 500,500);
+		VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(this, Constante.DIMENSION_VENTANA, Constante.DIMENSION_VENTANA);
 		ventanaPrincipal.addKeyListener(new KeyPressedController(controlador));
 
 		/*Creamos el menu principal del juego*/
@@ -54,7 +58,7 @@ public class Juego {
 		this.crearMapa(nivel);
 		
 		/*Obtenemos las dimensiones del mapa que creamos*/
-		Integer dimensionDelMapa = Transformacion.transformarAPixeles(Mapa.getDimension() + 2);
+		Integer dimensionDelMapa = Transformacion.transformarAPixeles(10 + 2);
 		this.ventanaPrincipal.setSize(dimensionDelMapa, dimensionDelMapa);
 		
 		/*Obtener Bombita*/
@@ -66,7 +70,7 @@ public class Juego {
 		/*Asignamos las vistas de cada objeto del mapa al controlador*/
 		this.agregarDibujables();
 		
-		controlador.setBombita(bombita);
+
 		controlador.agregarObjetoVivo(bombita);
 	}
 	/**
@@ -81,15 +85,13 @@ public class Juego {
 
 	private void agregarDibujables() {
 		
-		java.util.Iterator<Entry<Posicion, Casillero>> it = Mapa.getMapa().getMapaCasillero().entrySet().iterator();
+		Iterator<Entry<Posicion, Casillero>> it = Mapa.getMapa().getEntryIterator();
         Casillero casillero;
         
 		while (it.hasNext()) {
-            Map.Entry e = (Map.Entry)it.next();
+			Entry e = (Entry)it.next();
             casillero = (Casillero) e.getValue();
-            
             for(ObjetoReaccionable objeto : casillero.getObjetos()){
-
 //            	Imagen vistaObjeto = objeto.vistaDeObjeto();
 //            	vistaObjeto.setPosicionable((Posicionable) objeto);
 //            	this.controlador.agregarDibujable(vistaObjeto);
@@ -107,9 +109,19 @@ public class Juego {
 		
 		String filePath = PathFile.getPathActual(Constante.DIRECTORIO_MAPAS, File.separatorChar + nombreContenedorMapa.toString(), 
                 File.separatorChar + nivelJuego.toString() + ".xml");
-
+		
 		Mapa.getMapa().crearMapa(new File(filePath));
-			
+
+	}
+	
+	private void guardarPartida() {
+		PersistenciaPartidaXML persistencia = new PersistenciaPartidaXML(Constante.NOMBRE_ARCHIVO_PARTIDA);
+		persistencia.persistirPartida();
+	}
+	
+	private void cargarPartida() {
+		PersistenciaPartidaXML persistencia = new PersistenciaPartidaXML(Constante.NOMBRE_ARCHIVO_PARTIDA);
+		Mapa.setMapa(persistencia.cargarDominioDeXML());
 	}
 
 	public VentanaPrincipal getVentanaPrincipal() {

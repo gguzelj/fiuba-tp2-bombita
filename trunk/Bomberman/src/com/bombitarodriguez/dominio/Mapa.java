@@ -2,11 +2,15 @@ package com.bombitarodriguez.dominio;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
 
 
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
+import com.bombitarodriguez.persistencia.PersistenciaPartidaXML;
+import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
 import com.bombitarodriguez.utils.Parser;
 
@@ -81,6 +85,11 @@ public class Mapa {
 			String[] objetosDeUnaFila = Parser.parsearLista(objetosACrear.get(y));
 			crearObjetosEnElMapa(objetosDeUnaFila, ++ coordenadaY);
 		}		
+	}
+	
+	public void cargarPartida() {
+		PersistenciaPartidaXML persistencia = new PersistenciaPartidaXML(Constante.NOMBRE_ARCHIVO_PARTIDA);
+		persistencia.cargarDominioDeXML();
 	}
 	
 	public void crearCasillerosVacios(Integer numColumnas) {
@@ -209,5 +218,14 @@ public class Mapa {
 		
 		return ( this.getCasillero(posicion) == null );
 	}
+	
+	public Iterator<Entry<Posicion, Casillero>> getEntryIterator() {
+		return Mapa.getMapa().getMapaCasillero().entrySet().iterator();
+	}
+
+	public static void setMapa(Mapa mapa) {
+		Mapa.mapa = mapa;
+	}
+	
 	
 }
