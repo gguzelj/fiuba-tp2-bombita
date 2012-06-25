@@ -7,11 +7,11 @@ import com.bombitarodriguez.vista.factory.menues.items.VistaItemNuevaPartida;
 
 public class ItemNuevaPartida extends ItemMenu {
 
-	public ItemNuevaPartida(Menu menuPadre, int PosX, int PosY){
+	public ItemNuevaPartida(Menu menuPadre, int posX, int posY){
 
 		super(menuPadre);
-		this.setX(400);
-		this.setY(100);
+		this.setX(posX);
+		this.setY(posY);
 
 		this.setVistaItem(new VistaItemNuevaPartida());
 		this.getVistaItem().setPosicionable(this);

@@ -39,4 +39,16 @@ public class FabricaImagenesItems extends Imagen{
 		imagen.setNombreArchivoImagen("/com/bombitarodriguez/vista/imagenes/menues/items/SalirDelJuego/SalirDelJuegoOver.png");
 		return imagen;
 	}
+	
+	public static Imagen vistaGuardarPartidaOut(){
+		Imagen imagen = new Imagen();
+		imagen.setNombreArchivoImagen("/com/bombitarodriguez/vista/imagenes/menues/items/GuardarPartida/GuardarPartidaOut.png");
+		return imagen;
+	}
+	
+	public static Imagen vistaGuardarPartidaOver(){
+		Imagen imagen = new Imagen();
+		imagen.setNombreArchivoImagen("/com/bombitarodriguez/vista/imagenes/menues/items/GuardarPartida/GuardarPartidaOver.png");
+		return imagen;
+	}
 }
