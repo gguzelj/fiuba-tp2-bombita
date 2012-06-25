@@ -1,5 +1,8 @@
 package com.bombitarodriguez.menues;
 
+import com.bombitarodriguez.menues.items.ItemGuardarPartida;
+import com.bombitarodriguez.menues.items.ItemNuevaPartida;
+import com.bombitarodriguez.menues.items.ItemSalirDelJuego;
 import com.bombitarodriguez.vista.VentanaPrincipal;
 import com.bombitarodriguez.vista.factory.menues.VistaMenuPausa;
 
@@ -17,15 +20,12 @@ public class MenuPausa extends Menu {
 		this.getVistaMenu().setPosicionable(this);
 
 		/* Creamos los items de las opciones del menu principal */
-//		this.agregarItem(new ItemNuevaPartida(this,400,100));
-//		this.agregarItem(new ItemCargarPartida(this,400,200));
-//		this.agregarItem(new ItemSalirDelJuego(this,400,300));
-//		
+		this.agregarItem(new ItemNuevaPartida(this,getX(),250));
+		this.agregarItem(new ItemGuardarPartida(this,getX(),300));
+		this.agregarItem(new ItemSalirDelJuego(this,getX(),350));
+		
 //		/*Agregamos su controlador*/
 //		this.setControlador(new ControlKeyPressedMenuPrincipal(this));
 		
 	}
-	
-	
-	
 }
