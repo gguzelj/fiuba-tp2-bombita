@@ -25,6 +25,6 @@ public class ItemNuevaPartida extends ItemMenu {
 		PantallaNuevaPartida pantalla = new PantallaNuevaPartida(this.getMenuPadre().getX(),
 																 this.getMenuPadre().getY(),
 																 this.getMenuPadre().getVentanaPrincipal());
-		pantalla.mostrar();
+		pantalla.crearJuego();
 	}
 }

@@ -1,5 +1,6 @@
 package com.bombitarodriguez.menues.pantallas;
 
+import com.bombitarodriguez.controller.menues.pantallas.ControlKeyPressedPantallaNuevaPartida;
 import com.bombitarodriguez.vista.VentanaPrincipal;
 
 import ar.uba.fi.algo3.titiritero.Posicionable;
@@ -11,6 +12,7 @@ public class Pantalla implements Posicionable{
 	private int posX;
 	private int posY;
 	private Imagen vistaPantallaNuevaPartida;
+	private ControlKeyPressedPantallaNuevaPartida controlador;
 	
 	public Pantalla(int posX, int posY, VentanaPrincipal ventana){
 		
@@ -50,9 +52,15 @@ public class Pantalla implements Posicionable{
 		return this.vistaPantallaNuevaPartida;
 	}
 
-
 	public void setVistaPantalla(Imagen vistaPantallaNuevaPartida) {
 		this.vistaPantallaNuevaPartida = vistaPantallaNuevaPartida;
 	}
+	
+	public void setControlador(ControlKeyPressedPantallaNuevaPartida controlador) {
+		this.controlador = controlador;
+	}
 
+	public ControlKeyPressedPantallaNuevaPartida getControlador(){
+		return this.controlador;
+	}
 }

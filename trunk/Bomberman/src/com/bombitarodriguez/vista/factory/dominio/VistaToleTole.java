@@ -6,7 +6,7 @@ public class VistaToleTole extends Imagen{
 
 	public VistaToleTole(){
 
-		this.setNombreArchivoImagen("/com/bombitarodriguez/vista/imagenes/ToleTole.png");
+		this.setNombreArchivoImagen("/com/bombitarodriguez/vista/imagenes/BombaToleTole.png");
 		
 	}
 }
