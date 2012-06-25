@@ -22,9 +22,6 @@ public class ItemNuevaPartida extends ItemMenu {
 	public void seleccionar(){
 		
 		this.getMenuPadre().borrar();
-		PantallaNuevaPartida pantalla = new PantallaNuevaPartida(this.getMenuPadre().getX(),
-																 this.getMenuPadre().getY(),
-																 this.getMenuPadre().getVentanaPrincipal());
-		pantalla.crearJuego();
+		new PantallaNuevaPartida(this.getMenuPadre().getX(), this.getMenuPadre().getY(), this.getMenuPadre().getVentanaPrincipal());
 	}
 }

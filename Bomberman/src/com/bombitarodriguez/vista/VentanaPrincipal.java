@@ -63,10 +63,8 @@ public class VentanaPrincipal extends Ventana {
 			this.controladorBomberman.agregarDibujable(item.getVistaItem());
 		}
 		
-		/*agregamos el controlador del menu*/
-		this.quitarControlador(this.controladorActivo);
-		this.controladorActivo = menu.getControlador();
-		this.agregarControlador(this.controladorActivo);
+		/*Agregamos el controlador del menu como el controlador activo*/
+		this.setearControladorActivo(menu.getControlador());
 		
 	}
 
@@ -83,10 +81,16 @@ public class VentanaPrincipal extends Ventana {
 		this.quitarControlador(menu.getControlador());
 	}
 	
-	private void agregarControlador(KeyPressedObservador controlador) {
+	public void setearControladorActivo(KeyPressedObservador controlador){
+		this.quitarControlador(this.controladorActivo);
+		this.controladorActivo = controlador;
+		this.agregarControlador(this.controladorActivo);
+	}
+	
+	public void agregarControlador(KeyPressedObservador controlador) {
 		this.controladorBomberman.agregarKeyPressObservador(controlador);
 	}
-	private void quitarControlador(KeyPressedObservador controlador){
+	public void quitarControlador(KeyPressedObservador controlador){
 		this.controladorBomberman.removerKeyPressObservador(controlador);
 	}
 	
@@ -105,6 +109,5 @@ public class VentanaPrincipal extends Ventana {
 	public void setJuego(Juego juego) {
 		this.juego = juego;
 	}
-
 
 }
