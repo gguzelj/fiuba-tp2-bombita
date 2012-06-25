@@ -10,6 +10,7 @@ import com.bombitarodriguez.utils.Direccion;
 
 public class ControladorBomberman extends ControladorJuego {
 
+	private ControladorBombita controladorBombita;
 	private Boolean estaEnEjecucion;
 	private Bombita bombita;
 	private Integer paso = 0;
@@ -130,4 +131,14 @@ public class ControladorBomberman extends ControladorJuego {
 		bombita = bombita2;
 		
 	}
+
+	public ControladorBombita getControladorBombita() {
+		return controladorBombita;
+	}
+
+
+	public void setControladorBombita(ControladorBombita controladorBombita) {
+		this.controladorBombita = controladorBombita;
+	}
+
 }

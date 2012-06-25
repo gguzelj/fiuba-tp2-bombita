@@ -35,7 +35,6 @@ public class Juego {
 		VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(this, 500,500);
 		ventanaPrincipal.addKeyListener(new KeyPressedController(controlador));
 
-		
 		/*Creamos el menu principal del juego*/
 		MenuPrincipal menuPrincipal = new MenuPrincipal(ventanaPrincipal);
 		
@@ -61,7 +60,7 @@ public class Juego {
 		bombita = this.obtenerBombita();	
 				
 		/*Agregamos el controlador de Bombita*/
-		controlador.agregarKeyPressObservador(new ControladorBombita(bombita));
+		controlador.setControladorBombita(new ControladorBombita(bombita));
 		
 		/*Asignamos las vistas de cada objeto del mapa al controlador*/
 		this.agregarDibujables();
