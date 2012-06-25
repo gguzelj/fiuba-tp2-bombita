@@ -10,7 +10,7 @@ import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
 import com.bombitarodriguez.utils.ImageUtils;
-import com.bombitarodriguez.vista.factory.VistaBombita;
+import com.bombitarodriguez.vista.factory.dominio.VistaBombita;
 import com.test.utils.PathFile;
 
 

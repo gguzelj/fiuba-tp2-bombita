@@ -8,7 +8,7 @@ import ar.uba.fi.algo3.titiritero.vista.Imagen;
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Direccion;
-import com.bombitarodriguez.vista.factory.VistaExplosion;
+import com.bombitarodriguez.vista.factory.dominio.VistaExplosion;
 
 public class Explosion implements ObjetoReaccionable{
 

@@ -1,6 +1,6 @@
 package com.bombitarodriguez.dominio;
 
-import com.bombitarodriguez.vista.factory.VistaTimer;
+import com.bombitarodriguez.vista.factory.dominio.VistaTimer;
 
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 

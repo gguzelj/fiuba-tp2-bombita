@@ -3,7 +3,7 @@ package com.bombitarodriguez.dominio;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
-import com.bombitarodriguez.vista.factory.VistaSalida;
+import com.bombitarodriguez.vista.factory.dominio.VistaSalida;
 
 
 /**

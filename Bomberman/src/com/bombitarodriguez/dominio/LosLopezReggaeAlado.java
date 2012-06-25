@@ -8,7 +8,7 @@ import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
-import com.bombitarodriguez.vista.factory.VistaLopezReggaeAlado;
+import com.bombitarodriguez.vista.factory.dominio.VistaLopezReggaeAlado;
 
 
 /**

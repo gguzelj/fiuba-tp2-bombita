@@ -1,7 +1,6 @@
 package com.bombitarodriguez.acciones;
 
 import com.bombitarodriguez.dominio.Personaje;
-import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Direccion;
 
 public class AccionMovimiento extends AccionAbstracta {
