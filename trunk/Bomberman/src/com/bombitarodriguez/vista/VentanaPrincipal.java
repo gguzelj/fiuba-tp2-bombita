@@ -72,12 +72,15 @@ public class VentanaPrincipal extends Ventana {
 
 	public void quitarMenu(Menu menu){
 		
+		/*Quitamos los dibujables del menu*/
 		this.controladorBomberman.removerDibujable(menu.getVistaMenu());
 		
 		for(ItemMenu item : menu.getItems()){
 			this.controladorBomberman.removerDibujable(item.getVistaItem());
 		}
 		
+		/*Quitamos el controlador del menu*/
+		this.quitarControlador(menu.getControlador());
 	}
 	
 	private void agregarControlador(KeyPressedObservador controlador) {
