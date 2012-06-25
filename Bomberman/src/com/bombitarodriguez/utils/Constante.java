@@ -30,7 +30,8 @@ public class Constante {
 	public static final Integer PRIMER_MAPA = 1;
 	//directorio de los mapas
 	public static String DIRECTORIO_MAPAS = "/resources/mapas";
-	//
+	//directorio de las imagenes
+	public static String DIRECTORIO_IMAGENES = "/com/bombitarodriguez/vista/imagenes";
 	public static final Integer PIXELS_POR_CASILLERO = 50;
 
 }

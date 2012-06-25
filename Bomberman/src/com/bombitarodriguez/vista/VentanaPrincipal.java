@@ -1,16 +1,14 @@
 package com.bombitarodriguez.vista;
 
 import java.awt.Color;
-import java.awt.GridBagLayout;
-import java.awt.Rectangle;
 import java.io.IOException;
 import com.bombitarodriguez.controller.ControladorBomberman;
+import com.bombitarodriguez.dominio.Juego;
 import com.bombitarodriguez.menues.Menu;
 import com.bombitarodriguez.menues.items.ItemMenu;
 
 import ar.uba.fi.algo3.titiritero.Dibujable;
 import ar.uba.fi.algo3.titiritero.KeyPressedObservador;
-import ar.uba.fi.algo3.titiritero.vista.Panel;
 import ar.uba.fi.algo3.titiritero.vista.Ventana;
 
 public class VentanaPrincipal extends Ventana {
@@ -19,11 +17,14 @@ public class VentanaPrincipal extends Ventana {
 	private static int ancho;
 	private static int alto;
 	private ControladorBomberman controladorBomberman;
+	private Juego juego;
 	private KeyPressedObservador controladorActivo;
 
-	public VentanaPrincipal(ControladorBomberman controlador, int alto, int ancho){
-		super(alto,ancho,controlador);
-		this.controladorBomberman = controlador;
+	public VentanaPrincipal(Juego juego, int alto, int ancho){
+		super(alto,ancho,juego.getControlador());
+		this.controladorBomberman = juego.getControlador();
+		juego.setVentanaPrincipal(this);
+		this.juego = juego;
 		VentanaPrincipal.ancho = alto;
 		VentanaPrincipal.alto = ancho;
 
@@ -93,4 +94,14 @@ public class VentanaPrincipal extends Ventana {
 	public void quitarDibujable(Dibujable dibujable){
 		this.controladorBomberman.removerDibujable(dibujable);		
 	}
+
+	public Juego getJuego() {
+		return juego;
+	}
+
+	public void setJuego(Juego juego) {
+		this.juego = juego;
+	}
+
+
 }
