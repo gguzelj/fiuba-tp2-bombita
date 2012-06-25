@@ -32,7 +32,7 @@ public class Juego {
 	public void iniciarJuego() {
 		
 		/*Creamos la ventana principal del juego*/
-		VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(this, 1000,1000);
+		VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(this, 500,500);
 		ventanaPrincipal.addKeyListener(new KeyPressedController(controlador));
 
 		
@@ -66,7 +66,7 @@ public class Juego {
 		/*Asignamos las vistas de cada objeto del mapa al controlador*/
 		this.agregarDibujables();
 		
-//		controlador.setBombita(bombita);
+		controlador.setBombita(bombita);
 		controlador.agregarObjetoVivo(bombita);
 	}
 	/**

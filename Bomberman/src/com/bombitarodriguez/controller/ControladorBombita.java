@@ -20,7 +20,7 @@ public class ControladorBombita implements KeyPressedObservador{
 		switch (event.getKeyCode())
 		{
 			case KeyEvent.VK_DOWN:
-				bombita.setDireccionAMover(Direccion.ABAJO);
+				bombita.setDireccionAMover(Direccion.ARRIBA);
 				break;
 			
 			case KeyEvent.VK_LEFT:
@@ -28,7 +28,7 @@ public class ControladorBombita implements KeyPressedObservador{
 				break;
 			
 			case KeyEvent.VK_UP:
-				bombita.setDireccionAMover(Direccion.ARRIBA);
+				bombita.setDireccionAMover(Direccion.ABAJO);
 				break;
 		
 			case KeyEvent.VK_RIGHT:
