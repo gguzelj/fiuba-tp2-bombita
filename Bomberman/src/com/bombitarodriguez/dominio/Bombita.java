@@ -209,8 +209,16 @@ public class Bombita extends Personaje{
 		if(this.atacar == true){
 			this.usarArma();
 			this.atacar = false;
+			
 		}
+		
 	}
+	
+	
+	public boolean bombaPlantada(){
+		return atacar;
+	}
+	
 
 	@Override
 	public Imagen vistaDeObjeto() {

@@ -28,5 +28,11 @@ public class ToleTole extends Bomba {
 	public Imagen vistaDeObjeto() {
 		return new VistaToleTole();
 	}
+
+	@Override
+	public void vivir() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

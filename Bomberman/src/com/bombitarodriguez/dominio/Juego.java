@@ -15,6 +15,7 @@ import com.bombitarodriguez.menues.MenuPrincipal;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Transformacion;
 import com.bombitarodriguez.vista.VentanaPrincipal;
+import com.bombitarodriguez.vista.factory.dominio.VistaAbstracta;
 import com.test.utils.PathFile;
 
 /**
@@ -89,10 +90,11 @@ public class Juego {
             
             for(ObjetoReaccionable objeto : casillero.getObjetos()){
 
-            	Imagen vistaObjeto = objeto.vistaDeObjeto();
-            	vistaObjeto.setPosicionable((Posicionable) objeto);
-            	this.controlador.agregarDibujable(vistaObjeto);
-            	
+//            	Imagen vistaObjeto = objeto.vistaDeObjeto();
+//            	vistaObjeto.setPosicionable((Posicionable) objeto);
+//            	this.controlador.agregarDibujable(vistaObjeto);
+            	VistaAbstracta vista = new VistaAbstracta(objeto, controlador);
+            	vista.mostrar(); 
             }   
 		}
 		

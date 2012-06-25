@@ -52,4 +52,10 @@ public class Proyectil extends Arma {
 	public Imagen vistaDeObjeto() {
 		return new VistaProyectil();
 	}
+
+	@Override
+	public void vivir() {
+		// TODO Auto-generated method stub
+		
+	}
 }
