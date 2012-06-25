@@ -23,7 +23,7 @@ public class Posicion {
 	
 	@Override
 	public boolean equals(Object obj) {
-		return (this.getPosX() == ((Posicion) obj).getPosX()) && (this.getPosY() == ((Posicion) obj).getPosY());
+		return (this.getPosX().equals(((Posicion) obj).getPosX()) && (this.getPosY().equals(((Posicion) obj).getPosY())));
 	}
 	
 	public Integer getPosX() {
