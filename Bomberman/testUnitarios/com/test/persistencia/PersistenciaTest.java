@@ -1,0 +1,90 @@
+package com.test.persistencia;
+
+import static org.junit.Assert.*;
+
+import java.util.HashMap;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import com.bombitarodriguez.dominio.BloqueAcero;
+import com.bombitarodriguez.dominio.Bombita;
+import com.bombitarodriguez.dominio.Casillero;
+import com.bombitarodriguez.dominio.Mapa;
+import com.bombitarodriguez.dominio.Posicion;
+import com.bombitarodriguez.interfaces.ObjetoReaccionable;
+import com.bombitarodriguez.persistencia.PersistenciaPartidaXML;
+
+public class PersistenciaTest {
+	
+	Posicion posicionInicial;
+	Posicion posicionFinal;
+	Casillero casilleroInicial;
+	Casillero casilleroFinal;
+	Bombita bombita;
+	Integer vida;
+
+	@Before
+	public void setUp() throws Exception {
+		vida = new Integer(1);		
+		posicionInicial = new Posicion(1, 1);
+		posicionFinal = new Posicion(1, 2);
+		casilleroInicial = new Casillero(posicionInicial);
+		casilleroFinal = new Casillero(posicionFinal);
+		bombita = new Bombita(vida);
+		casilleroInicial.agregarObjeto(bombita);
+		casilleroFinal.agregarObjeto(new BloqueAcero());
+		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
+		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
+	}
+
+	@Test
+	/**
+	 * Se quiere recuperar partida cuando nunca se guardo
+	 */
+	public void testPersistencia_1() {
+		
+		PersistenciaPartidaXML persistencia = new PersistenciaPartidaXML("persistencia-test.xml");
+		
+		try {
+			persistencia.cargarDominioDeXML();
+			fail();
+		} catch (Exception e) {
+			//test passed
+		}
+		
+	}
+	
+	@Test
+	public void testPersistencia_2() {
+		PersistenciaPartidaXML persistencia = new PersistenciaPartidaXML("persistencia-test.xml");
+		persistencia.persistirPartida();
+		Casillero m = Mapa.getMapa().getCasillero(new Posicion(1, 1));
+		Mapa.setMapa(persistencia.cargarDominioDeXML());
+		Casillero x = Mapa.getMapa().getCasillero(new Posicion(1, 1));
+		bombita = (Bombita) Mapa.getMapa().getCasillero(new Posicion(1, 1)).getObjetos().get(0);
+		
+		assertTrue(Mapa.getMapa().getMapaCasillero().size() == 2);
+		assertTrue(bombita.getVida() == 1);
+		
+	}
+	
+	@Test
+	/**
+	 * Se cambia el estado a bombita y se lo recupera con este ultimo.
+	 */
+	public void testPersistencia_3() {
+		PersistenciaPartidaXML persistencia = new PersistenciaPartidaXML("persistencia-test.xml");
+		Bombita bombita = (Bombita) Mapa.getMapa().getCasillero(new Posicion(1, 1)).getObjetos().get(0);
+		bombita.setVida(8);
+		persistencia.persistirPartida();
+		Mapa mapa = (Mapa) persistencia.cargarDominioDeXML();
+		
+		bombita = (Bombita) mapa.getCasillero(new Posicion(1, 1)).getObjetos().get(0);
+		
+		assertTrue(Mapa.getMapa().getMapaCasillero().size() == 2);
+		assertTrue(bombita.getVida() == 8);
+		
+	}
+
+}

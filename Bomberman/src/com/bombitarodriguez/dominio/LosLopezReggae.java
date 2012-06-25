@@ -2,6 +2,7 @@ package com.bombitarodriguez.dominio;
 
 import java.util.Iterator;
 
+
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;

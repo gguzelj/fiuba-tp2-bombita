@@ -29,9 +29,13 @@ public class Constante {
 	public static final Integer DESTRUCCION_PROYECTIL = 10;	//lista con los nombres de los mapa
 	public static final Integer PRIMER_MAPA = 1;
 	//directorio de los mapas
-	public static String DIRECTORIO_MAPAS = "/resources/mapas";
+	public static String DIRECTORIO_MAPAS = "\\resources\\mapas";
 	//directorio de las imagenes
 	public static String DIRECTORIO_IMAGENES = "/com/bombitarodriguez/vista/imagenes";
 	public static final Integer PIXELS_POR_CASILLERO = 50;
+	// dimensiones de la ventana
+	public static final Integer DIMENSION_VENTANA = 500;
+	// nombre del archivo para cargar/guardar la partida
+	public static final String NOMBRE_ARCHIVO_PARTIDA = "bombita-save.xml";
 
 }
