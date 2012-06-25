@@ -1,6 +1,6 @@
 package com.bombitarodriguez.dominio;
 
-import com.bombitarodriguez.vista.factory.VistaBloqueAcero;
+import com.bombitarodriguez.vista.factory.dominio.VistaBloqueAcero;
 
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 

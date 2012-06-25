@@ -3,6 +3,7 @@ package com.bombitarodriguez.controller;
 import java.awt.image.BufferedImage;
 
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
+import ar.uba.fi.algo3.titiritero.SuperficieDeDibujo;
 
 import com.bombitarodriguez.dominio.Bombita;
 import com.bombitarodriguez.utils.Direccion;
@@ -18,6 +19,12 @@ public class ControladorBomberman extends ControladorJuego {
 	private int w;
 	private int h;
 	
+	@Override
+	public void setSuperficieDeDibujo(SuperficieDeDibujo superficieDeDibujo) {
+		super.setSuperficieDeDibujo(superficieDeDibujo);
+	}
+	
+	
 	public ControladorBomberman(boolean activarReproductor) {
 		super(activarReproductor);
 		// TODO Auto-generated constructor stub
@@ -31,7 +38,7 @@ public class ControladorBomberman extends ControladorJuego {
 			while(estaEnEjecucion){
 				simular();
 				dibujar();
-				caminarBombita();
+//				caminarBombita();
 				Thread.sleep(100);
 				contador++;
 			}
@@ -123,5 +130,4 @@ public class ControladorBomberman extends ControladorJuego {
 		bombita = bombita2;
 		
 	}
-
 }

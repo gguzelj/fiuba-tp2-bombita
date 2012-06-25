@@ -1,6 +1,6 @@
 package com.bombitarodriguez.dominio;
 
-import com.bombitarodriguez.vista.factory.VistaArticuloToleTole;
+import com.bombitarodriguez.vista.factory.dominio.VistaArticuloToleTole;
 
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 

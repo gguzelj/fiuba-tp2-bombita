@@ -5,16 +5,18 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import ar.uba.fi.algo3.titiritero.Posicionable;
+import ar.uba.fi.algo3.titiritero.SuperficieDeDibujo;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 import ar.uba.fi.algo3.titiritero.vista.KeyPressedController;
 
 import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.controller.ControladorBombita;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
+import com.bombitarodriguez.menues.MenuPrincipal;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Transformacion;
 import com.bombitarodriguez.vista.VentanaPrincipal;
-import com.bombitarodriguez.vista.factory.VistaBombita;
+import com.bombitarodriguez.vista.factory.dominio.VistaBombita;
 import com.test.utils.PathFile;
 
 /**
@@ -29,32 +31,42 @@ public class Juego {
 
 	public static void main(String[] args){
 		
-		/*Creamos el mapa*/
-		Juego.crearMapa(1);
-		
-		/*Obtener Bombita*/
-		bombita = Juego.obtenerBombita();	
-		
 		/*Ventana que encapsula al Juego*/
-		Integer dimensionDelMapa =  Transformacion.transformarAPixeles(Mapa.getDimension() + 2);
+//		Integer dimensionDelMapa = Transformacion.transformarAPixeles(Mapa.getDimension() + 2);
 		
-		
-		VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(dimensionDelMapa, dimensionDelMapa);
+		/*Creamos la ventana principal del juego*/
+		VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(Juego.controlador, 500,500);
 		ventanaPrincipal.addKeyListener(new KeyPressedController(controlador));
 		
-		/*Controlador del jugador*/
-		controlador.agregarKeyPressObservador(new ControladorBombita(bombita));
-		controlador.setSuperficieDeDibujo(ventanaPrincipal.getSuperficieDeDibujo());
+		/*Creamos el menu principal del juego*/
+		MenuPrincipal menuPrincipal = new MenuPrincipal(ventanaPrincipal);
 		
-		/*Asignamos las vistas de cada objeto del mapa al controlador*/
-		Juego.agregarDibujables();
+		/*Agregamos el menu a la pantalla principal*/
+		ventanaPrincipal.agregarMenu(menuPrincipal);
+
+		controlador.setSuperficieDeDibujo(ventanaPrincipal);
 		
-		/* Vista del Jugador */
-		VistaBombita vistaBombita = new VistaBombita();
-		vistaBombita.setPosicionable(bombita);
 		
-		controlador.setBombita(bombita);
-		controlador.agregarObjetoVivo(bombita);
+		
+//		/*Creamos el mapa*/
+//		Juego.crearMapa(Constante.DIRECTORIO_MAPAS, 1);
+//		
+//		/*Obtener Bombita*/
+//		bombita = Juego.obtenerBombita();	
+//				
+//		/*Controlador del jugador*/
+//		controlador.agregarKeyPressObservador(new ControladorBombita(bombita));
+//		controlador.setSuperficieDeDibujo(ventanaPrincipal.getSuperficieDeDibujo());
+//		
+//		/*Asignamos las vistas de cada objeto del mapa al controlador*/
+//		Juego.agregarDibujables();
+//		
+//		/* Vista del Jugador */
+//		VistaBombita vistaBombita = new VistaBombita();
+//		vistaBombita.setPosicionable(bombita);
+//		
+//		controlador.setBombita(bombita);
+//		controlador.agregarObjetoVivo(bombita);
 		
 		controlador.setIntervaloSimulacion(10);
 		controlador.comenzarJuego();
@@ -91,16 +103,16 @@ public class Juego {
 		
 	}
 
-	private static void crearMapa(Integer nivelJuego) {
+	private static void crearMapa(File f, Integer nivelJuego) {
 		StringBuilder nombreContenedorMapa = new StringBuilder();
 		nombreContenedorMapa.append(nivelJuego.toString());
 		nombreContenedorMapa.append(".mapa");
-		String filePath = PathFile.getPathActual(Constante.DIRECTORIO_MAPAS, File.separatorChar + nombreContenedorMapa.toString(), 
-				File.separatorChar + nivelJuego.toString() + ".xml");
-		
-		Mapa.getMapa().crearMapa(new File(filePath)); 
-		
-		
+//		File file = Constante.DIRECTORIO_MAPAS;
+//		file = new File(f.getPath() + File.separatorChar
+//	                + nombreContenedorMapa + File.separatorChar + nivelJuego.toString() + ".xml");
+//		
+//		Mapa.getMapa().crearMapa(file); 
+//			
 	}
 }
 

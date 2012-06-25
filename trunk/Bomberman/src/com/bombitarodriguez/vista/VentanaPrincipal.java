@@ -3,38 +3,30 @@ package com.bombitarodriguez.vista;
 import java.awt.Color;
 import java.awt.GridBagLayout;
 import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
+import com.bombitarodriguez.controller.ControladorBomberman;
+import com.bombitarodriguez.menues.Menu;
+import com.bombitarodriguez.menues.items.ItemMenu;
 
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import com.bombitarodriguez.AndarDeBombita;
-
-import ar.uba.fi.algo3.titiritero.SuperficieDeDibujo;
+import ar.uba.fi.algo3.titiritero.Dibujable;
+import ar.uba.fi.algo3.titiritero.KeyPressedObservador;
 import ar.uba.fi.algo3.titiritero.vista.Panel;
+import ar.uba.fi.algo3.titiritero.vista.Ventana;
 
-public class VentanaPrincipal extends JFrame {
+public class VentanaPrincipal extends Ventana {
 
 	private static final long serialVersionUID = 1L;
 	private static int ancho;
 	private static int alto;
-	private JPanel jContentPanel = null;
-	private Panel panel = null;
+	private ControladorBomberman controladorBomberman;
+	private KeyPressedObservador controladorActivo;
 
-	/**
-	 * Create the application.
-	 * @throws IOException 
-	 */
-	public VentanaPrincipal(int alto, int ancho){
-		super();
+	public VentanaPrincipal(ControladorBomberman controlador, int alto, int ancho){
+		super(alto,ancho,controlador);
+		this.controladorBomberman = controlador;
 		VentanaPrincipal.ancho = alto;
 		VentanaPrincipal.alto = ancho;
-		
-		
+
 		try {
 			initialize();
 		} catch (IOException e) {
@@ -42,54 +34,63 @@ public class VentanaPrincipal extends JFrame {
 		}
 		
 		this.setVisible(true);
-		this.setResizable(true);
+		this.setResizable(false);
 		
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 * 
-	 * @throws IOException
-	 */
 	private void initialize() throws IOException {
-		
+
 		this.setSize(VentanaPrincipal.ancho, VentanaPrincipal.alto);
 		this.setBackground(new Color(0, 0, 0));
-		this.setContentPane(getSuperficieDeDibujo());
 		this.setTitle("Bombita Rodriguez");
+				
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 			@Override
 			public void windowClosing(java.awt.event.WindowEvent e) {
-				System.out.println("windowClosing()"); // TODO Auto-generated
-														// Event stub
-														// windowClosing()
+				System.out.println("windowClosing()"); 
 				System.exit(NORMAL);
 			}
 		});
 	}
 
-	private JPanel getJContentPanel(){
-		if (jContentPanel == null)
-		{
+	public void agregarMenu(Menu menu) {
+
+		/*agregamos los dibujables del menu*/
+		this.controladorBomberman.agregarDibujable(menu.getVistaMenu());
 		
-			jContentPanel.setLayout(null);
-			jContentPanel.add(getSuperficieDeDibujo(), null);
-			
+		for(ItemMenu item : menu.getItems()){
+			this.controladorBomberman.agregarDibujable(item.getVistaItem());
 		}
-		return jContentPanel;
+		
+		/*agregamos el controlador del menu*/
+		this.quitarControlador(this.controladorActivo);
+		this.controladorActivo = menu.getControlador();
+		this.agregarControlador(this.controladorActivo);
+		
+	}
+
+	public void quitarMenu(Menu menu){
+		
+		this.controladorBomberman.removerDibujable(menu.getVistaMenu());
+		
+		for(ItemMenu item : menu.getItems()){
+			this.controladorBomberman.removerDibujable(item.getVistaItem());
+		}
+		
 	}
 	
-	public Panel getSuperficieDeDibujo(){
-		if (panel == null) 
-		{
-			panel = new Panel(800, 800);
-			panel.setLayout(new GridBagLayout());
-			panel.setBounds(new Rectangle(20, 20, VentanaPrincipal.ancho, VentanaPrincipal.alto));
-			panel.setBackground(new Color(0, 0, 0));
-			panel.setForeground(new Color(0,255,0));
-		}
-		return panel;
+	private void agregarControlador(KeyPressedObservador controlador) {
+		this.controladorBomberman.agregarKeyPressObservador(controlador);
+	}
+	private void quitarControlador(KeyPressedObservador controlador){
+		this.controladorBomberman.removerKeyPressObservador(controlador);
 	}
 	
+	public void agregarDibujable(Dibujable dibujable){
+		this.controladorBomberman.agregarDibujable(dibujable);		
+	}
 	
+	public void quitarDibujable(Dibujable dibujable){
+		this.controladorBomberman.removerDibujable(dibujable);		
+	}
 }
