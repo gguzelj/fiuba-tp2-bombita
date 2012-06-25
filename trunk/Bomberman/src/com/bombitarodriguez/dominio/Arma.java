@@ -1,5 +1,6 @@
 package com.bombitarodriguez.dominio;
 
+import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
@@ -10,7 +11,7 @@ import com.bombitarodriguez.utils.Transformacion;
  * @author Mauro
  *
  */
-public abstract class Arma implements ObjetoReaccionable, Posicionable {
+public abstract class Arma implements ObjetoReaccionable, Posicionable, ObjetoVivo {
 	
 	protected Casillero casillero;
 	
@@ -19,6 +20,13 @@ public abstract class Arma implements ObjetoReaccionable, Posicionable {
 	protected Double retardo;
 	
 	protected Integer ondaExpansiva;
+	
+	protected boolean visible;
+
+	
+	
+	
+	
 
 	public void explotar(){
 		Explosion explosion = new Explosion(getDestruccion(),getOndaExpansiva());
@@ -142,5 +150,13 @@ public abstract class Arma implements ObjetoReaccionable, Posicionable {
 		return Transformacion.transformarAPixeles(casillero.getPosicion().getPosY());
 	}
 	
+	
+	public boolean isVisible() {
+		return visible;
+	}
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
+	}
 
 }

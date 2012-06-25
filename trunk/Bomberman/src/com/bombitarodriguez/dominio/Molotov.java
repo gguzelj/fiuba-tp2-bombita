@@ -10,22 +10,35 @@ import com.bombitarodriguez.vista.factory.dominio.VistaMolotov;
  * @author Mauro
  *
  */
-public class Molotov extends Bomba {
+public class Molotov extends Bomba{
 
 	public Molotov() {
 		this.ondaExpansiva = Constante.ONDA_EXPANSIVA_MOLOTOV;
 		this.retardo = Constante.TIMER_MOLOTOV;
 		this.destruccion = Constante.DESTRUCCION_MOLOTOV;
+		this.visible = true;
 	}
 	
 	public Molotov(Double retardo) {
 		this.ondaExpansiva = Constante.ONDA_EXPANSIVA_MOLOTOV;
 		this.destruccion = Constante.DESTRUCCION_MOLOTOV;
 		this.retardo = retardo;
+		this.visible = true;
 	}
 
 	@Override
 	public Imagen vistaDeObjeto() {
 		return new VistaMolotov();
 	}
+
+	@Override
+	public void vivir() {
+		retardo--;
+		if (retardo<=0){
+			
+		}
+		
+	}
+	
+	
 }

@@ -8,6 +8,7 @@ import java.util.Random;
 import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 
+import com.bombitarodriguez.acciones.AccionAbstracta;
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.Armado;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
@@ -31,7 +32,14 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 	protected Integer velocidad;
 	
 	protected FactoryArma factoryArma;
+	
+	protected AccionAbstracta visible;
+	
 		
+	
+
+
+
 	/**
 	 * Permite reaccionar con todos los objetos de un casillero(Public solamente para ser testead)
 	 * @param iterador
@@ -196,7 +204,15 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 		}
 		
 	}
+	
+	public AccionAbstracta getVisible() {
+		return visible;
+	}
 
+	public void setVisible(AccionAbstracta visible) {
+		this.visible = visible;
+	}
+	
 	@Override
 	public int getX() {
 		return Transformacion.transformarAPixeles(this.getPosicion().getPosX());
