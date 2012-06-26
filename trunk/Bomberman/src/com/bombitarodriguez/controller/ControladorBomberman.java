@@ -27,8 +27,9 @@ public class ControladorBomberman extends ControladorJuego {
 			while(estaEnEjecucion){
 				simular();
 				dibujar();
-				Thread.sleep(100);
+				Thread.sleep(150);
 			}
+		
 		}
 		catch (Exception e) {
 			e.printStackTrace();

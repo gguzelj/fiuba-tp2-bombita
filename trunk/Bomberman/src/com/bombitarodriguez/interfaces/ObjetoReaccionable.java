@@ -5,6 +5,7 @@ package com.bombitarodriguez.interfaces;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
 import com.bombitarodriguez.dominio.*;
+import com.bombitarodriguez.vista.factory.dominio.VistaAbstracta;
 
 /**
  * 
@@ -42,6 +43,8 @@ public interface ObjetoReaccionable{
 	public Posicion getPosicion();
 	
 	public void setCasillero(Casillero casillero);
+	
+	public void setVista (VistaAbstracta vista);
 	
 	public Imagen vistaDeObjeto();
 

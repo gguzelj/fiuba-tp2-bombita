@@ -1,22 +1,34 @@
 package com.bombitarodriguez.dominio;
 
+import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Transformacion;
+import com.bombitarodriguez.vista.factory.dominio.VistaAbstracta;
 
 /**
  * 
  * @author Mauro
  * 
  */
-public abstract class Obstaculo implements ObjetoReaccionable, Posicionable{
+public abstract class Obstaculo implements ObjetoReaccionable, Posicionable, ObjetoVivo{
 
 	protected Casillero casillero;
 
 	protected Integer durabilidad;
 
 	protected ObjetoReaccionable objeto;
+
+	protected VistaAbstracta vista;
+	
+	public VistaAbstracta getVista() {
+		return vista;
+	}
+
+	public void setVista(VistaAbstracta vista) {
+		this.vista = vista;
+	}
 
 	public Integer getDurabilidad() {
 		return durabilidad;

@@ -22,15 +22,18 @@ public class LosLopezReggae extends Personaje {
 		this.factoryArma = new FactoryProyectil();
 	}	
 	
+
 	@Override
-	public void usarArma() {
-		lanzarProyectil();
+	public Arma usarArma() {
+		return plantarBomba();
 	}
+
+	private Arma plantarBomba() {
+		 Arma armaInstanciada = factoryArma.getArmaInstanciada();
+		getCasillero().agregarObjeto(armaInstanciada);
+		return armaInstanciada;
 	
-	public void lanzarProyectil(){
-		getCasillero().agregarObjeto(factoryArma.getArmaInstanciada());		
 	}
-	
 	@Override
 	public Boolean reaccionarCon(Explosion explosion) {
 		resistencia = resistencia - (explosion.getDestruccion());

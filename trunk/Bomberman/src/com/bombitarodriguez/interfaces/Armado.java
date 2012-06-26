@@ -1,5 +1,7 @@
 package com.bombitarodriguez.interfaces;
 
+import com.bombitarodriguez.dominio.Arma;
+
 /**
  * 
  * @author Mauro
@@ -7,6 +9,6 @@ package com.bombitarodriguez.interfaces;
  */
 public interface Armado {
 	
-	public void usarArma();
+	public Arma usarArma();
 
 }

@@ -41,13 +41,17 @@ public class LosLopezReggaeAlado extends Personaje {
 		return permitePasar;
 	}
 	
+
 	@Override
-	public void usarArma() {
-		plantarBomba();
+	public Arma usarArma() {
+		return plantarBomba();
 	}
 
-	private void plantarBomba() {
-		getCasillero().agregarObjeto(factoryArma.getArmaInstanciada());
+	private Arma plantarBomba() {
+		 Arma armaInstanciada = factoryArma.getArmaInstanciada();
+		getCasillero().agregarObjeto(armaInstanciada);
+		return armaInstanciada;
+	
 	}
 
 	@Override

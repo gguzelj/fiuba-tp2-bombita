@@ -9,6 +9,7 @@ import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
 import com.bombitarodriguez.utils.ImageUtils;
+import com.bombitarodriguez.vista.factory.dominio.VistaAbstracta;
 import com.bombitarodriguez.vista.factory.dominio.VistaBombita;
 
 /**
@@ -68,12 +69,15 @@ public class Bombita extends Personaje{
 	}
 
 	@Override
-	public void usarArma() {
-		plantarBomba();
+	public Arma usarArma() {
+		return plantarBomba();
 	}
 
-	private void plantarBomba() {
-		getCasillero().agregarObjeto(factoryArma.getArmaInstanciada());
+	private Arma plantarBomba() {
+		Arma armaInstanciada = factoryArma.getArmaInstanciada();
+		getCasillero().agregarObjeto(armaInstanciada);
+		return armaInstanciada;
+	
 	}
 	
 	@Override
@@ -106,6 +110,15 @@ public class Bombita extends Personaje{
 	@Override
 	public void vivir() {
 		
+		if(atacar == true){	
+			Arma arma = usarArma();
+			arma.setVista(vista);
+			vista.mostrar(arma);
+			atacar = false;
+			
+		}
+		
+		
 		if(this.direccionAMover != null){
 			this.moverseConEstrategia(direccionAMover);
 			direccionAMover = null;
@@ -114,12 +127,6 @@ public class Bombita extends Personaje{
 		
 	}
 	
-	
-	public boolean bombaPlantada(){
-		return atacar;
-	}
-	
-
 
 	public Imagen vistaDeObjeto() {
 		return new VistaBombita();

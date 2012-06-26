@@ -1,5 +1,6 @@
 package com.bombitarodriguez.vista.factory.dominio;
 
+import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
@@ -12,23 +13,24 @@ public class VistaAbstracta extends Imagen{
 	protected ObjetoReaccionable ejecutor;
 	protected ControladorBomberman controlador;
 	
-	public VistaAbstracta (ObjetoReaccionable objeto, ControladorBomberman controladorBomberman){
-		
-		ejecutor = objeto;
+	public VistaAbstracta (ControladorBomberman controladorBomberman){
+
 		controlador = controladorBomberman;
 		
 	}
 	
-	public void mostrar(){
+	public void mostrar(ObjetoReaccionable ejecutor){
 		Imagen vistaObjeto = ejecutor.vistaDeObjeto();
 		vistaObjeto.setPosicionable((Posicionable) ejecutor);
-    	controlador.agregarDibujable(vistaObjeto);
+	  	
+		controlador.agregarObjetoVivo((ObjetoVivo) ejecutor);
+		controlador.agregarDibujable(vistaObjeto);
 	}
 	
-	public void quitar(){
+	public void quitar(ObjetoReaccionable ejecutor){
+		//controlador.removerDibujable(ejecutor.vistaDeObjeto());
 		ejecutor = null;
 		controlador = null;
-		controlador.removerDibujable(ejecutor.vistaDeObjeto());
 	}
 
 

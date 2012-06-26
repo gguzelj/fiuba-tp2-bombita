@@ -80,12 +80,16 @@ public class Juego {
 		while (it.hasNext()) {
 			Entry e = (Entry)it.next();
             casillero = (Casillero) e.getValue();
+           
             for(ObjetoReaccionable objeto : casillero.getObjetos()){
 //            	Imagen vistaObjeto = objeto.vistaDeObjeto();
 //            	vistaObjeto.setPosicionable((Posicionable) objeto);
 //            	this.controlador.agregarDibujable(vistaObjeto);
-            	VistaAbstracta vista = new VistaAbstracta(objeto, controlador);
-            	vista.mostrar(); 
+            	VistaAbstracta vista = new VistaAbstracta(controlador);
+            	objeto.setVista(vista);
+            	vista.mostrar(objeto); 
+            	
+            
             }   
 		}
 		

@@ -18,14 +18,15 @@ public class Molotov extends Bomba{
 		this.ondaExpansiva = Constante.ONDA_EXPANSIVA_MOLOTOV;
 		this.retardo = Constante.TIMER_MOLOTOV;
 		this.destruccion = Constante.DESTRUCCION_MOLOTOV;
-		this.visible = true;
+	
 	}
 	
 	public Molotov(Double retardo) {
 		this.ondaExpansiva = Constante.ONDA_EXPANSIVA_MOLOTOV;
 		this.destruccion = Constante.DESTRUCCION_MOLOTOV;
 		this.retardo = retardo;
-		this.visible = true;
+
+		
 	}
 
 	@Override
@@ -35,9 +36,9 @@ public class Molotov extends Bomba{
 
 	@Override
 	public void vivir() {
-		retardo--;
+		retardo = retardo--;
 		if (retardo<=0){
-			
+			vista.quitar(this);
 		}
 		
 	}
