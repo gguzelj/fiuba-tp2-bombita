@@ -62,10 +62,6 @@ public class VentanaPrincipal extends Ventana {
 		for(ItemMenu item : menu.getItems()){
 			this.controladorBomberman.agregarDibujable(item.getVistaItem());
 		}
-		
-		/*Agregamos el controlador del menu como el controlador activo*/
-		this.setearControladorActivo(menu.getControlador());
-		
 	}
 
 	public void quitarMenu(Menu menu){
@@ -76,12 +72,9 @@ public class VentanaPrincipal extends Ventana {
 		for(ItemMenu item : menu.getItems()){
 			this.controladorBomberman.removerDibujable(item.getVistaItem());
 		}
-		
-		/*Quitamos el controlador del menu*/
-		this.quitarControlador(menu.getControlador());
 	}
 	
-	public void setearControladorActivo(KeyPressedObservador controlador){
+	public void setControladorActivo(KeyPressedObservador controlador){
 		this.quitarControlador(this.controladorActivo);
 		this.controladorActivo = controlador;
 		this.agregarControlador(this.controladorActivo);

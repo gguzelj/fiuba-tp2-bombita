@@ -2,14 +2,7 @@ package com.bombitarodriguez.dominio;
 
 import java.io.File;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Map.Entry;
-
-import ar.uba.fi.algo3.titiritero.Posicionable;
-
-import ar.uba.fi.algo3.titiritero.vista.Imagen;
-import ar.uba.fi.algo3.titiritero.vista.KeyPressedController;
-
 import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.controller.ControladorBombita;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
@@ -38,18 +31,14 @@ public class Juego {
 		
 		/*Creamos la ventana principal del juego*/
 		VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(this, Constante.DIMENSION_VENTANA, Constante.DIMENSION_VENTANA);
-		ventanaPrincipal.addKeyListener(new KeyPressedController(controlador));
 
 		/*Creamos el menu principal del juego*/
 		MenuPrincipal menuPrincipal = new MenuPrincipal(ventanaPrincipal);
-		
-		/*Agregamos el menu a la pantalla principal*/
-		ventanaPrincipal.agregarMenu(menuPrincipal);
+		menuPrincipal.mostrar();
 
 		controlador.setSuperficieDeDibujo(ventanaPrincipal);		
 		controlador.setIntervaloSimulacion(10);
 		controlador.comenzarJuego();
-		
 	}
 
 	public void crearJuego(Integer nivel){
@@ -111,7 +100,6 @@ public class Juego {
                 File.separatorChar + nivelJuego.toString() + ".xml");
 		
 		Mapa.getMapa().crearMapa(new File(filePath));
-
 	}
 	
 	private void guardarPartida() {

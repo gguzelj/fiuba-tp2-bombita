@@ -1,7 +1,5 @@
 package com.bombitarodriguez.utils;
 
-import java.io.File;
-
 public class Constante {
 	
 	/**

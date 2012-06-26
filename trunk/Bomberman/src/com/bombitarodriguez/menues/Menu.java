@@ -6,7 +6,7 @@ import ar.uba.fi.algo3.titiritero.KeyPressedObservador;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
-import com.bombitarodriguez.controller.menues.ControlKeyPressedMenuPrincipal;
+import com.bombitarodriguez.controller.menues.ControladorMenu;
 import com.bombitarodriguez.menues.items.ItemMenu;
 import com.bombitarodriguez.vista.VentanaPrincipal;
 import com.bombitarodriguez.vista.factory.menues.VistaMenuPrincipal;
@@ -26,7 +26,7 @@ public abstract class Menu implements Posicionable{
 		this.Items = new ArrayList<ItemMenu>();
 	}
 
-	public void setControlador(ControlKeyPressedMenuPrincipal controlador) {
+	public void setControlador(ControladorMenu controlador) {
 		this.keyPressControl = controlador;
 	}
 	
@@ -84,7 +84,15 @@ public abstract class Menu implements Posicionable{
 		this.posY = y;
 	}
 
+	public void mostrar() {
+		this.getVentanaPrincipal().agregarMenu(this);	
+		this.activarControl();
+	}
+	
 	public void borrar() {
 		this.getVentanaPrincipal().quitarMenu(this);
 	}
+	
+	public abstract void activarControl();
+	
 }
