@@ -26,6 +26,7 @@ public class PersistenciaTest {
 
 	@Before
 	public void setUp() throws Exception {
+		Mapa.getMapa().getMapaCasillero().clear();
 		vida = new Integer(1);		
 		posicionInicial = new Posicion(1, 1);
 		posicionFinal = new Posicion(1, 2);
@@ -37,31 +38,12 @@ public class PersistenciaTest {
 		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
 	}
-
-	@Test
-	/**
-	 * Se quiere recuperar partida cuando nunca se guardo
-	 */
-	public void testPersistencia_1() {
-		
-		PersistenciaPartidaXML persistencia = new PersistenciaPartidaXML("persistencia-test.xml");
-		
-		try {
-			persistencia.cargarDominioDeXML();
-			fail();
-		} catch (Exception e) {
-			//test passed
-		}
-		
-	}
 	
 	@Test
-	public void testPersistencia_2() {
+	public void testPersistencia_1() {
 		PersistenciaPartidaXML persistencia = new PersistenciaPartidaXML("persistencia-test.xml");
 		persistencia.persistirPartida();
-		Casillero m = Mapa.getMapa().getCasillero(new Posicion(1, 1));
 		Mapa.setMapa(persistencia.cargarDominioDeXML());
-		Casillero x = Mapa.getMapa().getCasillero(new Posicion(1, 1));
 		bombita = (Bombita) Mapa.getMapa().getCasillero(new Posicion(1, 1)).getObjetos().get(0);
 		
 		assertTrue(Mapa.getMapa().getMapaCasillero().size() == 2);
@@ -73,14 +55,14 @@ public class PersistenciaTest {
 	/**
 	 * Se cambia el estado a bombita y se lo recupera con este ultimo.
 	 */
-	public void testPersistencia_3() {
+	public void testPersistencia_2() {
 		PersistenciaPartidaXML persistencia = new PersistenciaPartidaXML("persistencia-test.xml");
 		Bombita bombita = (Bombita) Mapa.getMapa().getCasillero(new Posicion(1, 1)).getObjetos().get(0);
 		bombita.setVida(8);
 		persistencia.persistirPartida();
-		Mapa mapa = (Mapa) persistencia.cargarDominioDeXML();
+		Mapa.setMapa(persistencia.cargarDominioDeXML());
 		
-		bombita = (Bombita) mapa.getCasillero(new Posicion(1, 1)).getObjetos().get(0);
+		bombita = (Bombita) Mapa.getMapa().getCasillero(new Posicion(1, 1)).getObjetos().get(0);
 		
 		assertTrue(Mapa.getMapa().getMapaCasillero().size() == 2);
 		assertTrue(bombita.getVida() == 8);

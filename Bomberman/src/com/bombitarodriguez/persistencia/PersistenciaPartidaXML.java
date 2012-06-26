@@ -1,24 +1,13 @@
 package com.bombitarodriguez.persistencia;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 
-import com.bombitarodriguez.dominio.BloqueAcero;
-import com.bombitarodriguez.dominio.BloqueCemento;
-import com.bombitarodriguez.dominio.BloqueLadrillo;
-import com.bombitarodriguez.dominio.Bombita;
-import com.bombitarodriguez.dominio.Casillero;
-import com.bombitarodriguez.dominio.Cecilio;
-import com.bombitarodriguez.dominio.Chala;
-import com.bombitarodriguez.dominio.LosLopezReggae;
-import com.bombitarodriguez.dominio.LosLopezReggaeAlado;
 import com.bombitarodriguez.dominio.Mapa;
-import com.bombitarodriguez.dominio.Posicion;
-import com.bombitarodriguez.dominio.Salida;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
+
 
 /**
  * 
