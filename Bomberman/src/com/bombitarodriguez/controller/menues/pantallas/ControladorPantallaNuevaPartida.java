@@ -3,37 +3,36 @@ package com.bombitarodriguez.controller.menues.pantallas;
 import java.awt.event.KeyEvent;
 
 import com.bombitarodriguez.controller.ControladorBombita;
+import com.bombitarodriguez.menues.MenuPausa;
 import com.bombitarodriguez.menues.pantallas.PantallaNuevaPartida;
 
 import ar.uba.fi.algo3.titiritero.KeyPressedObservador;
 
-public class ControlKeyPressedPantallaNuevaPartida implements KeyPressedObservador {
+public class ControladorPantallaNuevaPartida implements KeyPressedObservador {
 
 	private PantallaNuevaPartida pantalla;
 	private ControladorBombita controladorBombita;
 
-	public ControlKeyPressedPantallaNuevaPartida(PantallaNuevaPartida pantalla) {
+	public ControladorPantallaNuevaPartida(PantallaNuevaPartida pantalla) {
 		this.pantalla = pantalla;
-		this.controladorBombita = pantalla.getVentanaPrincipal().getJuego().getControlador().getControladorBombita(); 
+		this.controladorBombita = pantalla.getVentanaPrincipal().getJuego().getControlador().getControladorBombita();
 	}
 
 	@Override
 	public void keyPressed(KeyEvent event) {
 
+		/* Le pasamos el evento al controlador de Bombita */
 		controladorBombita.keyPressed(event);
-		
+
 		switch (event.getKeyCode()) {
 
 		case KeyEvent.VK_P:
-			/*Pausamos el juego*/
-			pantalla.juegoEnPausa();
+			
+			this.pantalla.getVentanaPrincipal().getJuego().getControlador().detenerJuego();
+			MenuPausa menuPausa = new MenuPausa(this.pantalla.getVentanaPrincipal(), this.pantalla);
+			menuPausa.mostrar();
 			break;
-
-		case KeyEvent.VK_UP:
-			break;
-
-		case KeyEvent.VK_ENTER:
-			break;
+			
 		}
 	}
 

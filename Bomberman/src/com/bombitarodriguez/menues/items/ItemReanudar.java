@@ -1,8 +1,7 @@
 package com.bombitarodriguez.menues.items;
 
 import com.bombitarodriguez.menues.Menu;
-import com.bombitarodriguez.vista.factory.menues.items.VistaItemCargarPartida;
-import com.bombitarodriguez.vista.factory.menues.items.VistaItemGuardarPartida;
+import com.bombitarodriguez.menues.MenuPausa;
 import com.bombitarodriguez.vista.factory.menues.items.VistaItemReanudar;
 
 
@@ -16,14 +15,15 @@ public class ItemReanudar extends ItemMenu{
 
 		this.setVistaItem(new VistaItemReanudar());
 		this.getVistaItem().setPosicionable(this);
-		this.getVistaItem().itemOut();
+		this.getVistaItem().itemOver();
 	}
 	
 
 	@Override
 	public void seleccionar() {
+		
+		this.getMenuPadre().borrar();
+		((MenuPausa)this.getMenuPadre()).pantalla.activarControl();
 
-//		MenuNuevaPartida menuNuevaPartida = new MenuNuevaPartida(this.getVentanaPrincipal(), this.getMenuDelItem());
-//		menuNuevaPartida.mostrar();
 	}
 }

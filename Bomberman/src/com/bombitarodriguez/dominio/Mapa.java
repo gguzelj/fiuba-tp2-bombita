@@ -76,7 +76,7 @@ public class Mapa {
 	public void crearMapa(File file) {
 		List<String> objetosACrear = Parser.parsearMapXML(file);
 		
-		//Durante la creacion del mapa, guardo su dimension
+		/*Durante la creacion del mapa, guardo su dimension*/
 		Mapa.setDimension(objetosACrear.size());
 		
 		crearCasillerosVacios(objetosACrear.size());

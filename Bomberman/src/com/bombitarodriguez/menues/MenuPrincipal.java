@@ -1,6 +1,6 @@
 package com.bombitarodriguez.menues;
 
-import com.bombitarodriguez.controller.menues.ControlKeyPressedMenuPrincipal;
+import com.bombitarodriguez.controller.menues.ControladorMenu;
 import com.bombitarodriguez.menues.items.ItemCargarPartida;
 import com.bombitarodriguez.menues.items.ItemNuevaPartida;
 import com.bombitarodriguez.menues.items.ItemSalirDelJuego;
@@ -27,7 +27,13 @@ public class MenuPrincipal extends Menu {
 		this.agregarItem(new ItemSalirDelJuego(this,400,300));
 		
 		/*Agregamos su controlador*/
-		this.setControlador(new ControlKeyPressedMenuPrincipal(this));
+		this.setControlador(new ControladorMenu(this));
 		
+	}
+
+	@Override
+	public void activarControl() {
+		this.setControlador(new ControladorMenu(this));
+		this.getVentanaPrincipal().setControladorActivo(this.getControlador());
 	}
 }

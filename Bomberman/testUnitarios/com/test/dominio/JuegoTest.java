@@ -1,13 +1,5 @@
 package com.test.dominio;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
-import com.bombitarodriguez.dominio.Juego;
-import com.bombitarodriguez.dominio.Mapa;
-import com.bombitarodriguez.dominio.Posicion;
-
 public class JuegoTest {
 
 	

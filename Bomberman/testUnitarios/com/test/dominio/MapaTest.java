@@ -2,7 +2,6 @@ package com.test.dominio;
 
 import static org.junit.Assert.*;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -49,7 +48,7 @@ public class MapaTest {
 	
 	@Test
 	public void testCrearCasillerosVacios(){
-		Juego game = new Juego();
+		new Juego();
 		Mapa.getMapa().crearCasillerosVacios(3);
 	
 		for (int x = 1; x <= 3; x++){

@@ -2,7 +2,6 @@ package com.test.persistencia;
 
 import static org.junit.Assert.*;
 
-import java.util.HashMap;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +11,6 @@ import com.bombitarodriguez.dominio.Bombita;
 import com.bombitarodriguez.dominio.Casillero;
 import com.bombitarodriguez.dominio.Mapa;
 import com.bombitarodriguez.dominio.Posicion;
-import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.persistencia.PersistenciaPartidaXML;
 
 public class PersistenciaTest {

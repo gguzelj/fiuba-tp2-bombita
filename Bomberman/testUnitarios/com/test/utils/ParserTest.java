@@ -1,17 +1,9 @@
 package com.test.utils;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.fail;
-
 import java.io.File;
-import java.io.InputStream;
-import java.net.URI;
-import java.net.URL;
 import java.util.List;
-
 import org.junit.Test;
-
-import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Parser;
 
 public class ParserTest {
