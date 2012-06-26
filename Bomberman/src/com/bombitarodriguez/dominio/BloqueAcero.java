@@ -28,4 +28,10 @@ public class BloqueAcero extends Obstaculo {
 		return new VistaBloqueAcero();
 	}
 
+	@Override
+	public void vivir() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

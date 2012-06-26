@@ -5,6 +5,7 @@ import ar.uba.fi.algo3.titiritero.Posicionable;
 
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Transformacion;
+import com.bombitarodriguez.vista.factory.dominio.VistaAbstracta;
 
 /**
  * 
@@ -21,12 +22,20 @@ public abstract class Arma implements ObjetoReaccionable, Posicionable, ObjetoVi
 	
 	protected Integer ondaExpansiva;
 	
-	protected boolean visible;
+	protected VistaAbstracta vista;
 
 	
 	
 	
 	
+
+	public VistaAbstracta getVista() {
+		return vista;
+	}
+
+	public void setVista(VistaAbstracta vista) {
+		this.vista = vista;
+	}
 
 	public void explotar(){
 		Explosion explosion = new Explosion(getDestruccion(),getOndaExpansiva());
@@ -151,12 +160,5 @@ public abstract class Arma implements ObjetoReaccionable, Posicionable, ObjetoVi
 	}
 	
 	
-	public boolean isVisible() {
-		return visible;
-	}
-
-	public void setVisible(boolean visible) {
-		this.visible = visible;
-	}
 
 }

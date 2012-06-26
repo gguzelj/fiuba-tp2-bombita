@@ -16,6 +16,7 @@ import com.bombitarodriguez.interfaces.StrategyMovimiento;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
 import com.bombitarodriguez.utils.Transformacion;
+import com.bombitarodriguez.vista.factory.dominio.VistaAbstracta;
 
 
 /**
@@ -33,12 +34,20 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 	
 	protected FactoryArma factoryArma;
 	
-	protected AccionAbstracta visible;
+	protected VistaAbstracta vista;
 	
 		
 	
 
 
+
+	public VistaAbstracta getVista() {
+		return vista;
+	}
+
+	public void setVista(VistaAbstracta vista) {
+		this.vista = vista;
+	}
 
 	/**
 	 * Permite reaccionar con todos los objetos de un casillero(Public solamente para ser testead)
@@ -205,14 +214,7 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 		
 	}
 	
-	public AccionAbstracta getVisible() {
-		return visible;
-	}
 
-	public void setVisible(AccionAbstracta visible) {
-		this.visible = visible;
-	}
-	
 	@Override
 	public int getX() {
 		return Transformacion.transformarAPixeles(this.getPosicion().getPosX());

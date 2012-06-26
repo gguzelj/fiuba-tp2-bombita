@@ -4,6 +4,7 @@ import ar.uba.fi.algo3.titiritero.Posicionable;
 
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Transformacion;
+import com.bombitarodriguez.vista.factory.dominio.VistaAbstracta;
 
 /**
  * 
@@ -14,6 +15,16 @@ public abstract class Articulo implements ObjetoReaccionable, Posicionable {
 
 	protected Casillero casillero;
 	
+	protected VistaAbstracta vista;
+	
+	public VistaAbstracta getVista() {
+		return vista;
+	}
+
+	public void setVista(VistaAbstracta vista) {
+		this.vista = vista;
+	}
+
 	public Casillero getCasillero() {
 		return casillero;
 	}

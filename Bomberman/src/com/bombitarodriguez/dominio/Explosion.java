@@ -8,6 +8,7 @@ import ar.uba.fi.algo3.titiritero.vista.Imagen;
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Direccion;
+import com.bombitarodriguez.vista.factory.dominio.VistaAbstracta;
 import com.bombitarodriguez.vista.factory.dominio.VistaExplosion;
 
 public class Explosion implements ObjetoReaccionable{
@@ -18,6 +19,14 @@ public class Explosion implements ObjetoReaccionable{
 	
 	protected Integer ondaExpansiva;
 	
+	protected VistaAbstracta vista;
+	
+	public VistaAbstracta getVista() {
+		return vista;
+	}
+	public void setVista(VistaAbstracta vista) {
+		this.vista = vista;
+	}
 	public Explosion(Integer destruccion, Integer ondaExpansiva){
 		this.destruccion = destruccion;
 		this.ondaExpansiva = ondaExpansiva;

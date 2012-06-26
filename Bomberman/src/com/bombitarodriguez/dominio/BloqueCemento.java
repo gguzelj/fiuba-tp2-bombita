@@ -38,5 +38,11 @@ public class BloqueCemento extends Obstaculo {
 	public Imagen vistaDeObjeto() {
 		return new VistaBloqueCemento();
 	}
+
+	@Override
+	public void vivir() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

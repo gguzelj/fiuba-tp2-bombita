@@ -3,6 +3,7 @@ package com.bombitarodriguez.dominio;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
+import com.bombitarodriguez.vista.factory.dominio.VistaAbstracta;
 import com.bombitarodriguez.vista.factory.dominio.VistaSalida;
 
 
@@ -12,6 +13,15 @@ import com.bombitarodriguez.vista.factory.dominio.VistaSalida;
  *
  */
 public class Salida implements ObjetoReaccionable {
+
+	protected VistaAbstracta vista;
+	public VistaAbstracta getVista() {
+		return vista;
+	}
+
+	public void setVista(VistaAbstracta vista) {
+		this.vista = vista;
+	}
 
 	@Override
 	public Posicion getPosicion() {
