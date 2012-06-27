@@ -11,7 +11,7 @@ public abstract class Pantalla implements Posicionable{
 	private VentanaPrincipal ventanaPrincipal;
 	private int posX;
 	private int posY;
-	private Imagen vistaPantallaNuevaPartida;
+	protected Imagen vistaPantallaNuevaPartida;
 	private ControladorPantallaNuevaPartida controlador;
 	
 	public Pantalla(int posX, int posY, VentanaPrincipal ventana){

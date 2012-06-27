@@ -6,11 +6,11 @@ import com.bombitarodriguez.vista.factory.menues.items.VistaItemCargarPartida;
 
 public class ItemCargarPartida extends ItemMenu{
 	
-	public ItemCargarPartida(Menu menuPadre, int PosX, int PosY){
+	public ItemCargarPartida(Menu menuPadre, int posX, int posY){
 
 		super(menuPadre);
-		this.setX(400);
-		this.setY(200);
+		this.setX(posX);
+		this.setY(posY);
 
 		this.setVistaItem(new VistaItemCargarPartida());
 		this.getVistaItem().setPosicionable(this);

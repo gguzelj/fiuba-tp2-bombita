@@ -23,6 +23,7 @@ public class ItemNuevaPartida extends ItemMenu {
 		
 		this.getMenuPadre().borrar();
 		PantallaNuevaPartida pantallaNuevaPartida = new PantallaNuevaPartida(0, 0, this.getMenuPadre().getVentanaPrincipal());
+		pantallaNuevaPartida.mostrar();
 		pantallaNuevaPartida.crearJuego();
 		pantallaNuevaPartida.activarControl();
 		
