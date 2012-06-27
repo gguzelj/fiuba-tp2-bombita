@@ -3,28 +3,39 @@ package com.bombitarodriguez.dominio;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
+import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Direccion;
 import com.bombitarodriguez.utils.Transformacion;
 import com.bombitarodriguez.vista.factory.dominio.VistaExplosion;
 
-public class Explosion implements ObjetoReaccionable , Posicionable{
+public class Explosion implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 
 	protected Casillero casilleroContenedor;
 	protected Integer destruccion;
 	protected Integer ondaExpansiva;
 	protected Integer posX;
 	protected Integer posY;
-
+	protected Imagen vistaExplosion;
+	protected Integer tiempoDeVisualizacion;
 	
 	public Explosion(Integer destruccion, Integer ondaExpansiva){
 		this.destruccion = destruccion;
 		this.ondaExpansiva = ondaExpansiva;
+		this.mostrar();
 	}
+	
+	private void mostrar() {
+		this.vistaExplosion = new VistaExplosion();
+		this.tiempoDeVisualizacion = 3;
+		ControladorBomberman.agregarObjeto(this);
+	}
+	
 	public Integer getDestruccion(){
 		return destruccion;
 	}
@@ -33,6 +44,11 @@ public class Explosion implements ObjetoReaccionable , Posicionable{
 	public Boolean reaccionarCon(Bombita bombita) {
 		bombita.reaccionarCon(this);
 		return true;
+	}
+	
+	@Override
+	public Boolean reaccionarCon(Bomba bomba) {
+		return false;
 	}
 	
 	@Override
@@ -150,6 +166,8 @@ public class Explosion implements ObjetoReaccionable , Posicionable{
 				return;
 			}
 			Casillero casilleroActual = Mapa.getMapa().getCasillero(posicionActual);
+			//Agrego la vista de la explosion al controlador para que se visualice
+			casilleroActual.agregarObjeto(new Explosion(0, 0));
 			puedoContinuar = reaccionarConTodos(casilleroActual);
 			ondaExpansiva --;
 		}
@@ -176,7 +194,7 @@ public class Explosion implements ObjetoReaccionable , Posicionable{
 	}
 	@Override
 	public Imagen vistaDeObjeto() {
-		return new VistaExplosion();
+		return this.vistaExplosion;
 	}
 
 	@Override
@@ -202,10 +220,13 @@ public class Explosion implements ObjetoReaccionable , Posicionable{
 	public Integer getPosY() {
 		return posY;
 	}
+	
 	@Override
-	public Boolean reaccionarCon(Bomba bomba) {
-		// TODO Auto-generated method stub
-		return null;
+	public void vivir() {
+		this.tiempoDeVisualizacion--;
+		if(this.tiempoDeVisualizacion == 0){
+			ControladorBomberman.borrarObjeto(this);
+		}
 	}
 
 	

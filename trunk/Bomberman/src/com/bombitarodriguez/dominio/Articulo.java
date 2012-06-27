@@ -4,6 +4,7 @@ import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
+import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Transformacion;
 
@@ -96,6 +97,7 @@ public abstract class Articulo implements ObjetoReaccionable, Posicionable, Obje
 	@Override
 	public Boolean reaccionarCon(Explosion explosion) {
 		this.getCasillero().quitarObjeto(this);
+		ControladorBomberman.borrarObjeto(this);
 		return true;
 	}
 	

@@ -123,7 +123,6 @@ public class Bombita extends Personaje{
 			atacar = false;
 		}
 		
-		
 		if(this.direccionAMover != null){
 			this.moverseConEstrategia(direccionAMover);
 			direccionAMover = null;

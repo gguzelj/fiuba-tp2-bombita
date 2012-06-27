@@ -17,16 +17,17 @@ public class Constante {
 	public final static Integer VELOCIDAD_CORRE = 2;
 	//constantes de las armas
 	public final static Integer ONDA_EXPANSIVA_MOLOTOV = 1;
-	public final static Integer ONDA_EXPANSIVA_TOLETOLE = 3;
-	public final static Integer ONDA_EXPANSIVA_PROYECTIL = 3;	
+	public final static Integer ONDA_EXPANSIVA_TOLETOLE = 2;
+	public final static Integer ONDA_EXPANSIVA_PROYECTIL = 2;	
 	
-	public final static Double TIMER_MOLOTOV = 10D;
-	public final static Double TIMER_TOLETOLE = 5D;
-	public final static Double TIMER_PROYECTIL = 5D;
+	public final static Double TIMER_MOLOTOV = 20D;
+	public final static Double TIMER_TOLETOLE = 10D;
+	public final static Double TIMER_PROYECTIL = 10D;
 	
 	public final static Integer DESTRUCCION_MOLOTOV = 5;
 	public final static Integer DESTRUCCION_TOLETOLE = 0;
-	public static final Integer DESTRUCCION_PROYECTIL = 10;	//lista con los nombres de los mapa
+	public static final Integer DESTRUCCION_PROYECTIL = 10;	
+	//lista con los nombres de los mapa
 	public static final Integer PRIMER_MAPA = 1;
 	//directorio de los mapas
 	public static String DIRECTORIO_MAPAS = "\\resources\\mapas";

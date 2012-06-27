@@ -17,14 +17,14 @@ import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
 import com.bombitarodriguez.utils.Transformacion;
 
-
 /**
  * 
  * @author Mauro
- *
+ * 
  */
-public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyMovimiento, Posicionable, ObjetoVivo{
-	
+public abstract class Personaje implements ObjetoReaccionable, Armado,
+		StrategyMovimiento, Posicionable, ObjetoVivo {
+
 	protected Casillero casilleroContenedor;
 	protected Integer resistencia;
 	protected Integer velocidad;
@@ -32,15 +32,17 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 	protected Integer posX;
 	protected Integer posY;
 	protected Imagen vistaPersonaje;
-	
 
 	/**
-	 * Permite reaccionar con todos los objetos de un casillero(Public solamente para ser testead)
+	 * Permite reaccionar con todos los objetos de un casillero(Public solamente
+	 * para ser testead)
+	 * 
 	 * @param iterador
 	 * @return true si se puede mover, false caso contrario
 	 */
-	protected abstract Boolean reaccionarConTodos(Iterator<ObjetoReaccionable> iterador);		
-	
+	protected abstract Boolean reaccionarConTodos(
+			Iterator<ObjetoReaccionable> iterador);
+
 	public Integer getResistencia() {
 		return resistencia;
 	}
@@ -60,7 +62,7 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 	public Casillero getCasillero() {
 		return casilleroContenedor;
 	}
-	
+
 	@Override
 	public Posicion getPosicion() {
 		return casilleroContenedor.getPosicion();
@@ -68,7 +70,7 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 
 	@Override
 	public void setCasillero(Casillero casillero) {
-		casilleroContenedor = casillero;		
+		casilleroContenedor = casillero;
 	}
 
 	public FactoryArma getFactoryArma() {
@@ -80,95 +82,99 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 	}
 
 	@Override
-	public Boolean reaccionarCon(Bombita bombita){
+	public Boolean reaccionarCon(Bombita bombita) {
 		bombita.quitarVida();
 		return false;
 	}
+
 	@Override
-	public Boolean reaccionarCon(Cecilio cecilio){
+	public Boolean reaccionarCon(Cecilio cecilio) {
 		return false;
 	}
+
 	@Override
-	public Boolean reaccionarCon(LosLopezReggae losLopezReggae){
+	public Boolean reaccionarCon(LosLopezReggae losLopezReggae) {
 		return false;
 	}
+
 	@Override
-	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado){
+	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado) {
 		return false;
 	}
-	
+
 	@Override
 	public Boolean reaccionarCon(Bomba bomba) {
 		return false;
 	}
 
 	@Override
-	public Boolean reaccionarCon(Explosion explosion){
-		if (explosion.destruccion == Constante.DESTRUCCION_TOLETOLE){
+	public Boolean reaccionarCon(Explosion explosion) {
+		if (explosion.destruccion == Constante.DESTRUCCION_TOLETOLE) {
 			ControladorBomberman.borrarObjeto(this);
 			destruirse();
-		}else{
+		} else {
 			resistencia = resistencia - explosion.getDestruccion();
-			if (resistencia <= 0){
+			if (resistencia <= 0) {
 				ControladorBomberman.borrarObjeto(this);
 				destruirse();
 			}
 		}
-		
+
 		return true;
-	}	
-	
+	}
+
 	@Override
-	public Boolean reaccionarCon(BloqueCemento bloqueCemento){
+	public Boolean reaccionarCon(BloqueCemento bloqueCemento) {
 		return false;
 	}
-	
+
 	@Override
-	public Boolean reaccionarCon(BloqueAcero bloqueAcero){
+	public Boolean reaccionarCon(BloqueAcero bloqueAcero) {
 		return false;
 	}
-	
+
 	@Override
-	public Boolean reaccionarCon(BloqueLadrillo bloqueLadrillo){
+	public Boolean reaccionarCon(BloqueLadrillo bloqueLadrillo) {
 		return false;
 	}
-	
+
 	@Override
-	public Boolean reaccionarCon(Chala chala){
+	public Boolean reaccionarCon(Chala chala) {
 		return false;
 	}
-	
+
 	@Override
-	public Boolean reaccionarCon(ArticuloToleTole articuloBombaToleTole){
+	public Boolean reaccionarCon(ArticuloToleTole articuloBombaToleTole) {
 		return false;
 	}
-	
+
 	@Override
-	public Boolean reaccionarCon(Timer timer){
+	public Boolean reaccionarCon(Timer timer) {
 		return false;
-	}	
-	
+	}
+
 	@Override
 	public Boolean reaccionarCon(Proyectil proyectil) {
 		return false;
 	}
-	
-	public void destruirse(){
+
+	public void destruirse() {
 		getCasillero().quitarObjeto(this);
 	}
-	
+
 	@Override
 	public void moverseConEstrategia(Direccion direccion) {
-		
+
 		Posicion nuevaPosicion;
 		try {
-			nuevaPosicion = Mapa.getMapa().getNuevaPosicion(this.getPosicion(), direccion);
+			nuevaPosicion = Mapa.getMapa().getNuevaPosicion(this.getPosicion(),	direccion);
 		} catch (FueraDelMapaException e) {
 			// No se relaciona con los objetos del mapa
 			return;
 		}
 		Casillero casilleroProximo = Mapa.getMapa().getCasillero(nuevaPosicion);
-		// Creo una copia de la lista sobre la cual voy a iterar, ya que se puede modificar
+		// Creo una copia de la lista sobre la cual voy a iterar, ya que se
+		// puede modificar
 		List<ObjetoReaccionable> copiaObjetosCasillero = new ArrayList<ObjetoReaccionable>();
 		copiaObjetosCasillero.addAll(casilleroProximo.getObjetos());
 		Iterator<ObjetoReaccionable> iterador = copiaObjetosCasillero.iterator();
@@ -176,33 +182,32 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 			Mapa.getMapa().reposicionar(this, casilleroProximo);
 		}
 	}
-	
+
 	@Override
 	public void vivir() {
 		if (puedeReaccionar()) {
-		Integer random = new Random().nextInt(5);
-		
-		switch(random){
-		case 1:
-			this.moverseConEstrategia(Direccion.DERECHA);
-			break;
-		case 2:
-			this.moverseConEstrategia(Direccion.IZQUIERDA);
-			break;
-		case 3:
-			this.moverseConEstrategia(Direccion.ARRIBA);
-			break;
-		case 4:
-			this.moverseConEstrategia(Direccion.ABAJO);
-			break;
-		case 5:
-			this.usarArma();
-			break;
+			Integer random = new Random().nextInt(15);
+
+			switch (random) {
+			case 1:
+				this.moverseConEstrategia(Direccion.DERECHA);
+				break;
+			case 2:
+				this.moverseConEstrategia(Direccion.IZQUIERDA);
+				break;
+			case 3:
+				this.moverseConEstrategia(Direccion.ARRIBA);
+				break;
+			case 4:
+				this.moverseConEstrategia(Direccion.ABAJO);
+				break;
+//			case 5:
+//				ControladorBomberman.agregarObjeto(this.usarArma());
+//				break;
+			}
 		}
-		}
-		
+
 	}
-	
 
 	@Override
 	public int getX() {
@@ -210,25 +215,24 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 	}
 
 	@Override
-	public int getY() {	
+	public int getY() {
 		return Transformacion.transformarAPixeles(getPosY());
 	}
-	
+
 	@Override
 	public void setCoordenadas(Integer x, Integer y) {
 		posX = x;
 		posY = y;
 	}
-	
+
 	public Integer getPosX() {
 		return posX;
 	}
-	
+
 	public Integer getPosY() {
 		return posY;
 	}
-	
-	
+
 	public boolean puedeReaccionar() {
 		return (this.resistencia > 0);
 	}

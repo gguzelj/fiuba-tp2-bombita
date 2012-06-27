@@ -104,7 +104,8 @@ public abstract class Arma implements ObjetoReaccionable, Posicionable, ObjetoVi
 	
 	@Override
 	public Boolean reaccionarCon(Explosion explosion){
-		this.explotar();
+		this.getCasillero().quitarObjeto(this);
+		ControladorBomberman.borrarObjeto(this);
 		return true;
 	}
 	
