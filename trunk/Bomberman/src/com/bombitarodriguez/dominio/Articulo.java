@@ -4,7 +4,6 @@ import ar.uba.fi.algo3.titiritero.Posicionable;
 
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Transformacion;
-import com.bombitarodriguez.vista.factory.dominio.VistaAbstracta;
 
 /**
  * 
@@ -14,16 +13,8 @@ import com.bombitarodriguez.vista.factory.dominio.VistaAbstracta;
 public abstract class Articulo implements ObjetoReaccionable, Posicionable {
 
 	protected Casillero casillero;
-	
-	protected VistaAbstracta vista;
-	
-	public VistaAbstracta getVista() {
-		return vista;
-	}
-
-	public void setVista(VistaAbstracta vista) {
-		this.vista = vista;
-	}
+	protected Integer posX;
+	protected Integer posY;
 
 	public Casillero getCasillero() {
 		return casillero;
@@ -107,12 +98,26 @@ public abstract class Articulo implements ObjetoReaccionable, Posicionable {
 	
 	@Override
 	public int getX() {
-		return Transformacion.transformarAPixeles(casillero.getPosicion().getPosX());
+		return Transformacion.transformarAPixeles(getPosX());
 	}
 
 	@Override
-	public int getY() {
-		return Transformacion.transformarAPixeles(casillero.getPosicion().getPosY());
+	public int getY() {	
+		return Transformacion.transformarAPixeles(getPosY());
+	}
+	
+	@Override
+	public void setCoordenadas(Integer x, Integer y) {
+		posX = x;
+		posY = y;
+	}
+	
+	public Integer getPosX() {
+		return posX;
+	}
+	
+	public Integer getPosY() {
+		return posY;
 	}
 	
 	

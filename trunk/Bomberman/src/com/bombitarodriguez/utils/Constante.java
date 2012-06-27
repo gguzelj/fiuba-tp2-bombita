@@ -19,7 +19,7 @@ public class Constante {
 	public final static Integer ONDA_EXPANSIVA_MOLOTOV = 3;
 	public final static Integer ONDA_EXPANSIVA_TOLETOLE = 6;
 	public final static Integer ONDA_EXPANSIVA_PROYECTIL = 6;	
-	public final static Double TIMER_MOLOTOV = 100D;
+	public final static Double TIMER_MOLOTOV = 10D;
 	
 
 	public final static Double TIMER_TOLETOLE = 5D;

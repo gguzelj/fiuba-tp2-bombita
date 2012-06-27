@@ -5,11 +5,10 @@ import java.util.Iterator;
 
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
+import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
-import com.bombitarodriguez.utils.ImageUtils;
-import com.bombitarodriguez.vista.factory.dominio.VistaAbstracta;
 import com.bombitarodriguez.vista.factory.dominio.VistaBombita;
 
 /**
@@ -111,11 +110,8 @@ public class Bombita extends Personaje{
 	public void vivir() {
 		
 		if(atacar == true){	
-			Arma arma = usarArma();
-			arma.setVista(vista);
-			vista.mostrar(arma);
+			ControladorBomberman.agregarObjeto(this.usarArma());
 			atacar = false;
-			
 		}
 		
 		
