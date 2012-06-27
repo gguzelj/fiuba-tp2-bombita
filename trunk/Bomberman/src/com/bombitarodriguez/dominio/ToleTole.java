@@ -17,23 +17,28 @@ public class ToleTole extends Bomba {
 		this.destruccion = Constante.DESTRUCCION_TOLETOLE;
 		this.retardo = Constante.TIMER_TOLETOLE;
 		this.ondaExpansiva = Constante.ONDA_EXPANSIVA_TOLETOLE;
+		this.vistaArma = new VistaToleTole();
 	}
 
 	public ToleTole(Double retardo){
 		this.destruccion = Constante.DESTRUCCION_TOLETOLE;
-		this.retardo = retardo;
+//		this.retardo = retardo;
+		this.retardo =  Constante.TIMER_TOLETOLE;
 		this.ondaExpansiva = Constante.ONDA_EXPANSIVA_TOLETOLE;
+		this.vistaArma = new VistaToleTole();
 	}
 
 	@Override
 	public Imagen vistaDeObjeto() {
-		return new VistaToleTole();
+		return this.vistaArma;
 	}
 
 	@Override
 	public void vivir() {
-		// TODO Auto-generated method stub
-		
+		retardo--;
+		if (retardo <= 0){
+			this.explotar();
+		}
 	}
 	
 }

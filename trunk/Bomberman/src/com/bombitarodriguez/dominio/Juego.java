@@ -50,8 +50,8 @@ public class Juego {
 		this.crearMapa(nivel);
 		
 		/*Obtenemos las dimensiones del mapa que creamos*/
-		Integer dimensionDelMapa = Transformacion.transformarAPixeles(10 + 2);
-		this.ventanaPrincipal.setSize(dimensionDelMapa, dimensionDelMapa);
+//		Integer dimensionDelMapa = Transformacion.transformarAPixeles(10 + 2);
+//		this.ventanaPrincipal.setSize(dimensionDelMapa, dimensionDelMapa);
 		
 		/*Obtener Bombita*/
 		bombita = this.obtenerBombita();	

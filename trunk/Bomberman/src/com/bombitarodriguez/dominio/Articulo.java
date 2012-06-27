@@ -1,6 +1,8 @@
 package com.bombitarodriguez.dominio;	
 
+import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
+import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Transformacion;
@@ -10,11 +12,12 @@ import com.bombitarodriguez.utils.Transformacion;
  * @author Mauro
  *
  */
-public abstract class Articulo implements ObjetoReaccionable, Posicionable {
+public abstract class Articulo implements ObjetoReaccionable, Posicionable, ObjetoVivo{
 
 	protected Casillero casillero;
 	protected Integer posX;
 	protected Integer posY;
+	protected Imagen vistaArticulo;
 
 	public Casillero getCasillero() {
 		return casillero;
@@ -120,5 +123,7 @@ public abstract class Articulo implements ObjetoReaccionable, Posicionable {
 		return posY;
 	}
 	
-	
+	@Override
+	public void vivir() {
+	}
 }

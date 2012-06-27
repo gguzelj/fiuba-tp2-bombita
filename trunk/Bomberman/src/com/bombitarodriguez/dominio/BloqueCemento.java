@@ -7,6 +7,7 @@ import ar.uba.fi.algo3.titiritero.vista.Imagen;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.vista.factory.dominio.VistaBloqueCemento;
+import com.bombitarodriguez.vista.factory.dominio.VistaBloqueLadrillo;
 
 /**
  * 
@@ -18,11 +19,13 @@ public class BloqueCemento extends Obstaculo {
 	public BloqueCemento(){
 		this.objeto = null;
 		this.durabilidad = Constante.DURABILIDAD_BLOQUE_CEMENTO;
+		this.vistaObstaculo = new VistaBloqueCemento();
 	}
 	
 	public BloqueCemento(ObjetoReaccionable objeto) {
 		this.objeto = objeto;
 		this.durabilidad = Constante.DURABILIDAD_BLOQUE_CEMENTO;
+		this.vistaObstaculo = new VistaBloqueCemento();
 	}
 	
 	/**
@@ -36,7 +39,7 @@ public class BloqueCemento extends Obstaculo {
 
 	@Override
 	public Imagen vistaDeObjeto() {
-		return new VistaBloqueCemento();
+		return this.vistaObstaculo;
 	}
 
 	@Override

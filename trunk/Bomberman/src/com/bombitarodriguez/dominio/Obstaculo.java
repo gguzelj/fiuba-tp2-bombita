@@ -2,6 +2,9 @@ package com.bombitarodriguez.dominio;
 
 import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
+import ar.uba.fi.algo3.titiritero.vista.Imagen;
+
+import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Transformacion;
 
@@ -15,6 +18,7 @@ public abstract class Obstaculo implements ObjetoReaccionable, Posicionable, Obj
 	protected Casillero casillero;
 	protected Integer durabilidad;
 	protected ObjetoReaccionable objeto;
+	protected Imagen vistaObstaculo;
 	protected Integer posX;
 	protected Integer posY;
 
@@ -112,6 +116,7 @@ public abstract class Obstaculo implements ObjetoReaccionable, Posicionable, Obj
 		Integer durabilidadRestante = (getDurabilidad() - explosion.getDestruccion());
 		if (durabilidadRestante <= 0) {
 			this.destruirse();
+			ControladorBomberman.borrarObjeto(this);
 			return true;
 		}
 		this.setDurabilidad(durabilidadRestante);
@@ -119,8 +124,11 @@ public abstract class Obstaculo implements ObjetoReaccionable, Posicionable, Obj
 	}
 
 	public void destruirse() {
-		if (objeto != null)
+		if (objeto != null){
 			casillero.agregarObjeto(objeto);
+			ControladorBomberman.agregarObjeto(objeto);
+		}
+			
 		casillero.quitarObjeto(this);
 	}
 

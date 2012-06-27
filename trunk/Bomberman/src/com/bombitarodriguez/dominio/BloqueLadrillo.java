@@ -16,12 +16,14 @@ public class BloqueLadrillo extends Obstaculo{
 
 	public BloqueLadrillo(){
 		this.objeto = null;
-		this.durabilidad = Constante.DURABILIDAD_BLOQUE_LADRILLO;		
+		this.durabilidad = Constante.DURABILIDAD_BLOQUE_LADRILLO;	
+		this.vistaObstaculo = new VistaBloqueLadrillo();
 	}
 	
 	public BloqueLadrillo(ObjetoReaccionable objeto) {
 		this.objeto = objeto;
 		this.durabilidad = Constante.DURABILIDAD_BLOQUE_LADRILLO;
+		this.vistaObstaculo = new VistaBloqueLadrillo();
 	}
 	
 	/**
@@ -35,7 +37,7 @@ public class BloqueLadrillo extends Obstaculo{
 	
 	@Override
 	public Imagen vistaDeObjeto() {
-		return new VistaBloqueLadrillo();
+		return this.vistaObstaculo;
 	}
 
 	@Override
