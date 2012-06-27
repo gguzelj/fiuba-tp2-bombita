@@ -1,5 +1,6 @@
 package com.bombitarodriguez.dominio;
 
+import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
@@ -13,10 +14,15 @@ import com.bombitarodriguez.vista.factory.dominio.VistaSalida;
  * @author Mauro
  *
  */
-public class Salida implements ObjetoReaccionable , Posicionable{
+public class Salida implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 
 	protected Integer posX;
 	protected Integer posY;
+	protected Imagen vistaSalida;
+	
+	public void Salida(){
+		vistaSalida = new VistaSalida();
+	}
 	
 	@Override
 	public Posicion getPosicion() {
@@ -118,5 +124,11 @@ public class Salida implements ObjetoReaccionable , Posicionable{
 	
 	public Integer getPosY() {
 		return posY;
+	}
+
+	@Override
+	public void vivir() {
+		// TODO Auto-generated method stub
+		
 	}
 }

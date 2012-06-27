@@ -15,7 +15,7 @@ import ar.uba.fi.algo3.titiritero.SuperficieDeDibujo;
 public class ControladorBomberman extends ControladorJuego {
 
 	private ControladorBombita controladorBombita;
-	private Boolean estaEnEjecucion;
+	private static Boolean estaEnEjecucion;
 	private static List<ObjetoReaccionable> objetosParaAgregar = new ArrayList<ObjetoReaccionable>();
 	private static List<ObjetoReaccionable> objetosParaBorrar = new ArrayList<ObjetoReaccionable>();
 	
@@ -27,7 +27,14 @@ public class ControladorBomberman extends ControladorJuego {
 		objetosParaBorrar.add(objeto);
 	}
 	
-	
+	public static Boolean getEstaEnEjecucion() {
+		return estaEnEjecucion;
+	}
+
+	public static void setEstaEnEjecucion(Boolean estaEnEjecucion) {
+		estaEnEjecucion = estaEnEjecucion;
+	}
+
 	@Override
 	public void setSuperficieDeDibujo(SuperficieDeDibujo superficieDeDibujo) {
 		super.setSuperficieDeDibujo(superficieDeDibujo);

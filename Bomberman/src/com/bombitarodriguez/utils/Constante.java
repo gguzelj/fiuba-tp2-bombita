@@ -16,9 +16,9 @@ public class Constante {
 	public final static Integer VELOCIDAD_CAMINA = 1;
 	public final static Integer VELOCIDAD_CORRE = 2;
 	//constantes de las armas
-	public final static Integer ONDA_EXPANSIVA_MOLOTOV = 3;
-	public final static Integer ONDA_EXPANSIVA_TOLETOLE = 6;
-	public final static Integer ONDA_EXPANSIVA_PROYECTIL = 6;	
+	public final static Integer ONDA_EXPANSIVA_MOLOTOV = 1;
+	public final static Integer ONDA_EXPANSIVA_TOLETOLE = 3;
+	public final static Integer ONDA_EXPANSIVA_PROYECTIL = 3;	
 	
 	public final static Double TIMER_MOLOTOV = 10D;
 	public final static Double TIMER_TOLETOLE = 5D;

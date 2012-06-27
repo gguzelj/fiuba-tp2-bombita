@@ -53,11 +53,6 @@ public class Explosion implements ObjetoReaccionable , Posicionable{
 		return true;
 	}
 
-	@Override
-	public Boolean reaccionarCon(Bomba bomba) {
-		bomba.reaccionarCon(bomba);
-		return true;
-	}
 	
 	@Override
 	public Boolean reaccionarCon(Proyectil proyectil) {
@@ -207,4 +202,11 @@ public class Explosion implements ObjetoReaccionable , Posicionable{
 	public Integer getPosY() {
 		return posY;
 	}
+	@Override
+	public Boolean reaccionarCon(Bomba bomba) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }
