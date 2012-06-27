@@ -27,6 +27,11 @@ public class PantallaNuevaPartida extends Pantalla{
 		this.getVentanaPrincipal().getJuego().crearJuego(primerNivel);
 	}
 
+	public void cargarJuego(){
+		this.getVentanaPrincipal().getJuego().cargarJuego();
+		
+	}
+	
 	
 	@Override
 	public void activarControl() {

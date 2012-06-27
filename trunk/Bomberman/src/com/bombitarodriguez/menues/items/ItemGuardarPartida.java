@@ -21,7 +21,9 @@ public class ItemGuardarPartida extends ItemMenu{
 	@Override
 	public void seleccionar() {
 
-//		MenuNuevaPartida menuNuevaPartida = new MenuNuevaPartida(this.getVentanaPrincipal(), this.getMenuDelItem());
-//		menuNuevaPartida.mostrar();
+		this.getMenuPadre().getVentanaPrincipal().getJuego().guardarPartida();
+		System.out.println("partida guardada");
+		
+		
 	}
 }
