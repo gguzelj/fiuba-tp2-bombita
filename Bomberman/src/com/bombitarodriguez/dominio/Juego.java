@@ -50,22 +50,17 @@ public class Juego {
 		/*Creamos el mapa*/
 		this.crearMapa(nivel);
 		
-		/*Obtenemos las dimensiones del mapa que creamos*/
-//		Integer dimensionDelMapa = Transformacion.transformarAPixeles(10 + 2);
-//		this.ventanaPrincipal.setSize(dimensionDelMapa, dimensionDelMapa);
-		
 		/*Obtener Bombita*/
 		bombita = this.obtenerBombita();	
 				
 		/*Agregamos el controlador de Bombita*/
 		controlador.setControladorBombita(new ControladorBombita(bombita));
-		
-		/*Asignamos las vistas de cada objeto del mapa al controlador*/
-		this.agregarDibujables();
-		
-
 		controlador.agregarObjetoVivo(bombita);
+		
+		/*Asignamos los objetos del mapa al controlador*/
+		this.agregarObjetosDelMapa();
 	}
+
 	/**
 	 * Se asume que cada vez que se crea el mapa,
 	 * bombita comienza el juego ubicado en el casillero (1,1)
@@ -76,8 +71,13 @@ public class Juego {
 		return (Bombita) casillero.getObjetos().get(0);
 	}
 
-	private void agregarDibujables() {
-		
+	
+	/**
+	 * Se recorre el mapa en busca de los objetos creados. Para cada objeto
+	 * creado, se agrega en las listas de dibujables y de objetos vivos, del 
+	 * controlador del juego. 
+	 */
+	private void agregarObjetosDelMapa() {
 		Iterator<Entry<Posicion, Casillero>> it = Mapa.getMapa().getEntryIterator();
         Casillero casillero;
         
@@ -93,9 +93,11 @@ public class Juego {
            
             }   
 		}
-		
 	}
 
+	/**
+	 * Llamamos al creador de mapas de la clase Mapa
+	 */
 	private void crearMapa(Integer nivelJuego) {
 		StringBuilder nombreContenedorMapa = new StringBuilder();
 		nombreContenedorMapa.append(nivelJuego.toString());

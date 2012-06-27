@@ -17,7 +17,7 @@ public class Transformacion {
 	}
 	
 	public static Integer transformarAPixeles(Integer posX) {
-		return (posX * Constante.PIXELS_POR_CASILLERO);
+		return (posX * Constante.PIXELS_POR_CASILLERO) + 26;
 	}
 
 }

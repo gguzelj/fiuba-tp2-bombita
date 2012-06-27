@@ -1,7 +1,10 @@
 package com.bombitarodriguez.menues.pantallas;
 
+import ar.uba.fi.algo3.titiritero.vista.Imagen;
+
 import com.bombitarodriguez.controller.menues.pantallas.ControladorPantallaNuevaPartida;
 import com.bombitarodriguez.vista.VentanaPrincipal;
+import com.bombitarodriguez.vista.factory.menues.VistaPantallaNuevaPartida;
 
 
 public class PantallaNuevaPartida extends Pantalla{
@@ -13,6 +16,9 @@ public class PantallaNuevaPartida extends Pantalla{
 		/*Seteamos la posicion en la pantalla principal*/
 		this.setX(ventana.getHeight() / 2);
 		this.setY(ventana.getWidth() / 2);
+		
+		this.vistaPantallaNuevaPartida = new VistaPantallaNuevaPartida();
+		this.vistaPantallaNuevaPartida.setPosicionable(this);
 
 	}
 
@@ -26,6 +32,11 @@ public class PantallaNuevaPartida extends Pantalla{
 	public void activarControl() {
 		this.setControlador(new ControladorPantallaNuevaPartida(this));
 		this.getVentanaPrincipal().setControladorActivo(this.getControlador());
+	}
+	
+	
+	public void mostrar(){
+		this.getVentanaPrincipal().agregarDibujable(this.getVistaPantalla());	
 	}
 	
 }

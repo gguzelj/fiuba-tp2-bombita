@@ -14,17 +14,17 @@ public class MenuPrincipal extends Menu {
 		super(ventanaPrincipal);
 		
 		/*Seteamos la posicion en la pantalla principal*/
-		this.setX(250);
-		this.setY(250);
+		this.setX(ventanaPrincipal.getWidth() / 2);
+		this.setY(ventanaPrincipal.getHeight() / 2);
 		
 		/*Agregamos su vista*/
 		this.setVistaMenu(new VistaMenuPrincipal());
 		this.getVistaMenu().setPosicionable(this);
 
 		/* Creamos los items de las opciones del menu principal */
-		this.agregarItem(new ItemNuevaPartida(this,400,100));
-		this.agregarItem(new ItemCargarPartida(this,400,200));
-		this.agregarItem(new ItemSalirDelJuego(this,400,300));
+		this.agregarItem(new ItemNuevaPartida(this,450,150));
+		this.agregarItem(new ItemCargarPartida(this,450,250));
+		this.agregarItem(new ItemSalirDelJuego(this,450,350));
 		
 		/*Agregamos su controlador*/
 		this.setControlador(new ControladorMenu(this));

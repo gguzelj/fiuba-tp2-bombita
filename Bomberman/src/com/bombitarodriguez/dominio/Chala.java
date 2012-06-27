@@ -16,7 +16,7 @@ import com.bombitarodriguez.vista.factory.dominio.VistaChala;
 public class Chala extends Articulo {
 
 
-	public void Chala(){
+	public Chala(){
 		vistaArticulo = new VistaChala();
 	}
 	
@@ -26,18 +26,15 @@ public class Chala extends Articulo {
 	public Boolean reaccionarCon(Bombita bombita) {
 		bombita.setVelocidad(Constante.VELOCIDAD_CORRE);
 		casillero.quitarObjeto(this);
-		
+		ControladorBomberman.borrarObjeto(this);
 		return true;
 	}
-
-	
-	
-
 
 	@Override
 	public Boolean reaccionarCon(Cecilio cecilio) {
 		cecilio.setVelocidad(Constante.VELOCIDAD_CORRE);
 		casillero.quitarObjeto(this);
+		ControladorBomberman.borrarObjeto(this);
 		return true;
 	}
 
@@ -45,6 +42,7 @@ public class Chala extends Articulo {
 	public Boolean reaccionarCon(LosLopezReggae losLopezReggae) {
 		losLopezReggae.setVelocidad(Constante.VELOCIDAD_CORRE);
 		casillero.quitarObjeto(this);
+		ControladorBomberman.borrarObjeto(this);
 		return true;
 	}
 
@@ -52,6 +50,7 @@ public class Chala extends Articulo {
 	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado) {
 		losLopezReggaeAlado.setVelocidad(Constante.VELOCIDAD_CORRE);
 		casillero.quitarObjeto(this);
+		ControladorBomberman.borrarObjeto(this);
 		return true;
 	}
 
