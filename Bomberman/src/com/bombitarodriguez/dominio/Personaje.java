@@ -4,11 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-
 import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
-
-import com.bombitarodriguez.acciones.AccionAbstracta;
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.Armado;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
@@ -16,7 +13,6 @@ import com.bombitarodriguez.interfaces.StrategyMovimiento;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
 import com.bombitarodriguez.utils.Transformacion;
-import com.bombitarodriguez.vista.factory.dominio.VistaAbstracta;
 
 
 /**
@@ -27,27 +23,12 @@ import com.bombitarodriguez.vista.factory.dominio.VistaAbstracta;
 public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyMovimiento, Posicionable, ObjetoVivo{
 	
 	protected Casillero casilleroContenedor;
-	
 	protected Integer resistencia;
-	
 	protected Integer velocidad;
-	
 	protected FactoryArma factoryArma;
+	protected Integer posX;
+	protected Integer posY;
 	
-	protected VistaAbstracta vista;
-	
-		
-	
-
-
-
-	public VistaAbstracta getVista() {
-		return vista;
-	}
-
-	public void setVista(VistaAbstracta vista) {
-		this.vista = vista;
-	}
 
 	/**
 	 * Permite reaccionar con todos los objetos de un casillero(Public solamente para ser testead)
@@ -217,11 +198,25 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 
 	@Override
 	public int getX() {
-		return Transformacion.transformarAPixeles(this.getPosicion().getPosX());
+		return Transformacion.transformarAPixeles(getPosX());
 	}
 
 	@Override
 	public int getY() {	
-		return Transformacion.transformarAPixeles(this.getPosicion().getPosY());
+		return Transformacion.transformarAPixeles(getPosY());
+	}
+	
+	@Override
+	public void setCoordenadas(Integer x, Integer y) {
+		posX = x;
+		posY = y;
+	}
+	
+	public Integer getPosX() {
+		return posX;
+	}
+	
+	public Integer getPosY() {
+		return posY;
 	}
 }

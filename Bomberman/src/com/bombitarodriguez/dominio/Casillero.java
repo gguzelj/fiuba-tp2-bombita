@@ -23,6 +23,7 @@ public class Casillero {
 	
 	public void agregarObjeto(ObjetoReaccionable objeto) {
 		objetos.add(objeto);
+		objeto.setCoordenadas(this.getPosicion().getPosX(), this.getPosicion().getPosY());
 		objeto.setCasillero(this);
 	}
 	
@@ -32,6 +33,7 @@ public class Casillero {
 	
 	public void quitarObjeto(ObjetoReaccionable objeto) {
 		objetos.remove(objeto);
+		objeto.setCoordenadas(this.getPosicion().getPosX(), this.getPosicion().getPosY());
 		objeto.setCasillero(null);
 	}
 	

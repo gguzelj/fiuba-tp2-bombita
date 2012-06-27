@@ -3,30 +3,24 @@ package com.bombitarodriguez.dominio;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.uba.fi.algo3.titiritero.Posicionable;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Direccion;
-import com.bombitarodriguez.vista.factory.dominio.VistaAbstracta;
+import com.bombitarodriguez.utils.Transformacion;
 import com.bombitarodriguez.vista.factory.dominio.VistaExplosion;
 
-public class Explosion implements ObjetoReaccionable{
+public class Explosion implements ObjetoReaccionable , Posicionable{
 
 	protected Casillero casilleroContenedor;
-	
 	protected Integer destruccion;
-	
 	protected Integer ondaExpansiva;
+	protected Integer posX;
+	protected Integer posY;
+
 	
-	protected VistaAbstracta vista;
-	
-	public VistaAbstracta getVista() {
-		return vista;
-	}
-	public void setVista(VistaAbstracta vista) {
-		this.vista = vista;
-	}
 	public Explosion(Integer destruccion, Integer ondaExpansiva){
 		this.destruccion = destruccion;
 		this.ondaExpansiva = ondaExpansiva;
@@ -188,5 +182,29 @@ public class Explosion implements ObjetoReaccionable{
 	@Override
 	public Imagen vistaDeObjeto() {
 		return new VistaExplosion();
+	}
+
+	@Override
+	public int getX() {
+		return Transformacion.transformarAPixeles(getPosX());
+	}
+
+	@Override
+	public int getY() {	
+		return Transformacion.transformarAPixeles(getPosY());
+	}
+	
+	@Override
+	public void setCoordenadas(Integer x, Integer y) {
+		posX = x;
+		posY = y;
+	}
+	
+	public Integer getPosX() {
+		return posX;
+	}
+	
+	public Integer getPosY() {
+		return posY;
 	}
 }

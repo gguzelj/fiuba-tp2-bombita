@@ -18,30 +18,29 @@ public class Molotov extends Bomba{
 		this.ondaExpansiva = Constante.ONDA_EXPANSIVA_MOLOTOV;
 		this.retardo = Constante.TIMER_MOLOTOV;
 		this.destruccion = Constante.DESTRUCCION_MOLOTOV;
-	
+		this.vistaArma = new VistaMolotov();
 	}
 	
 	public Molotov(Double retardo) {
 		this.ondaExpansiva = Constante.ONDA_EXPANSIVA_MOLOTOV;
 		this.destruccion = Constante.DESTRUCCION_MOLOTOV;
 		this.retardo = retardo;
+		this.vistaArma = new VistaMolotov();
 
-		
 	}
 
 	@Override
 	public Imagen vistaDeObjeto() {
-		return new VistaMolotov();
+		return this.vistaArma;
 	}
 
 	@Override
 	public void vivir() {
-		retardo = retardo--;
-		if (retardo<=0){
-			vista.quitar(this);
+		retardo--;
+		if (retardo==0){
+			this.explotar();
 		}
 		
 	}
-	
-	
+
 }

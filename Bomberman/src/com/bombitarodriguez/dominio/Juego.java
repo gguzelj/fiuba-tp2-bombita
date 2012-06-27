@@ -3,6 +3,10 @@ package com.bombitarodriguez.dominio;
 import java.io.File;
 import java.util.Iterator;
 import java.util.Map.Entry;
+
+import ar.uba.fi.algo3.titiritero.Posicionable;
+import ar.uba.fi.algo3.titiritero.vista.Imagen;
+
 import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.controller.ControladorBombita;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
@@ -12,7 +16,6 @@ import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.PathFile;
 import com.bombitarodriguez.utils.Transformacion;
 import com.bombitarodriguez.vista.VentanaPrincipal;
-import com.bombitarodriguez.vista.factory.dominio.VistaAbstracta;
 
 
 /**
@@ -82,14 +85,10 @@ public class Juego {
             casillero = (Casillero) e.getValue();
            
             for(ObjetoReaccionable objeto : casillero.getObjetos()){
-//            	Imagen vistaObjeto = objeto.vistaDeObjeto();
-//            	vistaObjeto.setPosicionable((Posicionable) objeto);
-//            	this.controlador.agregarDibujable(vistaObjeto);
-            	VistaAbstracta vista = new VistaAbstracta(controlador);
-            	objeto.setVista(vista);
-            	vista.mostrar(objeto); 
-            	
-            
+            	Imagen vistaObjeto = objeto.vistaDeObjeto();
+            	vistaObjeto.setPosicionable((Posicionable) objeto);
+            	this.controlador.agregarDibujable(vistaObjeto);
+           
             }   
 		}
 		

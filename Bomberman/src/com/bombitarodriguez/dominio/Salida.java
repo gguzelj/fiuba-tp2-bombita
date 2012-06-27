@@ -1,9 +1,10 @@
 package com.bombitarodriguez.dominio;
 
+import ar.uba.fi.algo3.titiritero.Posicionable;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
-import com.bombitarodriguez.vista.factory.dominio.VistaAbstracta;
+import com.bombitarodriguez.utils.Transformacion;
 import com.bombitarodriguez.vista.factory.dominio.VistaSalida;
 
 
@@ -12,17 +13,11 @@ import com.bombitarodriguez.vista.factory.dominio.VistaSalida;
  * @author Mauro
  *
  */
-public class Salida implements ObjetoReaccionable {
+public class Salida implements ObjetoReaccionable , Posicionable{
 
-	protected VistaAbstracta vista;
-	public VistaAbstracta getVista() {
-		return vista;
-	}
-
-	public void setVista(VistaAbstracta vista) {
-		this.vista = vista;
-	}
-
+	protected Integer posX;
+	protected Integer posY;
+	
 	@Override
 	public Posicion getPosicion() {
 		// TODO Auto-generated method stub
@@ -99,5 +94,29 @@ public class Salida implements ObjetoReaccionable {
 	@Override
 	public Imagen vistaDeObjeto() {
 		return new VistaSalida();
+	}
+	
+	@Override
+	public int getX() {
+		return Transformacion.transformarAPixeles(getPosX());
+	}
+
+	@Override
+	public int getY() {	
+		return Transformacion.transformarAPixeles(getPosY());
+	}
+	
+	@Override
+	public void setCoordenadas(Integer x, Integer y) {
+		posX = x;
+		posY = y;
+	}
+	
+	public Integer getPosX() {
+		return posX;
+	}
+	
+	public Integer getPosY() {
+		return posY;
 	}
 }

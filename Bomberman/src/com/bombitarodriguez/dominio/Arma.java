@@ -2,10 +2,11 @@ package com.bombitarodriguez.dominio;
 
 import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
+import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
+import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Transformacion;
-import com.bombitarodriguez.vista.factory.dominio.VistaAbstracta;
 
 /**
  * 
@@ -15,27 +16,12 @@ import com.bombitarodriguez.vista.factory.dominio.VistaAbstracta;
 public abstract class Arma implements ObjetoReaccionable, Posicionable, ObjetoVivo {
 	
 	protected Casillero casillero;
-	
 	protected Integer destruccion;
-	
 	protected Double retardo;
-	
 	protected Integer ondaExpansiva;
-	
-	protected VistaAbstracta vista;
-
-	
-	
-	
-	
-
-	public VistaAbstracta getVista() {
-		return vista;
-	}
-
-	public void setVista(VistaAbstracta vista) {
-		this.vista = vista;
-	}
+	protected Imagen vistaArma;
+	protected Integer posX;
+	protected Integer posY;
 
 	public void explotar(){
 		Explosion explosion = new Explosion(getDestruccion(),getOndaExpansiva());
@@ -44,6 +30,8 @@ public abstract class Arma implements ObjetoReaccionable, Posicionable, ObjetoVi
 		this.getCasillero().quitarObjeto(this);
 		
 		explosion.causarEstragos();
+
+		ControladorBomberman.borrarObjeto(this);
 	}
 	
 	public Integer getDestruccion() {
@@ -151,14 +139,26 @@ public abstract class Arma implements ObjetoReaccionable, Posicionable, ObjetoVi
 	
 	@Override
 	public int getX() {
-		return Transformacion.transformarAPixeles(casillero.getPosicion().getPosX());
+		return Transformacion.transformarAPixeles(getPosX());
 	}
 
 	@Override
 	public int getY() {	
-		return Transformacion.transformarAPixeles(casillero.getPosicion().getPosY());
+		return Transformacion.transformarAPixeles(getPosY());
 	}
 	
+	@Override
+	public void setCoordenadas(Integer x, Integer y) {
+		posX = x;
+		posY = y;
+	}
 	
+	public Integer getPosX() {
+		return posX;
+	}
+	
+	public Integer getPosY() {
+		return posY;
+	}
 
 }
