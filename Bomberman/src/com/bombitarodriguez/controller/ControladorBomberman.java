@@ -4,6 +4,8 @@ package com.bombitarodriguez.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.rowset.spi.SyncResolver;
+
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
@@ -16,6 +18,7 @@ public class ControladorBomberman extends ControladorJuego {
 
 	private ControladorBombita controladorBombita;
 	private static Boolean estaEnEjecucion;
+	private Boolean estaPausado;
 	private static List<ObjetoReaccionable> objetosParaAgregar = new ArrayList<ObjetoReaccionable>();
 	private static List<ObjetoReaccionable> objetosParaBorrar = new ArrayList<ObjetoReaccionable>();
 	
@@ -32,7 +35,7 @@ public class ControladorBomberman extends ControladorJuego {
 	}
 
 	public static void setEstaEnEjecucion(Boolean estaEnEjecucion) {
-		estaEnEjecucion = estaEnEjecucion;
+		ControladorBomberman.estaEnEjecucion = estaEnEjecucion;
 	}
 
 	@Override
@@ -43,7 +46,7 @@ public class ControladorBomberman extends ControladorJuego {
 	
 	public ControladorBomberman(boolean activarReproductor) {
 		super(activarReproductor);
-		// TODO Auto-generated constructor stub
+		this.estaPausado = false;
 	}
 	
 	@Override
@@ -51,18 +54,19 @@ public class ControladorBomberman extends ControladorJuego {
 		estaEnEjecucion = true;
 		try{
 			while(estaEnEjecucion){
-				copiarObjetos();
-				simular();
+				
+				if(!estaPausado){
+					copiarObjetos();
+					simular();
+				}
 				dibujar();
 
 				Thread.sleep(150);
 			}
-		
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 
@@ -102,6 +106,16 @@ public class ControladorBomberman extends ControladorJuego {
 
 	public void setControladorBombita(ControladorBombita controladorBombita) {
 		this.controladorBombita = controladorBombita;
+	}
+	
+	public Boolean getEstaPausado() {
+		return estaPausado;
+	}
+
+	public void setEstaPausado(Boolean estaPausado) {
+		synchronized (this) {
+			this.estaPausado = estaPausado;	
+		}
 	}
 
 }

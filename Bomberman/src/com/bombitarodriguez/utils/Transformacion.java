@@ -16,6 +16,11 @@ public class Transformacion {
 				(posicion.getPosY() * Constante.PIXELS_POR_CASILLERO));
 	}
 	
+	/**
+	 * Devuelve la transformacion de una posicion a pixeles.
+	 * Se tiene en cuenta el desplazamiento hecho por la clase imagen a la
+	 * hora de dibujar las imagenes.
+	 */
 	public static Integer transformarAPixeles(Integer posX) {
 		return (posX * Constante.PIXELS_POR_CASILLERO) + 26;
 	}

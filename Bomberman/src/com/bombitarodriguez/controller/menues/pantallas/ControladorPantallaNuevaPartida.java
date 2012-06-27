@@ -27,8 +27,7 @@ public class ControladorPantallaNuevaPartida implements KeyPressedObservador {
 		switch (event.getKeyCode()) {
 
 		case KeyEvent.VK_P:
-			
-			this.pantalla.getVentanaPrincipal().getJuego().getControlador().detenerJuego();
+			this.pantalla.getVentanaPrincipal().getJuego().getControlador().setEstaPausado(true);
 			MenuPausa menuPausa = new MenuPausa(this.pantalla.getVentanaPrincipal(), this.pantalla);
 			menuPausa.mostrar();
 			break;

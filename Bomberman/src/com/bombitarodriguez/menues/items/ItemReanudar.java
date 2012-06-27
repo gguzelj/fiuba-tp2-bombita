@@ -22,6 +22,7 @@ public class ItemReanudar extends ItemMenu{
 	@Override
 	public void seleccionar() {
 		
+		this.getMenuPadre().getVentanaPrincipal().getJuego().getControlador().setEstaPausado(false);
 		this.getMenuPadre().borrar();
 		((MenuPausa)this.getMenuPadre()).pantalla.activarControl();
 
