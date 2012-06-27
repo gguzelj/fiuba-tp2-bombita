@@ -37,10 +37,9 @@ public class Molotov extends Bomba{
 	@Override
 	public void vivir() {
 		retardo--;
-		if (retardo==0){
+		if (retardo <= 0){
 			this.explotar();
 		}
-		
 	}
 
 }
