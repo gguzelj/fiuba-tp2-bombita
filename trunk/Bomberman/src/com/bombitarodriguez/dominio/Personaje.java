@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Random;
 import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
+import ar.uba.fi.algo3.titiritero.vista.Imagen;
+
+import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.Armado;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
@@ -28,6 +31,7 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 	protected FactoryArma factoryArma;
 	protected Integer posX;
 	protected Integer posY;
+	protected Imagen vistaPersonaje;
 	
 
 	/**
@@ -101,10 +105,12 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 	@Override
 	public Boolean reaccionarCon(Explosion explosion){
 		if (explosion.destruccion == Constante.DESTRUCCION_TOLETOLE){
+			ControladorBomberman.borrarObjeto(this);
 			destruirse();
 		}else{
 			resistencia = resistencia - explosion.getDestruccion();
-			if (resistencia == 0){
+			if (resistencia <= 0){
+				ControladorBomberman.borrarObjeto(this);
 				destruirse();
 			}
 		}
@@ -173,6 +179,7 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 	
 	@Override
 	public void vivir() {
+		if (puedeReaccionar()) {
 		Integer random = new Random().nextInt(5);
 		
 		switch(random){
@@ -191,6 +198,7 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 		case 5:
 			this.usarArma();
 			break;
+		}
 		}
 		
 	}
@@ -218,5 +226,10 @@ public abstract class Personaje implements ObjetoReaccionable, Armado, StrategyM
 	
 	public Integer getPosY() {
 		return posY;
+	}
+	
+	
+	public boolean puedeReaccionar() {
+		return (this.resistencia > 0);
 	}
 }

@@ -21,6 +21,7 @@ public class Cecilio extends Personaje {
 		this.resistencia = Constante.RESISTENCIA_CECILIO;
 		this.velocidad = Constante.VELOCIDAD_CAMINA;
 		this.factoryArma = new FactoryMolotov();
+		this.vistaPersonaje = new VistaCecilio();
 	}	
 
 
@@ -54,6 +55,6 @@ public class Cecilio extends Personaje {
 
 	@Override
 	public Imagen vistaDeObjeto() {
-		return new VistaCecilio();
+		return vistaPersonaje;
 	}
 }

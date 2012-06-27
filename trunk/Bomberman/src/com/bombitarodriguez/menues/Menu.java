@@ -6,6 +6,7 @@ import ar.uba.fi.algo3.titiritero.KeyPressedObservador;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
+import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.controller.menues.ControladorMenu;
 import com.bombitarodriguez.menues.items.ItemMenu;
 import com.bombitarodriguez.vista.VentanaPrincipal;
@@ -20,6 +21,7 @@ public abstract class Menu implements Posicionable{
 	protected KeyPressedObservador keyPressControl;
 	protected int posX;
 	protected int posY;
+	protected ControladorBomberman controlador;
 	
 	public Menu(VentanaPrincipal ventanaPrincipal){
 		this.ventanaPrincipal = ventanaPrincipal;

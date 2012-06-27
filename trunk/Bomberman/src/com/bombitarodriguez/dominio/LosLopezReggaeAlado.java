@@ -24,6 +24,7 @@ public class LosLopezReggaeAlado extends Personaje {
 		this.resistencia = Constante.RESISTENCIA_LOSLOPEZREGGAE_ALADO;
 		this.velocidad = Constante.VELOCIDAD_CAMINA;
 		this.factoryArma = new FactoryMolotov();
+		this.vistaPersonaje = new VistaLopezReggaeAlado();
 	}	
 	
 	@Override
@@ -88,6 +89,6 @@ public class LosLopezReggaeAlado extends Personaje {
 
 	@Override
 	public Imagen vistaDeObjeto() {
-		return new VistaLopezReggaeAlado();
+		return vistaPersonaje;
 	}
 }

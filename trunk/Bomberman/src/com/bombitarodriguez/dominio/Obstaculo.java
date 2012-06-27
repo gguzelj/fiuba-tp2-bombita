@@ -6,6 +6,7 @@ import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
 import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
+import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Transformacion;
 
 /**
@@ -114,7 +115,7 @@ public abstract class Obstaculo implements ObjetoReaccionable, Posicionable, Obj
 	@Override
 	public Boolean reaccionarCon(Explosion explosion) {
 		Integer durabilidadRestante = (getDurabilidad() - explosion.getDestruccion());
-		if (durabilidadRestante <= 0) {
+		if ((durabilidadRestante <= 0) || (explosion.getDestruccion() == Constante.DESTRUCCION_TOLETOLE)) {
 			this.destruirse();
 			ControladorBomberman.borrarObjeto(this);
 			return true;

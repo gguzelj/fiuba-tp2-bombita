@@ -4,6 +4,7 @@ package com.bombitarodriguez.dominio;
 
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
+import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.vista.factory.dominio.VistaChala;
 
@@ -14,12 +15,24 @@ import com.bombitarodriguez.vista.factory.dominio.VistaChala;
  */
 public class Chala extends Articulo {
 
+
+	public void Chala(){
+		vistaArticulo = new VistaChala();
+	}
+	
+	
+	
 	@Override
 	public Boolean reaccionarCon(Bombita bombita) {
 		bombita.setVelocidad(Constante.VELOCIDAD_CORRE);
 		casillero.quitarObjeto(this);
+		
 		return true;
 	}
+
+	
+	
+
 
 	@Override
 	public Boolean reaccionarCon(Cecilio cecilio) {
@@ -44,6 +57,6 @@ public class Chala extends Articulo {
 
 	@Override
 	public Imagen vistaDeObjeto() {
-		return new VistaChala();
+		return vistaArticulo;
 	}
 }

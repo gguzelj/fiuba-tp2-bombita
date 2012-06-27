@@ -22,7 +22,6 @@ public class ToleTole extends Bomba {
 
 	public ToleTole(Double retardo){
 		this.destruccion = Constante.DESTRUCCION_TOLETOLE;
-//		this.retardo = retardo;
 		this.retardo =  Constante.TIMER_TOLETOLE;
 		this.ondaExpansiva = Constante.ONDA_EXPANSIVA_TOLETOLE;
 		this.vistaArma = new VistaToleTole();

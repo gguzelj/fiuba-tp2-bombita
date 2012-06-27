@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
+import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
@@ -88,6 +89,7 @@ public class Juego {
             	Imagen vistaObjeto = objeto.vistaDeObjeto();
             	vistaObjeto.setPosicionable((Posicionable) objeto);
             	this.controlador.agregarDibujable(vistaObjeto);
+            	this.controlador.agregarObjetoVivo((ObjetoVivo) objeto);
            
             }   
 		}

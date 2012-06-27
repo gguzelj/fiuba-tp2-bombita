@@ -34,12 +34,14 @@ public class Bombita extends Personaje{
 	@Override
 	public Boolean reaccionarCon(Cecilio cecilio) {
 		this.quitarVida();
+		//ControladorBomberman.setEstaEnEjecucion(false);
 		return true;
 	}
 
 	@Override
 	public Boolean reaccionarCon(LosLopezReggae losLopezReggae) {
 		this.quitarVida();
+		
 		return true;
 	}
 
@@ -48,7 +50,13 @@ public class Bombita extends Personaje{
 		this.quitarVida();
 		return true;
 	}
+	
 
+	@Override
+	public Boolean reaccionarCon(Chala chala){		
+		return true;
+	}
+	
 	@Override
 	public Boolean reaccionarCon(Explosion explosion) {
 		this.quitarVida();
@@ -57,6 +65,7 @@ public class Bombita extends Personaje{
 	
 	public void quitarVida() {
 		vida -= 1;
+		//Mapa.getMapa().reposicionar(this, Mapa.getMapa().getCasillero(new Posicion(1,1)));
 	}
 
 	public Integer getVida() {
@@ -119,8 +128,8 @@ public class Bombita extends Personaje{
 			this.moverseConEstrategia(direccionAMover);
 			direccionAMover = null;
 		}
-		
-		
+		 
+	
 	}
 	
 

@@ -8,6 +8,7 @@ import ar.uba.fi.algo3.titiritero.vista.Imagen;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.vista.factory.dominio.VistaLopezReggae;
+import com.bombitarodriguez.vista.factory.dominio.VistaLopezReggaeAlado;
 
 /**
  * 
@@ -20,6 +21,8 @@ public class LosLopezReggae extends Personaje {
 		this.resistencia = Constante.RESISTENCIA_LOSLOPEZREGGAE;
 		this.velocidad = Constante.VELOCIDAD_CORRE;
 		this.factoryArma = new FactoryProyectil();
+		this.vistaPersonaje = new VistaLopezReggae();
+
 	}	
 	
 
@@ -34,12 +37,7 @@ public class LosLopezReggae extends Personaje {
 		return armaInstanciada;
 	
 	}
-	@Override
-	public Boolean reaccionarCon(Explosion explosion) {
-		resistencia = resistencia - (explosion.getDestruccion());
-		if (resistencia <= 0) destruirse();
-		return true;
-	}
+
 	
 	@Override
 	public Boolean reaccionarCon(Bombita bombita) {
@@ -58,6 +56,6 @@ public class LosLopezReggae extends Personaje {
 
 	@Override
 	public Imagen vistaDeObjeto() {
-		return new VistaLopezReggae();
+		return vistaPersonaje;
 	}
 }
