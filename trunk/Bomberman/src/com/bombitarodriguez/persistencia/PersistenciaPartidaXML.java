@@ -4,7 +4,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 
+import ar.uba.fi.algo3.titiritero.vista.Imagen;
+
 import com.bombitarodriguez.dominio.Mapa;
+import com.bombitarodriguez.vista.factory.dominio.VistaBombita;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
@@ -22,6 +25,7 @@ public class PersistenciaPartidaXML {
 	public PersistenciaPartidaXML(String pathFile) {
 		this.pathXml = pathFile;
 		xstream = new XStream(new DomDriver());
+		xstream.omitField(Imagen.class, "imagen");
 	}
 	
 	/**

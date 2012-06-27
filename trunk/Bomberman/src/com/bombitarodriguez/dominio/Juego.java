@@ -15,7 +15,6 @@ import com.bombitarodriguez.menues.MenuPrincipal;
 import com.bombitarodriguez.persistencia.PersistenciaPartidaXML;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.PathFile;
-import com.bombitarodriguez.utils.Transformacion;
 import com.bombitarodriguez.vista.VentanaPrincipal;
 
 
@@ -63,6 +62,8 @@ public class Juego {
 	
 	public void cargarJuego(){
 		this.cargarPartida();
+		bombita = this.obtenerBombita();
+		controlador.setControladorBombita(new ControladorBombita(bombita));
 		this.agregarObjetosDelMapa();
 	}
 
@@ -89,9 +90,11 @@ public class Juego {
 		while (it.hasNext()) {
 			Entry e = (Entry)it.next();
             casillero = (Casillero) e.getValue();
-           
+            String nombreArchivoImagen;
             for(ObjetoReaccionable objeto : casillero.getObjetos()){
             	Imagen vistaObjeto = objeto.vistaDeObjeto();
+            	nombreArchivoImagen = vistaObjeto.getNombreArchivoImagen();
+            	vistaObjeto.setNombreArchivoImagen(nombreArchivoImagen);
             	vistaObjeto.setPosicionable((Posicionable) objeto);
             	this.controlador.agregarDibujable(vistaObjeto);
             	this.controlador.agregarObjetoVivo((ObjetoVivo) objeto);
