@@ -60,6 +60,11 @@ public class Juego {
 		/*Asignamos los objetos del mapa al controlador*/
 		this.agregarObjetosDelMapa();
 	}
+	
+	public void cargarJuego(){
+		this.cargarPartida();
+		this.agregarObjetosDelMapa();
+	}
 
 	/**
 	 * Se asume que cada vez que se crea el mapa,
@@ -109,7 +114,7 @@ public class Juego {
 		Mapa.getMapa().crearMapa(new File(filePath));
 	}
 	
-	private void guardarPartida() {
+	public void guardarPartida() {
 		PersistenciaPartidaXML persistencia = new PersistenciaPartidaXML(Constante.NOMBRE_ARCHIVO_PARTIDA);
 		persistencia.persistirPartida();
 	}
