@@ -44,7 +44,10 @@ public class Juego {
 		controlador.comenzarJuego();
 	}
 
-	public void crearJuego(Integer nivel){
+	/**
+	 * Metodo encargado de la creacion de un nivel.
+	 */
+	public void crearNivel(Integer nivel){
 		
 		/*Creamos el mapa*/
 		this.crearMapa(nivel);
@@ -54,22 +57,29 @@ public class Juego {
 				
 		/*Agregamos el controlador de Bombita*/
 		controlador.setControladorBombita(new ControladorBombita(bombita));
-//		controlador.agregarObjetoVivo(bombita);
 		
 		/*Asignamos los objetos del mapa al controlador*/
 		this.agregarObjetosDelMapa();
 	}
 	
+	/**
+	 * Similar al metodo anterior, pero primero debemos 
+	 * eliminar todas las imagenes del mapa
+	 */
+	public void siguienteNivel(Integer nivel){
+		
+		this.borrarObjetosDelMapa();
+		this.crearNivel(nivel);
+	}
+	
+	/**
+	 * Este metodo nos permite cargar una partida guardada
+	 */
 	public void cargarJuego(){
 		this.cargarPartida();
 		bombita = this.obtenerBombitaDePartidaGuardada();
 		controlador.setControladorBombita(new ControladorBombita(bombita));
 		this.agregarObjetosDelMapa();
-	}
-
-	private Bombita obtenerBombitaDePartidaGuardada() {
-		Casillero casillero = Mapa.getMapa().getCasillero(Mapa.getMapa().getPosicionBombita());
-		return (Bombita) casillero.getObjetos().get(0);
 	}
 
 	/**
@@ -82,6 +92,15 @@ public class Juego {
 		return (Bombita) casillero.getObjetos().get(0);
 	}
 
+	/**
+	 * Cuando se carga una nueva partida, bombita puede quedar guardado
+	 * en cualquier parte del mapa. Por este motivo, se guarda la posicion de
+	 * bombita cuando se persiste la partida, y se la recupera con este metodo
+	 */
+	private Bombita obtenerBombitaDePartidaGuardada() {
+		Casillero casillero = Mapa.getMapa().getCasillero(Mapa.getMapa().getPosicionBombita());
+		return (Bombita) casillero.getObjetos().get(0);
+	}
 	
 	/**
 	 * Se recorre el mapa en busca de los objetos creados. Para cada objeto
@@ -100,6 +119,22 @@ public class Juego {
 		}
 	}
 
+	/**
+	 * Con este metodo podemos borrar todos los objetos del mapa.
+	 * Se llama cuando se crea un nuevo nivel.
+	 */
+	private void borrarObjetosDelMapa() {
+		Iterator<Entry<Posicion, Casillero>> it = Mapa.getMapa().getEntryIterator();
+        Casillero casillero;
+        
+	 	while (it.hasNext()) {
+			Entry e = (Entry)it.next();
+            casillero = (Casillero) e.getValue();
+            for(ObjetoReaccionable objeto : casillero.getObjetos())
+                   	ControladorBomberman.borrarObjeto(objeto);   
+		}
+	}
+	
 	/**
 	 * Llamamos al creador de mapas de la clase Mapa
 	 */

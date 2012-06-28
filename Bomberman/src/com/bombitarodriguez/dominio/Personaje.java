@@ -209,7 +209,6 @@ public abstract class Personaje implements ObjetoReaccionable, Armado,
 				break;
 			}
 		}
-
 	}
 
 	@Override

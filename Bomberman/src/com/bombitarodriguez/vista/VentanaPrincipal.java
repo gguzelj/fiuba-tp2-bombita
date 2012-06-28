@@ -6,6 +6,7 @@ import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.dominio.Juego;
 import com.bombitarodriguez.menues.Menu;
 import com.bombitarodriguez.menues.items.ItemMenu;
+import com.bombitarodriguez.menues.pantallas.PantallaPartida;
 
 import ar.uba.fi.algo3.titiritero.Dibujable;
 import ar.uba.fi.algo3.titiritero.KeyPressedObservador;
@@ -19,6 +20,7 @@ public class VentanaPrincipal extends Ventana {
 	private ControladorBomberman controladorBomberman;
 	private Juego juego;
 	private KeyPressedObservador controladorActivo;
+	private PantallaPartida pantallaPartida;
 
 	public VentanaPrincipal(Juego juego, int alto, int ancho){
 		super(alto,ancho,juego.getControlador());
@@ -36,7 +38,6 @@ public class VentanaPrincipal extends Ventana {
 		
 		this.setVisible(true);
 		this.setResizable(false);
-		
 	}
 
 	private void initialize() throws IOException {
@@ -103,4 +104,11 @@ public class VentanaPrincipal extends Ventana {
 		this.juego = juego;
 	}
 
+	public PantallaPartida getPantallaPartida() {
+		return this.pantallaPartida;
+	}
+	
+	public void setPantallaPartida(PantallaPartida pantallaPartida) {
+		this.pantallaPartida = pantallaPartida;
+	}
 }
