@@ -176,6 +176,10 @@ public class Juego {
 		this.controlador = controlador;
 	}
 
+	public Bombita getBombita() {
+		return bombita;
+	}
+	
 }
 
 
