@@ -116,9 +116,6 @@ public class Bombita extends Personaje {
 
 	@Override
 	public void vivir() {
-
-		if(this.casilleroContenedor == null)
-			return;
 		
 		if (atacar == true) {
 			ControladorBomberman.agregarObjeto(this.usarArma());
