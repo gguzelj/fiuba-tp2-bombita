@@ -62,9 +62,15 @@ public class Juego {
 	
 	public void cargarJuego(){
 		this.cargarPartida();
-		bombita = this.obtenerBombita();
+		bombita = this.obtenerBombitaDePartidaGuardada();
 		controlador.setControladorBombita(new ControladorBombita(bombita));
 		this.agregarObjetosDelMapa();
+	}
+
+	private Bombita obtenerBombitaDePartidaGuardada() {
+		Casillero casillero = Mapa.getMapa().getCasillero(Mapa.getMapa().getPosicionBombita());
+		return (Bombita) casillero.getObjetos().get(0);
+		
 	}
 
 	/**
@@ -119,6 +125,7 @@ public class Juego {
 	
 	public void guardarPartida() {
 		PersistenciaPartidaXML persistencia = new PersistenciaPartidaXML(Constante.NOMBRE_ARCHIVO_PARTIDA);
+		Mapa.getMapa().setPosicionBombita(bombita.getPosicion());
 		persistencia.persistirPartida();
 	}
 	
