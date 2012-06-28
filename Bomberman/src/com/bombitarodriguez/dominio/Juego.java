@@ -70,7 +70,6 @@ public class Juego {
 	private Bombita obtenerBombitaDePartidaGuardada() {
 		Casillero casillero = Mapa.getMapa().getCasillero(Mapa.getMapa().getPosicionBombita());
 		return (Bombita) casillero.getObjetos().get(0);
-		
 	}
 
 	/**
