@@ -1,7 +1,7 @@
 package com.bombitarodriguez.menues.items;
 
 import com.bombitarodriguez.menues.Menu;
-import com.bombitarodriguez.menues.pantallas.PantallaNuevaPartida;
+import com.bombitarodriguez.menues.pantallas.PantallaPartida;
 import com.bombitarodriguez.vista.factory.menues.items.VistaItemNuevaPartida;
 
 
@@ -22,10 +22,10 @@ public class ItemNuevaPartida extends ItemMenu {
 	public void seleccionar(){
 		
 		this.getMenuPadre().borrar();
-		PantallaNuevaPartida pantallaNuevaPartida = new PantallaNuevaPartida(0, 0, this.getMenuPadre().getVentanaPrincipal());
-		pantallaNuevaPartida.mostrar();
-		pantallaNuevaPartida.crearJuego();
-		pantallaNuevaPartida.activarControl();
+		PantallaPartida pantallaPartida = new PantallaPartida(0, 0, this.getMenuPadre().getVentanaPrincipal());
+		pantallaPartida.mostrar();
+		pantallaPartida.crearJuego();
+		pantallaPartida.activarControl();
 		
 	}
 }

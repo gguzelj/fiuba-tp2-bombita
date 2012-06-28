@@ -46,7 +46,5 @@ public class ControladorBombita implements KeyPressedObservador{
 
 	@Override
 	public void keyRelease(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 }

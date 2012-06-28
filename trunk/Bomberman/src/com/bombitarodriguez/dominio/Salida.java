@@ -4,6 +4,7 @@ import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
+import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Transformacion;
 import com.bombitarodriguez.vista.factory.dominio.VistaSalida;
@@ -37,7 +38,7 @@ public class Salida implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 
 	@Override
 	public Boolean reaccionarCon(Bombita bombita){
-		// TODO Fin del juego. Como se implementa?
+		ControladorBomberman.setGanoElNivel(true);
 		return true;
 	}
 	@Override
