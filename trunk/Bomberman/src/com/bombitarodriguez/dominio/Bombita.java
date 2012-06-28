@@ -2,7 +2,6 @@ package com.bombitarodriguez.dominio;
 
 import java.util.Iterator;
 
-
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
 import com.bombitarodriguez.controller.ControladorBomberman;
@@ -14,34 +13,34 @@ import com.bombitarodriguez.vista.factory.dominio.VistaBombita;
 /**
  * 
  * @author Mauro
- *
+ * 
  */
-public class Bombita extends Personaje{
-	
+public class Bombita extends Personaje {
+
 	private Integer vida;
-	//TODO ver si se puede subir a personaje
+	// TODO ver si se puede subir a personaje
 	private Direccion direccionAMover = null;
 	private Boolean atacar = false;
-	
+
 	public Bombita(Integer vida) {
 		this.vida = vida;
 		this.resistencia = 0;
 		this.velocidad = Constante.VELOCIDAD_CAMINA;
 		this.factoryArma = new FactoryMolotov();
-		
+
 	}
-	
+
 	@Override
 	public Boolean reaccionarCon(Cecilio cecilio) {
 		this.quitarVida();
-		//ControladorBomberman.setEstaEnEjecucion(false);
+		// ControladorBomberman.setEstaEnEjecucion(false);
 		return true;
 	}
 
 	@Override
 	public Boolean reaccionarCon(LosLopezReggae losLopezReggae) {
 		this.quitarVida();
-		
+
 		return true;
 	}
 
@@ -50,22 +49,24 @@ public class Bombita extends Personaje{
 		this.quitarVida();
 		return true;
 	}
-	
 
 	@Override
-	public Boolean reaccionarCon(Chala chala){		
+	public Boolean reaccionarCon(Chala chala) {
 		return true;
 	}
-	
+
 	@Override
 	public Boolean reaccionarCon(Explosion explosion) {
-		this.quitarVida();
+		
+		this.destruirse();
+		//		this.quitarVida();
 		return true;
 	}
-	
+
 	public void quitarVida() {
 		vida -= 1;
-		//Mapa.getMapa().reposicionar(this, Mapa.getMapa().getCasillero(new Posicion(1,1)));
+		// Mapa.getMapa().reposicionar(this, Mapa.getMapa().getCasillero(new
+		// Posicion(1,1)));
 	}
 
 	public Integer getVida() {
@@ -85,9 +86,9 @@ public class Bombita extends Personaje{
 		Arma armaInstanciada = factoryArma.getArmaInstanciada();
 		getCasillero().agregarObjeto(armaInstanciada);
 		return armaInstanciada;
-	
+
 	}
-	
+
 	@Override
 	protected Boolean reaccionarConTodos(Iterator<ObjetoReaccionable> iterador) {
 		Boolean permitePasar = true;
@@ -97,40 +98,39 @@ public class Bombita extends Personaje{
 		return permitePasar;
 	}
 
-	
 	/**
-	 * Guardo la direccion a la que tengo que moverme.
-	 * Cuando el juego ejecute el metodo vivir(), se ejecuta la accion de 
-	 * moverConEstrategia() 
+	 * Guardo la direccion a la que tengo que moverme. Cuando el juego ejecute
+	 * el metodo vivir(), se ejecuta la accion de moverConEstrategia()
 	 */
-	public void setDireccionAMover(Direccion direccionAMover){
-		this.direccionAMover  = direccionAMover;
+	public void setDireccionAMover(Direccion direccionAMover) {
+		this.direccionAMover = direccionAMover;
 	}
-	
+
 	/**
-	 * Guardo la sentencia de atacar. Cuando el juego ejecute vivir(),
-	 * se llama al metodo usarArma()
+	 * Guardo la sentencia de atacar. Cuando el juego ejecute vivir(), se llama
+	 * al metodo usarArma()
 	 */
-	public void atacar(){
+	public void atacar() {
 		this.atacar = true;
 	}
-	
+
 	@Override
 	public void vivir() {
+
+		if(this.casilleroContenedor == null)
+			return;
 		
-		if(atacar == true){	
+		if (atacar == true) {
 			ControladorBomberman.agregarObjeto(this.usarArma());
 			atacar = false;
 		}
-		
-		if(this.direccionAMover != null){
+
+		if (this.direccionAMover != null) {
 			this.moverseConEstrategia(direccionAMover);
 			direccionAMover = null;
 		}
-		 
-	
+
 	}
-	
 
 	public Imagen vistaDeObjeto() {
 		return new VistaBombita();
@@ -139,5 +139,5 @@ public class Bombita extends Personaje{
 	public Direccion getDireccionAMover() {
 		return direccionAMover;
 	}
-	
+
 }

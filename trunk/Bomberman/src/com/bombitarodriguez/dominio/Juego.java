@@ -87,7 +87,7 @@ public class Juego {
 		Iterator<Entry<Posicion, Casillero>> it = Mapa.getMapa().getEntryIterator();
         Casillero casillero;
         
-		while (it.hasNext()) {
+	 	while (it.hasNext()) {
 			Entry e = (Entry)it.next();
             casillero = (Casillero) e.getValue();
             String nombreArchivoImagen;
