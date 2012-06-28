@@ -54,7 +54,7 @@ public class Juego {
 				
 		/*Agregamos el controlador de Bombita*/
 		controlador.setControladorBombita(new ControladorBombita(bombita));
-		controlador.agregarObjetoVivo(bombita);
+//		controlador.agregarObjetoVivo(bombita);
 		
 		/*Asignamos los objetos del mapa al controlador*/
 		this.agregarObjetosDelMapa();
@@ -95,16 +95,8 @@ public class Juego {
 	 	while (it.hasNext()) {
 			Entry e = (Entry)it.next();
             casillero = (Casillero) e.getValue();
-            String nombreArchivoImagen;
-            for(ObjetoReaccionable objeto : casillero.getObjetos()){
-            	Imagen vistaObjeto = objeto.vistaDeObjeto();
-            	nombreArchivoImagen = vistaObjeto.getNombreArchivoImagen();
-            	vistaObjeto.setNombreArchivoImagen(nombreArchivoImagen);
-            	vistaObjeto.setPosicionable((Posicionable) objeto);
-            	this.controlador.agregarDibujable(vistaObjeto);
-            	this.controlador.agregarObjetoVivo((ObjetoVivo) objeto);
-           
-            }   
+            for(ObjetoReaccionable objeto : casillero.getObjetos())
+                   	ControladorBomberman.agregarObjeto(objeto);   
 		}
 	}
 
