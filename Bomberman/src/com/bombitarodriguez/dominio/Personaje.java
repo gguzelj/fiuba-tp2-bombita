@@ -109,9 +109,11 @@ public abstract class Personaje implements ObjetoReaccionable, Armado,
 
 	@Override
 	public Boolean reaccionarCon(Explosion explosion) {
+		
 		if (explosion.destruccion == Constante.DESTRUCCION_TOLETOLE) {
 			ControladorBomberman.borrarObjeto(this);
 			destruirse();
+			resistencia = 0;
 		} else {
 			resistencia = resistencia - explosion.getDestruccion();
 			if (resistencia <= 0) {
@@ -185,6 +187,7 @@ public abstract class Personaje implements ObjetoReaccionable, Armado,
 
 	@Override
 	public void vivir() {
+		
 		if (puedeReaccionar()) {
 			Integer random = new Random().nextInt(15);
 
@@ -201,9 +204,9 @@ public abstract class Personaje implements ObjetoReaccionable, Armado,
 			case 4:
 				this.moverseConEstrategia(Direccion.ABAJO);
 				break;
-//			case 5:
-//				ControladorBomberman.agregarObjeto(this.usarArma());
-//				break;
+			case 5:
+				ControladorBomberman.agregarObjeto(this.usarArma());
+				break;
 			}
 		}
 

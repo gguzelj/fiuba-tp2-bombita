@@ -43,7 +43,7 @@ public class Explosion implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 	@Override
 	public Boolean reaccionarCon(Bombita bombita) {
 		bombita.reaccionarCon(this);
-		return true;
+		return false;
 	}
 	
 	@Override
@@ -54,19 +54,19 @@ public class Explosion implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 	@Override
 	public Boolean reaccionarCon(Cecilio cecilio) {
 		cecilio.reaccionarCon(this);
-		return true;
+		return false;
 	}
 
 	@Override
 	public Boolean reaccionarCon(LosLopezReggae losLopezReggae) {
 		losLopezReggae.reaccionarCon(this);
-		return true;
+		return false;
 	}
 
 	@Override
 	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado) {
 		losLopezReggaeAlado.reaccionarCon(this);
-		return true;
+		return false;
 	}
 
 	
@@ -133,8 +133,11 @@ public class Explosion implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 	
 	public void causarEstragos() {
 		
+		List<ObjetoReaccionable> copiaDeObjetos = new ArrayList<ObjetoReaccionable>();
+		copiaDeObjetos.addAll(this.getCasillero().getObjetos());
+		
 		//Reaaciono con los objetos del casillero principal
-		for( ObjetoReaccionable objeto : this.getCasillero().getObjetos())
+		for( ObjetoReaccionable objeto : copiaDeObjetos)
 			objeto.reaccionarCon(this);
 		
 		//Reacciono hacia la derecha
@@ -149,7 +152,6 @@ public class Explosion implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 		//Reacciono hacia la abajo
 		this.recorrerCasilleros(ondaExpansiva, Direccion.ABAJO);
 		
-		this.casilleroContenedor.quitarObjeto(this);
 	}	
 	
 	//Metodo public solamente para poder ser testeado
@@ -192,6 +194,7 @@ public class Explosion implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 	public void destruirse(ObjetoReaccionable objeto){
 		
 	}
+	
 	@Override
 	public Imagen vistaDeObjeto() {
 		return this.vistaExplosion;
@@ -226,6 +229,7 @@ public class Explosion implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 		this.tiempoDeVisualizacion--;
 		if(this.tiempoDeVisualizacion == 0){
 			ControladorBomberman.borrarObjeto(this);
+			this.casilleroContenedor.quitarObjeto(this);
 		}
 	}
 
