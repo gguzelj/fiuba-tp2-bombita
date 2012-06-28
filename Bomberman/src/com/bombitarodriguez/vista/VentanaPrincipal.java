@@ -88,11 +88,11 @@ public class VentanaPrincipal extends Ventana {
 	}
 	
 	public void agregarDibujable(Dibujable dibujable){
-		this.controladorBomberman.agregarDibujable(dibujable);		
+			this.controladorBomberman.agregarDibujable(dibujable);	
 	}
 	
 	public void quitarDibujable(Dibujable dibujable){
-		this.controladorBomberman.removerDibujable(dibujable);		
+			this.controladorBomberman.removerDibujable(dibujable);	
 	}
 
 	public Juego getJuego() {
