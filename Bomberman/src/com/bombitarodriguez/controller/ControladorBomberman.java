@@ -13,6 +13,7 @@ import ar.uba.fi.algo3.titiritero.Dibujable;
 import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 import ar.uba.fi.algo3.titiritero.SuperficieDeDibujo;
+import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
 public class ControladorBomberman extends ControladorJuego {
 
@@ -73,10 +74,12 @@ public class ControladorBomberman extends ControladorJuego {
 	private void copiarObjetos() {
 
 		Dibujable dibujable;
-		
+		String nombreArchivoImagen;
 		for(ObjetoReaccionable objeto : objetosParaAgregar){
 
 			dibujable = objeto.vistaDeObjeto();
+			nombreArchivoImagen = ((Imagen) dibujable).getNombreArchivoImagen();
+			((Imagen) dibujable).setNombreArchivoImagen(nombreArchivoImagen);
 			dibujable.setPosicionable((Posicionable) objeto);
 	
 			this.agregarObjetoVivo((ObjetoVivo) objeto);
