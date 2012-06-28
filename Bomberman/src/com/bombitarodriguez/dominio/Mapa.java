@@ -24,6 +24,7 @@ public class Mapa {
 	static private Mapa mapa;
 	HashMap<Posicion, Casillero> mapaCasillero;
 	static private Integer dimension;
+	private Posicion posicionBombita;
 	
 	public static Integer getDimension() {
 		return dimension;
@@ -225,6 +226,14 @@ public class Mapa {
 
 	public static void setMapa(Mapa mapa) {
 		Mapa.mapa = mapa;
+	}
+
+	public Posicion getPosicionBombita() {
+		return posicionBombita;
+	}
+
+	public void setPosicionBombita(Posicion posicionBombita) {
+		this.posicionBombita = posicionBombita;
 	}
 	
 	
