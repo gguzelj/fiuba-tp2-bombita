@@ -10,8 +10,8 @@ public class ParserTest {
 
 	@Test
 	public void testParsearMapXML() {
-		String path = ParserTest.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-		path = path + "com/test/utils/MapaTest.xml";
+		String path = PathFile.getPathActual();
+		path = path + "/testUnitarios/com/test/utils/MapaTest.xml";
 		File file = new File(path);
 	
 		String fila1 = "1 0 0 0 0 0 21 0 0 0";
