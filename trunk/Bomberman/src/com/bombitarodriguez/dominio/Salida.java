@@ -21,7 +21,7 @@ public class Salida implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 	protected Integer posY;
 	protected Imagen vistaSalida;
 	
-	public void Salida(){
+	public Salida(){
 		vistaSalida = new VistaSalida();
 	}
 	
@@ -100,7 +100,7 @@ public class Salida implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 
 	@Override
 	public Imagen vistaDeObjeto() {
-		return new VistaSalida();
+		return this.vistaSalida;
 	}
 	
 	@Override

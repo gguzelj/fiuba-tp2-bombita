@@ -49,6 +49,7 @@ public class Juego {
 	 */
 	public void crearNivel(Integer nivel){
 		
+		
 		/*Creamos el mapa*/
 		this.crearMapa(nivel);
 		
@@ -69,6 +70,7 @@ public class Juego {
 	public void siguienteNivel(Integer nivel){
 		
 		this.borrarObjetosDelMapa();
+		
 		this.crearNivel(nivel);
 	}
 	
@@ -152,12 +154,14 @@ public class Juego {
 	public void guardarPartida() {
 		PersistenciaPartidaXML persistencia = new PersistenciaPartidaXML(Constante.NOMBRE_ARCHIVO_PARTIDA);
 		Mapa.getMapa().setPosicionBombita(bombita.getPosicion());
+		Mapa.getMapa().setNivelJuegoActual(ControladorBomberman.getNivelDelJuego());
 		persistencia.persistirPartida();
 	}
 	
 	private void cargarPartida() {
 		PersistenciaPartidaXML persistencia = new PersistenciaPartidaXML(Constante.NOMBRE_ARCHIVO_PARTIDA);
 		Mapa.setMapa(persistencia.cargarDominioDeXML());
+		controlador.setNivelDelJuego(Mapa.getMapa().getNivelJuegoActual());
 	}
 
 	public VentanaPrincipal getVentanaPrincipal() {

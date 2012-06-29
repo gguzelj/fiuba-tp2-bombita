@@ -21,12 +21,14 @@ public class Bombita extends Personaje {
 	// TODO ver si se puede subir a personaje
 	private Direccion direccionAMover = null;
 	private Boolean atacar = false;
+	private Imagen vistaBombita;
 
 	public Bombita(Integer vida) {
 		this.vida = vida;
 		this.resistencia = 0;
 		this.velocidad = Constante.VELOCIDAD_CAMINA;
 		this.factoryArma = new FactoryMolotov();
+		this.vistaBombita = new VistaBombita();
 
 	}
 
@@ -52,21 +54,20 @@ public class Bombita extends Personaje {
 
 	@Override
 	public Boolean reaccionarCon(Chala chala) {
-		return true;
+		return false;
 	}
 
 	@Override
 	public Boolean reaccionarCon(Explosion explosion) {
 		
 		this.destruirse();
-		//		this.quitarVida();
+		this.quitarVida();
 		return true;
 	}
 
 	public void quitarVida() {
 		vida -= 1;
-		// Mapa.getMapa().reposicionar(this, Mapa.getMapa().getCasillero(new
-		// Posicion(1,1)));
+	
 	}
 
 	public Integer getVida() {
@@ -130,7 +131,7 @@ public class Bombita extends Personaje {
 	}
 
 	public Imagen vistaDeObjeto() {
-		return new VistaBombita();
+		return this.vistaBombita;
 	}
 
 	public Direccion getDireccionAMover() {
