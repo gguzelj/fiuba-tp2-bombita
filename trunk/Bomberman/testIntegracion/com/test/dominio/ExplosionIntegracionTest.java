@@ -59,10 +59,10 @@ public class ExplosionIntegracionTest {
 		explosion.causarEstragos();
 		
 		//Luego de esta explosion no deberia quedar ningun bloque en los casilleros aledaños
-		assertTrue(Mapa.getMapa().getCasillero(posicionIzquierda).getObjetos().isEmpty());
-		assertTrue(Mapa.getMapa().getCasillero(posicionDerecha).getObjetos().isEmpty());
-		assertTrue(Mapa.getMapa().getCasillero(posicionArriba).getObjetos().isEmpty());
-		assertTrue(Mapa.getMapa().getCasillero(posicionAbajo).getObjetos().isEmpty());
+		assertTrue(Mapa.getMapa().getCasillero(posicionIzquierda).getObjetos().get(0) instanceof Explosion);
+		assertTrue(Mapa.getMapa().getCasillero(posicionDerecha).getObjetos().get(0) instanceof Explosion);
+		assertTrue(Mapa.getMapa().getCasillero(posicionArriba).getObjetos().get(0) instanceof Explosion);
+		assertTrue(Mapa.getMapa().getCasillero(posicionAbajo).getObjetos().get(0) instanceof Explosion);
 	}
 	
 	@Test
@@ -90,10 +90,10 @@ public class ExplosionIntegracionTest {
 		explosion.causarEstragos();
 		
 		//Luego de esta segunda explosion, deberian desaparecer todos los obstaculos del mapa
-		assertTrue(Mapa.getMapa().getCasillero(posicionIzquierda).getObjetos().isEmpty());
-		assertTrue(Mapa.getMapa().getCasillero(posicionDerecha).getObjetos().isEmpty());
-		assertTrue(Mapa.getMapa().getCasillero(posicionArriba).getObjetos().isEmpty());
-		assertTrue(Mapa.getMapa().getCasillero(posicionAbajo).getObjetos().isEmpty());
+		assertTrue(Mapa.getMapa().getCasillero(posicionIzquierda).getObjetos().get(0) instanceof Explosion);
+		assertTrue(Mapa.getMapa().getCasillero(posicionDerecha).getObjetos().get(0) instanceof Explosion);
+		assertTrue(Mapa.getMapa().getCasillero(posicionArriba).getObjetos().get(0) instanceof Explosion);
+		assertTrue(Mapa.getMapa().getCasillero(posicionAbajo).getObjetos().get(0) instanceof Explosion);
 
 	}
 }

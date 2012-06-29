@@ -3,6 +3,7 @@ package com.bombitarodriguez.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bombitarodriguez.AnimacionNivel;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.menues.MenuPrincipal;
 import com.bombitarodriguez.menues.pantallas.PantallaPartida;
@@ -24,7 +25,6 @@ public class ControladorBomberman extends ControladorJuego {
 	private static Boolean estaEnEjecucion;
 	private Boolean estaPausado = false;
 	private static Boolean ganoElNivel = false;
-	private static Boolean juegoGanado = false;
 	private static Integer nivelDelJuego = 1;
 	
 		
@@ -137,6 +137,7 @@ public class ControladorBomberman extends ControladorJuego {
 			pantalla.siguienteNivel(++nivelDelJuego);			
 			pantalla.getControlador().setControladorBombita(controladorBombita);		
 			ganoElNivel = false;
+			new AnimacionNivel();
 			}
 			
 			else {

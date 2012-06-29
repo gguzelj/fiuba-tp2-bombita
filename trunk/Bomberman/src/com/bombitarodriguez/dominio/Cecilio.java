@@ -34,9 +34,7 @@ public class Cecilio extends Personaje {
 		 Arma armaInstanciada = factoryArma.getArmaInstanciada();
 		getCasillero().agregarObjeto(armaInstanciada);
 		return armaInstanciada;
-	
 	}
-
 	
 	@Override
 	public Boolean reaccionarCon(Bombita bombita) {

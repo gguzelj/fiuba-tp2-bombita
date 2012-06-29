@@ -65,9 +65,9 @@ public class ExplosionTest {
 		//La explosion deberia reaccionar con todos los objetos de todos los casilleros(hasta el cuarto)
 		explosion.recorrerCasilleros(Constante.ONDA_EXPANSIVA_MOLOTOV, Direccion.ARRIBA);
 	
-		assertTrue(segundoCasillero.getObjetos().size() == 0);
-		assertTrue(tercerCasillero.getObjetos().size() == 0);
-		assertTrue(cuartoCasillero.getObjetos().size() == 0);
+		assertTrue(segundoCasillero.getObjetos().size() == 1);
+		assertTrue(tercerCasillero.getObjetos().size() == 1);
+		assertTrue(cuartoCasillero.getObjetos().size() == 1);
 		assertTrue(quintoCasillero.getObjetos().size() == 1);
 	}
 }
