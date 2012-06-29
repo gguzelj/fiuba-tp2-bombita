@@ -136,7 +136,7 @@ public class ControladorBomberman extends ControladorJuego {
 			pantalla.siguienteNivel(++nivelDelJuego);			
 			pantalla.getControlador().setControladorBombita(controladorBombita);		
 			ganoElNivel = false;
-//			new AnimacionNivel();
+
 			}
 			
 			else {
