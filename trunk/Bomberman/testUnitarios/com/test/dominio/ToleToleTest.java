@@ -1,7 +1,6 @@
 package com.test.dominio;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -13,22 +12,22 @@ public class ToleToleTest {
 	@Test
 	public void testReaccionarConBombita(){
 		Integer vida = new Integer(3);
-		assertTrue(new ToleTole().reaccionarCon(new Bombita(vida)));
+		assertFalse(new ToleTole().reaccionarCon(new Bombita(vida)));
 	}
 
 	@Test
 	public void testReaccionarConCecilio(){
-		assertTrue(new ToleTole().reaccionarCon(new Cecilio()));
+		assertFalse(new ToleTole().reaccionarCon(new Cecilio()));
 	}
 	
 	@Test
 	public void testReaccionarConLopezReggae(){
-		assertTrue(new ToleTole().reaccionarCon(new LosLopezReggae()));
+		assertFalse(new ToleTole().reaccionarCon(new LosLopezReggae()));
 	}
 	
 	@Test
 	public void testReaccionarConLopezReggaeAlado(){
-		assertTrue(new ToleTole().reaccionarCon(new LosLopezReggaeAlado()));
+		assertFalse(new ToleTole().reaccionarCon(new LosLopezReggaeAlado()));
 	}
 	
 	@Test
@@ -63,12 +62,12 @@ public class ToleToleTest {
 	
 	@Test
 	public void testReaccionarConBombaMolotov(){
-		assertTrue(new ToleTole().reaccionarCon(new Molotov()));
+		assertFalse(new ToleTole().reaccionarCon(new Molotov()));
 	}
 	
 	@Test
 	public void testReaccionarConBombaToleTole(){
-		assertTrue(new ToleTole().reaccionarCon(new ToleTole()));
+		assertFalse(new ToleTole().reaccionarCon(new ToleTole()));
 	}
 	
 	@Test
@@ -96,6 +95,6 @@ public class ToleToleTest {
 				
 		toleTole.explotar();
 		
-		assertTrue(casillero.getObjetos().isEmpty());
+		assertFalse(casillero.getObjetos().isEmpty());
 	}
 }

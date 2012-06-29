@@ -210,8 +210,8 @@ public class BombitaIntegracionTest {
 		
 		bombita.moverseConEstrategia(Direccion.ARRIBA);
 		
-		assertEquals(bombita.getPosicion(), posicionFinal);
-		assertTrue(casilleroInicial.getObjetos().isEmpty());
+		assertEquals(bombita.getPosicion(), posicionInicial);
+		assertFalse(casilleroInicial.getObjetos().isEmpty());
 	}
 	
 	/**
@@ -234,8 +234,8 @@ public class BombitaIntegracionTest {
 		
 		bombita.moverseConEstrategia(Direccion.ARRIBA);
 		
-		assertEquals(bombita.getPosicion(), posicionFinal);
-		assertTrue(casilleroInicial.getObjetos().isEmpty());
+		assertEquals(bombita.getPosicion(), posicionInicial);
+		assertFalse(casilleroInicial.getObjetos().isEmpty());
 	}
 	
 	/**
@@ -261,7 +261,7 @@ public class BombitaIntegracionTest {
 		bombita.moverseConEstrategia(Direccion.ARRIBA);
 		
 		assertTrue(bombita.getVida() == 2);
-		assertTrue(casilleroFinal.getObjetos().isEmpty());
+		assertFalse(casilleroFinal.getObjetos().isEmpty());
 	}
 	
 	/**

@@ -12,22 +12,22 @@ public class MolotovTest {
 	@Test
 	public void testReaccionarConBombita(){
 		Integer vida = new Integer(3);
-		assertTrue(new Molotov().reaccionarCon(new Bombita(vida)));
+		assertFalse(new Molotov().reaccionarCon(new Bombita(vida)));
 	}
 
 	@Test
 	public void testReaccionarConCecilio(){
-		assertTrue(new Molotov().reaccionarCon(new Cecilio()));
+		assertFalse(new Molotov().reaccionarCon(new Cecilio()));
 	}
 	
 	@Test
 	public void testReaccionarConLopezReggae(){
-		assertTrue(new Molotov().reaccionarCon(new LosLopezReggae()));
+		assertFalse(new Molotov().reaccionarCon(new LosLopezReggae()));
 	}
 	
 	@Test
 	public void testReaccionarConLopezReggaeAlado(){
-		assertTrue(new Molotov().reaccionarCon(new LosLopezReggaeAlado()));
+		assertFalse(new Molotov().reaccionarCon(new LosLopezReggaeAlado()));
 	}
 	
 	@Test
@@ -62,12 +62,12 @@ public class MolotovTest {
 	
 	@Test
 	public void testReaccionarConBombaMolotov(){
-		assertTrue(new Molotov().reaccionarCon(new Molotov()));
+		assertFalse(new Molotov().reaccionarCon(new Molotov()));
 	}
 	
 	@Test
 	public void testReaccionarConBombaToleTole(){
-		assertTrue(new Molotov().reaccionarCon(new ToleTole()));
+		assertFalse(new Molotov().reaccionarCon(new ToleTole()));
 	}
 	
 	@Test
@@ -95,6 +95,6 @@ public class MolotovTest {
 				
 		molotov.explotar();
 		
-		assertTrue(casillero.getObjetos().isEmpty());
+		assertFalse(casillero.getObjetos().isEmpty());
 	}
 }
