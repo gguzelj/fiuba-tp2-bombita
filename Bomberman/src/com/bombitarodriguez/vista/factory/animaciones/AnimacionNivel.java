@@ -1,5 +1,7 @@
 package com.bombitarodriguez.vista.factory.animaciones;
 
+import java.io.File;
+
 import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.dominio.ArticuloToleTole;
 import com.bombitarodriguez.dominio.BloqueAcero;
@@ -17,20 +19,24 @@ import com.bombitarodriguez.dominio.Posicion;
 import com.bombitarodriguez.dominio.Proyectil;
 import com.bombitarodriguez.dominio.Timer;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
+import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.utils.PathFile;
 
 import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
-public class AnimacionPrimerNivel implements ObjetoVivo, Posicionable, ObjetoReaccionable {
+public class AnimacionNivel implements ObjetoVivo, Posicionable, ObjetoReaccionable {
 
 	Imagen imagen;
 	Integer posicionX = -100;
 	Integer posicionY = 300;
 
-	public AnimacionPrimerNivel() {
+	public AnimacionNivel(Integer nivel) {
+		
+//		String nombreImagen = PathFile.getPathActual(Constante.DIRECTORIO_IMAGENES, "/Niveles/" + nivel.toString() + ".png");
 		imagen = new Imagen();
-		imagen.setNombreArchivoImagen("/com/bombitarodriguez/vista/imagenes/Niveles/PrimerNivel.png");
+		imagen.setNombreArchivoImagen("/com/bombitarodriguez/vista/imagenes/Niveles/"+nivel.toString()+".png");
 		imagen.setPosicionable(this);
 		ControladorBomberman.agregarObjeto(this);
 	}
