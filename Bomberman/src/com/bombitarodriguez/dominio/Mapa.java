@@ -24,6 +24,7 @@ public class Mapa {
 	HashMap<Posicion, Casillero> mapaCasillero;
 	static private Integer dimension;
 	private Posicion posicionBombita;
+	private Integer nivelJuegoActual;
 	
 	public static Integer getDimension() {
 		return dimension;
@@ -235,5 +236,12 @@ public class Mapa {
 		this.posicionBombita = posicionBombita;
 	}
 	
+	public Integer getNivelJuegoActual() {
+		return nivelJuegoActual;
+	}
+	
+	public void setNivelJuegoActual(Integer nivelJuegoActual) {
+		this.nivelJuegoActual = nivelJuegoActual;
+	}
 	
 }

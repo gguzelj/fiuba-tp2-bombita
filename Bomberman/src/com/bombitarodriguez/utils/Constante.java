@@ -38,5 +38,7 @@ public class Constante {
 	public static final Integer DIMENSION_VENTANA = 600;
 	// nombre del archivo para cargar/guardar la partida
 	public static final String NOMBRE_ARCHIVO_PARTIDA = "bombita-save.xml";
+	// cantidad de niveles de juego
+	public static final Integer CANTIDAD_DE_NIVELES = 3;
 
 }

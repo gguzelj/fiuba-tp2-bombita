@@ -1,6 +1,8 @@
 package com.bombitarodriguez.dominio;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 
 
@@ -67,9 +69,10 @@ public class LosLopezReggaeAlado extends Personaje {
 		}
 		Casillero casilleroProximo = Mapa.getMapa().getCasillero(nuevaPosicion);
 		Posicion posicionParcial;
+		List<ObjetoReaccionable> copiaObjetosAReaccionar = new ArrayList<ObjetoReaccionable>(casilleroProximo.getObjetos());
 		Iterator<ObjetoReaccionable> iterador; 
 		while (!casilleroValido){
-			iterador = casilleroProximo.getObjetos().iterator();
+			iterador = copiaObjetosAReaccionar.iterator();
 			if (reaccionarConTodos(iterador)) {
 				casilleroValido = true;
 			}

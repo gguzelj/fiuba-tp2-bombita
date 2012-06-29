@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
+import com.bombitarodriguez.menues.MenuPrincipal;
 import com.bombitarodriguez.menues.pantallas.PantallaPartida;
+import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.vista.VentanaPrincipal;
 
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
@@ -22,7 +24,8 @@ public class ControladorBomberman extends ControladorJuego {
 	private static Boolean estaEnEjecucion;
 	private Boolean estaPausado = false;
 	private static Boolean ganoElNivel = false;
-	private static Integer nivelDelJuego = new Integer(1);
+	private static Boolean juegoGanado = false;
+	private static Integer nivelDelJuego = 1;
 	
 		
 	public ControladorBomberman(boolean activarReproductor) {
@@ -128,19 +131,29 @@ public class ControladorBomberman extends ControladorJuego {
 	private void controlarPartida() {
 
 		if(ganoElNivel){
+			if (!juegoGanado()) {
 			VentanaPrincipal ventanaPrincipal = (VentanaPrincipal) this.getSuperficieDeDibujo();
-			PantallaPartida pantalla = ventanaPrincipal.getPantallaPartida();
-			
-			nivelDelJuego++;
-			pantalla.siguienteNivel(nivelDelJuego);
-
-//			pantalla.getControlador().
-			
-//			ventanaPrincipal.getJuego().getBombita();
-						
+			PantallaPartida pantalla = ventanaPrincipal.getPantallaPartida();			
+			pantalla.siguienteNivel(++nivelDelJuego);			
+			pantalla.getControlador().setControladorBombita(controladorBombita);		
 			ganoElNivel = false;
+			}
+			
+			else {
+				/*Creamos el menu principal del juego*/
+				
+				MenuPrincipal menuPrincipal = new MenuPrincipal((VentanaPrincipal) this.getSuperficieDeDibujo());
+				menuPrincipal.mostrar();
+
+			}
+			
+			
 		}
 		
 		
+	}
+
+	private boolean juegoGanado() {
+		return nivelDelJuego.equals(Constante.CANTIDAD_DE_NIVELES);
 	}
 }

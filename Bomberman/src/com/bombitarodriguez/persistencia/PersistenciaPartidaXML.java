@@ -6,6 +6,7 @@ import java.io.FileReader;
 
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
+import com.bombitarodriguez.dominio.Bombita;
 import com.bombitarodriguez.dominio.Mapa;
 import com.bombitarodriguez.vista.factory.dominio.VistaBombita;
 import com.thoughtworks.xstream.XStream;
@@ -33,7 +34,8 @@ public class PersistenciaPartidaXML {
 	 */
 	public void persistirPartida() {        
         try {
-			xstream.toXML(Mapa.getMapa(), new FileOutputStream(pathXml));
+        	FileOutputStream file = new FileOutputStream(pathXml);
+			xstream.toXML(Mapa.getMapa(), file);
 		} catch (FileNotFoundException e) {
 			System.out.println("no se pudo crear el archivo pagar guardar la partida");
 		}
@@ -50,6 +52,17 @@ public class PersistenciaPartidaXML {
 			xmlPartida = new FileReader(pathXml);
 		} catch (FileNotFoundException e) {
 			System.out.println("no se encuentra el archivo para restaurar la partida");
+		}
+		 return (Mapa) xstream.fromXML(xmlPartida);
+	
+	}
+	
+	public Mapa cargarBombita() {
+		FileReader xmlPartida = null;
+		try {
+			xmlPartida = new FileReader(pathXml);
+		} catch (FileNotFoundException e) {
+			
 		}
 		 return (Mapa) xstream.fromXML(xmlPartida);
 	
