@@ -5,6 +5,7 @@ import ar.uba.fi.algo3.titiritero.vista.Imagen;
 import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.controller.menues.pantallas.ControladorPantallaPartida;
 import com.bombitarodriguez.vista.VentanaPrincipal;
+import com.bombitarodriguez.vista.factory.animaciones.AnimacionPrimerNivel;
 import com.bombitarodriguez.vista.factory.menues.VistaPantallaNuevaPartida;
 
 public class PantallaPartida extends Pantalla {
@@ -26,6 +27,7 @@ public class PantallaPartida extends Pantalla {
 
 	public void crearJuego() {
 		this.getVentanaPrincipal().getJuego().crearNivel(ControladorBomberman.getNivelDelJuego());
+		new AnimacionPrimerNivel();
 	}
 
 	public void cargarJuego() {
