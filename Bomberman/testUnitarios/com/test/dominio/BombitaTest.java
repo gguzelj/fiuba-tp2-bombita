@@ -111,6 +111,8 @@ public class BombitaTest {
 	public void testReaccionarConExplosion(){
 		Integer vida = new Integer(3);
 		Bombita bombita = new Bombita(vida);
+		Casillero casillero = new Casillero(new Posicion(1, 1));
+		casillero.agregarObjeto(bombita);
 		assertTrue(bombita.reaccionarCon(new Explosion(Constante.DESTRUCCION_MOLOTOV,
 				Constante.ONDA_EXPANSIVA_MOLOTOV)));
 		assertTrue(bombita.getVida() == 2);
@@ -147,7 +149,7 @@ public class BombitaTest {
 		Bombita bombita = new Bombita(vida);
 
 		bombita.quitarVida();
-		assertEquals(bombita.getVida(),new Integer(vida-1));		
+		assertEquals(bombita.getVida(), new Integer(vida - 1));		
 	}
 	
 	@Test
@@ -163,10 +165,10 @@ public class BombitaTest {
 				new Class[]{java.util.Iterator.class});
 		metodoPrivado.setAccessible(true);
 
-		//Reaccionar con la molotov deberia devolvernos true
+		//Reaccionar con la molotov deberia devolvernos false
 		listaObjetos.add(new Molotov());
 		metodoResultado = (Boolean) metodoPrivado.invoke(bombita, listaObjetos.iterator());
-		assertTrue(metodoResultado);
+		assertFalse(metodoResultado);
 		
 		//Reaccionar con el bloqueAcero deberia devolvernos false
 		listaObjetos.add(new BloqueAcero());

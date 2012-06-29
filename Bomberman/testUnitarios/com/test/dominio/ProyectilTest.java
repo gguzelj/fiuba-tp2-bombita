@@ -19,7 +19,7 @@ public class ProyectilTest {
 		casillero.agregarObjeto(proyectil);
 		
 		assertFalse(proyectil.reaccionarCon(new Bombita(vida)));
-		assertTrue(casillero.getObjetos().isEmpty());
+		assertFalse(casillero.getObjetos().isEmpty());
 	}
 
 	@Test
@@ -30,7 +30,7 @@ public class ProyectilTest {
 		casillero.agregarObjeto(proyectil);
 		
 		assertFalse(proyectil.reaccionarCon(new Cecilio()));
-		assertTrue(casillero.getObjetos().isEmpty());
+		assertFalse(casillero.getObjetos().isEmpty());
 	}
 	
 	@Test
@@ -41,7 +41,7 @@ public class ProyectilTest {
 		casillero.agregarObjeto(proyectil);
 		
 		assertFalse(proyectil.reaccionarCon(new LosLopezReggae()));
-		assertTrue(casillero.getObjetos().isEmpty());
+		assertFalse(casillero.getObjetos().isEmpty());
 	}
 	
 	@Test
@@ -52,7 +52,7 @@ public class ProyectilTest {
 		casillero.agregarObjeto(proyectil);
 		
 		assertFalse(proyectil.reaccionarCon(new LosLopezReggaeAlado()));
-		assertTrue(casillero.getObjetos().isEmpty());
+		assertFalse(casillero.getObjetos().isEmpty());
 	}
 	
 	@Test
@@ -120,6 +120,6 @@ public class ProyectilTest {
 				
 		proyectil.explotar();
 		
-		assertTrue(casillero.getObjetos().isEmpty());
+		assertFalse(casillero.getObjetos().isEmpty());
 	}
 }
