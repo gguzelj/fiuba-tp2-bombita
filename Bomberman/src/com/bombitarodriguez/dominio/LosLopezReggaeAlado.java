@@ -57,36 +57,46 @@ public class LosLopezReggaeAlado extends Personaje {
 	
 	}
 
+	/**
+	 * La logica de este personaje consiste en tratar de moverse a la direccion indicada.
+	 * Si algun objeto en ese casillero no le permite moverse, busca el proximo.
+	 * (Se realiza una copia de los objetos a iterar porque en los reaccionarCon puede 
+	 * llegar a modificarse la misma lista que se itera)
+	 */
 	@Override
 	public void moverseConEstrategia(Direccion direccion) {
+		List<ObjetoReaccionable> copiaObjetosAReaccionar = new ArrayList<ObjetoReaccionable>();
 		Boolean casilleroValido = false;
 		Posicion nuevaPosicion;
+		
 		try {
 			nuevaPosicion = Mapa.getMapa().getNuevaPosicion(this.getPosicion(), direccion);
 		} catch (FueraDelMapaException e) {
-			// No se relaciona con los objetos del mapa
 			return;
 		}
+		
 		Casillero casilleroProximo = Mapa.getMapa().getCasillero(nuevaPosicion);
-		Posicion posicionParcial;
-		List<ObjetoReaccionable> copiaObjetosAReaccionar = new ArrayList<ObjetoReaccionable>(casilleroProximo.getObjetos());
-		Iterator<ObjetoReaccionable> iterador; 
+		copiaObjetosAReaccionar.clear();
+		copiaObjetosAReaccionar.addAll(casilleroProximo.getObjetos());
+		
 		while (!casilleroValido){
-			iterador = copiaObjetosAReaccionar.iterator();
-			if (reaccionarConTodos(iterador)) {
+			if (reaccionarConTodos(copiaObjetosAReaccionar.iterator())) {
 				casilleroValido = true;
 			}
 			else {
-				posicionParcial = nuevaPosicion;
 				try {
-					nuevaPosicion = Mapa.getMapa().getNuevaPosicion(posicionParcial, direccion);
+					nuevaPosicion = Mapa.getMapa().getNuevaPosicion(nuevaPosicion, direccion);
 				} catch (FueraDelMapaException e) {
-					// No se relaciona con los objetos del mapa
 					return;
 				}
+				
 				casilleroProximo = Mapa.getMapa().getCasillero(nuevaPosicion);
+				copiaObjetosAReaccionar.clear();
+				copiaObjetosAReaccionar.addAll(casilleroProximo.getObjetos());
 			}
+			
 		}	
+		
 	 	Mapa.getMapa().reposicionar(this, casilleroProximo);
 	}
 

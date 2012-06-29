@@ -45,7 +45,7 @@ public class LosLopezReggaeAladosTest {
 		Mapa.getMapa().agregarCasillero(posicionDondeCae, casilleroDondeCae);
 		
 		lopezReggaeAlado.moverseConEstrategia(Direccion.ARRIBA);
-		assertEquals(lopezReggaeAlado.getPosicion(), posicionDondeCae);
+		assertTrue(lopezReggaeAlado.getPosicion().equals(posicionDondeCae));
 		}
 	
 	@Test
