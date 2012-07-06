@@ -5,18 +5,21 @@ import java.util.Iterator;
 
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
+import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.utils.Direccion;
 import com.bombitarodriguez.vista.factory.dominio.VistaLopezReggae;
 import com.bombitarodriguez.vista.factory.dominio.VistaLopezReggaeAlado;
 
 /**
- * 
  * @author Mauro
- *
  */
 public class LosLopezReggae extends Personaje {
 		
+	private Direccion ultimaDireccion;
+	private FactoryProyectil factoryArma; 
+	
 	public LosLopezReggae() {
 		this.resistencia = Constante.RESISTENCIA_LOSLOPEZREGGAE;
 		this.velocidad = Constante.VELOCIDAD_CORRE;
@@ -25,17 +28,23 @@ public class LosLopezReggae extends Personaje {
 
 	}	
 	
-
 	@Override
 	public Arma usarArma() {
-		return plantarBomba();
+
+		Proyectil proyectil = (Proyectil) lanzarProyectil();
+		
+		if(proyectil != null){
+			getCasillero().agregarObjeto(proyectil);
+			ControladorBomberman.agregarObjeto(proyectil);
+		}
+		
+		return null;
 	}
 
-	private Arma plantarBomba() {
-		 Arma armaInstanciada = factoryArma.getArmaInstanciada();
-		getCasillero().agregarObjeto(armaInstanciada);
-		return armaInstanciada;
-	
+	private Arma lanzarProyectil() {
+		if(this.ultimaDireccion == null)
+			return null;
+		return this.factoryArma.instanciarArma(this.ultimaDireccion, this.casilleroContenedor.getPosicion());
 	}
 
 	
@@ -58,4 +67,11 @@ public class LosLopezReggae extends Personaje {
 	public Imagen vistaDeObjeto() {
 		return vistaPersonaje;
 	}
+
+	@Override
+	public void moverseConEstrategia(Direccion direccion) {
+		super.moverseConEstrategia(direccion);
+		this.ultimaDireccion = direccion;
+	}
+
 }
