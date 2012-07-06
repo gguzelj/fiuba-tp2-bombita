@@ -2,9 +2,15 @@ package com.bombitarodriguez.dominio;
 
 
 
+import java.util.List;
+
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
+import com.bombitarodriguez.excepciones.FueraDelMapaException;
+import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.utils.Direccion;
+import com.bombitarodriguez.vista.factory.dominio.VistaMolotov;
 import com.bombitarodriguez.vista.factory.dominio.VistaProyectil;
 
 /**
@@ -14,16 +20,25 @@ import com.bombitarodriguez.vista.factory.dominio.VistaProyectil;
  */
 public class Proyectil extends Arma {
 
-	public Proyectil(Double retardo) {
+	private Direccion direccion;
+	private Posicion posicionActual;
+	
+	public Proyectil(Double retardo, Direccion direccion, Posicion posicion) {
 		this.ondaExpansiva = Constante.ONDA_EXPANSIVA_PROYECTIL;
 		this.destruccion = Constante.DESTRUCCION_PROYECTIL;
 		this.retardo = retardo;
+		this.vistaArma = new VistaProyectil();
+		this.direccion = direccion;
+		this.posicionActual = posicion;
 	}
 
-	public Proyectil() {
+	public Proyectil(Direccion direccion, Posicion posicion) {
 		this.ondaExpansiva = Constante.ONDA_EXPANSIVA_PROYECTIL;
 		this.destruccion = Constante.DESTRUCCION_PROYECTIL;
 		this.retardo = Constante.TIMER_PROYECTIL;
+		this.vistaArma = new VistaProyectil();
+		this.direccion = direccion;
+		this.posicionActual = posicion;
 	}
 
 	@Override
@@ -52,12 +67,43 @@ public class Proyectil extends Arma {
 
 	@Override
 	public Imagen vistaDeObjeto() {
-		return new VistaProyectil();
+		return this.vistaArma;
 	}
 
 	@Override
 	public void vivir() {
-		// TODO Auto-generated method stub
 		
+		try {
+			this.posicionActual = Mapa.getMapa().getNuevaPosicion(posicionActual, direccion);
+		} catch (FueraDelMapaException e) {
+			this.explotar();
+			return;
+		}	
+		
+		Mapa.getMapa().reposicionar(this, new Casillero(posicionActual));
+//		this.setCasillero(Mapa.getMapa().getCasillero(posicionActual));
+
+		if(!puedoMover(this.getCasillero()))
+			this.explotar();
+	}
+	
+	private boolean puedoMover(Casillero casillero) {
+		return reaccionarConTodos(casillero.getObjetos());
+	}
+	
+	/**
+	 * Reacciono con todos los objetos que recibo por parametro.
+	 * Si alguno de estos objetos no me permite pasar, devuelvo false
+	 */
+	private boolean reaccionarConTodos(List<ObjetoReaccionable> objetos) {
+		
+		Boolean puedoPasar = true;
+		
+		for(ObjetoReaccionable objeto : objetos){
+			if(!objeto.reaccionarCon(this))
+				puedoPasar = false;
+		}
+		
+		return puedoPasar;
 	}
 }

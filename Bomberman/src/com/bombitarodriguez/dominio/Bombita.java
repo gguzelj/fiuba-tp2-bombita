@@ -18,7 +18,6 @@ import com.bombitarodriguez.vista.factory.dominio.VistaBombita;
 public class Bombita extends Personaje {
 
 	private Integer vida;
-	// TODO ver si se puede subir a personaje
 	private Direccion direccionAMover = null;
 	private Boolean atacar = false;
 	private Imagen vistaBombita;

@@ -189,8 +189,8 @@ public abstract class Personaje implements ObjetoReaccionable, Armado,
 	public void vivir() {
 		
 		if (puedeReaccionar()) {
-			Integer randomReaccionar = new Random().nextInt(5);
-			if (randomReaccionar == 3) {
+//			Integer randomReaccionar = new Random().nextInt(5);
+//			if (randomReaccionar == 3) {
 			Integer randomMovimiento = new Random().nextInt(10);
 			switch (randomMovimiento) {
 			case 1:
@@ -206,13 +206,15 @@ public abstract class Personaje implements ObjetoReaccionable, Armado,
 				this.moverseConEstrategia(Direccion.ABAJO);
 				break;
 			case 5:		
-				Integer randomBomba = new Random().nextInt(10);
-				if (randomBomba == 3) {
-				ControladorBomberman.agregarObjeto(this.usarArma());
-				}
+//				Integer randomBomba = new Random().nextInt(10);
+//				if (randomBomba == 3) {
+				Arma arma = this.usarArma();
+				if(arma != null)
+					ControladorBomberman.agregarObjeto(arma);
+//				}
 				break;
 				}
-			}
+//			}
 		}
 	}
 

@@ -1,5 +1,7 @@
 package com.bombitarodriguez.utils;
 
+import com.bombitarodriguez.vista.factory.dominio.VistaProyectil;
+
 public class Constante {
 	
 	/**
@@ -40,5 +42,6 @@ public class Constante {
 	public static final String NOMBRE_ARCHIVO_PARTIDA = "bombita-save.xml";
 	// cantidad de niveles de juego
 	public static final Integer CANTIDAD_DE_NIVELES = 3;
+
 
 }
