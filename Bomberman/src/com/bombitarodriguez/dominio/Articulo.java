@@ -2,10 +2,6 @@ package com.bombitarodriguez.dominio;
 
 import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
-import ar.uba.fi.algo3.titiritero.vista.Imagen;
-
-import com.bombitarodriguez.controller.ControladorBomberman;
-import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Transformacion;
 
 /**
@@ -13,12 +9,11 @@ import com.bombitarodriguez.utils.Transformacion;
  * @author Mauro
  *
  */
-public abstract class Articulo implements ObjetoReaccionable, Posicionable, ObjetoVivo{
+public abstract class Articulo extends Objeto implements Posicionable, ObjetoVivo{
 
 	protected Casillero casillero;
 	protected Integer posX;
 	protected Integer posY;
-	protected Imagen vistaArticulo;
 
 	public Casillero getCasillero() {
 		return casillero;
@@ -80,7 +75,7 @@ public abstract class Articulo implements ObjetoReaccionable, Posicionable, Obje
 	}
 	
 	@Override
-	public Boolean reaccionarCon(Chala chala){
+	public Boolean reaccionarCon(ArticuloChala chala){
 		return false;
 	}
 	
@@ -90,14 +85,14 @@ public abstract class Articulo implements ObjetoReaccionable, Posicionable, Obje
 	}
 	
 	@Override
-	public Boolean reaccionarCon(Timer timer){
+	public Boolean reaccionarCon(ArticuloTimer timer){
 		return false;
 	}		
 
 	@Override
 	public Boolean reaccionarCon(Explosion explosion) {
 		this.getCasillero().quitarObjeto(this);
-		ControladorBomberman.borrarObjeto(this);
+		Mapa.objetoParaBorrar(this);
 		return true;
 	}
 	

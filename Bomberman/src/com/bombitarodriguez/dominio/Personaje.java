@@ -6,23 +6,17 @@ import java.util.List;
 import java.util.Random;
 import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
-import ar.uba.fi.algo3.titiritero.vista.Imagen;
-
-import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.Armado;
-import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.interfaces.StrategyMovimiento;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
 import com.bombitarodriguez.utils.Transformacion;
 
 /**
- * 
  * @author Mauro
- * 
  */
-public abstract class Personaje implements ObjetoReaccionable, Armado,
+public abstract class Personaje extends Objeto implements Armado,
 		StrategyMovimiento, Posicionable, ObjetoVivo {
 
 	protected Casillero casilleroContenedor;
@@ -31,7 +25,6 @@ public abstract class Personaje implements ObjetoReaccionable, Armado,
 	protected FactoryArma factoryArma;
 	protected Integer posX;
 	protected Integer posY;
-	protected Imagen vistaPersonaje;
 
 	/**
 	 * Permite reaccionar con todos los objetos de un casillero(Public solamente
@@ -41,7 +34,7 @@ public abstract class Personaje implements ObjetoReaccionable, Armado,
 	 * @return true si se puede mover, false caso contrario
 	 */
 	protected abstract Boolean reaccionarConTodos(
-			Iterator<ObjetoReaccionable> iterador);
+			Iterator<Objeto> iterador);
 
 	public Integer getResistencia() {
 		return resistencia;
@@ -111,13 +104,13 @@ public abstract class Personaje implements ObjetoReaccionable, Armado,
 	public Boolean reaccionarCon(Explosion explosion) {
 		
 		if (explosion.destruccion == Constante.DESTRUCCION_TOLETOLE) {
-			ControladorBomberman.borrarObjeto(this);
+			Mapa.objetoParaBorrar(this);
 			destruirse();
 			resistencia = 0;
 		} else {
 			resistencia = resistencia - explosion.getDestruccion();
 			if (resistencia <= 0) {
-				ControladorBomberman.borrarObjeto(this);
+				Mapa.objetoParaBorrar(this);
 				destruirse();
 			}
 		}
@@ -141,7 +134,7 @@ public abstract class Personaje implements ObjetoReaccionable, Armado,
 	}
 
 	@Override
-	public Boolean reaccionarCon(Chala chala) {
+	public Boolean reaccionarCon(ArticuloChala chala) {
 		return false;
 	}
 
@@ -151,7 +144,7 @@ public abstract class Personaje implements ObjetoReaccionable, Armado,
 	}
 
 	@Override
-	public Boolean reaccionarCon(Timer timer) {
+	public Boolean reaccionarCon(ArticuloTimer timer) {
 		return false;
 	}
 
@@ -177,9 +170,9 @@ public abstract class Personaje implements ObjetoReaccionable, Armado,
 		Casillero casilleroProximo = Mapa.getMapa().getCasillero(nuevaPosicion);
 		// Creo una copia de la lista sobre la cual voy a iterar, ya que se
 		// puede modificar
-		List<ObjetoReaccionable> copiaObjetosCasillero = new ArrayList<ObjetoReaccionable>();
+		List<Objeto> copiaObjetosCasillero = new ArrayList<Objeto>();
 		copiaObjetosCasillero.addAll(casilleroProximo.getObjetos());
-		Iterator<ObjetoReaccionable> iterador = copiaObjetosCasillero.iterator();
+		Iterator<Objeto> iterador = copiaObjetosCasillero.iterator();
 		if (reaccionarConTodos(iterador)) {
 			Mapa.getMapa().reposicionar(this, casilleroProximo);
 		}
@@ -210,7 +203,7 @@ public abstract class Personaje implements ObjetoReaccionable, Armado,
 //				if (randomBomba == 3) {
 				Arma arma = this.usarArma();
 				if(arma != null)
-					ControladorBomberman.agregarObjeto(arma);
+					Mapa.objetoParaAgregar(arma);
 //				}
 				break;
 				}

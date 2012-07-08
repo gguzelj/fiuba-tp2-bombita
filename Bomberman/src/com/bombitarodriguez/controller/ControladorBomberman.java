@@ -1,25 +1,26 @@
 package com.bombitarodriguez.controller;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-import com.bombitarodriguez.interfaces.ObjetoReaccionable;
-import com.bombitarodriguez.menues.MenuPrincipal;
-import com.bombitarodriguez.menues.pantallas.PantallaPartida;
-import com.bombitarodriguez.utils.Constante;
-import com.bombitarodriguez.vista.VentanaPrincipal;
-
 import ar.uba.fi.algo3.titiritero.ControladorJuego;
-import ar.uba.fi.algo3.titiritero.Dibujable;
 import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 import ar.uba.fi.algo3.titiritero.SuperficieDeDibujo;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
+import com.bombitarodriguez.dominio.Mapa;
+import com.bombitarodriguez.dominio.Objeto;
+import com.bombitarodriguez.excepciones.IdInexistente;
+import com.bombitarodriguez.menues.MenuPrincipal;
+import com.bombitarodriguez.menues.pantallas.PantallaPartida;
+import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.vista.VentanaPrincipal;
+import com.bombitarodriguez.vista.factory.dominio.FactoryVistas;
+
 public class ControladorBomberman extends ControladorJuego {
 
-	private static List<ObjetoReaccionable> objetosParaAgregar = new ArrayList<ObjetoReaccionable>();
-	private static List<ObjetoReaccionable> objetosParaBorrar = new ArrayList<ObjetoReaccionable>();
+	private HashMap<Objeto, Imagen> vistas = new HashMap<Objeto, Imagen>();
 	private ControladorBombita controladorBombita;
 	private static Boolean estaEnEjecucion;
 	private Boolean estaPausado = false;
@@ -35,6 +36,7 @@ public class ControladorBomberman extends ControladorJuego {
 	@Override
 	public void comenzarJuego() {
 		estaEnEjecucion = true;
+		int var = 0;
 		try {
 			while (estaEnEjecucion) {
 
@@ -44,43 +46,50 @@ public class ControladorBomberman extends ControladorJuego {
 				}
 
 				dibujar();
+				
+				System.out.println(var++);
+				
 				controlarPartida();
 
-				Thread.sleep(150);
+				Thread.sleep(75);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	private void copiarObjetos() {
+	/**
+	 * Metodo encargado de copiar los objetos que se crearon mientras se 
+	 * simulaba la partida. 
+	 */
+	private void copiarObjetos() throws IdInexistente {
 
-		Dibujable dibujable;
-		String nombreArchivoImagen;
-		for (ObjetoReaccionable objeto : objetosParaAgregar) {
-
-			dibujable = objeto.vistaDeObjeto();
-			nombreArchivoImagen = ((Imagen) dibujable).getNombreArchivoImagen();
-			((Imagen) dibujable).setNombreArchivoImagen(nombreArchivoImagen);
-			dibujable.setPosicionable((Posicionable) objeto);
+		List<Objeto> objetosParaAgregar = Mapa.getObjetosParaAgregar();
+		List<Objeto> objetosParaBorrar = Mapa.getObjetosParaBorrar();
+		
+		Imagen imagen;
+		for (Objeto objeto : objetosParaAgregar) {
 
 			this.agregarObjetoVivo((ObjetoVivo) objeto);
-			this.agregarDibujable(dibujable);
-
+			
+			/*Obtenemos una nueva vista de la factory, y guardamos
+			 * su referencia
+			 */
+			imagen = FactoryVistas.getVistaPorId(objeto.getId());
+			imagen.setPosicionable((Posicionable) objeto);
+			
+			this.agregarDibujable(imagen);
+			this.vistas.put(objeto, imagen);
 		}
 
-		for (ObjetoReaccionable objeto : objetosParaBorrar) {
-
-			dibujable = objeto.vistaDeObjeto();
-			dibujable.setPosicionable((Posicionable) objeto);
+		for (Objeto objeto : objetosParaBorrar) {
 
 			this.removerObjetoVivo((ObjetoVivo) objeto);
-			this.removerDibujable(dibujable);
-
+			
+			/*Obtenemos la referencia ya guardada del objeto*/
+			this.removerDibujable(this.vistas.get(objeto));
+			this.vistas.remove(objeto);
 		}
-
-		objetosParaAgregar.clear();
-		objetosParaBorrar.clear();
 
 	}
 
@@ -100,14 +109,6 @@ public class ControladorBomberman extends ControladorJuego {
 
 	public static void setGanoElNivel(Boolean ganoElNivel) {
 			ControladorBomberman.ganoElNivel = ganoElNivel;
-	}
-
-	public static void agregarObjeto(ObjetoReaccionable objeto) {
-		objetosParaAgregar.add(objeto);
-	}
-
-	public static void borrarObjeto(ObjetoReaccionable objeto) {
-		objetosParaBorrar.add(objeto);
 	}
 
 	@Override
@@ -136,21 +137,14 @@ public class ControladorBomberman extends ControladorJuego {
 			pantalla.siguienteNivel(++nivelDelJuego);			
 			pantalla.getControlador().setControladorBombita(controladorBombita);		
 			ganoElNivel = false;
-
 			}
 			
 			else {
 				/*Creamos el menu principal del juego*/
-				
 				MenuPrincipal menuPrincipal = new MenuPrincipal((VentanaPrincipal) this.getSuperficieDeDibujo());
 				menuPrincipal.mostrar();
-
 			}
-			
-			
 		}
-		
-		
 	}
 
 	private boolean juegoGanado() {

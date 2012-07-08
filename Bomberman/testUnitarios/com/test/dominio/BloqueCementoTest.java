@@ -42,7 +42,7 @@ public class BloqueCementoTest {
 
 	@Test
 	public void testReaccionarConChala() {
-		assertFalse(new BloqueCemento().reaccionarCon(new Chala()));
+		assertFalse(new BloqueCemento().reaccionarCon(new ArticuloChala()));
 	}
 
 	@Test
@@ -52,7 +52,7 @@ public class BloqueCementoTest {
 
 	@Test
 	public void testReaccionarConTimer() {
-		assertFalse(new BloqueCemento().reaccionarCon(new Timer()));
+		assertFalse(new BloqueCemento().reaccionarCon(new ArticuloTimer()));
 	}
 
 	@Test
@@ -98,7 +98,7 @@ public class BloqueCementoTest {
 		
 		//El segundo es que el bloque si contenga un objeto,
 		//en este caso, se destruye el bloque y se agrega el objeto al casillero
-		bloqueCemento.setObjeto(new Chala());
+		bloqueCemento.setObjeto(new ArticuloChala());
 		casillero.agregarObjeto(bloqueCemento);
 		
 		bloqueCemento.destruirse();

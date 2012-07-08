@@ -1,19 +1,11 @@
 package com.bombitarodriguez.dominio;
 
 import java.util.Iterator;
-
-
-
-import ar.uba.fi.algo3.titiritero.vista.Imagen;
-
-import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
-import com.bombitarodriguez.vista.factory.dominio.VistaCecilio;
+import com.bombitarodriguez.utils.Identificaciones;
 
 /**
- * 
  * @author Mauro
- *
  */
 public class Cecilio extends Personaje {
 	
@@ -21,7 +13,7 @@ public class Cecilio extends Personaje {
 		this.resistencia = Constante.RESISTENCIA_CECILIO;
 		this.velocidad = Constante.VELOCIDAD_CAMINA;
 		this.factoryArma = new FactoryMolotov();
-		this.vistaPersonaje = new VistaCecilio();
+		this.id = Identificaciones.cecilio;
 	}	
 
 
@@ -43,7 +35,7 @@ public class Cecilio extends Personaje {
 	}
 	
 	@Override
-	protected Boolean reaccionarConTodos(Iterator<ObjetoReaccionable> iterador) {
+	protected Boolean reaccionarConTodos(Iterator<Objeto> iterador) {
 		Boolean permitePasar = true;
 		while (iterador.hasNext() && (permitePasar)) {
 			permitePasar = iterador.next().reaccionarCon(this);
@@ -52,7 +44,7 @@ public class Cecilio extends Personaje {
 	}
 
 	@Override
-	public Imagen vistaDeObjeto() {
-		return vistaPersonaje;
+	public int getId() {
+		return this.id;
 	}
 }

@@ -24,11 +24,11 @@ public interface ObjetoReaccionable{
 	
 	public Boolean reaccionarCon(BloqueLadrillo bloqueLadrillo);
 	
-	public Boolean reaccionarCon(Chala chala);
+	public Boolean reaccionarCon(ArticuloChala chala);
 	
 	public Boolean reaccionarCon(ArticuloToleTole articuloBombaToleTole);
 	
-	public Boolean reaccionarCon(Timer timer);
+	public Boolean reaccionarCon(ArticuloTimer timer);
 	
 	public Boolean reaccionarCon(Bomba bomba);
 	
@@ -40,8 +40,6 @@ public interface ObjetoReaccionable{
 	
 	public void setCasillero(Casillero casillero);
 
-	public Imagen vistaDeObjeto();
-	
 	public void setCoordenadas(Integer x, Integer y);
 
 }

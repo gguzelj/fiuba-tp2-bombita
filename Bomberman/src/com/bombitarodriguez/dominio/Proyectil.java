@@ -1,22 +1,13 @@
 package com.bombitarodriguez.dominio;
 
-
-
 import java.util.List;
-
-import ar.uba.fi.algo3.titiritero.vista.Imagen;
-
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
-import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
-import com.bombitarodriguez.vista.factory.dominio.VistaMolotov;
-import com.bombitarodriguez.vista.factory.dominio.VistaProyectil;
+import com.bombitarodriguez.utils.Identificaciones;
 
 /**
- * 
  * @author Mauro
- *
  */
 public class Proyectil extends Arma {
 
@@ -27,7 +18,7 @@ public class Proyectil extends Arma {
 		this.ondaExpansiva = Constante.ONDA_EXPANSIVA_PROYECTIL;
 		this.destruccion = Constante.DESTRUCCION_PROYECTIL;
 		this.retardo = retardo;
-		this.vistaArma = new VistaProyectil();
+		this.id = Identificaciones.proyectil;
 		this.direccion = direccion;
 		this.posicionActual = posicion;
 	}
@@ -36,7 +27,7 @@ public class Proyectil extends Arma {
 		this.ondaExpansiva = Constante.ONDA_EXPANSIVA_PROYECTIL;
 		this.destruccion = Constante.DESTRUCCION_PROYECTIL;
 		this.retardo = Constante.TIMER_PROYECTIL;
-		this.vistaArma = new VistaProyectil();
+		this.id = Identificaciones.proyectil;
 		this.direccion = direccion;
 		this.posicionActual = posicion;
 	}
@@ -66,8 +57,8 @@ public class Proyectil extends Arma {
 	}
 
 	@Override
-	public Imagen vistaDeObjeto() {
-		return this.vistaArma;
+	public int getId() {
+		return this.id;
 	}
 
 	@Override
@@ -95,11 +86,11 @@ public class Proyectil extends Arma {
 	 * Reacciono con todos los objetos que recibo por parametro.
 	 * Si alguno de estos objetos no me permite pasar, devuelvo false
 	 */
-	private boolean reaccionarConTodos(List<ObjetoReaccionable> objetos) {
+	private boolean reaccionarConTodos(List<Objeto> objetos) {
 		
 		Boolean puedoPasar = true;
 		
-		for(ObjetoReaccionable objeto : objetos){
+		for(Objeto objeto : objetos){
 			if(!objeto.reaccionarCon(this))
 				puedoPasar = false;
 		}

@@ -47,7 +47,7 @@ public class ToleToleTest {
 	
 	@Test
 	public void testReaccionarConChala(){
-		assertFalse(new ToleTole().reaccionarCon(new Chala()));
+		assertFalse(new ToleTole().reaccionarCon(new ArticuloChala()));
 	}
 	
 	@Test
@@ -57,7 +57,7 @@ public class ToleToleTest {
 	
 	@Test
 	public void testReaccionarConTimer(){
-		assertFalse(new ToleTole().reaccionarCon(new Timer()));
+		assertFalse(new ToleTole().reaccionarCon(new ArticuloTimer()));
 	}
 	
 	@Test

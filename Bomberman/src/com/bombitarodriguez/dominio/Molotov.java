@@ -1,16 +1,10 @@
 package com.bombitarodriguez.dominio;
 
-
-
-import ar.uba.fi.algo3.titiritero.vista.Imagen;
-
 import com.bombitarodriguez.utils.Constante;
-import com.bombitarodriguez.vista.factory.dominio.VistaMolotov;
+import com.bombitarodriguez.utils.Identificaciones;
 
 /**
- * 
  * @author Mauro
- *
  */
 public class Molotov extends Bomba{
 
@@ -18,22 +12,22 @@ public class Molotov extends Bomba{
 		this.ondaExpansiva = Constante.ONDA_EXPANSIVA_MOLOTOV;
 		this.retardo = Constante.TIMER_MOLOTOV;
 		this.destruccion = Constante.DESTRUCCION_MOLOTOV;
-		this.vistaArma = new VistaMolotov();
+		this.id = Identificaciones.molotov;
 	}
 	
 	public Molotov(Double retardo) {
 		this.ondaExpansiva = Constante.ONDA_EXPANSIVA_MOLOTOV;
 		this.destruccion = Constante.DESTRUCCION_MOLOTOV;
 		this.retardo = retardo;
-		this.vistaArma = new VistaMolotov();
+		this.id = Identificaciones.molotov;
 
 	}
 
 	@Override
-	public Imagen vistaDeObjeto() {
-		return this.vistaArma;
+	public int getId() {
+		return this.id;
 	}
-
+	
 	@Override
 	public void vivir() {
 		retardo--;

@@ -55,7 +55,7 @@ public class CecilioTest {
 	@Test
 	public void testReaccionarConChala(){
 		Cecilio cecilio = new Cecilio();
-		assertFalse(cecilio.reaccionarCon(new Chala()));
+		assertFalse(cecilio.reaccionarCon(new ArticuloChala()));
 	}
 	
 	@Test
@@ -67,7 +67,7 @@ public class CecilioTest {
 	@Test
 	public void testReaccionarConTimer(){
 		Cecilio cecilio = new Cecilio();
-		assertFalse(cecilio.reaccionarCon(new Timer()));
+		assertFalse(cecilio.reaccionarCon(new ArticuloTimer()));
 	}
 	
 	@Test

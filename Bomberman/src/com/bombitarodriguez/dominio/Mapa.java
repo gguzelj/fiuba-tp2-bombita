@@ -1,16 +1,17 @@
 package com.bombitarodriguez.dominio;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
-import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.persistencia.PersistenciaPartidaXML;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
+import com.bombitarodriguez.utils.Identificaciones;
 import com.bombitarodriguez.utils.Parser;
 
 /**
@@ -25,6 +26,8 @@ public class Mapa {
 	static private Integer dimension;
 	private Posicion posicionBombita;
 	private Integer nivelJuegoActual;
+	private static List<Objeto> objetosParaAgregar = new ArrayList<Objeto>();
+	private static List<Objeto> objetosParaBorrar = new ArrayList<Objeto>();
 	
 	public static Integer getDimension() {
 		return dimension;
@@ -49,17 +52,17 @@ public class Mapa {
 		mapa.mapaCasillero.put(posicion, casillero);
 	}
 	
-	
+	/**
+	 * Devuelvo el casillero de la posicion recibida 
+	 */
 	public Casillero getCasillero(Posicion posicion) {
 		return mapa.mapaCasillero.get(posicion);
 	}
 	
-	public void intentarMovimiento(Personaje personaje, Direccion direccion) {
-		personaje.moverseConEstrategia(direccion);
-
-	}
-	
-	public void reposicionar(ObjetoReaccionable objetoAMover, Casillero casilleroAOcupar) {
+	/**
+	 * Reposiciono un objeto del mapa en un nuevo casillero 
+	 */
+	public void reposicionar(Objeto objetoAMover, Casillero casilleroAOcupar) {
 		Casillero casilleroObj = getCasillero(objetoAMover.getPosicion());
 		casilleroObj.quitarObjeto(objetoAMover);
 		objetoAMover.setCasillero(casilleroAOcupar);
@@ -111,73 +114,73 @@ public class Mapa {
 		Integer coordenadaX = 0;
 		
 		for (Integer x = 0; x < objetosDeUnaFila.length; x ++) {
-			Integer codigoObjeto = Integer.parseInt(objetosDeUnaFila[x]);
+			Integer IdObjeto = Integer.parseInt(objetosDeUnaFila[x]);
 			Casillero casillero = null;
-			switch(codigoObjeto) {
-			case -3:  
+			switch(IdObjeto) {
+			case Identificaciones.lopezReggaeAlado:  
 				casillero = getCasillero(new Posicion(++ coordenadaX,y));
 				casillero.agregarObjeto(new LosLopezReggaeAlado());
 				break;
-			case -2:  
+			case Identificaciones.lopezReggae:  
 				casillero = getCasillero(new Posicion(++ coordenadaX,y));
 				casillero.agregarObjeto(new LosLopezReggae());
 				break;
-			case -1:  
+			case Identificaciones.cecilio:  
 				casillero = getCasillero(new Posicion(++ coordenadaX,y));
 				casillero.agregarObjeto(new Cecilio());
 				break;
-			case 0:  
+			case Identificaciones.casilleroVacio:  
 				++ coordenadaX;
 				break;
-			case 1:  
+			case Identificaciones.bombita:  
 				casillero = getCasillero(new Posicion(++ coordenadaX,y));
 				casillero.agregarObjeto(new Bombita(3));
 				break;
-			case 2:  
+			case Identificaciones.bloqueLadrillo:  
 				casillero = getCasillero(new Posicion(++ coordenadaX,y));
 				casillero.agregarObjeto(new BloqueLadrillo());
 				break;
-			case 3:  
+			case Identificaciones.bloqueCemento:  
 				casillero = getCasillero(new Posicion(++ coordenadaX,y));
 				casillero.agregarObjeto(new BloqueCemento());
 				break;
-			case 4:  
+			case Identificaciones.bloqueAcero:  
 				casillero = getCasillero(new Posicion(++ coordenadaX,y));
 				casillero.agregarObjeto(new BloqueAcero());
 				break;
-			case 21:  
+			case Identificaciones.chalaEnBLoqueLadrillo:  
 				casillero = getCasillero(new Posicion(++ coordenadaX,y));
-				casillero.agregarObjeto(new BloqueLadrillo(new Chala()));
+				casillero.agregarObjeto(new BloqueLadrillo(new ArticuloChala()));
 				break;
-			case 22:  
+			case Identificaciones.timerEnBloqueLadrillo:  
 				casillero = getCasillero(new Posicion(++ coordenadaX,y));
-				casillero.agregarObjeto(new BloqueLadrillo(new Timer()));
+				casillero.agregarObjeto(new BloqueLadrillo(new ArticuloTimer()));
 				break;
-			case 23:  
+			case Identificaciones.toleToleEnBloqueLadrillo:  
 				casillero = getCasillero(new Posicion(++ coordenadaX,y));
 				casillero.agregarObjeto(new BloqueLadrillo(new ArticuloToleTole()));
 				break;
-			case 24:  
+			case Identificaciones.salidaEnBloqueLadrillo:  
 				casillero = getCasillero(new Posicion(++ coordenadaX,y));
 				casillero.agregarObjeto(new BloqueLadrillo(new Salida()));
 				break;
-			case 31:  
+			case Identificaciones.chalaEnBLoqueCemento:  
 				casillero = getCasillero(new Posicion(++ coordenadaX,y));
-				casillero.agregarObjeto(new BloqueCemento(new Chala()));
+				casillero.agregarObjeto(new BloqueCemento(new ArticuloChala()));
 				break;
-			case 32:  
+			case Identificaciones.timerEnBloqueCemento:  
 				casillero = getCasillero(new Posicion(++ coordenadaX,y));
-				casillero.agregarObjeto(new BloqueCemento(new Timer()));
+				casillero.agregarObjeto(new BloqueCemento(new ArticuloTimer()));
 				break;
-			case 33:  
+			case Identificaciones.toleToleEnBloqueCemento:  
 				casillero = getCasillero(new Posicion(++ coordenadaX,y));
 				casillero.agregarObjeto(new BloqueCemento(new ArticuloToleTole()));
 				break;
-			case 34:  
+			case Identificaciones.salidaEnBloqueCemento:  
 				casillero = getCasillero(new Posicion(++ coordenadaX,y));
 				casillero.agregarObjeto(new BloqueCemento(new Salida()));
 				break;
-			default: throw new AssertionError("no existe objeto para este codigo: " + codigoObjeto);
+			default: throw new AssertionError("no existe objeto para este codigo: " + IdObjeto);
 			}
 		}	
 	}
@@ -209,7 +212,6 @@ public class Mapa {
 		 if (fueraDeRango(posicion)) {
 			 throw new FueraDelMapaException("Posicion fuera del mapa");
 	     }
-		 
 		 return posicion;
 	}
 
@@ -243,5 +245,40 @@ public class Mapa {
 	public void setNivelJuegoActual(Integer nivelJuegoActual) {
 		this.nivelJuegoActual = nivelJuegoActual;
 	}
+
+	/**
+	 * Agrego el objeto recibido a la lista de objetos para
+	 * agregar 
+	 */
+	public static void objetoParaAgregar(Objeto objeto) {
+		objetosParaAgregar.add(objeto);
+	}
 	
+	/**
+	 * Metodo llamado por el controlador. Devuelve la lista con los
+	 * objetos para agregar en el juego
+	 */
+	public static List<Objeto> getObjetosParaAgregar() {
+		List<Objeto> lista = objetosParaAgregar;
+		objetosParaAgregar = new ArrayList<Objeto>();
+		return lista;
+	}
+	
+	/**
+	 * Agrego el objeto recibido a la lista de objetos para
+	 * Borrar
+	 */
+	public static void objetoParaBorrar(Objeto objeto){
+		objetosParaBorrar.add(objeto);
+	}
+
+	/**
+	 * Metodo llamado por el controlador. Devuelve la lista con los
+	 * objetos para borrar en el juego
+	 */
+	public static List<Objeto> getObjetosParaBorrar() {
+		List<Objeto> lista = objetosParaBorrar;
+		objetosParaBorrar = new ArrayList<Objeto>();
+		return lista;
+	}
 }

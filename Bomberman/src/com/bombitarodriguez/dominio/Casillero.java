@@ -3,25 +3,21 @@ package com.bombitarodriguez.dominio;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.bombitarodriguez.interfaces.ObjetoReaccionable;
-
 /**
- * 
  * @author Mauro
- *
  */
 public class Casillero {
 	
-	private List<ObjetoReaccionable> objetos;
+	private List<Objeto> objetos;
 
 	private Posicion posicion;
 	
 	public Casillero(Posicion posicion) {
-		this.objetos = new ArrayList<ObjetoReaccionable>();
+		this.objetos = new ArrayList<Objeto>();
 		this.posicion = posicion;
 	}
 	
-	public void agregarObjeto(ObjetoReaccionable objeto) {
+	public void agregarObjeto(Objeto objeto) {
 		objetos.add(objeto);
 		objeto.setCoordenadas(this.getPosicion().getPosX(), this.getPosicion().getPosY());
 		objeto.setCasillero(this);
@@ -31,7 +27,7 @@ public class Casillero {
 		return objetos.isEmpty();
 	}
 	
-	public void quitarObjeto(ObjetoReaccionable objeto) {
+	public void quitarObjeto(Objeto objeto) {
 		objetos.remove(objeto);
 		objeto.setCoordenadas(this.getPosicion().getPosX(), this.getPosicion().getPosY());
 		objeto.setCasillero(null);
@@ -45,7 +41,7 @@ public class Casillero {
 		this.posicion = posicion;
 	}
 	
-	public List<ObjetoReaccionable> getObjetos() {
+	public List<Objeto> getObjetos() {
 		return objetos;
 	}
 }

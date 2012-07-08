@@ -2,24 +2,17 @@ package com.bombitarodriguez.dominio;
 
 import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
-import ar.uba.fi.algo3.titiritero.vista.Imagen;
-
-import com.bombitarodriguez.controller.ControladorBomberman;
-import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Transformacion;
 
 /**
- * 
  * @author Mauro
- *
  */
-public abstract class Arma implements ObjetoReaccionable, Posicionable, ObjetoVivo {
+public abstract class Arma extends Objeto implements Posicionable, ObjetoVivo {
 	
 	protected Casillero casillero;
 	protected Integer destruccion;
 	protected Double retardo;
 	protected Integer ondaExpansiva;
-	protected Imagen vistaArma;
 	protected Integer posX;
 	protected Integer posY;
 
@@ -31,7 +24,7 @@ public abstract class Arma implements ObjetoReaccionable, Posicionable, ObjetoVi
 		
 		explosion.causarEstragos();
 
-		ControladorBomberman.borrarObjeto(this);
+		Mapa.objetoParaBorrar(this);
 	}
 	
 	public Integer getDestruccion() {
@@ -105,7 +98,7 @@ public abstract class Arma implements ObjetoReaccionable, Posicionable, ObjetoVi
 	@Override
 	public Boolean reaccionarCon(Explosion explosion){
 		this.getCasillero().quitarObjeto(this);
-		ControladorBomberman.borrarObjeto(this);
+		Mapa.objetoParaBorrar(this);
 		return true;
 	}
 	
@@ -125,7 +118,7 @@ public abstract class Arma implements ObjetoReaccionable, Posicionable, ObjetoVi
 	}
 	
 	@Override
-	public Boolean reaccionarCon(Chala chala){
+	public Boolean reaccionarCon(ArticuloChala chala){
 		return false;
 	}
 	
@@ -134,7 +127,7 @@ public abstract class Arma implements ObjetoReaccionable, Posicionable, ObjetoVi
 		return false;
 	}
 	@Override
-	public Boolean reaccionarCon(Timer timer){
+	public Boolean reaccionarCon(ArticuloTimer timer){
 		return false;
 	}	
 	

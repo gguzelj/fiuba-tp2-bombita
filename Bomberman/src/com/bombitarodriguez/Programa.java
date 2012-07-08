@@ -6,7 +6,6 @@ public class Programa {
 
 	private static Juego juego;
 	
-	
 	public static void main(String[] args) {
 		
 		juego = new Juego();

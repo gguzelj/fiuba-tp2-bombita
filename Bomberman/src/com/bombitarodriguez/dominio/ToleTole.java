@@ -1,15 +1,10 @@
 package com.bombitarodriguez.dominio;
 
-
-import ar.uba.fi.algo3.titiritero.vista.Imagen;
-
 import com.bombitarodriguez.utils.Constante;
-import com.bombitarodriguez.vista.factory.dominio.VistaToleTole;
+import com.bombitarodriguez.utils.Identificaciones;
 
 /**
- * 
  * @author Mauro
- *
  */
 public class ToleTole extends Bomba {
 	
@@ -17,19 +12,19 @@ public class ToleTole extends Bomba {
 		this.destruccion = Constante.DESTRUCCION_TOLETOLE;
 		this.retardo = Constante.TIMER_TOLETOLE;
 		this.ondaExpansiva = Constante.ONDA_EXPANSIVA_TOLETOLE;
-		this.vistaArma = new VistaToleTole();
+		this.id = Identificaciones.toleTole;
 	}
 
 	public ToleTole(Double retardo){
 		this.destruccion = Constante.DESTRUCCION_TOLETOLE;
 		this.retardo =  Constante.TIMER_TOLETOLE;
 		this.ondaExpansiva = Constante.ONDA_EXPANSIVA_TOLETOLE;
-		this.vistaArma = new VistaToleTole();
+		this.id = Identificaciones.toleTole;
 	}
 
 	@Override
-	public Imagen vistaDeObjeto() {
-		return this.vistaArma;
+	public int getId() {
+		return this.id;
 	}
 
 	@Override

@@ -3,22 +3,13 @@ package com.bombitarodriguez.dominio;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-
-
-import ar.uba.fi.algo3.titiritero.vista.Imagen;
-
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
-import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
-import com.bombitarodriguez.vista.factory.dominio.VistaLopezReggaeAlado;
-
+import com.bombitarodriguez.utils.Identificaciones;
 
 /**
- * 
  * @author Mauro
- *
  */
 public class LosLopezReggaeAlado extends Personaje {
 	
@@ -26,7 +17,7 @@ public class LosLopezReggaeAlado extends Personaje {
 		this.resistencia = Constante.RESISTENCIA_LOSLOPEZREGGAE_ALADO;
 		this.velocidad = Constante.VELOCIDAD_CAMINA;
 		this.factoryArma = new FactoryMolotov();
-		this.vistaPersonaje = new VistaLopezReggaeAlado();
+		this.id = Identificaciones.lopezReggaeAlado;
 	}	
 	
 	@Override
@@ -36,7 +27,7 @@ public class LosLopezReggaeAlado extends Personaje {
 	}
 	
 	@Override
-	protected Boolean reaccionarConTodos(Iterator<ObjetoReaccionable> iterador) {
+	protected Boolean reaccionarConTodos(Iterator<Objeto> iterador) {
 		Boolean permitePasar = true;
 		while (iterador.hasNext() && (permitePasar)) {
 			permitePasar = iterador.next().reaccionarCon(this);
@@ -65,7 +56,7 @@ public class LosLopezReggaeAlado extends Personaje {
 	 */
 	@Override
 	public void moverseConEstrategia(Direccion direccion) {
-		List<ObjetoReaccionable> copiaObjetosAReaccionar = new ArrayList<ObjetoReaccionable>();
+		List<Objeto> copiaObjetosAReaccionar = new ArrayList<Objeto>();
 		Boolean casilleroValido = false;
 		Posicion nuevaPosicion;
 		
@@ -101,7 +92,7 @@ public class LosLopezReggaeAlado extends Personaje {
 	}
 
 	@Override
-	public Imagen vistaDeObjeto() {
-		return vistaPersonaje;
+	public int getId() {
+		return this.id;
 	}
 }

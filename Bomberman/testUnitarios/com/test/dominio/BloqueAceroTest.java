@@ -11,14 +11,14 @@ import com.bombitarodriguez.dominio.BloqueLadrillo;
 import com.bombitarodriguez.dominio.Bombita;
 import com.bombitarodriguez.dominio.Casillero;
 import com.bombitarodriguez.dominio.Cecilio;
-import com.bombitarodriguez.dominio.Chala;
+import com.bombitarodriguez.dominio.ArticuloChala;
 import com.bombitarodriguez.dominio.Explosion;
 import com.bombitarodriguez.dominio.LosLopezReggae;
 import com.bombitarodriguez.dominio.LosLopezReggaeAlado;
 import com.bombitarodriguez.dominio.Molotov;
 import com.bombitarodriguez.dominio.Posicion;
 import com.bombitarodriguez.dominio.Proyectil;
-import com.bombitarodriguez.dominio.Timer;
+import com.bombitarodriguez.dominio.ArticuloTimer;
 import com.bombitarodriguez.dominio.ToleTole;
 import com.bombitarodriguez.utils.Constante;
 
@@ -57,7 +57,7 @@ public class BloqueAceroTest {
 
 	@Test
 	public void testReaccionarConChala() {
-		assertFalse(new BloqueAcero().reaccionarCon(new Chala()));
+		assertFalse(new BloqueAcero().reaccionarCon(new ArticuloChala()));
 	}
 
 	@Test
@@ -67,7 +67,7 @@ public class BloqueAceroTest {
 
 	@Test
 	public void testReaccionarConTimer() {
-		assertFalse(new BloqueAcero().reaccionarCon(new Timer()));
+		assertFalse(new BloqueAcero().reaccionarCon(new ArticuloTimer()));
 	}
 
 	@Test
