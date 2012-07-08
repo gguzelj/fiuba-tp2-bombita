@@ -14,7 +14,7 @@ public class TimerTest {
 		Integer vida = new Integer(3);
 		Bombita bombita = new Bombita(vida);
 		Casillero casillero = new Casillero(new Posicion(1,1)); 
-		Timer timer = new Timer();
+		ArticuloTimer timer = new ArticuloTimer();
 		
 		casillero.agregarObjeto(timer);
 		
@@ -27,7 +27,7 @@ public class TimerTest {
 	public void testReaccionarConCecilio() {
 		Cecilio cecilio = new Cecilio();
 		Casillero casillero = new Casillero(new Posicion(1,1)); 
-		Timer timer = new Timer();
+		ArticuloTimer timer = new ArticuloTimer();
 		
 		casillero.agregarObjeto(timer);
 		
@@ -40,7 +40,7 @@ public class TimerTest {
 	public void testReaccionarConLopezReggae() {
 		LosLopezReggae lopezReggae = new LosLopezReggae();
 		Casillero casillero = new Casillero(new Posicion(1,1)); 
-		Timer timer = new Timer();
+		ArticuloTimer timer = new ArticuloTimer();
 		
 		casillero.agregarObjeto(timer);
 		
@@ -53,7 +53,7 @@ public class TimerTest {
 	public void testReaccionarConLopezReggaeAlado() {
 		LosLopezReggaeAlado lopezReggaeAlado = new LosLopezReggaeAlado();
 		Casillero casillero = new Casillero(new Posicion(1,1)); 
-		Timer timer = new Timer();
+		ArticuloTimer timer = new ArticuloTimer();
 		
 		casillero.agregarObjeto(timer);
 		
@@ -64,53 +64,53 @@ public class TimerTest {
 
 	@Test
 	public void testReaccionarConBloqueCemento() {
-		assertFalse(new Timer().reaccionarCon(new BloqueCemento()));
+		assertFalse(new ArticuloTimer().reaccionarCon(new BloqueCemento()));
 	}
 
 	@Test
 	public void testReaccionarConBloqueLadrillo() {
-		assertFalse(new Timer().reaccionarCon(new BloqueLadrillo()));
+		assertFalse(new ArticuloTimer().reaccionarCon(new BloqueLadrillo()));
 	}
 
 	@Test
 	public void testReaccionarConBloqueAcero() {
-		assertFalse(new Timer().reaccionarCon(new BloqueAcero()));
+		assertFalse(new ArticuloTimer().reaccionarCon(new BloqueAcero()));
 	}
 	
 	@Test
 	public void testReaccionarConChala() {
-		assertFalse(new Timer().reaccionarCon(new Chala()));
+		assertFalse(new ArticuloTimer().reaccionarCon(new ArticuloChala()));
 	}
 
 	@Test
 	public void testReaccionarConArticuloToleTole() {
-		assertFalse(new Timer().reaccionarCon(new ArticuloToleTole()));
+		assertFalse(new ArticuloTimer().reaccionarCon(new ArticuloToleTole()));
 	}
 
 	@Test
 	public void testReaccionarConTimer() {
-		assertFalse(new Timer().reaccionarCon(new Timer()));
+		assertFalse(new ArticuloTimer().reaccionarCon(new ArticuloTimer()));
 	}
 
 	@Test
 	public void testReaccionarConBombaMolotov() {
-		assertFalse(new Timer().reaccionarCon(new Molotov()));
+		assertFalse(new ArticuloTimer().reaccionarCon(new Molotov()));
 	}
 
 	@Test
 	public void testReaccionarConBombaToleTole() {
-		assertFalse(new Timer().reaccionarCon(new ToleTole()));
+		assertFalse(new ArticuloTimer().reaccionarCon(new ToleTole()));
 	}
 
 	@Test
 	public void testReaccionarConProyectil() {
-		assertFalse(new Timer().reaccionarCon(new Proyectil()));
+		assertFalse(new ArticuloTimer().reaccionarCon(new Proyectil()));
 	}
 
 	@Test
 	public void testReaccionarConExplosion() {
 		Casillero casillero = new Casillero(new Posicion(1,1));
-		Timer timer = new Timer();
+		ArticuloTimer timer = new ArticuloTimer();
 		
 		casillero.agregarObjeto(timer);
 		assertTrue(timer.reaccionarCon(new Explosion(Constante.DESTRUCCION_MOLOTOV, Constante.ONDA_EXPANSIVA_MOLOTOV)));
@@ -125,7 +125,7 @@ public class TimerTest {
 		Integer vida = new Integer(3);
 		Bombita bombita = new Bombita(vida);
 
-		Timer timer = new Timer();
+		ArticuloTimer timer = new ArticuloTimer();
 		
 		metodoPrivado = timer.getClass().getDeclaredMethod("aplicarRetardo", new Class[]{Personaje.class});
 		metodoPrivado.setAccessible(true);

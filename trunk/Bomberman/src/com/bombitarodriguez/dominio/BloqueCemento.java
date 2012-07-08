@@ -1,31 +1,23 @@
 package com.bombitarodriguez.dominio;
 
-
-
-import ar.uba.fi.algo3.titiritero.vista.Imagen;
-
-import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
-import com.bombitarodriguez.vista.factory.dominio.VistaBloqueCemento;
-import com.bombitarodriguez.vista.factory.dominio.VistaBloqueLadrillo;
+import com.bombitarodriguez.utils.Identificaciones;
 
 /**
- * 
  * @author Mauro
- *
  */
 public class BloqueCemento extends Obstaculo {
 	
 	public BloqueCemento(){
 		this.objeto = null;
 		this.durabilidad = Constante.DURABILIDAD_BLOQUE_CEMENTO;
-		this.vistaObstaculo = new VistaBloqueCemento();
+		this.id = Identificaciones.bloqueCemento;
 	}
 	
-	public BloqueCemento(ObjetoReaccionable objeto) {
+	public BloqueCemento(Objeto objeto) {
 		this.objeto = objeto;
 		this.durabilidad = Constante.DURABILIDAD_BLOQUE_CEMENTO;
-		this.vistaObstaculo = new VistaBloqueCemento();
+		this.id = Identificaciones.bloqueCemento;
 	}
 	
 	/**
@@ -33,19 +25,16 @@ public class BloqueCemento extends Obstaculo {
 	 * parametro
 	 * @param objeto
 	 */
-	public void agregarObjeto(ObjetoReaccionable objeto) {
+	public void agregarObjeto(Objeto objeto) {
 		this.objeto = objeto;
 	}
 
 	@Override
-	public Imagen vistaDeObjeto() {
-		return this.vistaObstaculo;
+	public int getId() {
+		return this.id;
 	}
 
 	@Override
 	public void vivir() {
-		// TODO Auto-generated method stub
-		
 	}
-	
 }

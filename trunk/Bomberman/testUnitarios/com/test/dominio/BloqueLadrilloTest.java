@@ -42,7 +42,7 @@ public class BloqueLadrilloTest {
 
 	@Test
 	public void testReaccionarConChala() {
-		assertFalse(new BloqueLadrillo().reaccionarCon(new Chala()));
+		assertFalse(new BloqueLadrillo().reaccionarCon(new ArticuloChala()));
 	}
 
 	@Test
@@ -52,7 +52,7 @@ public class BloqueLadrilloTest {
 
 	@Test
 	public void testReaccionarConTimer() {
-		assertFalse(new BloqueLadrillo().reaccionarCon(new Timer()));
+		assertFalse(new BloqueLadrillo().reaccionarCon(new ArticuloTimer()));
 	}
 
 	@Test
@@ -93,7 +93,7 @@ public class BloqueLadrilloTest {
 		
 		//El segundo es que el bloque si contenga un objeto,
 		//en este caso, se destruye el bloque y se agrega el objeto al casillero
-		bloqueLadrillo.setObjeto(new Chala());
+		bloqueLadrillo.setObjeto(new ArticuloChala());
 		casillero.agregarObjeto(bloqueLadrillo);
 		
 		bloqueLadrillo.destruirse();

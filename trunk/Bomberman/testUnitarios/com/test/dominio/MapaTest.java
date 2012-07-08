@@ -37,7 +37,7 @@ public class MapaTest {
 		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
 		
-		Mapa.getMapa().intentarMovimiento(bombitaPosicionInicial, Direccion.ARRIBA);
+		bombitaPosicionInicial.moverseConEstrategia(Direccion.ARRIBA);
 		
 		casilleroFinal = Mapa.getMapa().getCasillero(posicionFinal);
 		Bombita bombitaPosicionFinal = (Bombita) casilleroFinal.getObjetos().get(0);
@@ -104,13 +104,13 @@ public class MapaTest {
         assertTrue(casillero.getObjetos().size() == 1);
         assertTrue(casillero.getObjetos().get(0) instanceof BloqueLadrillo);
         BloqueLadrillo bl = (BloqueLadrillo) casillero.getObjetos().get(0);
-        assertTrue(bl.getObjeto() instanceof Chala);
+        assertTrue(bl.getObjeto() instanceof ArticuloChala);
         
         casillero = Mapa.getMapa().getCasillero(new Posicion(8,1));
         assertTrue(casillero.getObjetos().size() == 1);
         assertTrue(casillero.getObjetos().get(0) instanceof BloqueCemento);
         BloqueCemento bc = (BloqueCemento) casillero.getObjetos().get(0);
-        assertTrue(bc.getObjeto() instanceof Chala);
+        assertTrue(bc.getObjeto() instanceof ArticuloChala);
         
         casillero = Mapa.getMapa().getCasillero(new Posicion(9,1));
         assertTrue(casillero.getObjetos().size() == 1);
@@ -122,7 +122,7 @@ public class MapaTest {
         assertTrue(casillero.getObjetos().size() == 1);
         assertTrue(casillero.getObjetos().get(0) instanceof BloqueLadrillo);
         bl = (BloqueLadrillo) casillero.getObjetos().get(0);
-        assertTrue(bl.getObjeto() instanceof Timer);
+        assertTrue(bl.getObjeto() instanceof ArticuloTimer);
       
 	}
 

@@ -4,10 +4,6 @@ import java.io.File;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
-import ar.uba.fi.algo3.titiritero.ObjetoVivo;
-import ar.uba.fi.algo3.titiritero.Posicionable;
-import ar.uba.fi.algo3.titiritero.vista.Imagen;
-
 import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.controller.ControladorBombita;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
@@ -17,11 +13,8 @@ import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.PathFile;
 import com.bombitarodriguez.vista.VentanaPrincipal;
 
-
 /**
- * 
  * @author Mauro
- * 
  */
 public class Juego {
 	
@@ -49,7 +42,6 @@ public class Juego {
 	 */
 	public void crearNivel(Integer nivel){
 		
-		
 		/*Creamos el mapa*/
 		this.crearMapa(nivel);
 		
@@ -68,9 +60,7 @@ public class Juego {
 	 * eliminar todas las imagenes del mapa
 	 */
 	public void siguienteNivel(Integer nivel){
-		
 		this.borrarObjetosDelMapa();
-		
 		this.crearNivel(nivel);
 	}
 	
@@ -116,8 +106,8 @@ public class Juego {
 	 	while (it.hasNext()) {
 			Entry e = (Entry)it.next();
             casillero = (Casillero) e.getValue();
-            for(ObjetoReaccionable objeto : casillero.getObjetos())
-                   	ControladorBomberman.agregarObjeto(objeto);   
+            for(Objeto objeto : casillero.getObjetos())
+            	Mapa.objetoParaAgregar(objeto);
 		}
 	}
 
@@ -132,8 +122,8 @@ public class Juego {
 	 	while (it.hasNext()) {
 			Entry e = (Entry)it.next();
             casillero = (Casillero) e.getValue();
-            for(ObjetoReaccionable objeto : casillero.getObjetos())
-                   	ControladorBomberman.borrarObjeto(objeto);   
+            for(Objeto objeto : casillero.getObjetos())
+            	Mapa.objetoParaBorrar(objeto);
 		}
 	}
 	

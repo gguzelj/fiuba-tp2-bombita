@@ -59,7 +59,7 @@ public class LopezReggaeTest {
 	@Test
 	public void testReaccionarConChala(){
 		LosLopezReggae lopezReggae = new LosLopezReggae();
-		assertFalse(lopezReggae.reaccionarCon(new Chala()));
+		assertFalse(lopezReggae.reaccionarCon(new ArticuloChala()));
 	}
 	
 	@Test
@@ -71,7 +71,7 @@ public class LopezReggaeTest {
 	@Test
 	public void testReaccionarConTimer(){
 		LosLopezReggae lopezReggae = new LosLopezReggae();
-		assertFalse(lopezReggae.reaccionarCon(new Timer()));
+		assertFalse(lopezReggae.reaccionarCon(new ArticuloTimer()));
 	}
 	
 	@Test

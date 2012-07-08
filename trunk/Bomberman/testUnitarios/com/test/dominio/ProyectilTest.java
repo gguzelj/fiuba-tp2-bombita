@@ -72,7 +72,7 @@ public class ProyectilTest {
 	
 	@Test
 	public void testReaccionarConChala(){
-		assertFalse(new Proyectil().reaccionarCon(new Chala()));
+		assertFalse(new Proyectil().reaccionarCon(new ArticuloChala()));
 	}
 	
 	@Test
@@ -82,7 +82,7 @@ public class ProyectilTest {
 	
 	@Test
 	public void testReaccionarConTimer(){
-		assertFalse(new Proyectil().reaccionarCon(new Timer()));
+		assertFalse(new Proyectil().reaccionarCon(new ArticuloTimer()));
 	}
 	
 	@Test

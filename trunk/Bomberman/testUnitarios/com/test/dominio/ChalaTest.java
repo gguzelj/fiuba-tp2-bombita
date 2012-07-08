@@ -13,7 +13,7 @@ public class ChalaTest {
 		Integer vida = new Integer(3);
 		Bombita bombita = new Bombita(vida);
 		Casillero casillero = new Casillero(new Posicion(1,1));
-		Chala chala = new Chala();
+		ArticuloChala chala = new ArticuloChala();
 		
 		casillero.agregarObjeto(chala);
 		assertTrue(chala.reaccionarCon(bombita));
@@ -25,7 +25,7 @@ public class ChalaTest {
 	public void testReaccionarConCecilio() {
 		Cecilio cecilio = new Cecilio();
 		Casillero casillero = new Casillero(new Posicion(1,1));
-		Chala chala = new Chala();
+		ArticuloChala chala = new ArticuloChala();
 		
 		casillero.agregarObjeto(chala);
 		assertTrue(chala.reaccionarCon(cecilio));
@@ -37,7 +37,7 @@ public class ChalaTest {
 	public void testReaccionarConLopezReggae() {
 		LosLopezReggae losLopezReggae = new LosLopezReggae();
 		Casillero casillero = new Casillero(new Posicion(1,1));
-		Chala chala = new Chala();
+		ArticuloChala chala = new ArticuloChala();
 		
 		casillero.agregarObjeto(chala);
 		assertTrue(chala.reaccionarCon(losLopezReggae));
@@ -49,7 +49,7 @@ public class ChalaTest {
 	public void testReaccionarConLopezReggaeAlado() {
 		LosLopezReggaeAlado losLopezReggaeAlado = new LosLopezReggaeAlado();
 		Casillero casillero = new Casillero(new Posicion(1,1));
-		Chala chala = new Chala();
+		ArticuloChala chala = new ArticuloChala();
 		
 		casillero.agregarObjeto(chala);
 		assertTrue(chala.reaccionarCon(losLopezReggaeAlado));
@@ -59,53 +59,53 @@ public class ChalaTest {
 
 	@Test
 	public void testReaccionarConBloqueCemento() {
-		assertFalse(new Chala().reaccionarCon(new BloqueCemento()));
+		assertFalse(new ArticuloChala().reaccionarCon(new BloqueCemento()));
 	}
 
 	@Test
 	public void testReaccionarConBloqueLadrillo() {
-		assertFalse(new Chala().reaccionarCon(new BloqueLadrillo()));
+		assertFalse(new ArticuloChala().reaccionarCon(new BloqueLadrillo()));
 	}
 	
 	@Test
 	public void testReaccionarConBloqueAcero() {
-		assertFalse(new Chala().reaccionarCon(new BloqueAcero()));
+		assertFalse(new ArticuloChala().reaccionarCon(new BloqueAcero()));
 	}
 
 	@Test
 	public void testReaccionarConChala() {
-		assertFalse(new Chala().reaccionarCon(new Chala()));
+		assertFalse(new ArticuloChala().reaccionarCon(new ArticuloChala()));
 	}
 
 	@Test
 	public void testReaccionarConArticuloToleTole() {
-		assertFalse(new Chala().reaccionarCon(new ArticuloToleTole()));
+		assertFalse(new ArticuloChala().reaccionarCon(new ArticuloToleTole()));
 	}
 
 	@Test
 	public void testReaccionarConTimer() {
-		assertFalse(new Chala().reaccionarCon(new Timer()));
+		assertFalse(new ArticuloChala().reaccionarCon(new ArticuloTimer()));
 	}
 
 	@Test
 	public void testReaccionarConBombaMolotov() {
-		assertFalse(new Chala().reaccionarCon(new Molotov()));
+		assertFalse(new ArticuloChala().reaccionarCon(new Molotov()));
 	}
 
 	@Test
 	public void testReaccionarConBombaToleTole() {
-		assertFalse(new Chala().reaccionarCon(new ToleTole()));
+		assertFalse(new ArticuloChala().reaccionarCon(new ToleTole()));
 	}
 
 	@Test
 	public void testReaccionarConProyectil() {
-		assertFalse(new Chala().reaccionarCon(new Proyectil()));
+		assertFalse(new ArticuloChala().reaccionarCon(new Proyectil()));
 	}
 
 	@Test
 	public void testReaccionarConExplosion() {
 		Casillero casillero = new Casillero(new Posicion(1,1));
-		Chala chala = new Chala();
+		ArticuloChala chala = new ArticuloChala();
 		
 		casillero.agregarObjeto(chala);
 		assertTrue(chala.reaccionarCon(new Explosion(Constante.DESTRUCCION_MOLOTOV, Constante.ONDA_EXPANSIVA_MOLOTOV)));

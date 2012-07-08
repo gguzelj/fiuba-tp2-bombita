@@ -377,7 +377,7 @@ public class BombitaIntegracionTest {
 		Bombita bombita = new Bombita(vida);
 
 		casilleroInicial.agregarObjeto(bombita);
-		casilleroFinal.agregarObjeto(new Chala());
+		casilleroFinal.agregarObjeto(new ArticuloChala());
 
 		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
@@ -402,7 +402,7 @@ public class BombitaIntegracionTest {
 		Bombita bombita = new Bombita(vida);
 
 		casilleroInicial.agregarObjeto(bombita);
-		casilleroFinal.agregarObjeto(new Timer());
+		casilleroFinal.agregarObjeto(new ArticuloTimer());
 
 		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
@@ -446,7 +446,7 @@ public class BombitaIntegracionTest {
 
 	@Test
 	public void testAtributoChala() {
-		casilleroFinal.agregarObjeto(new Chala());
+		casilleroFinal.agregarObjeto(new ArticuloChala());
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
 		bombita.moverseConEstrategia(Direccion.ARRIBA);
 

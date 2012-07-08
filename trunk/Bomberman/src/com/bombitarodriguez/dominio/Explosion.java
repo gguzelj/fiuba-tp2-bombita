@@ -5,24 +5,19 @@ import java.util.List;
 
 import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
-import ar.uba.fi.algo3.titiritero.vista.Imagen;
-
-import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
-import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Direccion;
+import com.bombitarodriguez.utils.Identificaciones;
 import com.bombitarodriguez.utils.Transformacion;
-import com.bombitarodriguez.vista.factory.dominio.VistaExplosion;
 
-public class Explosion implements ObjetoReaccionable , Posicionable, ObjetoVivo{
+public class Explosion extends Objeto implements Posicionable, ObjetoVivo{
 
 	protected Casillero casilleroContenedor;
 	protected Integer destruccion;
 	protected Integer ondaExpansiva;
 	protected Integer posX;
 	protected Integer posY;
-	protected Imagen vistaExplosion;
-	protected Integer tiempoDeVisualizacion;
+	protected Integer tiempoDeVida;
 	
 	public Explosion(Integer destruccion, Integer ondaExpansiva){
 		this.destruccion = destruccion;
@@ -31,9 +26,9 @@ public class Explosion implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 	}
 	
 	private void mostrar() {
-		this.vistaExplosion = new VistaExplosion();
-		this.tiempoDeVisualizacion = 3;
-		ControladorBomberman.agregarObjeto(this);
+		this.id = Identificaciones.explosion;
+		this.tiempoDeVida = 3;
+		Mapa.objetoParaAgregar(this);
 	}
 	
 	public Integer getDestruccion(){
@@ -95,7 +90,7 @@ public class Explosion implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 	}
 
 	@Override
-	public Boolean reaccionarCon(Chala chala) {
+	public Boolean reaccionarCon(ArticuloChala chala) {
 		chala.reaccionarCon(this);
 		return true;
 	}
@@ -107,7 +102,7 @@ public class Explosion implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 	}
 
 	@Override
-	public Boolean reaccionarCon(Timer timer) {
+	public Boolean reaccionarCon(ArticuloTimer timer) {
 		timer.reaccionarCon(this);
 		return true;
 	}
@@ -133,11 +128,11 @@ public class Explosion implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 	
 	public void causarEstragos() {
 		
-		List<ObjetoReaccionable> copiaDeObjetos = new ArrayList<ObjetoReaccionable>();
+		List<Objeto> copiaDeObjetos = new ArrayList<Objeto>();
 		copiaDeObjetos.addAll(this.getCasillero().getObjetos());
 		
 		//Reaaciono con los objetos del casillero principal
-		for( ObjetoReaccionable objeto : copiaDeObjetos)
+		for( Objeto objeto : copiaDeObjetos)
 			objeto.reaccionarCon(this);
 		
 		//Reacciono hacia la derecha
@@ -180,10 +175,10 @@ public class Explosion implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 		
 		Boolean puedoContinuar = true;
 		// Creo una copia de la lista sobre la cual voy a iterar, ya que se puede modificar
-		List<ObjetoReaccionable> copiaObjetosCasillero = new ArrayList<ObjetoReaccionable>();
+		List<Objeto> copiaObjetosCasillero = new ArrayList<Objeto>();
 		copiaObjetosCasillero.addAll(casillero.getObjetos());
 		
-		for( ObjetoReaccionable objeto : copiaObjetosCasillero){
+		for( Objeto objeto : copiaObjetosCasillero){
 			if(!objeto.reaccionarCon(this))
 				puedoContinuar = false;
 		}		
@@ -191,13 +186,13 @@ public class Explosion implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 		return puedoContinuar;
 	}
 
-	public void destruirse(ObjetoReaccionable objeto){
+	public void destruirse(Objeto objeto){
 		
 	}
 	
 	@Override
-	public Imagen vistaDeObjeto() {
-		return this.vistaExplosion;
+	public int getId() {
+		return this.id;
 	}
 
 	@Override
@@ -226,9 +221,9 @@ public class Explosion implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 	
 	@Override
 	public void vivir() {
-		this.tiempoDeVisualizacion--;
-		if(this.tiempoDeVisualizacion == 0){
-			ControladorBomberman.borrarObjeto(this);
+		this.tiempoDeVida--;
+		if(this.tiempoDeVida == 0){
+			Mapa.objetoParaBorrar(this);
 			this.casilleroContenedor.quitarObjeto(this);
 		}
 	}

@@ -69,7 +69,7 @@ public class BombitaTest {
 	public void testReaccionarConChala(){
 		Integer vida = new Integer(3);
 		Bombita bombita = new Bombita(vida);
-		assertFalse(bombita.reaccionarCon(new Chala()));
+		assertFalse(bombita.reaccionarCon(new ArticuloChala()));
 	}
 	
 	@Test
@@ -83,7 +83,7 @@ public class BombitaTest {
 	public void testReaccionarConTimer(){
 		Integer vida = new Integer(3);
 		Bombita bombita = new Bombita(vida);
-		assertFalse(bombita.reaccionarCon(new Timer()));
+		assertFalse(bombita.reaccionarCon(new ArticuloTimer()));
 	}
 	
 	@Test

@@ -47,7 +47,7 @@ public class MolotovTest {
 	
 	@Test
 	public void testReaccionarConChala(){
-		assertFalse(new Molotov().reaccionarCon(new Chala()));
+		assertFalse(new Molotov().reaccionarCon(new ArticuloChala()));
 	}
 	
 	@Test
@@ -57,7 +57,7 @@ public class MolotovTest {
 	
 	@Test
 	public void testReaccionarConTimer(){
-		assertFalse(new Molotov().reaccionarCon(new Timer()));
+		assertFalse(new Molotov().reaccionarCon(new ArticuloTimer()));
 	}
 	
 	@Test

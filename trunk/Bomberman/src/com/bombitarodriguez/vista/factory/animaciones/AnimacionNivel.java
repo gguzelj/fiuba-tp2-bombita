@@ -11,13 +11,13 @@ import com.bombitarodriguez.dominio.Bomba;
 import com.bombitarodriguez.dominio.Bombita;
 import com.bombitarodriguez.dominio.Casillero;
 import com.bombitarodriguez.dominio.Cecilio;
-import com.bombitarodriguez.dominio.Chala;
+import com.bombitarodriguez.dominio.ArticuloChala;
 import com.bombitarodriguez.dominio.Explosion;
 import com.bombitarodriguez.dominio.LosLopezReggae;
 import com.bombitarodriguez.dominio.LosLopezReggaeAlado;
 import com.bombitarodriguez.dominio.Posicion;
 import com.bombitarodriguez.dominio.Proyectil;
-import com.bombitarodriguez.dominio.Timer;
+import com.bombitarodriguez.dominio.ArticuloTimer;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.PathFile;
@@ -38,7 +38,7 @@ public class AnimacionNivel implements ObjetoVivo, Posicionable, ObjetoReacciona
 		imagen = new Imagen();
 		imagen.setNombreArchivoImagen("/com/bombitarodriguez/vista/imagenes/Niveles/"+nivel.toString()+".png");
 		imagen.setPosicionable(this);
-		ControladorBomberman.agregarObjeto(this);
+//		ControladorBomberman.agregarObjeto(this);
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class AnimacionNivel implements ObjetoVivo, Posicionable, ObjetoReacciona
 	public void vivir() {
 
 		if (posicionX == 700) {
-			ControladorBomberman.borrarObjeto((ObjetoReaccionable) this);
+//			ControladorBomberman.borrarObjeto((ObjetoReaccionable) this);
 			return;
 		}
 
@@ -110,7 +110,7 @@ public class AnimacionNivel implements ObjetoVivo, Posicionable, ObjetoReacciona
 	}
 
 	@Override
-	public Boolean reaccionarCon(Chala chala) {
+	public Boolean reaccionarCon(ArticuloChala chala) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -122,7 +122,7 @@ public class AnimacionNivel implements ObjetoVivo, Posicionable, ObjetoReacciona
 	}
 
 	@Override
-	public Boolean reaccionarCon(Timer timer) {
+	public Boolean reaccionarCon(ArticuloTimer timer) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -2,27 +2,20 @@ package com.bombitarodriguez.dominio;
 
 import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
-import ar.uba.fi.algo3.titiritero.vista.Imagen;
-
 import com.bombitarodriguez.controller.ControladorBomberman;
-import com.bombitarodriguez.interfaces.ObjetoReaccionable;
+import com.bombitarodriguez.utils.Identificaciones;
 import com.bombitarodriguez.utils.Transformacion;
-import com.bombitarodriguez.vista.factory.dominio.VistaSalida;
-
 
 /**
- * 
  * @author Mauro
- *
  */
-public class Salida implements ObjetoReaccionable , Posicionable, ObjetoVivo{
+public class Salida extends Objeto implements Posicionable, ObjetoVivo{
 
 	protected Integer posX;
 	protected Integer posY;
-	protected Imagen vistaSalida;
 	
 	public Salida(){
-		vistaSalida = new VistaSalida();
+		this.id = Identificaciones.salida;
 	}
 	
 	@Override
@@ -67,7 +60,7 @@ public class Salida implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 		return false;
 	}
 	@Override
-	public Boolean reaccionarCon(Chala chala){
+	public Boolean reaccionarCon(ArticuloChala chala){
 		return false;
 	}
 	@Override
@@ -75,7 +68,7 @@ public class Salida implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 		return false;
 	}
 	@Override
-	public Boolean reaccionarCon(Timer timer){
+	public Boolean reaccionarCon(ArticuloTimer timer){
 		return false;
 	}
 
@@ -94,13 +87,13 @@ public class Salida implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 		return true;
 	}
 	
-	public void destruirse(ObjetoReaccionable objeto){
+	public void destruirse(Objeto objeto){
 		
 	}
 
 	@Override
-	public Imagen vistaDeObjeto() {
-		return this.vistaSalida;
+	public int getId() {
+		return this.id;
 	}
 	
 	@Override
@@ -129,7 +122,5 @@ public class Salida implements ObjetoReaccionable , Posicionable, ObjetoVivo{
 
 	@Override
 	public void vivir() {
-		// TODO Auto-generated method stub
-		
 	}
 }

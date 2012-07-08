@@ -1,16 +1,9 @@
 package com.bombitarodriguez.dominio;
 
 import java.util.Iterator;
-
-
-import ar.uba.fi.algo3.titiritero.vista.Imagen;
-
-import com.bombitarodriguez.controller.ControladorBomberman;
-import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
-import com.bombitarodriguez.vista.factory.dominio.VistaLopezReggae;
-import com.bombitarodriguez.vista.factory.dominio.VistaLopezReggaeAlado;
+import com.bombitarodriguez.utils.Identificaciones;
 
 /**
  * @author Mauro
@@ -24,8 +17,7 @@ public class LosLopezReggae extends Personaje {
 		this.resistencia = Constante.RESISTENCIA_LOSLOPEZREGGAE;
 		this.velocidad = Constante.VELOCIDAD_CORRE;
 		this.factoryArma = new FactoryProyectil();
-		this.vistaPersonaje = new VistaLopezReggae();
-
+		this.id = Identificaciones.lopezReggae;
 	}	
 	
 	@Override
@@ -35,7 +27,6 @@ public class LosLopezReggae extends Personaje {
 		
 		if(proyectil != null){
 			getCasillero().agregarObjeto(proyectil);
-			ControladorBomberman.agregarObjeto(proyectil);
 		}
 		
 		return null;
@@ -55,7 +46,7 @@ public class LosLopezReggae extends Personaje {
 	}
 	
 	@Override
-	protected Boolean reaccionarConTodos(Iterator<ObjetoReaccionable> iterador) {
+	protected Boolean reaccionarConTodos(Iterator<Objeto> iterador) {
 		Boolean permitePasar = true;
 		while (iterador.hasNext() && (permitePasar)) {
 			permitePasar = iterador.next().reaccionarCon(this);
@@ -64,8 +55,8 @@ public class LosLopezReggae extends Personaje {
 	}
 
 	@Override
-	public Imagen vistaDeObjeto() {
-		return vistaPersonaje;
+	public int getId() {
+		return this.id;
 	}
 
 	@Override

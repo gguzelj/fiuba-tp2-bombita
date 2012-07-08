@@ -27,7 +27,6 @@ public class PantallaPartida extends Pantalla {
 
 	public void crearJuego() {
 		this.getVentanaPrincipal().getJuego().crearNivel(ControladorBomberman.getNivelDelJuego());
-		new AnimacionNivel(ControladorBomberman.getNivelDelJuego());
 	}
 
 	public void cargarJuego() {
@@ -47,7 +46,6 @@ public class PantallaPartida extends Pantalla {
 
 	public void siguienteNivel(Integer nivelDelJuego) {
 		this.getVentanaPrincipal().getJuego().siguienteNivel(nivelDelJuego);
-		new AnimacionNivel(nivelDelJuego);
 	}
 
 }

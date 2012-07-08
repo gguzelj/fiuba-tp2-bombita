@@ -1,14 +1,9 @@
 package com.bombitarodriguez.dominio;
 
 import java.util.Iterator;
-
-import ar.uba.fi.algo3.titiritero.vista.Imagen;
-
-import com.bombitarodriguez.controller.ControladorBomberman;
-import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
-import com.bombitarodriguez.vista.factory.dominio.VistaBombita;
+import com.bombitarodriguez.utils.Identificaciones;
 
 /**
  * 
@@ -20,14 +15,13 @@ public class Bombita extends Personaje {
 	private Integer vida;
 	private Direccion direccionAMover = null;
 	private Boolean atacar = false;
-	private Imagen vistaBombita;
 
 	public Bombita(Integer vida) {
 		this.vida = vida;
 		this.resistencia = 0;
 		this.velocidad = Constante.VELOCIDAD_CAMINA;
 		this.factoryArma = new FactoryMolotov();
-		this.vistaBombita = new VistaBombita();
+		this.id = Identificaciones.bombita;
 
 	}
 
@@ -52,7 +46,7 @@ public class Bombita extends Personaje {
 	}
 
 	@Override
-	public Boolean reaccionarCon(Chala chala) {
+	public Boolean reaccionarCon(ArticuloChala chala) {
 		return false;
 	}
 
@@ -90,7 +84,7 @@ public class Bombita extends Personaje {
 	}
 
 	@Override
-	protected Boolean reaccionarConTodos(Iterator<ObjetoReaccionable> iterador) {
+	protected Boolean reaccionarConTodos(Iterator<Objeto> iterador) {
 		Boolean permitePasar = true;
 		while (iterador.hasNext() && (permitePasar)) {
 			permitePasar = iterador.next().reaccionarCon(this);
@@ -118,7 +112,7 @@ public class Bombita extends Personaje {
 	public void vivir() {
 		
 		if (atacar == true) {
-			ControladorBomberman.agregarObjeto(this.usarArma());
+			Mapa.objetoParaAgregar(this.usarArma());
 			atacar = false;
 		}
 
@@ -129,8 +123,9 @@ public class Bombita extends Personaje {
 
 	}
 
-	public Imagen vistaDeObjeto() {
-		return this.vistaBombita;
+	@Override
+	public int getId() {
+		return this.id;
 	}
 
 	public Direccion getDireccionAMover() {
