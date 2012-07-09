@@ -36,7 +36,6 @@ public class ControladorBomberman extends ControladorJuego {
 	@Override
 	public void comenzarJuego() {
 		estaEnEjecucion = true;
-		int var = 0;
 		try {
 			while (estaEnEjecucion) {
 
@@ -46,12 +45,9 @@ public class ControladorBomberman extends ControladorJuego {
 				}
 
 				dibujar();
-				
-				System.out.println(var++);
-				
 				controlarPartida();
 
-				Thread.sleep(75);
+				Thread.sleep(100);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

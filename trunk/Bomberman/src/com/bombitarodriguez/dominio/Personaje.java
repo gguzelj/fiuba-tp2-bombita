@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import ar.uba.fi.algo3.titiritero.ObjetoVivo;
-import ar.uba.fi.algo3.titiritero.Posicionable;
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.Armado;
 import com.bombitarodriguez.interfaces.StrategyMovimiento;
@@ -16,10 +15,8 @@ import com.bombitarodriguez.utils.Transformacion;
 /**
  * @author Mauro
  */
-public abstract class Personaje extends Objeto implements Armado,
-		StrategyMovimiento, Posicionable, ObjetoVivo {
+public abstract class Personaje extends Objeto implements Armado, StrategyMovimiento, ObjetoVivo {
 
-	protected Casillero casilleroContenedor;
 	protected Integer resistencia;
 	protected Integer velocidad;
 	protected FactoryArma factoryArma;
@@ -33,8 +30,7 @@ public abstract class Personaje extends Objeto implements Armado,
 	 * @param iterador
 	 * @return true si se puede mover, false caso contrario
 	 */
-	protected abstract Boolean reaccionarConTodos(
-			Iterator<Objeto> iterador);
+	protected abstract Boolean reaccionarConTodos(Iterator<Objeto> iterador);
 
 	public Integer getResistencia() {
 		return resistencia;
@@ -52,20 +48,6 @@ public abstract class Personaje extends Objeto implements Armado,
 		this.velocidad = velocidad;
 	}
 
-	public Casillero getCasillero() {
-		return casilleroContenedor;
-	}
-
-	@Override
-	public Posicion getPosicion() {
-		return casilleroContenedor.getPosicion();
-	}
-
-	@Override
-	public void setCasillero(Casillero casillero) {
-		casilleroContenedor = casillero;
-	}
-
 	public FactoryArma getFactoryArma() {
 		return factoryArma;
 	}
@@ -77,26 +59,6 @@ public abstract class Personaje extends Objeto implements Armado,
 	@Override
 	public Boolean reaccionarCon(Bombita bombita) {
 		bombita.quitarVida();
-		return false;
-	}
-
-	@Override
-	public Boolean reaccionarCon(Cecilio cecilio) {
-		return false;
-	}
-
-	@Override
-	public Boolean reaccionarCon(LosLopezReggae losLopezReggae) {
-		return false;
-	}
-
-	@Override
-	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado) {
-		return false;
-	}
-
-	@Override
-	public Boolean reaccionarCon(Bomba bomba) {
 		return false;
 	}
 
@@ -116,41 +78,6 @@ public abstract class Personaje extends Objeto implements Armado,
 		}
 
 		return true;
-	}
-
-	@Override
-	public Boolean reaccionarCon(BloqueCemento bloqueCemento) {
-		return false;
-	}
-
-	@Override
-	public Boolean reaccionarCon(BloqueAcero bloqueAcero) {
-		return false;
-	}
-
-	@Override
-	public Boolean reaccionarCon(BloqueLadrillo bloqueLadrillo) {
-		return false;
-	}
-
-	@Override
-	public Boolean reaccionarCon(ArticuloChala chala) {
-		return false;
-	}
-
-	@Override
-	public Boolean reaccionarCon(ArticuloToleTole articuloBombaToleTole) {
-		return false;
-	}
-
-	@Override
-	public Boolean reaccionarCon(ArticuloTimer timer) {
-		return false;
-	}
-
-	@Override
-	public Boolean reaccionarCon(Proyectil proyectil) {
-		return false;
 	}
 
 	public void destruirse() {

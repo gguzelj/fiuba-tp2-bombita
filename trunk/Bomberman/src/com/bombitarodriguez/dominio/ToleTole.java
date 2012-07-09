@@ -23,11 +23,6 @@ public class ToleTole extends Bomba {
 	}
 
 	@Override
-	public int getId() {
-		return this.id;
-	}
-
-	@Override
 	public void vivir() {
 		retardo--;
 		if (retardo <= 0){

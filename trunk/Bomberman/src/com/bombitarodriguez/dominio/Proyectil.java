@@ -57,11 +57,6 @@ public class Proyectil extends Arma {
 	}
 
 	@Override
-	public int getId() {
-		return this.id;
-	}
-
-	@Override
 	public void vivir() {
 		
 		try {

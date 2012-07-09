@@ -23,11 +23,6 @@ public class BloqueAcero extends Obstaculo {
 	}
 
 	@Override
-	public int getId() {
-		return this.id;
-	}
-
-	@Override
 	public void vivir() {
 	}
 

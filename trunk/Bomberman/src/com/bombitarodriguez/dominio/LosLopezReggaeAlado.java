@@ -45,7 +45,6 @@ public class LosLopezReggaeAlado extends Personaje {
 		 Arma armaInstanciada = factoryArma.getArmaInstanciada();
 		getCasillero().agregarObjeto(armaInstanciada);
 		return armaInstanciada;
-	
 	}
 
 	/**
@@ -91,8 +90,4 @@ public class LosLopezReggaeAlado extends Personaje {
 	 	Mapa.getMapa().reposicionar(this, casilleroProximo);
 	}
 
-	@Override
-	public int getId() {
-		return this.id;
-	}
 }

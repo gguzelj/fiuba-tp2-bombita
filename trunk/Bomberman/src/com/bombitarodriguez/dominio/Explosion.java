@@ -4,15 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ar.uba.fi.algo3.titiritero.ObjetoVivo;
-import ar.uba.fi.algo3.titiritero.Posicionable;
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.utils.Direccion;
 import com.bombitarodriguez.utils.Identificaciones;
 import com.bombitarodriguez.utils.Transformacion;
 
-public class Explosion extends Objeto implements Posicionable, ObjetoVivo{
+public class Explosion extends Objeto implements ObjetoVivo{
 
-	protected Casillero casilleroContenedor;
 	protected Integer destruccion;
 	protected Integer ondaExpansiva;
 	protected Integer posX;
@@ -38,11 +36,6 @@ public class Explosion extends Objeto implements Posicionable, ObjetoVivo{
 	@Override
 	public Boolean reaccionarCon(Bombita bombita) {
 		bombita.reaccionarCon(this);
-		return false;
-	}
-	
-	@Override
-	public Boolean reaccionarCon(Bomba bomba) {
 		return false;
 	}
 	
@@ -111,21 +104,7 @@ public class Explosion extends Objeto implements Posicionable, ObjetoVivo{
 	public Boolean reaccionarCon(Explosion explosion) {
 		return true;
 	}	
-	
-	@Override
-	public Posicion getPosicion() {
-		return casilleroContenedor.getPosicion();
-	}
 
-	@Override
-	public void setCasillero(Casillero casillero) {
-		casilleroContenedor = casillero;
-	}
-	
-	public Casillero getCasillero() {
-		return casilleroContenedor;
-	}	
-	
 	public void causarEstragos() {
 		
 		List<Objeto> copiaDeObjetos = new ArrayList<Objeto>();
@@ -191,11 +170,6 @@ public class Explosion extends Objeto implements Posicionable, ObjetoVivo{
 	}
 	
 	@Override
-	public int getId() {
-		return this.id;
-	}
-
-	@Override
 	public int getX() {
 		return Transformacion.transformarAPixeles(getPosX());
 	}
@@ -224,9 +198,7 @@ public class Explosion extends Objeto implements Posicionable, ObjetoVivo{
 		this.tiempoDeVida--;
 		if(this.tiempoDeVida == 0){
 			Mapa.objetoParaBorrar(this);
-			this.casilleroContenedor.quitarObjeto(this);
+			this.casillero.quitarObjeto(this);
 		}
 	}
-
-	
 }
