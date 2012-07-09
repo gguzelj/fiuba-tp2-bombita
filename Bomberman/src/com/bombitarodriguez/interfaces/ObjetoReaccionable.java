@@ -38,8 +38,6 @@ public interface ObjetoReaccionable{
 
 	public Posicion getPosicion();
 	
-	public void setCasillero(Casillero casillero);
-
 	public void setCoordenadas(Integer x, Integer y);
 
 }

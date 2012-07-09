@@ -10,7 +10,6 @@ public class ArticuloToleTole extends Articulo {
 	public ArticuloToleTole(){
 		this.id = Identificaciones.articuloToleTole;
 	}
-	
 
 	@Override
 	public Boolean reaccionarCon(Bombita bombita) {
@@ -42,10 +41,5 @@ public class ArticuloToleTole extends Articulo {
 		this.getCasillero().quitarObjeto(this);
 		Mapa.objetoParaBorrar(this);
 		return true;
-	}
-
-	@Override
-	public int getId() {
-		return this.id;
 	}
 }

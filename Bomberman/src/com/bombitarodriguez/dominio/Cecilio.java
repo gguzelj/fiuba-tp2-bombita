@@ -16,7 +16,6 @@ public class Cecilio extends Personaje {
 		this.id = Identificaciones.cecilio;
 	}	
 
-
 	@Override
 	public Arma usarArma() {
 		return plantarBomba();
@@ -41,10 +40,5 @@ public class Cecilio extends Personaje {
 			permitePasar = iterador.next().reaccionarCon(this);
 		}
 		return permitePasar;
-	}
-
-	@Override
-	public int getId() {
-		return this.id;
 	}
 }

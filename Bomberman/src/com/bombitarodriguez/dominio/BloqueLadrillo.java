@@ -28,11 +28,6 @@ public class BloqueLadrillo extends Obstaculo{
 	public void agregarObjeto(Objeto objeto) {
 		this.objeto = objeto;
 	}
-	
-	@Override
-	public int getId() {
-		return this.id;
-	}
 
 	@Override
 	public void vivir() {

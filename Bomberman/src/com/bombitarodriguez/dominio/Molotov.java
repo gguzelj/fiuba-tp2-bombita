@@ -20,14 +20,8 @@ public class Molotov extends Bomba{
 		this.destruccion = Constante.DESTRUCCION_MOLOTOV;
 		this.retardo = retardo;
 		this.id = Identificaciones.molotov;
-
 	}
 
-	@Override
-	public int getId() {
-		return this.id;
-	}
-	
 	@Override
 	public void vivir() {
 		retardo--;

@@ -35,10 +35,9 @@ public class LosLopezReggae extends Personaje {
 	private Arma lanzarProyectil() {
 		if(this.ultimaDireccion == null)
 			return null;
-		return this.factoryArma.instanciarArma(this.ultimaDireccion, this.casilleroContenedor.getPosicion());
+		return this.factoryArma.instanciarArma(this.ultimaDireccion, getPosicion());
 	}
 
-	
 	@Override
 	public Boolean reaccionarCon(Bombita bombita) {
 		bombita.reaccionarCon(this);
@@ -52,11 +51,6 @@ public class LosLopezReggae extends Personaje {
 			permitePasar = iterador.next().reaccionarCon(this);
 		}
 		return permitePasar;
-	}
-
-	@Override
-	public int getId() {
-		return this.id;
 	}
 
 	@Override

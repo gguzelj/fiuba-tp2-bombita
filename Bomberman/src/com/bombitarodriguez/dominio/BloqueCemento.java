@@ -30,11 +30,6 @@ public class BloqueCemento extends Obstaculo {
 	}
 
 	@Override
-	public int getId() {
-		return this.id;
-	}
-
-	@Override
 	public void vivir() {
 	}
 }
