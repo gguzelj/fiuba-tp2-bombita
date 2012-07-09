@@ -1,13 +1,14 @@
 package com.bombitarodriguez.dominio;
 
-import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import com.bombitarodriguez.utils.Constante;
-import com.bombitarodriguez.utils.Transformacion;
 
 /**
- * @author Mauro
+ * Clase de la cual heredan los obstaculos del juego:
+ * -BloqueAcero
+ * -BloqueCemento
+ * -BloqueLadrillo
  */
-public abstract class Obstaculo extends Objeto implements ObjetoVivo{
+public abstract class Obstaculo extends Objeto {
 
 	protected Integer durabilidad;
 	protected Objeto objeto;
@@ -30,6 +31,12 @@ public abstract class Obstaculo extends Objeto implements ObjetoVivo{
 		this.objeto = objeto;
 	}
 
+	/**
+	 * Un obstaculo se destruye ante una explosion, si su destruccion
+	 * es mayor a la resistencia del bloque.
+	 * En caso de que la explosion sea de una ToleTole, el bloque se destruye
+	 * automaticamentes
+	 */
 	@Override
 	public Boolean reaccionarCon(Explosion explosion) {
 		Integer durabilidadRestante = (getDurabilidad() - explosion.getDestruccion());
@@ -42,6 +49,11 @@ public abstract class Obstaculo extends Objeto implements ObjetoVivo{
 		return false;
 	}
 
+	/**
+	 * Al destruirse el objeto, se agrega el objeto
+	 * contenido (En caso de que el mismo contenga algun
+	 * objeto)
+	 */
 	public void destruirse() {
 		if (objeto != null){
 			casillero.agregarObjeto(objeto);
@@ -56,29 +68,5 @@ public abstract class Obstaculo extends Objeto implements ObjetoVivo{
 	 */
 	public void quitarObjeto() {
 		objeto = null;
-	}
-	
-	@Override
-	public int getX() {
-		return Transformacion.transformarAPixeles(getPosX());
-	}
-
-	@Override
-	public int getY() {	
-		return Transformacion.transformarAPixeles(getPosY());
-	}
-	
-	@Override
-	public void setCoordenadas(Integer x, Integer y) {
-		posX = x;
-		posY = y;
-	}
-	
-	public Integer getPosX() {
-		return posX;
-	}
-	
-	public Integer getPosY() {
-		return posY;
 	}
 }

@@ -3,20 +3,14 @@ package com.bombitarodriguez.persistencia;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
-
-import com.bombitarodriguez.dominio.Bombita;
 import com.bombitarodriguez.dominio.Mapa;
-import com.bombitarodriguez.vista.factory.dominio.VistaBombita;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
 
 /**
- * 
  * @author Mauro
- *
  */
 public class PersistenciaPartidaXML {
 	

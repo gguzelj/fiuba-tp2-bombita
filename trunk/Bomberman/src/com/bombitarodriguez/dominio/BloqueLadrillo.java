@@ -28,9 +28,4 @@ public class BloqueLadrillo extends Obstaculo{
 	public void agregarObjeto(Objeto objeto) {
 		this.objeto = objeto;
 	}
-
-	@Override
-	public void vivir() {
-	}
-	
 }

@@ -1,6 +1,5 @@
 package com.bombitarodriguez.menues;
 
-import com.bombitarodriguez.controller.ControladorBombita;
 import com.bombitarodriguez.controller.menues.ControladorMenu;
 import com.bombitarodriguez.menues.items.ItemGuardarPartida;
 import com.bombitarodriguez.menues.items.ItemReanudar;

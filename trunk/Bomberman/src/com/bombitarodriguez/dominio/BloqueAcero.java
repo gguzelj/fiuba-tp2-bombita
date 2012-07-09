@@ -11,7 +11,11 @@ public class BloqueAcero extends Obstaculo {
 		this.id = Identificaciones.bloqueAcero;
 	}
 	
-	//Se supone que las ToleTole tienen una destruccion == 0
+	/**
+	 * Ante una explosion de una bomba ToleTole, el
+	 * BloqueAcero se destruye. (Asumimos que la destruccion
+	 * de la ToleTole es equivalente a 0 )
+	 */
 	@Override
 	public Boolean reaccionarCon(Explosion explosion) {
 		if (explosion.getDestruccion() == 0) {
@@ -21,9 +25,4 @@ public class BloqueAcero extends Obstaculo {
 		}
 		return false;
 	}
-
-	@Override
-	public void vivir() {
-	}
-
 }

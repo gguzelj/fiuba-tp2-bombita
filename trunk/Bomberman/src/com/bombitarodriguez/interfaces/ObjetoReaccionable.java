@@ -34,8 +34,4 @@ public interface ObjetoReaccionable{
 	
 	public Boolean reaccionarCon(Explosion explosion);
 
-//	public Posicion getPosicion();
-	
-	public void setCoordenadas(Integer x, Integer y);
-
 }

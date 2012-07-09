@@ -1,7 +1,5 @@
 package com.bombitarodriguez.utils;
 
-import com.bombitarodriguez.vista.factory.dominio.VistaProyectil;
-
 public class Constante {
 	
 	/**
