@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import com.bombitarodriguez.dominio.*;
 import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.utils.Direccion;
 
 public class MolotovTest {
 
@@ -72,7 +73,7 @@ public class MolotovTest {
 	
 	@Test
 	public void testReaccionarConProyectil(){
-		assertFalse(new Molotov().reaccionarCon(new Proyectil()));	
+		assertFalse(new Molotov().reaccionarCon(new Proyectil(Direccion.ARRIBA, new Posicion(1,1))));	
 	}
 	
 	@Test

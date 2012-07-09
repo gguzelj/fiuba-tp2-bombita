@@ -7,13 +7,14 @@ import org.junit.Test;
 
 import com.bombitarodriguez.dominio.*;
 import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.utils.Direccion;
 
 public class ProyectilTest {
 
 	@Test
 	public void testReaccionarConBombita(){
 		Integer vida = new Integer(3);
-		Proyectil proyectil = new Proyectil();
+		Proyectil proyectil = new Proyectil(Direccion.ARRIBA, new Posicion(1,1));
 		Casillero casillero = new Casillero(new Posicion(1,2));
 		
 		casillero.agregarObjeto(proyectil);
@@ -24,7 +25,7 @@ public class ProyectilTest {
 
 	@Test
 	public void testReaccionarConCecilio(){
-		Proyectil proyectil = new Proyectil();
+		Proyectil proyectil = new Proyectil(Direccion.ARRIBA, new Posicion(1,1));
 		Casillero casillero = new Casillero(new Posicion(1,2));
 		
 		casillero.agregarObjeto(proyectil);
@@ -35,7 +36,7 @@ public class ProyectilTest {
 	
 	@Test
 	public void testReaccionarConLopezReggae(){
-		Proyectil proyectil = new Proyectil();
+		Proyectil proyectil = new Proyectil(Direccion.ARRIBA, new Posicion(1,1));
 		Casillero casillero = new Casillero(new Posicion(1,2));
 		
 		casillero.agregarObjeto(proyectil);
@@ -46,7 +47,7 @@ public class ProyectilTest {
 	
 	@Test
 	public void testReaccionarConLopezReggaeAlado(){
-		Proyectil proyectil = new Proyectil();
+		Proyectil proyectil = new Proyectil(Direccion.ARRIBA, new Posicion(1,1));
 		Casillero casillero = new Casillero(new Posicion(1,2));
 		
 		casillero.agregarObjeto(proyectil);
@@ -57,52 +58,52 @@ public class ProyectilTest {
 	
 	@Test
 	public void testReaccionarConBloqueCemento(){
-		assertFalse(new Proyectil().reaccionarCon(new BloqueCemento()));
+		assertFalse(new Proyectil(Direccion.ARRIBA, new Posicion(1,1)).reaccionarCon(new BloqueCemento()));
 	}
 	
 	@Test
 	public void testReaccionarConBloqueLadrillo(){
-		assertFalse(new Proyectil().reaccionarCon(new BloqueLadrillo()));
+		assertFalse(new Proyectil(Direccion.ARRIBA, new Posicion(1,1)).reaccionarCon(new BloqueLadrillo()));
 	}
 	
 	@Test
 	public void testReaccionarConBloqueAcero() {
-		assertFalse(new Proyectil().reaccionarCon(new BloqueAcero()));
+		assertFalse(new Proyectil(Direccion.ARRIBA, new Posicion(1,1)).reaccionarCon(new BloqueAcero()));
 	}
 	
 	@Test
 	public void testReaccionarConChala(){
-		assertFalse(new Proyectil().reaccionarCon(new ArticuloChala()));
+		assertFalse(new Proyectil(Direccion.ARRIBA, new Posicion(1,1)).reaccionarCon(new ArticuloChala()));
 	}
 	
 	@Test
 	public void testReaccionarConArticuloToleTole(){
-		assertFalse(new Proyectil().reaccionarCon(new ArticuloToleTole()));
+		assertFalse(new Proyectil(Direccion.ARRIBA, new Posicion(1,1)).reaccionarCon(new ArticuloToleTole()));
 	}
 	
 	@Test
 	public void testReaccionarConTimer(){
-		assertFalse(new Proyectil().reaccionarCon(new ArticuloTimer()));
+		assertFalse(new Proyectil(Direccion.ARRIBA, new Posicion(1,1)).reaccionarCon(new ArticuloTimer()));
 	}
 	
 	@Test
 	public void testReaccionarConBombaMolotov(){
-		assertFalse(new Proyectil().reaccionarCon(new Molotov()));
+		assertFalse(new Proyectil(Direccion.ARRIBA, new Posicion(1,1)).reaccionarCon(new Molotov()));
 	}
 	
 	@Test
 	public void testReaccionarConBombaToleTole(){
-		assertFalse(new Proyectil().reaccionarCon(new ToleTole()));
+		assertFalse(new Proyectil(Direccion.ARRIBA, new Posicion(1,1)).reaccionarCon(new ToleTole()));
 	}
 	
 	@Test
 	public void testReaccionarConProyectil(){
-		assertFalse(new Proyectil().reaccionarCon(new Proyectil()));	
+		assertFalse(new Proyectil(Direccion.ARRIBA, new Posicion(1,1)).reaccionarCon(new Proyectil(Direccion.ARRIBA, new Posicion(1,1))));	
 	}
 	
 	@Test
 	public void testReaccionarConExplosion(){
-		Proyectil proyectil = new Proyectil();
+		Proyectil proyectil = new Proyectil(Direccion.ARRIBA, new Posicion(1,1));
 		Casillero casillero = new Casillero(new Posicion(1,1));
 		
 		casillero.agregarObjeto(proyectil);
@@ -113,7 +114,7 @@ public class ProyectilTest {
 	
 	@Test
 	public void testExplotar(){
-		Proyectil proyectil = new Proyectil();
+		Proyectil proyectil = new Proyectil(Direccion.ARRIBA, new Posicion(1,1));
 		Casillero casillero = new Casillero(new Posicion(1,1));
 		
 		casillero.agregarObjeto(proyectil);

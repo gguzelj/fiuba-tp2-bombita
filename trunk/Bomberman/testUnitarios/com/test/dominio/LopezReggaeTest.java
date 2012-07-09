@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.bombitarodriguez.dominio.*;
 import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.utils.Direccion;
 
 public class LopezReggaeTest {
 
@@ -89,7 +90,7 @@ public class LopezReggaeTest {
 	@Test
 	public void testReaccionarConProyectil(){
 		LosLopezReggae lopezReggae = new LosLopezReggae();
-		assertFalse(lopezReggae.reaccionarCon(new Proyectil()));		
+		assertFalse(lopezReggae.reaccionarCon(new Proyectil(Direccion.ARRIBA, new Posicion(1,1))));		
 	}
 	
 	@Test
@@ -122,6 +123,8 @@ public class LopezReggaeTest {
 		casillero.agregarObjeto(lopezReggae);
 		assertTrue(casillero.getObjetos().size() == 1);
 		
+		
+		lopezReggae.moverseConEstrategia(Direccion.ARRIBA);
 		lopezReggae.usarArma();
 		assertTrue(casillero.getObjetos().size() == 2);
 	}

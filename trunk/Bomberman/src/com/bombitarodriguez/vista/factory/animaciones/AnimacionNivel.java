@@ -146,18 +146,6 @@ public class AnimacionNivel implements ObjetoVivo, Posicionable, ObjetoReacciona
 	}
 
 	@Override
-	public Posicion getPosicion() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setCasillero(Casillero casillero) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void setCoordenadas(Integer x, Integer y) {
 		// TODO Auto-generated method stub
 		

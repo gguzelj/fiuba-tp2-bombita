@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import com.bombitarodriguez.dominio.*;
 import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.utils.Direccion;
 
 public class BloqueCementoTest {
 
@@ -67,7 +68,7 @@ public class BloqueCementoTest {
 
 	@Test
 	public void testReaccionarConProyectil() {
-		assertFalse(new BloqueCemento().reaccionarCon(new Proyectil()));
+		assertFalse(new BloqueCemento().reaccionarCon(new Proyectil(Direccion.ARRIBA, new Posicion(1,1))));
 	}
 
 	@Test

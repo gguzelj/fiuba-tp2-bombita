@@ -10,6 +10,7 @@ import org.junit.Test;
 import com.bombitarodriguez.dominio.*;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.utils.Direccion;
 
 public class BombitaTest {
 
@@ -104,7 +105,7 @@ public class BombitaTest {
 	public void testReaccionarConProyectil(){
 		Integer vida = new Integer(3);
 		Bombita bombita = new Bombita(vida);
-		assertFalse(bombita.reaccionarCon(new Proyectil()));		
+		assertFalse(bombita.reaccionarCon(new Proyectil(Direccion.ARRIBA, new Posicion(1,1))));		
 	}
 	
 	@Test

@@ -252,7 +252,7 @@ public class BombitaIntegracionTest {
 		Bombita bombita = new Bombita(vida);
 
 		casilleroInicial.agregarObjeto(bombita);
-		casilleroFinal.agregarObjeto(new Proyectil());
+		casilleroFinal.agregarObjeto(new Proyectil(Direccion.ARRIBA, new Posicion(1,1)));
 		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
 

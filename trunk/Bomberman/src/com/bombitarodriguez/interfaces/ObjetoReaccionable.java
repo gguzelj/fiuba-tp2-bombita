@@ -1,12 +1,10 @@
 package com.bombitarodriguez.interfaces;
 
-import ar.uba.fi.algo3.titiritero.vista.Imagen;
 import com.bombitarodriguez.dominio.*;
 
 /**
- * 
- * @author Mauro
- *
+ * Interfaz para declarar de que manera reacciona un objeto ante
+ * otro objeto de las clases aqui declaradas  
  */
 public interface ObjetoReaccionable{
 
@@ -36,7 +34,7 @@ public interface ObjetoReaccionable{
 	
 	public Boolean reaccionarCon(Explosion explosion);
 
-	public Posicion getPosicion();
+//	public Posicion getPosicion();
 	
 	public void setCoordenadas(Integer x, Integer y);
 

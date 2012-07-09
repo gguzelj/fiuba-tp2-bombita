@@ -7,6 +7,7 @@ import java.lang.reflect.Method;
 import org.junit.Test;
 import com.bombitarodriguez.dominio.*;
 import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.utils.Direccion;
 
 public class TimerTest {
 	@Test
@@ -104,7 +105,7 @@ public class TimerTest {
 
 	@Test
 	public void testReaccionarConProyectil() {
-		assertFalse(new ArticuloTimer().reaccionarCon(new Proyectil()));
+		assertFalse(new ArticuloTimer().reaccionarCon(new Proyectil(Direccion.ARRIBA, new Posicion(1,1))));
 	}
 
 	@Test

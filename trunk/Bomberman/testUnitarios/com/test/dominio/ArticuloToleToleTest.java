@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import com.bombitarodriguez.dominio.*;
 import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.utils.Direccion;
 
 public class ArticuloToleToleTest {
 
@@ -42,15 +43,12 @@ public class ArticuloToleToleTest {
 	@Test
 	public void testReaccionarConLopezReggae() {
 		LosLopezReggae losLopezReggae = new LosLopezReggae();
-		FactoryArma factory;
 		Casillero casillero = new Casillero(new Posicion(1,1));
 		ArticuloToleTole articuloToleTole = new ArticuloToleTole();
 		
 		casillero.agregarObjeto(articuloToleTole);
 		assertTrue(articuloToleTole.reaccionarCon(losLopezReggae));
 		
-		factory = losLopezReggae.getFactoryArma();
-		assertTrue(factory instanceof FactoryToleTole);
 		assertTrue(articuloToleTole.getCasillero() == null);
 	}
 
@@ -111,7 +109,7 @@ public class ArticuloToleToleTest {
 
 	@Test
 	public void testReaccionarConProyectil() {
-		assertFalse(new ArticuloToleTole().reaccionarCon(new Proyectil()));
+		assertFalse(new ArticuloToleTole().reaccionarCon(new Proyectil(Direccion.ARRIBA, new Posicion(1,1))));
 	}
 
 	@Test

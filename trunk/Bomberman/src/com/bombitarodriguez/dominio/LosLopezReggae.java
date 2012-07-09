@@ -58,5 +58,9 @@ public class LosLopezReggae extends Personaje {
 		super.moverseConEstrategia(direccion);
 		this.ultimaDireccion = direccion;
 	}
-
+	
+	@Override
+	public FactoryArma getFactoryArma() {
+		return this.factoryArma;
+	}
 }

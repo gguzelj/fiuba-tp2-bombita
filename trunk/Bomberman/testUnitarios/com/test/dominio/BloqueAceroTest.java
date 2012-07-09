@@ -21,6 +21,7 @@ import com.bombitarodriguez.dominio.Proyectil;
 import com.bombitarodriguez.dominio.ArticuloTimer;
 import com.bombitarodriguez.dominio.ToleTole;
 import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.utils.Direccion;
 
 public class BloqueAceroTest {
 	
@@ -82,7 +83,7 @@ public class BloqueAceroTest {
 
 	@Test
 	public void testReaccionarConProyectil() {
-		assertFalse(new BloqueAcero().reaccionarCon(new Proyectil()));
+		assertFalse(new BloqueAcero().reaccionarCon(new Proyectil(Direccion.ARRIBA, new Posicion(1,1))));
 	}
 
 	@Test
