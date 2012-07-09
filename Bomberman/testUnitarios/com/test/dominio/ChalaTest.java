@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import com.bombitarodriguez.dominio.*;
 import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.utils.Direccion;
 
 public class ChalaTest {
 
@@ -99,7 +100,7 @@ public class ChalaTest {
 
 	@Test
 	public void testReaccionarConProyectil() {
-		assertFalse(new ArticuloChala().reaccionarCon(new Proyectil()));
+		assertFalse(new ArticuloChala().reaccionarCon(new Proyectil(Direccion.ARRIBA, new Posicion(1,1))));
 	}
 
 	@Test

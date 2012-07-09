@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import com.bombitarodriguez.dominio.*;
 import com.bombitarodriguez.utils.Constante;
+import com.bombitarodriguez.utils.Direccion;
 
 public class LosLopezReggaeAladoTest {
 
@@ -86,7 +87,7 @@ public class LosLopezReggaeAladoTest {
 	@Test
 	public void testReaccionarConProyectil(){
 		LosLopezReggaeAlado lopezReggaeAlado = new LosLopezReggaeAlado();
-		assertFalse(lopezReggaeAlado.reaccionarCon(new Proyectil()));		
+		assertFalse(lopezReggaeAlado.reaccionarCon(new Proyectil(Direccion.ARRIBA, new Posicion(1,1))));		
 	}
 	
 	@Test
