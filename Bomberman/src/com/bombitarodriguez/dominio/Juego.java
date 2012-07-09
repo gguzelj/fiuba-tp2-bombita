@@ -6,7 +6,6 @@ import java.util.Map.Entry;
 
 import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.controller.ControladorBombita;
-import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.menues.MenuPrincipal;
 import com.bombitarodriguez.persistencia.PersistenciaPartidaXML;
 import com.bombitarodriguez.utils.Constante;
@@ -104,7 +103,7 @@ public class Juego {
         Casillero casillero;
         
 	 	while (it.hasNext()) {
-			Entry e = (Entry)it.next();
+			Entry<Posicion, Casillero> e = (Entry<Posicion, Casillero>)it.next();
             casillero = (Casillero) e.getValue();
             for(Objeto objeto : casillero.getObjetos())
             	Mapa.objetoParaAgregar(objeto);
@@ -120,7 +119,7 @@ public class Juego {
         Casillero casillero;
         
 	 	while (it.hasNext()) {
-			Entry e = (Entry)it.next();
+			Entry<Posicion, Casillero> e = (Entry<Posicion, Casillero>)it.next();
             casillero = (Casillero) e.getValue();
             for(Objeto objeto : casillero.getObjetos())
             	Mapa.objetoParaBorrar(objeto);
@@ -151,7 +150,7 @@ public class Juego {
 	private void cargarPartida() {
 		PersistenciaPartidaXML persistencia = new PersistenciaPartidaXML(Constante.NOMBRE_ARCHIVO_PARTIDA);
 		Mapa.setMapa(persistencia.cargarDominioDeXML());
-		controlador.setNivelDelJuego(Mapa.getMapa().getNivelJuegoActual());
+		ControladorBomberman.setNivelDelJuego(Mapa.getMapa().getNivelJuegoActual());
 	}
 
 	public VentanaPrincipal getVentanaPrincipal() {

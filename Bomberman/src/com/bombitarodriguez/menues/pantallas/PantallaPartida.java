@@ -1,11 +1,8 @@
 package com.bombitarodriguez.menues.pantallas;
 
-import ar.uba.fi.algo3.titiritero.vista.Imagen;
-
 import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.controller.menues.pantallas.ControladorPantallaPartida;
 import com.bombitarodriguez.vista.VentanaPrincipal;
-import com.bombitarodriguez.vista.factory.animaciones.AnimacionNivel;
 import com.bombitarodriguez.vista.factory.menues.VistaPantallaNuevaPartida;
 
 public class PantallaPartida extends Pantalla {

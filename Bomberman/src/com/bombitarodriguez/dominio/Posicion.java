@@ -1,14 +1,11 @@
 package com.bombitarodriguez.dominio;
 
 /**
- * 
- * @author Mauro
- *
+ * Clase para ubicar cada objeto en un casillero
  */
 public class Posicion {
 	
 	private Integer posX;
-	
 	private Integer posY;
 	
 	public Posicion(Integer x, Integer y) {
@@ -41,5 +38,4 @@ public class Posicion {
 	public void setPosY(Integer posY) {
 		this.posY = posY;
 	}
-	
 }

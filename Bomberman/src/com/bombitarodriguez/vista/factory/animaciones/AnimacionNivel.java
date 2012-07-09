@@ -144,11 +144,4 @@ public class AnimacionNivel implements ObjetoVivo, Posicionable, ObjetoReacciona
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public void setCoordenadas(Integer x, Integer y) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

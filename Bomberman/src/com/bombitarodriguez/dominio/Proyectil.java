@@ -67,7 +67,6 @@ public class Proyectil extends Arma {
 		}	
 		
 		Mapa.getMapa().reposicionar(this, new Casillero(posicionActual));
-//		this.setCasillero(Mapa.getMapa().getCasillero(posicionActual));
 
 		if(!puedoMover(this.getCasillero()))
 			this.explotar();

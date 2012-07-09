@@ -22,12 +22,4 @@ public class ToleTole extends Bomba {
 		this.id = Identificaciones.toleTole;
 	}
 
-	@Override
-	public void vivir() {
-		retardo--;
-		if (retardo <= 0){
-			this.explotar();
-		}
-	}
-	
 }

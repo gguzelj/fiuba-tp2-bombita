@@ -22,12 +22,4 @@ public class Molotov extends Bomba{
 		this.id = Identificaciones.molotov;
 	}
 
-	@Override
-	public void vivir() {
-		retardo--;
-		if (retardo <= 0){
-			this.explotar();
-		}
-	}
-
 }

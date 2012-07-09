@@ -3,18 +3,14 @@ package com.bombitarodriguez.dominio;
 import java.util.ArrayList;
 import java.util.List;
 
-import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.utils.Direccion;
 import com.bombitarodriguez.utils.Identificaciones;
-import com.bombitarodriguez.utils.Transformacion;
 
-public class Explosion extends Objeto implements ObjetoVivo{
+public class Explosion extends Objeto{
 
 	protected Integer destruccion;
 	protected Integer ondaExpansiva;
-	protected Integer posX;
-	protected Integer posY;
 	protected Integer tiempoDeVida;
 	
 	public Explosion(Integer destruccion, Integer ondaExpansiva){
@@ -167,30 +163,6 @@ public class Explosion extends Objeto implements ObjetoVivo{
 
 	public void destruirse(Objeto objeto){
 		
-	}
-	
-	@Override
-	public int getX() {
-		return Transformacion.transformarAPixeles(getPosX());
-	}
-
-	@Override
-	public int getY() {	
-		return Transformacion.transformarAPixeles(getPosY());
-	}
-	
-	@Override
-	public void setCoordenadas(Integer x, Integer y) {
-		posX = x;
-		posY = y;
-	}
-	
-	public Integer getPosX() {
-		return posX;
-	}
-	
-	public Integer getPosY() {
-		return posY;
 	}
 	
 	@Override

@@ -4,25 +4,24 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.interfaces.Armado;
 import com.bombitarodriguez.interfaces.StrategyMovimiento;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Direccion;
-import com.bombitarodriguez.utils.Transformacion;
 
 /**
- * @author Mauro
+ * Clase de la cual heredan todos los personajes del juego:
+ * -Bombita
+ * -Cecilio
+ * -LopezReggae
+ * -LopezReggaeAlado
  */
-public abstract class Personaje extends Objeto implements Armado, StrategyMovimiento, ObjetoVivo {
+public abstract class Personaje extends Objeto implements Armado, StrategyMovimiento{
 
 	protected Integer resistencia;
 	protected Integer velocidad;
 	protected FactoryArma factoryArma;
-	protected Integer posX;
-	protected Integer posY;
-
 	
 	protected abstract Boolean reaccionarConTodos(Iterator<Objeto> iterador);
 
@@ -130,30 +129,6 @@ public abstract class Personaje extends Objeto implements Armado, StrategyMovimi
 				}
 			}
 		}
-	}
-
-	@Override
-	public int getX() {
-		return Transformacion.transformarAPixeles(getPosX());
-	}
-
-	@Override
-	public int getY() {
-		return Transformacion.transformarAPixeles(getPosY());
-	}
-
-	@Override
-	public void setCoordenadas(Integer x, Integer y) {
-		posX = x;
-		posY = y;
-	}
-
-	public Integer getPosX() {
-		return posX;
-	}
-
-	public Integer getPosY() {
-		return posY;
 	}
 
 	public boolean puedeReaccionar() {

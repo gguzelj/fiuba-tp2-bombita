@@ -1,18 +1,13 @@
 package com.bombitarodriguez.dominio;
 
-import ar.uba.fi.algo3.titiritero.ObjetoVivo;
-import com.bombitarodriguez.utils.Transformacion;
-
 /**
  * @author Mauro
  */
-public abstract class Arma extends Objeto implements ObjetoVivo {
+public abstract class Arma extends Objeto{
 	
 	protected Integer destruccion;
 	protected Double retardo;
 	protected Integer ondaExpansiva;
-	protected Integer posX;
-	protected Integer posY;
 
 	public void explotar(){
 		Explosion explosion = new Explosion(getDestruccion(),getOndaExpansiva());
@@ -31,30 +26,7 @@ public abstract class Arma extends Objeto implements ObjetoVivo {
 		Mapa.objetoParaBorrar(this);
 		return true;
 	}
-		
-	@Override
-	public int getX() {
-		return Transformacion.transformarAPixeles(getPosX());
-	}
-
-	@Override
-	public int getY() {	
-		return Transformacion.transformarAPixeles(getPosY());
-	}
 	
-	@Override
-	public void setCoordenadas(Integer x, Integer y) {
-		posX = x;
-		posY = y;
-	}
-	
-	public Integer getPosX() {
-		return posX;
-	}
-	
-	public Integer getPosY() {
-		return posY;
-	}
 	public Integer getDestruccion() {
 		return destruccion;
 	}
