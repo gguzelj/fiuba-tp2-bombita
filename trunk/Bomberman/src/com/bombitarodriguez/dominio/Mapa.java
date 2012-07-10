@@ -23,19 +23,10 @@ public class Mapa {
 	
 	static private Mapa mapa;
 	HashMap<Posicion, Casillero> mapaCasillero;
-	static private Integer dimension;
 	private Posicion posicionBombita;
 	private Integer nivelJuegoActual;
 	private static List<Objeto> objetosParaAgregar = new ArrayList<Objeto>();
 	private static List<Objeto> objetosParaBorrar = new ArrayList<Objeto>();
-	
-	public static Integer getDimension() {
-		return dimension;
-	}
-
-	public static void setDimension(Integer dimension) {
-		Mapa.dimension = dimension;
-	}
 
 	private Mapa() {
 		mapaCasillero = new HashMap<Posicion, Casillero>();
@@ -48,6 +39,11 @@ public class Mapa {
 		return mapa;
 	}
 	
+	/**
+	 * Agregamos una nueva entrada al HashMap
+	 * @param posicion
+	 * @param casillero
+	 */
 	public void agregarCasillero(Posicion posicion, Casillero casillero) {
 		mapa.mapaCasillero.put(posicion, casillero);
 	}
@@ -69,19 +65,20 @@ public class Mapa {
 		casilleroAOcupar.agregarObjeto(objetoAMover);
 	}
 
+	/**
+	 * Metodo utilizado en tests de persistencia
+	 * @return
+	 */
 	public HashMap<Posicion, Casillero> getMapaCasillero() {
 		return mapaCasillero;
 	}
-
-	public void setMapaCasillero(HashMap<Posicion, Casillero> mapaCasillero) {
-		this.mapaCasillero = mapaCasillero;
-	}
 	
+	/**
+	 * Iniciamos la creacion del mapa, parseando el archivo XML recibido
+	 * @param file
+	 */
 	public void crearMapa(File file) {
 		List<String> objetosACrear = Parser.parsearMapXML(file);
-		
-		/*Durante la creacion del mapa, guardo su dimension*/
-		Mapa.setDimension(objetosACrear.size());
 		
 		crearCasillerosVacios(objetosACrear.size());
 		Integer coordenadaY = 0;
@@ -96,6 +93,11 @@ public class Mapa {
 		persistencia.cargarDominioDeXML();
 	}
 	
+	/**
+	 * Cargamos el mapa con casilleros vacios en la cantidad
+	 * de columnas indicadas
+	 * @param numColumnas
+	 */
 	public void crearCasillerosVacios(Integer numColumnas) {
 		Casillero casillero = null;
 		Posicion posicion = null;
@@ -110,6 +112,11 @@ public class Mapa {
 		}
 	}
 	
+	/**
+	 * Creamos los objetos de una determinada fila del archivo XML parseado
+	 * @param objetosDeUnaFila
+	 * @param y
+	 */
 	private void crearObjetosEnElMapa(String[] objetosDeUnaFila, Integer y) {
 		Integer coordenadaX = 0;
 		
@@ -185,10 +192,18 @@ public class Mapa {
 		}	
 	}
 	
-	 public Posicion getNuevaPosicion(Posicion posicionActual, Direccion direccion) throws FueraDelMapaException {
-		 Posicion posicion = null;
-		 switch (direccion) {
-	     	case ABAJO : {
+	/**
+	 * Entregamos una nueva posicion, partiendo de una direccion recibida.
+	 * Si la nueva posicion se encuentra fuera del mapa, se lanza una excepcion
+	 * @param posicionActual
+	 * @param direccion
+	 * @return
+	 * @throws FueraDelMapaException
+	 */
+	public Posicion getNuevaPosicion(Posicion posicionActual, Direccion direccion) throws FueraDelMapaException {
+		Posicion posicion = null;
+		switch (direccion) {
+	    	case ABAJO : {
 	            posicion = new Posicion(posicionActual.getPosX(), posicionActual.getPosY() - 1);
 	            break;
 	        }
@@ -209,12 +224,17 @@ public class Mapa {
 	        }
 	    }
 	    
-		 if (fueraDeRango(posicion)) {
-			 throw new FueraDelMapaException("Posicion fuera del mapa");
-	     }
-		 return posicion;
+		if (fueraDeRango(posicion)) {
+			throw new FueraDelMapaException("Posicion fuera del mapa");
+	    }
+		return posicion;
 	}
 
+	/**
+	 * Validamos que la posicion recibida sea una posicion valida para el mapa
+	 * @param posicion
+	 * @return
+	 */
 	private Boolean fueraDeRango(Posicion posicion) {
 		if( (posicion.getPosX() < 0) || ( posicion.getPosY() < 0 ))
 			return true;
@@ -234,6 +254,12 @@ public class Mapa {
 		return posicionBombita;
 	}
 
+	/**
+	 * Cuando guardamos la partida, es necesario saber la posicion
+	 * en donde queda bombita, para poder utilizarlo cuando se vuelva a
+	 * cargar la partida
+	 * @param posicionBombita
+	 */
 	public void setPosicionBombita(Posicion posicionBombita) {
 		this.posicionBombita = posicionBombita;
 	}

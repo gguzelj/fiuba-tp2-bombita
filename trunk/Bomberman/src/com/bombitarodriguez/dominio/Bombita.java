@@ -6,9 +6,7 @@ import com.bombitarodriguez.utils.Direccion;
 import com.bombitarodriguez.utils.Identificaciones;
 
 /**
- * 
  * @author Mauro
- * 
  */
 public class Bombita extends Personaje {
 
@@ -28,32 +26,33 @@ public class Bombita extends Personaje {
 	@Override
 	public Boolean reaccionarCon(Cecilio cecilio) {
 		this.quitarVida();
+		System.out.println("PERDI VIDA: Me quedan:" + this.vida);
 		return true;
 	}
 
 	@Override
 	public Boolean reaccionarCon(LopezReggae lopezReggae) {
 		this.quitarVida();
+		System.out.println("PERDI VIDA: Me quedan:" + this.vida);
 		return true;
 	}
 
 	@Override
 	public Boolean reaccionarCon(LopezReggaeAlado lopezReggaeAlado) {
 		this.quitarVida();
+		System.out.println("PERDI VIDA: Me quedan:" + this.vida);
 		return true;
 	}
 
 	@Override
 	public Boolean reaccionarCon(Explosion explosion) {
-		
-		this.destruirse();
 		this.quitarVida();
+		System.out.println("PERDI VIDA: Me quedan:" + this.vida);
 		return true;
 	}
 
 	public void quitarVida() {
 		vida -= 1;
-	
 	}
 
 	@Override
