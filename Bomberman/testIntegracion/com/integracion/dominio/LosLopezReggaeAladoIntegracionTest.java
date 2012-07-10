@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import com.bombitarodriguez.dominio.BloqueAcero;
 import com.bombitarodriguez.dominio.Casillero;
-import com.bombitarodriguez.dominio.LosLopezReggaeAlado;
+import com.bombitarodriguez.dominio.LopezReggaeAlado;
 import com.bombitarodriguez.dominio.Mapa;
 import com.bombitarodriguez.dominio.Posicion;
 import com.bombitarodriguez.utils.Direccion;
@@ -16,13 +16,13 @@ public class LosLopezReggaeAladoIntegracionTest {
 
 	Posicion posicionInicial; 	
 	Casillero casilleroInicial;
-	LosLopezReggaeAlado lopezReggaeAlado;
+	LopezReggaeAlado lopezReggaeAlado;
 	
 	@Before
 	public void setUp(){
 		posicionInicial = new Posicion(1, 1);
 		casilleroInicial = new Casillero(posicionInicial);
-		lopezReggaeAlado = new LosLopezReggaeAlado();
+		lopezReggaeAlado = new LopezReggaeAlado();
 		casilleroInicial.agregarObjeto(lopezReggaeAlado);
 		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
 	}	

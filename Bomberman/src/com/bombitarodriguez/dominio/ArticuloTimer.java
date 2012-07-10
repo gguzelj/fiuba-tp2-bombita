@@ -28,16 +28,16 @@ public class ArticuloTimer extends Articulo {
 	}
 
 	@Override
-	public Boolean reaccionarCon(LosLopezReggae losLopezReggae) {
- 		losLopezReggae.getFactoryArma().setRetardo(aplicarRetardo(losLopezReggae));
+	public Boolean reaccionarCon(LopezReggae lopezReggae) {
+ 		lopezReggae.getFactoryArma().setRetardo(aplicarRetardo(lopezReggae));
 		casillero.quitarObjeto(this);
 		Mapa.objetoParaBorrar(this);
 		return true;
 	}
 
 	@Override
-	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado) {
-		losLopezReggaeAlado.getFactoryArma().setRetardo(aplicarRetardo(losLopezReggaeAlado));
+	public Boolean reaccionarCon(LopezReggaeAlado lopezReggaeAlado) {
+		lopezReggaeAlado.getFactoryArma().setRetardo(aplicarRetardo(lopezReggaeAlado));
 		casillero.quitarObjeto(this);
 		Mapa.objetoParaBorrar(this);
 		return true;

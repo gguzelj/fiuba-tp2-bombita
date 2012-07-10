@@ -28,16 +28,16 @@ public class ArticuloToleTole extends Articulo {
 	}
 
 	@Override
-	public Boolean reaccionarCon(LosLopezReggae losLopezReggae) {
-		losLopezReggae.setFactoryArma(new FactoryToleTole());
+	public Boolean reaccionarCon(LopezReggae lopezReggae) {
+		lopezReggae.setFactoryArma(new FactoryToleTole());
 		this.getCasillero().quitarObjeto(this);
 		Mapa.objetoParaBorrar(this);
 		return true;
 	}
 
 	@Override
-	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado) {
-		losLopezReggaeAlado.setFactoryArma(new FactoryToleTole());
+	public Boolean reaccionarCon(LopezReggaeAlado lopezReggaeAlado) {
+		lopezReggaeAlado.setFactoryArma(new FactoryToleTole());
 		this.getCasillero().quitarObjeto(this);
 		Mapa.objetoParaBorrar(this);
 		return true;

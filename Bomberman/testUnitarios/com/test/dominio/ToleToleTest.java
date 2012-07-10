@@ -23,12 +23,12 @@ public class ToleToleTest {
 	
 	@Test
 	public void testReaccionarConLopezReggae(){
-		assertFalse(new ToleTole().reaccionarCon(new LosLopezReggae()));
+		assertFalse(new ToleTole().reaccionarCon(new LopezReggae()));
 	}
 	
 	@Test
 	public void testReaccionarConLopezReggaeAlado(){
-		assertFalse(new ToleTole().reaccionarCon(new LosLopezReggaeAlado()));
+		assertFalse(new ToleTole().reaccionarCon(new LopezReggaeAlado()));
 	}
 	
 	@Test

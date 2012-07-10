@@ -29,16 +29,16 @@ public class ArticuloChala extends Articulo {
 	}
 
 	@Override
-	public Boolean reaccionarCon(LosLopezReggae losLopezReggae) {
-		losLopezReggae.setVelocidad(Constante.VELOCIDAD_CORRE);
+	public Boolean reaccionarCon(LopezReggae lopezReggae) {
+		lopezReggae.setVelocidad(Constante.VELOCIDAD_CORRE);
 		casillero.quitarObjeto(this);
 		Mapa.objetoParaBorrar(this);
 		return true;
 	}
 
 	@Override
-	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado) {
-		losLopezReggaeAlado.setVelocidad(Constante.VELOCIDAD_CORRE);
+	public Boolean reaccionarCon(LopezReggaeAlado lopezReggaeAlado) {
+		lopezReggaeAlado.setVelocidad(Constante.VELOCIDAD_CORRE);
 		casillero.quitarObjeto(this);
 		Mapa.objetoParaBorrar(this);
 		return true;

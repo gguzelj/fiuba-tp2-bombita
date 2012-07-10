@@ -13,8 +13,8 @@ import com.bombitarodriguez.dominio.Casillero;
 import com.bombitarodriguez.dominio.Cecilio;
 import com.bombitarodriguez.dominio.ArticuloChala;
 import com.bombitarodriguez.dominio.Explosion;
-import com.bombitarodriguez.dominio.LosLopezReggae;
-import com.bombitarodriguez.dominio.LosLopezReggaeAlado;
+import com.bombitarodriguez.dominio.LopezReggae;
+import com.bombitarodriguez.dominio.LopezReggaeAlado;
 import com.bombitarodriguez.dominio.Posicion;
 import com.bombitarodriguez.dominio.Proyectil;
 import com.bombitarodriguez.dominio.ArticuloTimer;
@@ -80,13 +80,13 @@ public class AnimacionNivel implements ObjetoVivo, Posicionable, ObjetoReacciona
 	}
 
 	@Override
-	public Boolean reaccionarCon(LosLopezReggae losLopezReggae) {
+	public Boolean reaccionarCon(LopezReggae lopezReggae) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado) {
+	public Boolean reaccionarCon(LopezReggaeAlado lopezReggaeAlado) {
 		// TODO Auto-generated method stub
 		return null;
 	}

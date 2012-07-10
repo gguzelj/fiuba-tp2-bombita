@@ -33,7 +33,7 @@ public class BombitaTest {
 	public void testReaccionarConLopezReggae(){
 		Integer vida = new Integer(3);
 		Bombita bombita = new Bombita(vida);
-		assertTrue(bombita.reaccionarCon(new LosLopezReggae()));
+		assertTrue(bombita.reaccionarCon(new LopezReggae()));
 		assertTrue(bombita.getVida() == 2);
 	}
 	
@@ -41,7 +41,7 @@ public class BombitaTest {
 	public void testReaccionarConLopezReggaeAlado(){
 		Integer vida = new Integer(3);
 		Bombita bombita = new Bombita(vida);
-		assertTrue(bombita.reaccionarCon(new LosLopezReggaeAlado()));
+		assertTrue(bombita.reaccionarCon(new LopezReggaeAlado()));
 		assertTrue(bombita.getVida() == 2);
 	}
 	

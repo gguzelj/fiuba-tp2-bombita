@@ -42,27 +42,27 @@ public class ArticuloToleToleTest {
 
 	@Test
 	public void testReaccionarConLopezReggae() {
-		LosLopezReggae losLopezReggae = new LosLopezReggae();
+		LopezReggae lopezReggae = new LopezReggae();
 		Casillero casillero = new Casillero(new Posicion(1,1));
 		ArticuloToleTole articuloToleTole = new ArticuloToleTole();
 		
 		casillero.agregarObjeto(articuloToleTole);
-		assertTrue(articuloToleTole.reaccionarCon(losLopezReggae));
+		assertTrue(articuloToleTole.reaccionarCon(lopezReggae));
 		
 		assertTrue(articuloToleTole.getCasillero() == null);
 	}
 
 	@Test
 	public void testReaccionarConLopezReggaeAlado() {
-		LosLopezReggaeAlado losLopezReggaeAlado = new LosLopezReggaeAlado();
+		LopezReggaeAlado lopezReggaeAlado = new LopezReggaeAlado();
 		FactoryArma factory;
 		Casillero casillero = new Casillero(new Posicion(1,1));
 		ArticuloToleTole articuloToleTole = new ArticuloToleTole();
 		
 		casillero.agregarObjeto(articuloToleTole);
-		assertTrue(articuloToleTole.reaccionarCon(losLopezReggaeAlado));
+		assertTrue(articuloToleTole.reaccionarCon(lopezReggaeAlado));
 		
-		factory = losLopezReggaeAlado.getFactoryArma();
+		factory = lopezReggaeAlado.getFactoryArma();
 		assertTrue(factory instanceof FactoryToleTole);
 		assertTrue(articuloToleTole.getCasillero() == null);
 	}

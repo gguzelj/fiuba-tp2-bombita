@@ -13,8 +13,8 @@ import com.bombitarodriguez.dominio.Casillero;
 import com.bombitarodriguez.dominio.Cecilio;
 import com.bombitarodriguez.dominio.ArticuloChala;
 import com.bombitarodriguez.dominio.Explosion;
-import com.bombitarodriguez.dominio.LosLopezReggae;
-import com.bombitarodriguez.dominio.LosLopezReggaeAlado;
+import com.bombitarodriguez.dominio.LopezReggae;
+import com.bombitarodriguez.dominio.LopezReggaeAlado;
 import com.bombitarodriguez.dominio.Molotov;
 import com.bombitarodriguez.dominio.Posicion;
 import com.bombitarodriguez.dominio.Proyectil;
@@ -38,12 +38,12 @@ public class BloqueAceroTest {
 
 	@Test
 	public void testReaccionarConLopezReggae() {
-		assertFalse(new BloqueAcero().reaccionarCon(new LosLopezReggae()));
+		assertFalse(new BloqueAcero().reaccionarCon(new LopezReggae()));
 	}
 
 	@Test
 	public void testReaccionarConLopezReggaeAlado() {
-		assertFalse(new BloqueAcero().reaccionarCon(new LosLopezReggaeAlado()));
+		assertFalse(new BloqueAcero().reaccionarCon(new LopezReggaeAlado()));
 	}
 
 	@Test
