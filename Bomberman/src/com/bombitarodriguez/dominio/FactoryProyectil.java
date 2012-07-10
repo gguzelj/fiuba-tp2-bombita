@@ -19,7 +19,6 @@ public class FactoryProyectil extends FactoryArma {
 
 	@Override
 	public Arma instanciarArma() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

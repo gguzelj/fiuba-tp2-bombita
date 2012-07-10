@@ -19,7 +19,6 @@ public class PathFile {
 			try {
 				return directorio.getCanonicalPath();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				return null;
 			}
@@ -41,7 +40,6 @@ public class PathFile {
 			}
 			return sb.toString();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
