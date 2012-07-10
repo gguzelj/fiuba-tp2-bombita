@@ -23,12 +23,12 @@ public class BloqueLadrilloTest {
 
 	@Test
 	public void testReaccionarConLopezReggae() {
-		assertFalse(new BloqueLadrillo().reaccionarCon(new LosLopezReggae()));
+		assertFalse(new BloqueLadrillo().reaccionarCon(new LopezReggae()));
 	}
 
 	@Test
 	public void testReaccionarConLopezReggaeAlado() {
-		assertFalse(new BloqueLadrillo().reaccionarCon(new LosLopezReggaeAlado()));
+		assertFalse(new BloqueLadrillo().reaccionarCon(new LopezReggaeAlado()));
 	}
 
 	@Test

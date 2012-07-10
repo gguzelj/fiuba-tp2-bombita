@@ -119,12 +119,12 @@ public abstract class Personaje extends Objeto implements Armado, StrategyMovimi
 				this.moverseConEstrategia(Direccion.ABAJO);
 				break;
 			case 5:		
-				Integer randomBomba = new Random().nextInt(10);
-				if (randomBomba == 3) {
+//				Integer randomBomba = new Random().nextInt(10);
+//				if (randomBomba == 3) {
 				Arma arma = this.usarArma();
 				if(arma != null)
 					Mapa.objetoParaAgregar(arma);
-				}
+//				}
 				break;
 				}
 			}

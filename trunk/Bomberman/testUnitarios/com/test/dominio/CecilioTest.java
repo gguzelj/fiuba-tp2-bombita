@@ -27,13 +27,13 @@ public class CecilioTest {
 	@Test
 	public void testReaccionarConLopezReggae(){
 		Cecilio cecilio = new Cecilio();
-		assertFalse(cecilio.reaccionarCon(new LosLopezReggae()));
+		assertFalse(cecilio.reaccionarCon(new LopezReggae()));
 	}
 	
 	@Test
 	public void testReaccionarConLopezReggaeAlado(){
 		Cecilio cecilio = new Cecilio();
-		assertFalse(cecilio.reaccionarCon(new LosLopezReggaeAlado()));
+		assertFalse(cecilio.reaccionarCon(new LopezReggaeAlado()));
 	}
 	
 	@Test

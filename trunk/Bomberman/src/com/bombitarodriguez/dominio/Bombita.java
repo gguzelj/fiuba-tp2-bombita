@@ -32,13 +32,13 @@ public class Bombita extends Personaje {
 	}
 
 	@Override
-	public Boolean reaccionarCon(LosLopezReggae losLopezReggae) {
+	public Boolean reaccionarCon(LopezReggae lopezReggae) {
 		this.quitarVida();
 		return true;
 	}
 
 	@Override
-	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado) {
+	public Boolean reaccionarCon(LopezReggaeAlado lopezReggaeAlado) {
 		this.quitarVida();
 		return true;
 	}
@@ -65,7 +65,6 @@ public class Bombita extends Personaje {
 		Arma armaInstanciada = factoryArma.getArmaInstanciada();
 		getCasillero().agregarObjeto(armaInstanciada);
 		return armaInstanciada;
-
 	}
 
 	@Override

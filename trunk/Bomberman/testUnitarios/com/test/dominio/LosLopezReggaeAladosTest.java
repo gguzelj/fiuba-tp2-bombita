@@ -11,13 +11,13 @@ public class LosLopezReggaeAladosTest {
 
 	Posicion posicionInicial; 	
 	Casillero casilleroInicial;
-	LosLopezReggaeAlado lopezReggaeAlado;
+	LopezReggaeAlado lopezReggaeAlado;
 	
 	@Before
 	public void setUp(){
 		posicionInicial = new Posicion(1, 1);
 		casilleroInicial = new Casillero(posicionInicial);
-		lopezReggaeAlado = new LosLopezReggaeAlado();
+		lopezReggaeAlado = new LopezReggaeAlado();
 		casilleroInicial.agregarObjeto(lopezReggaeAlado);
 		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
 	}	

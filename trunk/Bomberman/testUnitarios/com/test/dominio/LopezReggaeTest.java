@@ -16,86 +16,86 @@ public class LopezReggaeTest {
 	public void testReaccionarConBombita(){
 		Integer vida = new Integer(3);
 		Bombita bombita = new Bombita(vida);
-		LosLopezReggae lopezReggae = new LosLopezReggae();
+		LopezReggae lopezReggae = new LopezReggae();
 		assertTrue(lopezReggae.reaccionarCon(bombita));
 		assertTrue(bombita.getVida() == 2);
 	}
 	
 	@Test
 	public void testReaccionarConCecilio(){
-		LosLopezReggae lopezReggae = new LosLopezReggae();
+		LopezReggae lopezReggae = new LopezReggae();
 		assertFalse(lopezReggae.reaccionarCon(new Cecilio()));
 	}
 	
 	@Test
 	public void testReaccionarConLopezReggae(){
-		LosLopezReggae lopezReggae = new LosLopezReggae();
-		assertFalse(lopezReggae.reaccionarCon(new LosLopezReggae()));
+		LopezReggae lopezReggae = new LopezReggae();
+		assertFalse(lopezReggae.reaccionarCon(new LopezReggae()));
 	}
 	
 	@Test
 	public void testReaccionarConLopezReggaeAlado(){
-		LosLopezReggae lopezReggae = new LosLopezReggae();
-		assertFalse(lopezReggae.reaccionarCon(new LosLopezReggaeAlado()));
+		LopezReggae lopezReggae = new LopezReggae();
+		assertFalse(lopezReggae.reaccionarCon(new LopezReggaeAlado()));
 	}
 	
 	@Test
 	public void testReaccionarConBloqueCemento(){
-		LosLopezReggae lopezReggae = new LosLopezReggae();
+		LopezReggae lopezReggae = new LopezReggae();
 		assertFalse(lopezReggae.reaccionarCon(new BloqueCemento()));
 	}
 	
 	@Test
 	public void testReaccionarConBloqueLadrillo(){
-		LosLopezReggae lopezReggae = new LosLopezReggae();
+		LopezReggae lopezReggae = new LopezReggae();
 		assertFalse(lopezReggae.reaccionarCon(new BloqueLadrillo()));
 	}
 	
 	@Test
 	public void testReaccionarConBloqueAcero(){
-		LosLopezReggae lopezReggae = new LosLopezReggae();
+		LopezReggae lopezReggae = new LopezReggae();
 		assertFalse(lopezReggae.reaccionarCon(new BloqueAcero()));
 	}
 	
 	@Test
 	public void testReaccionarConChala(){
-		LosLopezReggae lopezReggae = new LosLopezReggae();
+		LopezReggae lopezReggae = new LopezReggae();
 		assertFalse(lopezReggae.reaccionarCon(new ArticuloChala()));
 	}
 	
 	@Test
 	public void testReaccionarConArticuloToleTole(){
-		LosLopezReggae lopezReggae = new LosLopezReggae();
+		LopezReggae lopezReggae = new LopezReggae();
 		assertFalse(lopezReggae.reaccionarCon(new ArticuloToleTole()));
 	}
 	
 	@Test
 	public void testReaccionarConTimer(){
-		LosLopezReggae lopezReggae = new LosLopezReggae();
+		LopezReggae lopezReggae = new LopezReggae();
 		assertFalse(lopezReggae.reaccionarCon(new ArticuloTimer()));
 	}
 	
 	@Test
 	public void testReaccionarConBombaMolotov(){
-		LosLopezReggae lopezReggae = new LosLopezReggae();
+		LopezReggae lopezReggae = new LopezReggae();
 		assertFalse(lopezReggae.reaccionarCon(new Molotov()));
 	}
 	
 	@Test
 	public void testReaccionarConBombaToleTole(){
-		LosLopezReggae lopezReggae = new LosLopezReggae();
+		LopezReggae lopezReggae = new LopezReggae();
 		assertFalse(lopezReggae.reaccionarCon(new ToleTole()));
 	}
 	
 	@Test
 	public void testReaccionarConProyectil(){
-		LosLopezReggae lopezReggae = new LosLopezReggae();
+		LopezReggae lopezReggae = new LopezReggae();
 		assertFalse(lopezReggae.reaccionarCon(new Proyectil(Direccion.ARRIBA, new Posicion(1,1))));		
 	}
 	
 	@Test
 	public void testReaccionarConExplosion(){
-		LosLopezReggae lopezReggae = new LosLopezReggae();
+		LopezReggae lopezReggae = new LopezReggae();
 		Casillero casillero = new Casillero(new Posicion(1,1));
 		casillero.agregarObjeto(lopezReggae);
 		
@@ -106,7 +106,7 @@ public class LopezReggaeTest {
 	
 	@Test
 	public void testGetPosicion(){
-		LosLopezReggae lopezReggae = new LosLopezReggae();
+		LopezReggae lopezReggae = new LopezReggae();
 		Posicion posicion = new Posicion(1,1);
 		Casillero casillero = new Casillero(posicion);
 		
@@ -116,7 +116,7 @@ public class LopezReggaeTest {
 	
 	@Test
 	public void testUsarArma(){
-		LosLopezReggae lopezReggae = new LosLopezReggae();
+		LopezReggae lopezReggae = new LopezReggae();
 		Posicion posicion = new Posicion(1,1);
 		Casillero casillero = new Casillero(posicion);
 		

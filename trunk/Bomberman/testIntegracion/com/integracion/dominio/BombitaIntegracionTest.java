@@ -301,7 +301,7 @@ public class BombitaIntegracionTest {
 		Bombita bombita = new Bombita(vida);
 
 		casilleroInicial.agregarObjeto(bombita);
-		casilleroFinal.agregarObjeto(new LosLopezReggae());
+		casilleroFinal.agregarObjeto(new LopezReggae());
 
 		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
@@ -326,7 +326,7 @@ public class BombitaIntegracionTest {
 		Bombita bombita = new Bombita(vida);
 
 		casilleroInicial.agregarObjeto(bombita);
-		casilleroFinal.agregarObjeto(new LosLopezReggaeAlado());
+		casilleroFinal.agregarObjeto(new LopezReggaeAlado());
 
 		Mapa.getMapa().agregarCasillero(posicionInicial, casilleroInicial);
 		Mapa.getMapa().agregarCasillero(posicionFinal, casilleroFinal);
@@ -491,7 +491,7 @@ public class BombitaIntegracionTest {
 		// bombita
 		Posicion posicionFinal = new Posicion(1, 2);
 		Casillero casilleroFinal = new Casillero(posicionFinal);
-		LosLopezReggae lope = new LosLopezReggae();
+		LopezReggae lope = new LopezReggae();
 		casilleroFinal.agregarObjeto(lope);
 
 		// Agrego ambos Casilleros
@@ -516,7 +516,7 @@ public class BombitaIntegracionTest {
 		// bombita
 		Posicion posicionFinal = new Posicion(1, 2);
 		Casillero casilleroFinal = new Casillero(posicionFinal);
-		LosLopezReggaeAlado lopeAlado = new LosLopezReggaeAlado();
+		LopezReggaeAlado lopeAlado = new LopezReggaeAlado();
 		casilleroFinal.agregarObjeto(lopeAlado);
 
 		// Agrego ambos Casilleros
@@ -763,7 +763,7 @@ public class BombitaIntegracionTest {
 
 		Posicion posicionEnemigo = new Posicion(11, 10);
 		Casillero casilleroEnemigo = new Casillero(posicionEnemigo);
-		LosLopezReggae lopez = new LosLopezReggae();
+		LopezReggae lopez = new LopezReggae();
 		casilleroEnemigo.agregarObjeto(lopez);
 
 		Posicion posicionEnemigo2 = new Posicion(10, 8);
@@ -779,7 +779,7 @@ public class BombitaIntegracionTest {
 
 		arma.explotar();
 
-		LosLopezReggae enemigo = (LosLopezReggae) Mapa.getMapa()
+		LopezReggae enemigo = (LopezReggae) Mapa.getMapa()
 				.getCasillero(posicionEnemigo).getObjetos().get(0);
 		Integer tamanio = Mapa.getMapa().getCasillero(posicionEnemigo)
 				.getObjetos().size();

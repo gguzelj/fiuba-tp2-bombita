@@ -23,12 +23,12 @@ public class MolotovTest {
 	
 	@Test
 	public void testReaccionarConLopezReggae(){
-		assertFalse(new Molotov().reaccionarCon(new LosLopezReggae()));
+		assertFalse(new Molotov().reaccionarCon(new LopezReggae()));
 	}
 	
 	@Test
 	public void testReaccionarConLopezReggaeAlado(){
-		assertFalse(new Molotov().reaccionarCon(new LosLopezReggaeAlado()));
+		assertFalse(new Molotov().reaccionarCon(new LopezReggaeAlado()));
 	}
 	
 	@Test

@@ -91,11 +91,11 @@ public class MapaTest {
         
         casillero = Mapa.getMapa().getCasillero(new Posicion(4,1));
         assertTrue(casillero.getObjetos().size() == 1);
-        assertTrue(casillero.getObjetos().get(0) instanceof LosLopezReggae);
+        assertTrue(casillero.getObjetos().get(0) instanceof LopezReggae);
         
         casillero = Mapa.getMapa().getCasillero(new Posicion(5,1));
         assertTrue(casillero.getObjetos().size() == 1);
-        assertTrue(casillero.getObjetos().get(0) instanceof LosLopezReggaeAlado);
+        assertTrue(casillero.getObjetos().get(0) instanceof LopezReggaeAlado);
         
         casillero = Mapa.getMapa().getCasillero(new Posicion(6,1));
         assertTrue(casillero.getObjetos().size() == 0);

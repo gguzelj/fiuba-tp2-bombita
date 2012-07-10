@@ -45,13 +45,13 @@ public class Proyectil extends Arma {
 	}
 
 	@Override
-	public Boolean reaccionarCon(LosLopezReggae losLopezReggae) {
+	public Boolean reaccionarCon(LopezReggae lopezReggae) {
 		this.explotar();
 		return false;
 	}
 
 	@Override
-	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado) {
+	public Boolean reaccionarCon(LopezReggaeAlado lopezReggaeAlado) {
 		this.explotar();
 		return false;
 	}

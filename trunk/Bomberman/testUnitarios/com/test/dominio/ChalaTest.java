@@ -36,26 +36,26 @@ public class ChalaTest {
 
 	@Test
 	public void testReaccionarConLopezReggae() {
-		LosLopezReggae losLopezReggae = new LosLopezReggae();
+		LopezReggae lopezReggae = new LopezReggae();
 		Casillero casillero = new Casillero(new Posicion(1,1));
 		ArticuloChala chala = new ArticuloChala();
 		
 		casillero.agregarObjeto(chala);
-		assertTrue(chala.reaccionarCon(losLopezReggae));
+		assertTrue(chala.reaccionarCon(lopezReggae));
 		assertTrue(chala.getCasillero() == null);
-		assertTrue(losLopezReggae.getVelocidad() == Constante.VELOCIDAD_CORRE);
+		assertTrue(lopezReggae.getVelocidad() == Constante.VELOCIDAD_CORRE);
 	}
 
 	@Test
 	public void testReaccionarConLopezReggaeAlado() {
-		LosLopezReggaeAlado losLopezReggaeAlado = new LosLopezReggaeAlado();
+		LopezReggaeAlado lopezReggaeAlado = new LopezReggaeAlado();
 		Casillero casillero = new Casillero(new Posicion(1,1));
 		ArticuloChala chala = new ArticuloChala();
 		
 		casillero.agregarObjeto(chala);
-		assertTrue(chala.reaccionarCon(losLopezReggaeAlado));
+		assertTrue(chala.reaccionarCon(lopezReggaeAlado));
 		assertTrue(chala.getCasillero() == null);
-		assertTrue(losLopezReggaeAlado.getVelocidad() == Constante.VELOCIDAD_CORRE);
+		assertTrue(lopezReggaeAlado.getVelocidad() == Constante.VELOCIDAD_CORRE);
 	}
 
 	@Test

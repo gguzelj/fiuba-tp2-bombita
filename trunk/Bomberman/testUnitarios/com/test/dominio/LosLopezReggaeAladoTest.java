@@ -13,86 +13,86 @@ public class LosLopezReggaeAladoTest {
 	public void testReaccionarConBombita(){
 		Integer vida = new Integer(3);
 		Bombita bombita = new Bombita(vida);
-		LosLopezReggaeAlado lopezReggaeAlado = new LosLopezReggaeAlado();
+		LopezReggaeAlado lopezReggaeAlado = new LopezReggaeAlado();
 		assertTrue(lopezReggaeAlado.reaccionarCon(bombita));
 		assertTrue(bombita.getVida() == 2);
 	}
 	
 	@Test
 	public void testReaccionarConCecilio(){
-		LosLopezReggaeAlado lopezReggaeAlado = new LosLopezReggaeAlado();
+		LopezReggaeAlado lopezReggaeAlado = new LopezReggaeAlado();
 		assertFalse(lopezReggaeAlado.reaccionarCon(new Cecilio()));
 	}
 	
 	@Test
 	public void testReaccionarConlopezReggae(){
-		LosLopezReggaeAlado lopezReggaeAlado = new LosLopezReggaeAlado();
-		assertFalse(lopezReggaeAlado.reaccionarCon(new LosLopezReggae()));
+		LopezReggaeAlado lopezReggaeAlado = new LopezReggaeAlado();
+		assertFalse(lopezReggaeAlado.reaccionarCon(new LopezReggae()));
 	}
 	
 	@Test
 	public void testReaccionarConlopezReggaeAlado(){
-		LosLopezReggaeAlado lopezReggaeAlado = new LosLopezReggaeAlado();
-		assertFalse(lopezReggaeAlado.reaccionarCon(new LosLopezReggaeAlado()));
+		LopezReggaeAlado lopezReggaeAlado = new LopezReggaeAlado();
+		assertFalse(lopezReggaeAlado.reaccionarCon(new LopezReggaeAlado()));
 	}
 	
 	@Test
 	public void testReaccionarConBloqueCemento(){
-		LosLopezReggaeAlado lopezReggaeAlado = new LosLopezReggaeAlado();
+		LopezReggaeAlado lopezReggaeAlado = new LopezReggaeAlado();
 		assertFalse(lopezReggaeAlado.reaccionarCon(new BloqueCemento()));
 	}
 	
 	@Test
 	public void testReaccionarConBloqueLadrillo(){
-		LosLopezReggaeAlado lopezReggaeAlado = new LosLopezReggaeAlado();
+		LopezReggaeAlado lopezReggaeAlado = new LopezReggaeAlado();
 		assertFalse(lopezReggaeAlado.reaccionarCon(new BloqueLadrillo()));
 	}
 	
 	@Test
 	public void testReaccionarConBloqueAcero(){
-		LosLopezReggaeAlado lopezReggaeAlado = new LosLopezReggaeAlado();
+		LopezReggaeAlado lopezReggaeAlado = new LopezReggaeAlado();
 		assertFalse(lopezReggaeAlado.reaccionarCon(new BloqueAcero()));
 	}
 	
 	@Test
 	public void testReaccionarConChala(){
-		LosLopezReggaeAlado lopezReggaeAlado = new LosLopezReggaeAlado();
+		LopezReggaeAlado lopezReggaeAlado = new LopezReggaeAlado();
 		assertFalse(lopezReggaeAlado.reaccionarCon(new ArticuloChala()));
 	}
 	
 	@Test
 	public void testReaccionarConArticuloToleTole(){
-		LosLopezReggaeAlado lopezReggaeAlado = new LosLopezReggaeAlado();
+		LopezReggaeAlado lopezReggaeAlado = new LopezReggaeAlado();
 		assertFalse(lopezReggaeAlado.reaccionarCon(new ArticuloToleTole()));
 	}
 	
 	@Test
 	public void testReaccionarConTimer(){
-		LosLopezReggaeAlado lopezReggaeAlado = new LosLopezReggaeAlado();
+		LopezReggaeAlado lopezReggaeAlado = new LopezReggaeAlado();
 		assertFalse(lopezReggaeAlado.reaccionarCon(new ArticuloTimer()));
 	}
 	
 	@Test
 	public void testReaccionarConBombaMolotov(){
-		LosLopezReggaeAlado lopezReggaeAlado = new LosLopezReggaeAlado();
+		LopezReggaeAlado lopezReggaeAlado = new LopezReggaeAlado();
 		assertFalse(lopezReggaeAlado.reaccionarCon(new Molotov()));
 	}
 	
 	@Test
 	public void testReaccionarConBombaToleTole(){
-		LosLopezReggaeAlado lopezReggaeAlado = new LosLopezReggaeAlado();
+		LopezReggaeAlado lopezReggaeAlado = new LopezReggaeAlado();
 		assertFalse(lopezReggaeAlado.reaccionarCon(new ToleTole()));
 	}
 	
 	@Test
 	public void testReaccionarConProyectil(){
-		LosLopezReggaeAlado lopezReggaeAlado = new LosLopezReggaeAlado();
+		LopezReggaeAlado lopezReggaeAlado = new LopezReggaeAlado();
 		assertFalse(lopezReggaeAlado.reaccionarCon(new Proyectil(Direccion.ARRIBA, new Posicion(1,1))));		
 	}
 	
 	@Test
 	public void testReaccionarConExplosion(){
-		LosLopezReggaeAlado lopezReggaeAlado = new LosLopezReggaeAlado();
+		LopezReggaeAlado lopezReggaeAlado = new LopezReggaeAlado();
 		Casillero casillero = new Casillero(new Posicion(1,1));
 		casillero.agregarObjeto(lopezReggaeAlado);
 		
@@ -103,7 +103,7 @@ public class LosLopezReggaeAladoTest {
 	
 	@Test
 	public void testGetPosicion(){
-		LosLopezReggaeAlado lopezReggaeAlado = new LosLopezReggaeAlado();
+		LopezReggaeAlado lopezReggaeAlado = new LopezReggaeAlado();
 		Posicion posicion = new Posicion(1,1);
 		Casillero casillero = new Casillero(posicion);
 		
@@ -113,7 +113,7 @@ public class LosLopezReggaeAladoTest {
 	
 	@Test
 	public void testUsarArma(){
-		LosLopezReggaeAlado lopezReggaeAlado = new LosLopezReggaeAlado();
+		LopezReggaeAlado lopezReggaeAlado = new LopezReggaeAlado();
 		Posicion posicion = new Posicion(1,1);
 		Casillero casillero = new Casillero(posicion);
 		

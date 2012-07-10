@@ -42,14 +42,14 @@ public class Explosion extends Objeto{
 	}
 
 	@Override
-	public Boolean reaccionarCon(LosLopezReggae losLopezReggae) {
-		losLopezReggae.reaccionarCon(this);
+	public Boolean reaccionarCon(LopezReggae lopezReggae) {
+		lopezReggae.reaccionarCon(this);
 		return false;
 	}
 
 	@Override
-	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado) {
-		losLopezReggaeAlado.reaccionarCon(this);
+	public Boolean reaccionarCon(LopezReggaeAlado lopezReggaeAlado) {
+		lopezReggaeAlado.reaccionarCon(this);
 		return false;
 	}
 

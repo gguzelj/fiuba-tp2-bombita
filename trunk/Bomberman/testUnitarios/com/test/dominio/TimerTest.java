@@ -39,7 +39,7 @@ public class TimerTest {
 
 	@Test
 	public void testReaccionarConLopezReggae() {
-		LosLopezReggae lopezReggae = new LosLopezReggae();
+		LopezReggae lopezReggae = new LopezReggae();
 		Casillero casillero = new Casillero(new Posicion(1,1)); 
 		ArticuloTimer timer = new ArticuloTimer();
 		
@@ -52,7 +52,7 @@ public class TimerTest {
 
 	@Test
 	public void testReaccionarConLopezReggaeAlado() {
-		LosLopezReggaeAlado lopezReggaeAlado = new LosLopezReggaeAlado();
+		LopezReggaeAlado lopezReggaeAlado = new LopezReggaeAlado();
 		Casillero casillero = new Casillero(new Posicion(1,1)); 
 		ArticuloTimer timer = new ArticuloTimer();
 		

@@ -119,11 +119,11 @@ public class Mapa {
 			switch(IdObjeto) {
 			case Identificaciones.lopezReggaeAlado:  
 				casillero = getCasillero(new Posicion(++ coordenadaX,y));
-				casillero.agregarObjeto(new LosLopezReggaeAlado());
+				casillero.agregarObjeto(new LopezReggaeAlado());
 				break;
 			case Identificaciones.lopezReggae:  
 				casillero = getCasillero(new Posicion(++ coordenadaX,y));
-				casillero.agregarObjeto(new LosLopezReggae());
+				casillero.agregarObjeto(new LopezReggae());
 				break;
 			case Identificaciones.cecilio:  
 				casillero = getCasillero(new Posicion(++ coordenadaX,y));

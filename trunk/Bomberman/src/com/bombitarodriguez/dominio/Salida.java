@@ -22,11 +22,11 @@ public class Salida extends Objeto{
 		return true;
 	}
 	@Override
-	public Boolean reaccionarCon(LosLopezReggae losLopezReggae){
+	public Boolean reaccionarCon(LopezReggae lopezReggae){
 		return true;
 	}
 	@Override
-	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado){
+	public Boolean reaccionarCon(LopezReggaeAlado lopezReggaeAlado){
 		return true;
 	}
 

@@ -11,9 +11,9 @@ import com.bombitarodriguez.utils.Identificaciones;
 /**
  * @author Mauro
  */
-public class LosLopezReggaeAlado extends Personaje {
+public class LopezReggaeAlado extends Personaje {
 	
-	public LosLopezReggaeAlado() {
+	public LopezReggaeAlado() {
 		this.resistencia = Constante.RESISTENCIA_LOSLOPEZREGGAE_ALADO;
 		this.velocidad = Constante.VELOCIDAD_CAMINA;
 		this.factoryArma = new FactoryMolotov();

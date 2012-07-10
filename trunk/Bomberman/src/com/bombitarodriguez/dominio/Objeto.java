@@ -18,6 +18,11 @@ import com.bombitarodriguez.utils.Transformacion;
  * 
  * ObjetoReaccionable: Porque cada objeto del mapa tiene que poder reaccionar ante
  * cualquier otro objeto.
+ * 
+ * ObjetoVivo: Porque los objetos del juego deben vivir para poder integrarse 
+ * al gameloop del titiritero
+ * 
+ * Posicionable: Porque cada ObjetoVivo debe ser posicionable
  */
 public abstract class Objeto implements ObjetoReaccionable, Identificable ,Posicionable, ObjetoVivo {
 	
@@ -100,7 +105,7 @@ public abstract class Objeto implements ObjetoReaccionable, Identificable ,Posic
 	 * Metodo de interfaz ObjetoReaccionable
 	 */
 	@Override
-	public Boolean reaccionarCon(LosLopezReggae losLopezReggae) {
+	public Boolean reaccionarCon(LopezReggae lopezReggae) {
 		return false;
 	}
 
@@ -108,7 +113,7 @@ public abstract class Objeto implements ObjetoReaccionable, Identificable ,Posic
 	 * Metodo de interfaz ObjetoReaccionable
 	 */
 	@Override
-	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado) {
+	public Boolean reaccionarCon(LopezReggaeAlado lopezReggaeAlado) {
 		return false;
 	}
 

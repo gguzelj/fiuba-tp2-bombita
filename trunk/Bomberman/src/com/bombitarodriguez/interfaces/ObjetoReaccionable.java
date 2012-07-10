@@ -12,9 +12,9 @@ public interface ObjetoReaccionable{
 	
 	public Boolean reaccionarCon(Cecilio cecilio);
 	
-	public Boolean reaccionarCon(LosLopezReggae losLopezReggae);
+	public Boolean reaccionarCon(LopezReggae lopezReggae);
 	
-	public Boolean reaccionarCon(LosLopezReggaeAlado losLopezReggaeAlado);
+	public Boolean reaccionarCon(LopezReggaeAlado lopezReggaeAlado);
 	
 	public Boolean reaccionarCon(BloqueCemento bloqueCemento);
 	

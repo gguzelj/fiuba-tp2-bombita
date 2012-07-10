@@ -41,7 +41,7 @@ public class ProyectilTest {
 		
 		casillero.agregarObjeto(proyectil);
 		
-		assertFalse(proyectil.reaccionarCon(new LosLopezReggae()));
+		assertFalse(proyectil.reaccionarCon(new LopezReggae()));
 		assertFalse(casillero.getObjetos().isEmpty());
 	}
 	
@@ -52,7 +52,7 @@ public class ProyectilTest {
 		
 		casillero.agregarObjeto(proyectil);
 		
-		assertFalse(proyectil.reaccionarCon(new LosLopezReggaeAlado()));
+		assertFalse(proyectil.reaccionarCon(new LopezReggaeAlado()));
 		assertFalse(casillero.getObjetos().isEmpty());
 	}
 	

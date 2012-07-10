@@ -8,12 +8,12 @@ import com.bombitarodriguez.utils.Identificaciones;
 /**
  * @author Mauro
  */
-public class LosLopezReggae extends Personaje {
+public class LopezReggae extends Personaje {
 		
 	private Direccion ultimaDireccion;
 	private FactoryProyectil factoryArma; 
 	
-	public LosLopezReggae() {
+	public LopezReggae() {
 		this.resistencia = Constante.RESISTENCIA_LOSLOPEZREGGAE;
 		this.velocidad = Constante.VELOCIDAD_CORRE;
 		this.factoryArma = new FactoryProyectil();
@@ -27,6 +27,7 @@ public class LosLopezReggae extends Personaje {
 		
 		if(proyectil != null){
 			getCasillero().agregarObjeto(proyectil);
+			return proyectil;
 		}
 		
 		return null;
