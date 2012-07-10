@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+
+<mapa nombre="1.mapa" dimension="10">   
+<!-- 
+  -1 cecilio
+        -2 losLopezReggae
+        -3 losLopezReggaeAlado
+        0 casillero vacio
+        1 bombita
+        2 bloque ladrillo
+        3 bloqueCemento
+        4 bloqueAcero
+        21 chala dentro de bloqueLadrillo
+        22 timer dentro de bloqueLadrillo
+        23 toletole dentro de bloqueLadrillo
+        24 salida dentro de bloqueLadrillo
+        31 chala dentro de bloqueCemento
+        32 timer dentro de bloqueCemento
+        33 toletole dentro de bloqueCemento
+        34  salida dentro de bloqueCemento
+        -->
+        
+    <casillero>
+        <row1>1 0 23 2 2 2 22 0 -1 4</row1>
+        <row2>34 0 3 0 2 0 21 0 0 4</row2>
+        <row3>22 2 3 3 3 0 23 0 2 4</row3>
+        <row4>0 2 4 4 4 4 4 4 4 4</row4>
+        <row5>23 2 4 3 3 3 3 3 3 3</row5>
+        <row6>0 2 4 3 0 0 0 0 0 0</row6>
+        <row7>3 2 4 3 0 0 0 0 0 0</row7>
+        <row8>0 2 4 3 0 0 0 0 0 0</row8>
+        <row9>0 3 4 3 0 0 0 -2 0 0</row9>
+        <row10>4 3 4 3 0 0 0 0 0 0</row10>
+    </casillero>
+
+</mapa>
