@@ -3,9 +3,11 @@ package com.bombitarodriguez.dominio;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import ar.uba.fi.algo3.titiritero.Direccion;
+
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.utils.Constante;
-import com.bombitarodriguez.utils.Direccion;
 import com.bombitarodriguez.utils.Identificaciones;
 
 /**

@@ -1,5 +1,7 @@
 package com.bombitarodriguez.menues.pantallas;
 
+import ar.uba.fi.algo3.titiritero.Direccion;
+
 import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.controller.menues.pantallas.ControladorPantallaPartida;
 import com.bombitarodriguez.vista.VentanaPrincipal;
@@ -45,4 +47,8 @@ public class PantallaPartida extends Pantalla {
 		this.getVentanaPrincipal().getJuego().siguienteNivel(nivelDelJuego);
 	}
 
+	@Override
+	public Direccion getDireccion() {
+		return null;
+	}
 }

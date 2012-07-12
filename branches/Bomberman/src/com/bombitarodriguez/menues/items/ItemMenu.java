@@ -3,6 +3,8 @@ package com.bombitarodriguez.menues.items;
 
 import com.bombitarodriguez.menues.Menu;
 import com.bombitarodriguez.vista.factory.menues.items.VistaItem;
+
+import ar.uba.fi.algo3.titiritero.Direccion;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 
 public abstract class ItemMenu implements Posicionable{
@@ -48,6 +50,11 @@ public abstract class ItemMenu implements Posicionable{
 	
 	public Menu getMenuPadre(){
 		return this.menuPadre;
+	}
+	
+	@Override
+	public Direccion getDireccion() {
+		return null;
 	}
 	
 	public abstract void seleccionar();

@@ -1,6 +1,6 @@
 package com.bombitarodriguez.interfaces;
 
-import com.bombitarodriguez.utils.Direccion;
+import ar.uba.fi.algo3.titiritero.Direccion;
 
 public interface StrategyMovimiento {
 	

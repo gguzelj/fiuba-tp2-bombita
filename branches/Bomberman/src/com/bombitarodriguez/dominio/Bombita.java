@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import ar.uba.fi.algo3.titiritero.Direccion;
+
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.utils.Constante;
-import com.bombitarodriguez.utils.Direccion;
 import com.bombitarodriguez.utils.Identificaciones;
 
 /**
@@ -186,7 +187,11 @@ public class Bombita extends Personaje {
 		return direccionAMover;
 	}
 
-
+	@Override
+	public Direccion getDireccion(){
+		return direccionAMover;
+	}
+	
 	public Integer getVida() {
 		return vida;
 	}

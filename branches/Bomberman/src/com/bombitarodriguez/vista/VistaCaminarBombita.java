@@ -5,12 +5,10 @@ import java.awt.Graphics;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 import java.awt.image.BufferedImage;
 
-import com.bombitarodriguez.dominio.Bombita;
-import com.bombitarodriguez.dominio.Juego;
-import com.bombitarodriguez.utils.Direccion;
 import com.bombitarodriguez.utils.ImageUtils;
 import com.bombitarodriguez.utils.PathFile;
 
+import ar.uba.fi.algo3.titiritero.Direccion;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 import ar.uba.fi.algo3.titiritero.SuperficieDeDibujo;
 
@@ -21,12 +19,10 @@ public class VistaCaminarBombita extends Imagen {
 	private int paso = 0;
 	private Direccion direccionAMover = null;
 	private Posicionable posicionable;
-	private Bombita bombita;
 
 	public VistaCaminarBombita() {
 		BufferedImage imgFromResources = ImageUtils.loadImage(PathFile.getPathActual() + "/resources/caminarBombita.png");
 		// TODO Esta bien que la vista conozca a bombita?
-		bombita = Juego.obtenerBombita();
 		splitImage = ImageUtils.splitImage(ImageUtils.makeColorTransparent(imgFromResources, new Color(0, 115, 0)), 4, 4);
 	}
 
@@ -35,9 +31,9 @@ public class VistaCaminarBombita extends Imagen {
 
 		Graphics grafico = (Graphics) superficeDeDibujo.getBuffer();
 
-		if (bombita.getDireccionAMover() != null) {
+		if (this.posicionable.getDireccion() != null) {
 
-			switch (bombita.getDireccionAMover()) {
+			switch (this.posicionable.getDireccion()) {
 			case ARRIBA:
 				setImagenArriba(paso);
 				break;

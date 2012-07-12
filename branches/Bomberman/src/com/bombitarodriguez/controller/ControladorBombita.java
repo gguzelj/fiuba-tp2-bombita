@@ -2,10 +2,10 @@ package com.bombitarodriguez.controller;
 
 import java.awt.event.KeyEvent;
 
+import ar.uba.fi.algo3.titiritero.Direccion;
 import ar.uba.fi.algo3.titiritero.KeyPressedObservador;
 
 import com.bombitarodriguez.dominio.Bombita;
-import com.bombitarodriguez.utils.Direccion;
 
 public class ControladorBombita implements KeyPressedObservador{
 
@@ -42,9 +42,5 @@ public class ControladorBombita implements KeyPressedObservador{
 			default:
 				break;
 		}
-	}
-
-	@Override
-	public void keyRelease(KeyEvent arg0) {
 	}
 }

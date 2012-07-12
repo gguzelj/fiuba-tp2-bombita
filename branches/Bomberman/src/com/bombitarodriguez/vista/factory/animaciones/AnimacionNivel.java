@@ -22,6 +22,7 @@ import com.bombitarodriguez.interfaces.ObjetoReaccionable;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.PathFile;
 
+import ar.uba.fi.algo3.titiritero.Direccion;
 import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
@@ -141,6 +142,12 @@ public class AnimacionNivel implements ObjetoVivo, Posicionable, ObjetoReacciona
 
 	@Override
 	public Boolean reaccionarCon(Explosion explosion) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Direccion getDireccion() {
 		// TODO Auto-generated method stub
 		return null;
 	}

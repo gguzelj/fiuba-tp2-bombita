@@ -1,5 +1,6 @@
 package com.bombitarodriguez.dominio;
 
+import ar.uba.fi.algo3.titiritero.Direccion;
 import ar.uba.fi.algo3.titiritero.ObjetoVivo;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 
@@ -30,6 +31,11 @@ public abstract class Objeto implements ObjetoReaccionable, Identificable ,Posic
 	protected Casillero casillero;
 	protected Integer posX;
 	protected Integer posY;
+	
+	@Override
+	public Direccion getDireccion(){
+		return null;
+	}
 	
 	public Casillero getCasillero() {
 		return casillero;
