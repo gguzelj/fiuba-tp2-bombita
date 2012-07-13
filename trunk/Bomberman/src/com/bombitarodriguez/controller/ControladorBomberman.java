@@ -45,6 +45,7 @@ public class ControladorBomberman extends ControladorJuego {
 				}
 
 				dibujar();
+				
 				controlarPartida();
 
 				Thread.sleep(100);

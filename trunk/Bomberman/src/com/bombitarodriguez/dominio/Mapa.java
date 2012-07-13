@@ -7,10 +7,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 
+import ar.uba.fi.algo3.titiritero.Direccion;
+
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.persistencia.PersistenciaPartidaXML;
 import com.bombitarodriguez.utils.Constante;
-import com.bombitarodriguez.utils.Direccion;
 import com.bombitarodriguez.utils.Identificaciones;
 import com.bombitarodriguez.utils.Parser;
 

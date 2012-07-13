@@ -35,10 +35,6 @@ public class ControladorPantallaPartida implements KeyPressedObservador {
                 }
         }
 
-        @Override
-        public void keyRelease(KeyEvent arg0) {
-        }
-        
         public void setControladorBombita(ControladorBombita controladorBombita) {
 			this.controladorBombita = controladorBombita;
 		}

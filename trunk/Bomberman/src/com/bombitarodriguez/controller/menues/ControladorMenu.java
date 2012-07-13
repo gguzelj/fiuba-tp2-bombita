@@ -49,8 +49,4 @@ public class ControladorMenu implements KeyPressedObservador {
 		else if(this.itemActual > (this.cantidadDeItems - 1))
 			this.itemActual = 0;
 	}
-
-	@Override
-	public void keyRelease(KeyEvent arg0) {
-	}
 }

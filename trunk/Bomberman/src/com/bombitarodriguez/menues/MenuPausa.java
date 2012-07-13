@@ -1,5 +1,7 @@
 package com.bombitarodriguez.menues;
 
+import ar.uba.fi.algo3.titiritero.Direccion;
+
 import com.bombitarodriguez.controller.menues.ControladorMenu;
 import com.bombitarodriguez.menues.items.ItemGuardarPartida;
 import com.bombitarodriguez.menues.items.ItemReanudar;
@@ -38,6 +40,12 @@ public class MenuPausa extends Menu {
 	public void activarControl() {
 		this.setControlador(new ControladorMenu(this));
 		this.getVentanaPrincipal().setControladorActivo(this.getControlador());
+	}
+
+	@Override
+	public Direccion getDireccion() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
