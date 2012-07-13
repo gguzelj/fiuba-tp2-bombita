@@ -56,7 +56,7 @@ public class LopezReggaeAlado extends Personaje {
 	 * llegar a modificarse la misma lista que se itera)
 	 */
 	@Override
-	public void moverseConEstrategia(Direccion direccion) {
+	public Boolean moverseConEstrategia(Direccion direccion) {
 		List<Objeto> copiaObjetosAReaccionar = new ArrayList<Objeto>();
 		Boolean casilleroValido = false;
 		Posicion nuevaPosicion;
@@ -64,7 +64,7 @@ public class LopezReggaeAlado extends Personaje {
 		try {
 			nuevaPosicion = Mapa.getMapa().getNuevaPosicion(this.getPosicion(), direccion);
 		} catch (FueraDelMapaException e) {
-			return;
+			return false;
 		}
 		
 		Casillero casilleroProximo = Mapa.getMapa().getCasillero(nuevaPosicion);
@@ -79,7 +79,7 @@ public class LopezReggaeAlado extends Personaje {
 				try {
 					nuevaPosicion = Mapa.getMapa().getNuevaPosicion(nuevaPosicion, direccion);
 				} catch (FueraDelMapaException e) {
-					return;
+					return false;
 				}
 				
 				casilleroProximo = Mapa.getMapa().getCasillero(nuevaPosicion);
@@ -90,6 +90,7 @@ public class LopezReggaeAlado extends Personaje {
 		}	
 		
 	 	Mapa.getMapa().reposicionar(this, casilleroProximo);
+	 	return true;
 	}
 
 }
