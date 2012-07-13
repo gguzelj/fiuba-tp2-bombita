@@ -29,6 +29,8 @@ public class Proyectil extends Arma {
 		puntoActual.x = Constante.PIXELS_POR_CASILLERO * posicion.getPosX();
 		puntoActual.y = Constante.PIXELS_POR_CASILLERO * posicion.getPosY();
 		puntoFinal = puntoActual;
+//		puntoFinal.x = Constante.PIXELS_POR_CASILLERO * posicion.getPosX();
+//		puntoFinal.y = Constante.PIXELS_POR_CASILLERO * posicion.getPosY();
 	}
 
 	public Proyectil(Direccion direccion, Posicion posicion) {
@@ -41,6 +43,8 @@ public class Proyectil extends Arma {
 		puntoActual.x = Constante.PIXELS_POR_CASILLERO * posicion.getPosX();
 		puntoActual.y = Constante.PIXELS_POR_CASILLERO * posicion.getPosY();
 		puntoFinal = puntoActual;
+//		puntoFinal.x = Constante.PIXELS_POR_CASILLERO * posicion.getPosX();
+//		puntoFinal.y = Constante.PIXELS_POR_CASILLERO * posicion.getPosY();
 	}
 
 	@Override
@@ -76,20 +80,18 @@ public class Proyectil extends Arma {
 		
 		switch (this.direccion) {
 		case ARRIBA:
-			puntoActual.y ++;
+			puntoActual.y += 1;
 			break;
 		case ABAJO:
-			puntoActual.y --;
+			puntoActual.y -= 1;
 			break;
 		case DERECHA:
-			puntoActual.x ++;
+			puntoActual.x += 1;
 			break;
 		case IZQUIERDA:
-			puntoActual.x --;
+			puntoActual.x -= 1;
 			break;
 		}
-
-
 	}
 
 	private void calcularNuevoPuntoFinal() {
@@ -100,7 +102,7 @@ public class Proyectil extends Arma {
 			return;
 		}
 
-		Mapa.getMapa().reposicionar(this, new Casillero(posicionActual));
+		Mapa.getMapa().reposicionar(this, Mapa.getMapa().getCasillero(posicionActual));
 
 		if (!puedoMover(this.getCasillero()))
 			this.explotar();

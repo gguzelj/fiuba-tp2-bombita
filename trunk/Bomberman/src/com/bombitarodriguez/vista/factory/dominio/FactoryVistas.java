@@ -5,6 +5,7 @@ import com.bombitarodriguez.utils.Identificaciones;
 import com.bombitarodriguez.vista.factory.dominio.personaje.VistaCaminarBombita;
 import com.bombitarodriguez.vista.factory.dominio.personaje.VistaCaminarCecilio;
 import com.bombitarodriguez.vista.factory.dominio.personaje.VistaCaminarLopezReggae;
+import com.bombitarodriguez.vista.factory.dominio.personaje.VistaCaminarLopezReggaeAlado;
 
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
@@ -23,7 +24,7 @@ public class FactoryVistas {
 			return new VistaCaminarLopezReggae();
 			
 		case Identificaciones.lopezReggaeAlado:
-			return new VistaLopezReggaeAlado();
+			return new VistaCaminarLopezReggaeAlado();
 			
 		case Identificaciones.articuloChala:
 			return new VistaArticuloChala();
