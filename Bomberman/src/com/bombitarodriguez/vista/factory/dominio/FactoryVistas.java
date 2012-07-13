@@ -2,6 +2,7 @@ package com.bombitarodriguez.vista.factory.dominio;
 
 import com.bombitarodriguez.excepciones.IdInexistente;
 import com.bombitarodriguez.utils.Identificaciones;
+import com.bombitarodriguez.vista.factory.dominio.personaje.VistaCaminarBombita;
 
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
@@ -11,7 +12,7 @@ public class FactoryVistas {
 		
 		switch (ID) {
 		case Identificaciones.bombita:
-			return new VistaBombita();
+			return new VistaCaminarBombita();
 		
 		case Identificaciones.cecilio:
 			return new VistaCecilio();

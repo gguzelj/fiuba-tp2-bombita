@@ -1,8 +1,10 @@
 package com.bombitarodriguez.dominio;
 
 import java.util.Iterator;
+
+import ar.uba.fi.algo3.titiritero.Direccion;
+
 import com.bombitarodriguez.utils.Constante;
-import com.bombitarodriguez.utils.Direccion;
 import com.bombitarodriguez.utils.Identificaciones;
 
 /**

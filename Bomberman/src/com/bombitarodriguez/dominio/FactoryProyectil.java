@@ -1,7 +1,8 @@
 package com.bombitarodriguez.dominio;
 
+import ar.uba.fi.algo3.titiritero.Direccion;
+
 import com.bombitarodriguez.utils.Constante;
-import com.bombitarodriguez.utils.Direccion;
 
 public class FactoryProyectil extends FactoryArma {
 

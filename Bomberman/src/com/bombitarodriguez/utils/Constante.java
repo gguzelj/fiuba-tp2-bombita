@@ -13,8 +13,8 @@ public class Constante {
 	public final static Integer RESISTENCIA_LOSLOPEZREGGAE = 10;
 	public final static Integer RESISTENCIA_LOSLOPEZREGGAE_ALADO = 5;
 	//velocidad de los personajes
-	public final static Integer VELOCIDAD_CAMINA = 1;
-	public final static Integer VELOCIDAD_CORRE = 2;
+	public final static Integer VELOCIDAD_CAMINA = 10;
+	public final static Integer VELOCIDAD_CORRE = 25;
 	//constantes de las armas
 	public final static Integer ONDA_EXPANSIVA_MOLOTOV = 1;
 	public final static Integer ONDA_EXPANSIVA_TOLETOLE = 2;
