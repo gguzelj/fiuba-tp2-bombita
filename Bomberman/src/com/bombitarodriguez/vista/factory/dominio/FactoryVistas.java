@@ -3,6 +3,8 @@ package com.bombitarodriguez.vista.factory.dominio;
 import com.bombitarodriguez.excepciones.IdInexistente;
 import com.bombitarodriguez.utils.Identificaciones;
 import com.bombitarodriguez.vista.factory.dominio.personaje.VistaCaminarBombita;
+import com.bombitarodriguez.vista.factory.dominio.personaje.VistaCaminarCecilio;
+import com.bombitarodriguez.vista.factory.dominio.personaje.VistaCaminarLopezReggae;
 
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
@@ -15,10 +17,10 @@ public class FactoryVistas {
 			return new VistaCaminarBombita();
 		
 		case Identificaciones.cecilio:
-			return new VistaCecilio();
+			return new VistaCaminarCecilio();
 
 		case Identificaciones.lopezReggae:
-			return new VistaLopezReggae();
+			return new VistaCaminarLopezReggae();
 			
 		case Identificaciones.lopezReggaeAlado:
 			return new VistaLopezReggaeAlado();

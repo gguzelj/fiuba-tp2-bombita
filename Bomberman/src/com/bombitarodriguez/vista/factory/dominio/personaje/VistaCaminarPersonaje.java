@@ -57,9 +57,7 @@ public class VistaCaminarPersonaje extends Imagen{
 				setImagen(deFrente());
 			}
 
-		} else {
-			setImagen(deFrente());
-		}
+		} 
 
 		grafico.drawImage(image, this.getPosicionable().getX(), this.getPosicionable().getY(), null);
 	}

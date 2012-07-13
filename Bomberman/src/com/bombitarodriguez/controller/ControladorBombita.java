@@ -20,19 +20,19 @@ public class ControladorBombita implements KeyPressedObservador{
 		switch (event.getKeyCode())
 		{
 			case KeyEvent.VK_DOWN:
-				bombita.moverseConEstrategia(Direccion.ARRIBA);
+				bombita.mover(Direccion.ARRIBA);
 				break;
 			
 			case KeyEvent.VK_LEFT:
-				bombita.moverseConEstrategia(Direccion.IZQUIERDA);
+				bombita.mover(Direccion.IZQUIERDA);
 				break;
 			
 			case KeyEvent.VK_UP:
-				bombita.moverseConEstrategia(Direccion.ABAJO);
+				bombita.mover(Direccion.ABAJO);
 				break;
 		
 			case KeyEvent.VK_RIGHT:
-				bombita.moverseConEstrategia(Direccion.DERECHA);
+				bombita.mover(Direccion.DERECHA);
 				break;
 			
 			case KeyEvent.VK_SPACE:
