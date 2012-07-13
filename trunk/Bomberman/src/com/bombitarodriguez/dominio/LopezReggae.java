@@ -57,9 +57,9 @@ public class LopezReggae extends Personaje {
 	}
 
 	@Override
-	public void moverseConEstrategia(Direccion direccion) {
-		super.moverseConEstrategia(direccion);
+	public Boolean moverseConEstrategia(Direccion direccion) {
 		this.ultimaDireccion = direccion;
+		return super.moverseConEstrategia(direccion);
 	}
 	
 	@Override

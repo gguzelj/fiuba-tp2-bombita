@@ -57,8 +57,7 @@ public class Explosion extends Objeto{
 	
 	@Override
 	public Boolean reaccionarCon(Proyectil proyectil) {
-		proyectil.reaccionarCon(proyectil);
-		return true;
+		return false;
 	}
 	
 	@Override
