@@ -1,26 +1,19 @@
 package com.bombitarodriguez.vista.factory.animaciones;
 
-import java.io.File;
-
-import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.dominio.ArticuloToleTole;
 import com.bombitarodriguez.dominio.BloqueAcero;
 import com.bombitarodriguez.dominio.BloqueCemento;
 import com.bombitarodriguez.dominio.BloqueLadrillo;
 import com.bombitarodriguez.dominio.Bomba;
 import com.bombitarodriguez.dominio.Bombita;
-import com.bombitarodriguez.dominio.Casillero;
 import com.bombitarodriguez.dominio.Cecilio;
 import com.bombitarodriguez.dominio.ArticuloChala;
 import com.bombitarodriguez.dominio.Explosion;
 import com.bombitarodriguez.dominio.LopezReggae;
 import com.bombitarodriguez.dominio.LopezReggaeAlado;
-import com.bombitarodriguez.dominio.Posicion;
 import com.bombitarodriguez.dominio.Proyectil;
 import com.bombitarodriguez.dominio.ArticuloTimer;
 import com.bombitarodriguez.interfaces.ObjetoReaccionable;
-import com.bombitarodriguez.utils.Constante;
-import com.bombitarodriguez.utils.PathFile;
 
 import ar.uba.fi.algo3.titiritero.Direccion;
 import ar.uba.fi.algo3.titiritero.ObjetoVivo;

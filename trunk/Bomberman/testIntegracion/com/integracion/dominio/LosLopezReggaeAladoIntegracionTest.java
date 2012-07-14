@@ -10,7 +10,7 @@ import com.bombitarodriguez.dominio.Casillero;
 import com.bombitarodriguez.dominio.LopezReggaeAlado;
 import com.bombitarodriguez.dominio.Mapa;
 import com.bombitarodriguez.dominio.Posicion;
-import com.bombitarodriguez.utils.Direccion;
+import ar.uba.fi.algo3.titiritero.Direccion;
 
 public class LosLopezReggaeAladoIntegracionTest {
 
