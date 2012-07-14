@@ -96,5 +96,21 @@ public abstract class Menu implements Posicionable{
 	}
 	
 	public abstract void activarControl();
+
+	public int getCantidadDeItems() {
+		return getItems().size();
+	}
+
+	public void itemSeleccionar(int itemActual) {
+		getItems().get(itemActual).seleccionar();	
+	}
+
+	public void itemOver(int itemActual) {
+		getItems().get(itemActual).getVistaItem().itemOver();	
+	}
+
+	public void itemOut(int itemActual) {
+		getItems().get(itemActual).getVistaItem().itemOut();
+	}
 	
 }
