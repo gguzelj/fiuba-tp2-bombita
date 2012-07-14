@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import ar.uba.fi.algo3.titiritero.Direccion;
+
 import com.bombitarodriguez.dominio.ArticuloToleTole;
 import com.bombitarodriguez.dominio.BloqueAcero;
 import com.bombitarodriguez.dominio.BloqueCemento;
@@ -21,7 +23,6 @@ import com.bombitarodriguez.dominio.Proyectil;
 import com.bombitarodriguez.dominio.ArticuloTimer;
 import com.bombitarodriguez.dominio.ToleTole;
 import com.bombitarodriguez.utils.Constante;
-import com.bombitarodriguez.utils.Direccion;
 
 public class BloqueAceroTest {
 	

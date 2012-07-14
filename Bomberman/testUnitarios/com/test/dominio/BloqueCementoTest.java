@@ -3,10 +3,9 @@ package com.test.dominio;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
+import ar.uba.fi.algo3.titiritero.Direccion;
 import com.bombitarodriguez.dominio.*;
 import com.bombitarodriguez.utils.Constante;
-import com.bombitarodriguez.utils.Direccion;
 
 public class BloqueCementoTest {
 

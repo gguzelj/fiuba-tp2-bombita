@@ -1,7 +1,5 @@
 package com.bombitarodriguez.menues.items;
 
-import ar.uba.fi.algo3.titiritero.Direccion;
-
 import com.bombitarodriguez.menues.Menu;
 import com.bombitarodriguez.menues.pantallas.PantallaPartida;
 import com.bombitarodriguez.vista.factory.menues.items.VistaItemCargarPartida;

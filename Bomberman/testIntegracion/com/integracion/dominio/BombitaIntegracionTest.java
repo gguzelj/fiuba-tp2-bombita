@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import ar.uba.fi.algo3.titiritero.Direccion;
+
 import com.bombitarodriguez.dominio.*;
 import com.bombitarodriguez.utils.*;
 
