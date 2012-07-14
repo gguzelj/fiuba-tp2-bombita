@@ -5,7 +5,7 @@ import java.io.IOException;
 import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.dominio.Juego;
 import com.bombitarodriguez.menues.Menu;
-import com.bombitarodriguez.menues.items.ItemMenu;
+import com.bombitarodriguez.menues.items.Item;
 import com.bombitarodriguez.menues.pantallas.PantallaPartida;
 
 import ar.uba.fi.algo3.titiritero.Dibujable;
@@ -60,7 +60,7 @@ public class VentanaPrincipal extends Ventana {
 		/*agregamos los dibujables del menu*/
 		this.controladorBomberman.agregarDibujable(menu.getVistaMenu());
 		
-		for(ItemMenu item : menu.getItems()){
+		for(Item item : menu.getItems()){
 			this.controladorBomberman.agregarDibujable(item.getVistaItem());
 		}
 	}
@@ -70,7 +70,7 @@ public class VentanaPrincipal extends Ventana {
 		/*Quitamos los dibujables del menu*/
 		this.controladorBomberman.removerDibujable(menu.getVistaMenu());
 		
-		for(ItemMenu item : menu.getItems()){
+		for(Item item : menu.getItems()){
 			this.controladorBomberman.removerDibujable(item.getVistaItem());
 		}
 	}

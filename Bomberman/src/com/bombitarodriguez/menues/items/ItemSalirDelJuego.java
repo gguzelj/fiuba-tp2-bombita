@@ -3,7 +3,7 @@ package com.bombitarodriguez.menues.items;
 import com.bombitarodriguez.menues.Menu;
 import com.bombitarodriguez.vista.factory.menues.items.VistaItemSalirDelJuego;
 
-public class ItemSalirDelJuego  extends ItemMenu{
+public class ItemSalirDelJuego  extends Item{
 	
 	public ItemSalirDelJuego(Menu menuPadre, int posX, int posY){
 

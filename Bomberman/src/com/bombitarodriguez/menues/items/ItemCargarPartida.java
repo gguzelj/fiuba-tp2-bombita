@@ -5,7 +5,7 @@ import com.bombitarodriguez.menues.pantallas.PantallaPartida;
 import com.bombitarodriguez.vista.factory.menues.items.VistaItemCargarPartida;
 
 
-public class ItemCargarPartida extends ItemMenu{
+public class ItemCargarPartida extends Item{
 	
 	public ItemCargarPartida(Menu menuPadre, int posX, int posY){
 

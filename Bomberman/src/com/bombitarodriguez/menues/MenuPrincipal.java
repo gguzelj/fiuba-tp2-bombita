@@ -41,7 +41,6 @@ public class MenuPrincipal extends Menu {
 
 	@Override
 	public Direccion getDireccion() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }
