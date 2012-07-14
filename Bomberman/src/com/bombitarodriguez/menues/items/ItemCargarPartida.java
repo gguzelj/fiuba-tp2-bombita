@@ -15,7 +15,6 @@ public class ItemCargarPartida extends Item{
 
 		this.setVistaItem(new VistaItemCargarPartida());
 		this.getVistaItem().setPosicionable(this);
-		this.getVistaItem().itemOut();
 	}
 	
 

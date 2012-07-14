@@ -172,6 +172,14 @@ public class Juego {
 	public Bombita getBombita() {
 		return bombita;
 	}
+
+	public ControladorBombita getControladorBombita() {
+		return controlador.getControladorBombita();
+	}
+
+	public void pausarJuego() {
+		controlador.setEstaPausado(true);		
+	}
 	
 }
 

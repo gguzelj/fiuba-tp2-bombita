@@ -3,6 +3,7 @@ package com.bombitarodriguez.vista;
 import java.awt.Color;
 import java.io.IOException;
 import com.bombitarodriguez.controller.ControladorBomberman;
+import com.bombitarodriguez.controller.ControladorBombita;
 import com.bombitarodriguez.dominio.Juego;
 import com.bombitarodriguez.menues.Menu;
 import com.bombitarodriguez.menues.items.Item;
@@ -110,5 +111,13 @@ public class VentanaPrincipal extends Ventana {
 	
 	public void setPantallaPartida(PantallaPartida pantallaPartida) {
 		this.pantallaPartida = pantallaPartida;
+	}
+
+	public ControladorBombita getControladorBombita() {
+		return juego.getControladorBombita();
+	}
+
+	public void pausarJuego() {
+		juego.pausarJuego();		
 	}
 }

@@ -14,7 +14,6 @@ public class ItemGuardarPartida extends Item{
 
 		this.setVistaItem(new VistaItemGuardarPartida());
 		this.getVistaItem().setPosicionable(this);
-		this.getVistaItem().itemOut();
 	}
 	
 
