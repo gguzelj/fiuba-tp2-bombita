@@ -5,6 +5,6 @@ import com.bombitarodriguez.utils.PathFile;
 public class VistaCaminarCecilio extends VistaCaminarPersonaje {
 
 	public VistaCaminarCecilio(){
-		super(PathFile.getPathActual() + "\\src\\com\\bombitarodriguez\\vista\\imagenes\\caminarBombita.png");
+		super(PathFile.getPathActual() + "\\src\\com\\bombitarodriguez\\vista\\imagenes\\caminarCecilio.png");
 	}
 }
