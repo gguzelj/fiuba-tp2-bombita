@@ -7,14 +7,15 @@ import com.bombitarodriguez.vista.factory.menues.items.VistaItem;
 import ar.uba.fi.algo3.titiritero.Direccion;
 import ar.uba.fi.algo3.titiritero.Posicionable;
 
-public abstract class ItemMenu implements Posicionable{
+public abstract class Item implements Posicionable{
 
 	private VistaItem vistaItem;
 	private Menu menuPadre;
 	private int posX;
 	private int posY;
+	private boolean isOver = false;
 	
-	public ItemMenu(Menu menuPadre){
+	public Item(Menu menuPadre){
 		this.menuPadre = menuPadre; 
 	}
 	
@@ -44,10 +45,6 @@ public abstract class ItemMenu implements Posicionable{
 		this.vistaItem = vistaItem;
 	}
 	
-	public void setMenuPadre(Menu menuPadre){
-		this.menuPadre = menuPadre;
-	}
-	
 	public Menu getMenuPadre(){
 		return this.menuPadre;
 	}
@@ -58,4 +55,16 @@ public abstract class ItemMenu implements Posicionable{
 	}
 	
 	public abstract void seleccionar();
+
+	public boolean isOver() {
+		return isOver;
+	}
+
+	public void itemOver() {
+		isOver = true;
+	}
+	
+	public void itemOut() {
+		isOver = false;
+	}
 }

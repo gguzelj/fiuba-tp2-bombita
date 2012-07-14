@@ -5,14 +5,15 @@ import com.bombitarodriguez.menues.pantallas.PantallaPartida;
 import com.bombitarodriguez.vista.factory.menues.items.VistaItemNuevaPartida;
 
 
-public class ItemNuevaPartida extends ItemMenu {
+public class ItemNuevaPartida extends Item {
 
 	public ItemNuevaPartida(Menu menuPadre, int posX, int posY){
 
 		super(menuPadre);
 		this.setX(posX);
 		this.setY(posY);
-
+		this.itemOver();
+		
 		this.setVistaItem(new VistaItemNuevaPartida());
 		this.getVistaItem().setPosicionable(this);
 		this.getVistaItem().itemOver();

@@ -8,7 +8,7 @@ import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
 import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.controller.menues.ControladorMenu;
-import com.bombitarodriguez.menues.items.ItemMenu;
+import com.bombitarodriguez.menues.items.Item;
 import com.bombitarodriguez.vista.VentanaPrincipal;
 import com.bombitarodriguez.vista.factory.menues.VistaMenuPrincipal;
 
@@ -17,7 +17,7 @@ public abstract class Menu implements Posicionable{
 
 	protected VentanaPrincipal ventanaPrincipal;
 	protected Imagen vistaMenu;
-	protected ArrayList<ItemMenu> Items;
+	protected ArrayList<Item> Items;
 	protected KeyPressedObservador keyPressControl;
 	protected int posX;
 	protected int posY;
@@ -25,7 +25,7 @@ public abstract class Menu implements Posicionable{
 	
 	public Menu(VentanaPrincipal ventanaPrincipal){
 		this.ventanaPrincipal = ventanaPrincipal;
-		this.Items = new ArrayList<ItemMenu>();
+		this.Items = new ArrayList<Item>();
 	}
 
 	public void setControlador(ControladorMenu controlador) {
@@ -56,15 +56,15 @@ public abstract class Menu implements Posicionable{
 		this.vistaMenu = vistaMenu;
 	}
 	
-	public void agregarItem(ItemMenu item) {
+	public void agregarItem(Item item) {
 		this.Items.add(item);
 	}
 	
-	public void borrarItem(ItemMenu item) {
+	public void borrarItem(Item item) {
 		this.Items.remove(item);
 	}
 	
-	public ArrayList<ItemMenu> getItems() {
+	public ArrayList<Item> getItems() {
 		return Items;
 	}
 	
@@ -106,11 +106,11 @@ public abstract class Menu implements Posicionable{
 	}
 
 	public void itemOver(int itemActual) {
-		getItems().get(itemActual).getVistaItem().itemOver();	
+		getItems().get(itemActual).itemOver();
 	}
 
 	public void itemOut(int itemActual) {
-		getItems().get(itemActual).getVistaItem().itemOut();
+		getItems().get(itemActual).itemOut();
 	}
 	
 }

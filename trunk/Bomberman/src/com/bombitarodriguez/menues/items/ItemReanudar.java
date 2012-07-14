@@ -5,7 +5,7 @@ import com.bombitarodriguez.menues.MenuPausa;
 import com.bombitarodriguez.vista.factory.menues.items.VistaItemReanudar;
 
 
-public class ItemReanudar extends ItemMenu{
+public class ItemReanudar extends Item{
 	
 	public ItemReanudar(Menu menuPadre, int posX, int posY){
 

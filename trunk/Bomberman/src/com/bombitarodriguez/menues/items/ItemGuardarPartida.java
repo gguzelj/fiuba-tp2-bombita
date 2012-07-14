@@ -4,7 +4,7 @@ import com.bombitarodriguez.menues.Menu;
 import com.bombitarodriguez.vista.factory.menues.items.VistaItemGuardarPartida;
 
 
-public class ItemGuardarPartida extends ItemMenu{
+public class ItemGuardarPartida extends Item{
 	
 	public ItemGuardarPartida(Menu menuPadre, int posX, int posY){
 
