@@ -16,8 +16,7 @@ public class ItemNuevaPartida extends Item {
 		
 		this.setVistaItem(new VistaItemNuevaPartida());
 		this.getVistaItem().setPosicionable(this);
-		this.getVistaItem().itemOver();
-		
+ 		
 	}
 	
 	public void seleccionar(){

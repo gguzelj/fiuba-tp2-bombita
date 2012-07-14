@@ -8,7 +8,7 @@ import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
 public abstract class Pantalla implements Posicionable{
 
-	private VentanaPrincipal ventanaPrincipal;
+	protected VentanaPrincipal ventanaPrincipal;
 	private int posX;
 	private int posY;
 	protected Imagen vistaPantallaNuevaPartida;

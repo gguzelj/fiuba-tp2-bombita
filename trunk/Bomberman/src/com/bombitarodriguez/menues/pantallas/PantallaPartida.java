@@ -3,6 +3,7 @@ package com.bombitarodriguez.menues.pantallas;
 import ar.uba.fi.algo3.titiritero.Direccion;
 
 import com.bombitarodriguez.controller.ControladorBomberman;
+import com.bombitarodriguez.controller.ControladorBombita;
 import com.bombitarodriguez.controller.menues.pantallas.ControladorPantallaPartida;
 import com.bombitarodriguez.vista.VentanaPrincipal;
 import com.bombitarodriguez.vista.factory.menues.VistaPantallaNuevaPartida;
@@ -21,7 +22,6 @@ public class PantallaPartida extends Pantalla {
 		this.vistaPantallaNuevaPartida.setPosicionable(this);
 
 		ventana.setPantallaPartida(this);
-		
 	}
 
 	public void crearJuego() {
@@ -50,5 +50,13 @@ public class PantallaPartida extends Pantalla {
 	@Override
 	public Direccion getDireccion() {
 		return null;
+	}
+
+	public ControladorBombita getControladorBombita() {
+		return ventanaPrincipal.getControladorBombita();
+	}
+
+	public void pausarJuego() {
+		ventanaPrincipal.pausarJuego();
 	}
 }

@@ -15,7 +15,7 @@ public class ControladorPantallaPartida implements KeyPressedObservador {
 
         public ControladorPantallaPartida(PantallaPartida pantalla) {
                 this.pantalla = pantalla;
-                this.controladorBombita = pantalla.getVentanaPrincipal().getJuego().getControlador().getControladorBombita();
+                this.controladorBombita = pantalla.getControladorBombita();
         }
 
         @Override
@@ -27,8 +27,8 @@ public class ControladorPantallaPartida implements KeyPressedObservador {
                 switch (event.getKeyCode()) {
 
                 case KeyEvent.VK_P:
-                        this.pantalla.getVentanaPrincipal().getJuego().getControlador().setEstaPausado(true);
-                        MenuPausa menuPausa = new MenuPausa(this.pantalla.getVentanaPrincipal(), this.pantalla);
+                        this.pantalla.pausarJuego();
+                        MenuPausa menuPausa = new MenuPausa(pantalla.getVentanaPrincipal(), pantalla);
                         menuPausa.mostrar();
                         break;
                         

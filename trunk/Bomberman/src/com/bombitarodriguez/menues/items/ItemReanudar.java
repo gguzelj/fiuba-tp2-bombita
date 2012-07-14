@@ -12,10 +12,10 @@ public class ItemReanudar extends Item{
 		super(menuPadre);
 		this.setX(posX);
 		this.setY(posY);
-
+		this.itemOver();
+		
 		this.setVistaItem(new VistaItemReanudar());
 		this.getVistaItem().setPosicionable(this);
-		this.getVistaItem().itemOver();
 	}
 	
 
