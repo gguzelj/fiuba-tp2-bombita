@@ -15,6 +15,8 @@ public class Identificaciones {
 //		2 bloque ladrillo
 //		3 bloqueCemento
 //		4 bloqueAcero
+//		17 vidas
+//		18 Armas
 //		21 chala dentro de bloqueLadrillo
 //		22 timer dentro de bloqueLadrillo
 //		23 toletole dentro de bloqueLadrillo
@@ -47,6 +49,10 @@ public class Identificaciones {
 	public static final int molotov = 9;
 	public static final int toleTole = 10;
 	public static final int proyectil = 11;
+	
+	/*Indicador de vidas*/
+	public static final int vidas = 17;
+	public static final int armas = 18;
 	
 	/*Explosion*/
 	public static final int explosion = 12;

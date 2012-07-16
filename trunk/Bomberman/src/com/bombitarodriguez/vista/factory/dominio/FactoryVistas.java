@@ -10,10 +10,13 @@ import com.bombitarodriguez.vista.factory.dominio.personaje.VistaCaminarLopezReg
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
 public class FactoryVistas {
+	
+	private static VistaVidas vistaVidas;
+	private static VistaIndicadorArmas armas;
 
 	public static Imagen getVistaPorId(int ID) throws IdInexistente{
 		
-		switch (ID) {
+		switch (ID) {		
 		case Identificaciones.bombita:
 			return new VistaCaminarBombita();
 		
@@ -59,9 +62,23 @@ public class FactoryVistas {
 		case Identificaciones.explosion:
 			return new VistaExplosion();
 			
+		case Identificaciones.vidas:
+			if (vistaVidas == null) {
+				vistaVidas = new VistaVidas();
+				return vistaVidas;
+			}
+			else return vistaVidas;
+		
+		case Identificaciones.armas:
+			if (armas == null) {
+				armas = new VistaIndicadorArmas();
+				return armas;
+			}
+			else return armas;
 		default:
 			System.out.println(ID);
 			throw new IdInexistente("ID Inexistente");
 		}
 	}
+
 }

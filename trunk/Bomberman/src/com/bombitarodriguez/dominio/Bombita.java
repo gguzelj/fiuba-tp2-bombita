@@ -1,8 +1,12 @@
 package com.bombitarodriguez.dominio;
 
 import java.util.Iterator;
+
+import com.bombitarodriguez.excepciones.IdInexistente;
 import com.bombitarodriguez.utils.Constante;
 import com.bombitarodriguez.utils.Identificaciones;
+import com.bombitarodriguez.vista.factory.dominio.FactoryVistas;
+import com.bombitarodriguez.vista.factory.dominio.VistaVidas;
 
 /**
  * @author Mauro
@@ -10,6 +14,7 @@ import com.bombitarodriguez.utils.Identificaciones;
 public class Bombita extends Personaje {
 
 	private Integer vida;
+	private VistaVidas vistaVidas;
 
 	public Bombita(Integer vida) {
 		this.vida = vida;
@@ -17,11 +22,19 @@ public class Bombita extends Personaje {
 		this.velocidad = Constante.VELOCIDAD_CAMINA;
 		this.factoryArma = new FactoryMolotov();
 		this.id = Identificaciones.bombita;
+		try {
+			this.vistaVidas = (VistaVidas) FactoryVistas.getVistaPorId(Identificaciones.vidas);
+		} catch (IdInexistente e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public Boolean reaccionarCon(Cecilio cecilio) {
 		this.quitarVida();
+		
+		
 		System.out.println("PERDI VIDA: Me quedan:" + this.vida);
 		return true;
 	}
@@ -43,12 +56,31 @@ public class Bombita extends Personaje {
 	@Override
 	public Boolean reaccionarCon(Explosion explosion) {
 		this.quitarVida();
+		
 		System.out.println("PERDI VIDA: Me quedan:" + this.vida);
 		return true;
 	}
 
 	public void quitarVida() {
 		vida -= 1;
+		switch (vida) {
+		case 3:
+			vistaVidas.setNombreArchivoImagen("/com/bombitarodriguez/vista/imagenes/heart3.png");
+			break;
+			
+		case 2:
+			vistaVidas.setNombreArchivoImagen("/com/bombitarodriguez/vista/imagenes/heart2.png");
+			break;
+			
+		case 1:
+			vistaVidas.setNombreArchivoImagen("/com/bombitarodriguez/vista/imagenes/heart1.png");
+			break;
+		
+		
+		case 0:
+			vistaVidas.setNombreArchivoImagen("/com/bombitarodriguez/vista/imagenes/heart0.png");
+			break;
+	     }
 	}
 
 	@Override
@@ -82,6 +114,14 @@ public class Bombita extends Personaje {
 
 	public void setVida(Integer vida) {
 		this.vida = vida;
+	}
+
+	public VistaVidas getVistaVidas() {
+		return vistaVidas;
+	}
+
+	public void setVistaVidas(VistaVidas vistaVidas) {
+		this.vistaVidas = vistaVidas;
 	}
 	
 }
