@@ -37,11 +37,6 @@ public class VistaVidas extends Imagen {
 			break;
 		}
 		
-	super.dibujar(superficeDeDibujo);
+		super.dibujar(superficeDeDibujo);
 	}
-	
-	public void setBombita(Bombita bombita) {
-		this.bombita = bombita;
-	}
-
 }

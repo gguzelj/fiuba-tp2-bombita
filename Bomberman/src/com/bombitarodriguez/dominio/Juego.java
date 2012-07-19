@@ -53,8 +53,9 @@ public class Juego {
 		
 		/*Asignamos los objetos del mapa al controlador*/
 		this.agregarObjetosDelMapa();
-		Mapa.getMapa().objetoParaAgregar(new Vida());
-		Mapa.getMapa().objetoParaAgregar(new IndicadorArma());
+
+		Mapa.objetoParaAgregar(new Vida());
+		Mapa.objetoParaAgregar(new IndicadorArma());
 	}
 	
 	/**
@@ -75,7 +76,9 @@ public class Juego {
 		bombita = this.obtenerBombitaDePartidaGuardada();
 		controlador.setControladorBombita(new ControladorBombita(bombita));
 		this.agregarObjetosDelMapa();
-		Mapa.getMapa().objetoParaAgregar(new Vida());
+		
+		Mapa.objetoParaAgregar(new Vida());
+		Mapa.objetoParaAgregar(new IndicadorArma());
 	}
 
 	/**
