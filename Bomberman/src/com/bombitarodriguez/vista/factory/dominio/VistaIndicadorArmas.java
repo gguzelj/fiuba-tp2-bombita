@@ -2,8 +2,8 @@ package com.bombitarodriguez.vista.factory.dominio;
 
 import com.bombitarodriguez.dominio.Bombita;
 import com.bombitarodriguez.dominio.FactoryArma;
-import com.bombitarodriguez.dominio.FactoryToleTole;
 import com.bombitarodriguez.dominio.Juego;
+import com.bombitarodriguez.utils.Constante;
 
 import ar.uba.fi.algo3.titiritero.SuperficieDeDibujo;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
@@ -26,7 +26,7 @@ public class VistaIndicadorArmas extends Imagen {
 		
 		FactoryArma factory = bombita.getFactoryArma();
 		
-		if(factory instanceof FactoryToleTole)
+		if(factory.getArmaInstanciada().getDestruccion() == Constante.DESTRUCCION_TOLETOLE)
 			setNombreArchivoImagen("/com/bombitarodriguez/vista/imagenes/IndicadorToleTole.png");
 				
 		super.dibujar(superficeDeDibujo);
