@@ -11,9 +11,6 @@ import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
 public class FactoryVistas {
 	
-	private static VistaVidas vistaVidas;
-	private static VistaIndicadorArmas armas;
-
 	public static Imagen getVistaPorId(int ID) throws IdInexistente{
 		
 		switch (ID) {		
