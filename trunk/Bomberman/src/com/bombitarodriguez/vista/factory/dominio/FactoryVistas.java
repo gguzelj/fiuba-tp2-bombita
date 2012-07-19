@@ -10,34 +10,34 @@ import com.bombitarodriguez.vista.factory.dominio.personaje.VistaCaminarLopezReg
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 
 public class FactoryVistas {
-	
-	public static Imagen getVistaPorId(int ID) throws IdInexistente{
-		
-		switch (ID) {		
+
+	public static Imagen getVistaPorId(int ID) throws IdInexistente {
+
+		switch (ID) {
 		case Identificaciones.bombita:
 			return new VistaCaminarBombita();
-		
+
 		case Identificaciones.cecilio:
 			return new VistaCaminarCecilio();
 
 		case Identificaciones.lopezReggae:
 			return new VistaCaminarLopezReggae();
-			
+
 		case Identificaciones.lopezReggaeAlado:
 			return new VistaCaminarLopezReggaeAlado();
-			
+
 		case Identificaciones.articuloChala:
 			return new VistaArticuloChala();
-		
+
 		case Identificaciones.articuloTimer:
 			return new VistaArticuloTimer();
-			
+
 		case Identificaciones.articuloToleTole:
 			return new VistaArticuloToleTole();
-			
+
 		case Identificaciones.bloqueLadrillo:
 			return new VistaBloqueLadrillo();
-			
+
 		case Identificaciones.bloqueCemento:
 			return new VistaBloqueCemento();
 
@@ -55,13 +55,13 @@ public class FactoryVistas {
 
 		case Identificaciones.salida:
 			return new VistaSalida();
-			
+
 		case Identificaciones.explosion:
 			return new VistaExplosion();
-			
+
 		case Identificaciones.vidas:
 			return new VistaVidas();
-		
+
 		case Identificaciones.armas:
 			return new VistaIndicadorArmas();
 		default:
