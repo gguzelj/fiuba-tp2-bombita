@@ -20,13 +20,16 @@ public class ItemCargarPartida extends Item{
 
 	@Override
 	public void seleccionar() {
-
-		this.getMenuPadre().borrar();
 		PantallaPartida pantallaPartida = new PantallaPartida(0, 0, this.getMenuPadre().getVentanaPrincipal());
-		pantallaPartida.mostrar();
-		pantallaPartida.cargarJuego();
+		try {
+			pantallaPartida.cargarJuego();
+		} catch (Exception e) {
+			System.out.println("No se encuentra el archivo para restaurar la partida");
+			return;
+		}
+		this.getMenuPadre().borrar();
 		pantallaPartida.activarControl();
-		
+		pantallaPartida.mostrar();
 	}
 
 }

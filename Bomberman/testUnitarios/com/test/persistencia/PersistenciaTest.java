@@ -11,6 +11,7 @@ import com.bombitarodriguez.dominio.Bombita;
 import com.bombitarodriguez.dominio.Casillero;
 import com.bombitarodriguez.dominio.Mapa;
 import com.bombitarodriguez.dominio.Posicion;
+import com.bombitarodriguez.excepciones.ArchivoSaveNoEncontrado;
 import com.bombitarodriguez.persistencia.PersistenciaPartidaXML;
 
 public class PersistenciaTest {
@@ -38,7 +39,7 @@ public class PersistenciaTest {
 	}
 	
 	@Test
-	public void testPersistencia_1() {
+	public void testPersistencia_1() throws ArchivoSaveNoEncontrado {
 		PersistenciaPartidaXML persistencia = new PersistenciaPartidaXML("persistencia-test.xml");
 		persistencia.persistirPartida();
 		Mapa.setMapa(persistencia.cargarDominioDeXML());
@@ -53,7 +54,7 @@ public class PersistenciaTest {
 	/**
 	 * Se cambia el estado a bombita y se lo recupera con este ultimo.
 	 */
-	public void testPersistencia_2() {
+	public void testPersistencia_2() throws ArchivoSaveNoEncontrado {
 		PersistenciaPartidaXML persistencia = new PersistenciaPartidaXML("persistencia-test.xml");
 		Bombita bombita = (Bombita) Mapa.getMapa().getCasillero(new Posicion(1, 1)).getObjetos().get(0);
 		bombita.setVida(8);

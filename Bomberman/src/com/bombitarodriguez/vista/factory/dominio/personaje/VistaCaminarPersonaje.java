@@ -27,6 +27,7 @@ public class VistaCaminarPersonaje extends Imagen{
 		setImagenesIzquierda();
 		setImagenesArriba();
 		setImagenesAbajo();
+		setImagen(deFrente());
 	}
 
 	@Override

@@ -26,13 +26,12 @@ public class ControladorBomberman extends ControladorJuego {
 	private Boolean estaPausado = false;
 	private static Boolean ganoElNivel = false;
 	private static Integer nivelDelJuego = 1;
-	
-		
+
 	public ControladorBomberman(boolean activarReproductor) {
 		super(activarReproductor);
 		this.estaPausado = false;
 	}
-		
+
 	@Override
 	public void comenzarJuego() {
 		estaEnEjecucion = true;
@@ -43,11 +42,8 @@ public class ControladorBomberman extends ControladorJuego {
 					copiarObjetos();
 					simular();
 				}
-
 				dibujar();
-				
 				controlarPartida();
-
 				Thread.sleep(100);
 			}
 		} catch (Exception e) {
@@ -56,25 +52,26 @@ public class ControladorBomberman extends ControladorJuego {
 	}
 
 	/**
-	 * Metodo encargado de copiar los objetos que se crearon mientras se 
-	 * simulaba la partida. 
+	 * Metodo encargado de copiar los objetos que se crearon mientras se
+	 * simulaba la partida.
 	 */
 	private void copiarObjetos() throws IdInexistente {
 
 		List<Objeto> objetosParaAgregar = Mapa.getObjetosParaAgregar();
 		List<Objeto> objetosParaBorrar = Mapa.getObjetosParaBorrar();
-		
+
 		Imagen imagen;
 		for (Objeto objeto : objetosParaAgregar) {
 
 			this.agregarObjetoVivo((ObjetoVivo) objeto);
-			
-			/*Obtenemos una nueva vista de la factory, y guardamos
-			 * su referencia
+
+			/*
+			 * Obtenemos una nueva vista de la factory, y guardamos su
+			 * referencia
 			 */
 			imagen = FactoryVistas.getVistaPorId(objeto.getId());
 			imagen.setPosicionable((Posicionable) objeto);
-			
+
 			this.agregarDibujable(imagen);
 			this.vistas.put(objeto, imagen);
 		}
@@ -82,8 +79,8 @@ public class ControladorBomberman extends ControladorJuego {
 		for (Objeto objeto : objetosParaBorrar) {
 
 			this.removerObjetoVivo((ObjetoVivo) objeto);
-			
-			/*Obtenemos la referencia ya guardada del objeto*/
+
+			/* Obtenemos la referencia ya guardada del objeto */
 			this.removerDibujable(this.vistas.get(objeto));
 			this.vistas.remove(objeto);
 		}
@@ -105,7 +102,7 @@ public class ControladorBomberman extends ControladorJuego {
 	}
 
 	public static void setGanoElNivel(Boolean ganoElNivel) {
-			ControladorBomberman.ganoElNivel = ganoElNivel;
+		ControladorBomberman.ganoElNivel = ganoElNivel;
 	}
 
 	@Override
@@ -119,26 +116,27 @@ public class ControladorBomberman extends ControladorJuego {
 
 	public static void setNivelDelJuego(Integer nivelDelJuego) {
 		ControladorBomberman.nivelDelJuego = nivelDelJuego;
-	}	
-	
+	}
+
 	/**
 	 * Nos encargamos de hacer chequeos sobre la partida, como si bombita paso
 	 * el nivel, o perdio una vida.
 	 */
 	private void controlarPartida() {
 
-		if(ganoElNivel){
+		if (ganoElNivel) {
 			if (!juegoGanado()) {
-			VentanaPrincipal ventanaPrincipal = (VentanaPrincipal) this.getSuperficieDeDibujo();
-			PantallaPartida pantalla = ventanaPrincipal.getPantallaPartida();			
-			pantalla.siguienteNivel(++nivelDelJuego);			
-			pantalla.getControlador().setControladorBombita(controladorBombita);		
-			ganoElNivel = false;
+				VentanaPrincipal ventanaPrincipal = (VentanaPrincipal) this.getSuperficieDeDibujo();
+				PantallaPartida pantalla = ventanaPrincipal.getPantallaPartida();
+				pantalla.siguienteNivel(++nivelDelJuego);
+				pantalla.getControlador().setControladorBombita(controladorBombita);
+				ganoElNivel = false;
 			}
-			
+
 			else {
-				/*Creamos el menu principal del juego*/
-				MenuPrincipal menuPrincipal = new MenuPrincipal((VentanaPrincipal) this.getSuperficieDeDibujo());
+				/* Creamos el menu principal del juego */
+				MenuPrincipal menuPrincipal = new MenuPrincipal(
+						(VentanaPrincipal) this.getSuperficieDeDibujo());
 				menuPrincipal.mostrar();
 			}
 		}

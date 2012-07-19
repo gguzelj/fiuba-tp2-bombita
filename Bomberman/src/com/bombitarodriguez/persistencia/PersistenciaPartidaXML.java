@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import ar.uba.fi.algo3.titiritero.vista.Imagen;
 import com.bombitarodriguez.dominio.Mapa;
+import com.bombitarodriguez.excepciones.ArchivoSaveNoEncontrado;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
@@ -39,13 +40,14 @@ public class PersistenciaPartidaXML {
 	/**
 	 * 
 	 * @return el mapa con el estado guardado.
+	 * @throws ArchivoSaveNoEncontrado 
 	 */
-	public Mapa cargarDominioDeXML() {
+	public Mapa cargarDominioDeXML() throws ArchivoSaveNoEncontrado {
 		FileReader xmlPartida = null;
 		try {
 			xmlPartida = new FileReader(pathXml);
 		} catch (FileNotFoundException e) {
-			System.out.println("no se encuentra el archivo para restaurar la partida");
+			throw new ArchivoSaveNoEncontrado("no se pudo encontrar el archivo 'bombita-save.xml'");
 		}
 		 return (Mapa) xstream.fromXML(xmlPartida);
 	
