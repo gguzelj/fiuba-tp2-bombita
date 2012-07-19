@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 
 import ar.uba.fi.algo3.titiritero.Direccion;
 
+import com.bombitarodriguez.excepciones.ArchivoSaveNoEncontrado;
 import com.bombitarodriguez.excepciones.FueraDelMapaException;
 import com.bombitarodriguez.persistencia.PersistenciaPartidaXML;
 import com.bombitarodriguez.utils.Constante;
@@ -89,7 +90,7 @@ public class Mapa {
 		}		
 	}
 	
-	public void cargarPartida() {
+	public void cargarPartida() throws ArchivoSaveNoEncontrado {
 		PersistenciaPartidaXML persistencia = new PersistenciaPartidaXML(Constante.NOMBRE_ARCHIVO_PARTIDA);
 		persistencia.cargarDominioDeXML();
 	}

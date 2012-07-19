@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 
 import com.bombitarodriguez.controller.ControladorBomberman;
 import com.bombitarodriguez.controller.ControladorBombita;
+import com.bombitarodriguez.excepciones.ArchivoSaveNoEncontrado;
 import com.bombitarodriguez.menues.MenuPrincipal;
 import com.bombitarodriguez.persistencia.PersistenciaPartidaXML;
 import com.bombitarodriguez.utils.Constante;
@@ -67,8 +68,9 @@ public class Juego {
 	
 	/**
 	 * Este metodo nos permite cargar una partida guardada
+	 * @throws ArchivoSaveNoEncontrado 
 	 */
-	public void cargarJuego(){
+	public void cargarJuego() throws ArchivoSaveNoEncontrado{
 		this.cargarPartida();
 		bombita = this.obtenerBombitaDePartidaGuardada();
 		controlador.setControladorBombita(new ControladorBombita(bombita));
@@ -81,7 +83,7 @@ public class Juego {
 	 * bombita comienza el juego ubicado en el casillero (1,1)
 	 * Para esto es necesario que el Mapa ya este creado.
 	 */
-	private Bombita obtenerBombita() {
+	public static Bombita obtenerBombita() {
 		Casillero casillero = Mapa.getMapa().getCasillero(new Posicion(1,1));
 		return (Bombita) casillero.getObjetos().get(0);
 	}
@@ -91,7 +93,7 @@ public class Juego {
 	 * en cualquier parte del mapa. Por este motivo, se guarda la posicion de
 	 * bombita cuando se persiste la partida, y se la recupera con este metodo
 	 */
-	private Bombita obtenerBombitaDePartidaGuardada() {
+	public static Bombita obtenerBombitaDePartidaGuardada() {
 		Casillero casillero = Mapa.getMapa().getCasillero(Mapa.getMapa().getPosicionBombita());
 		return (Bombita) casillero.getObjetos().get(0);
 	}
@@ -150,7 +152,7 @@ public class Juego {
 		persistencia.persistirPartida();
 	}
 	
-	private void cargarPartida() {
+	private void cargarPartida() throws ArchivoSaveNoEncontrado {
 		PersistenciaPartidaXML persistencia = new PersistenciaPartidaXML(Constante.NOMBRE_ARCHIVO_PARTIDA);
 		Mapa.setMapa(persistencia.cargarDominioDeXML());
 		ControladorBomberman.setNivelDelJuego(Mapa.getMapa().getNivelJuegoActual());

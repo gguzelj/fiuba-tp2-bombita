@@ -63,18 +63,10 @@ public class FactoryVistas {
 			return new VistaExplosion();
 			
 		case Identificaciones.vidas:
-			if (vistaVidas == null) {
-				vistaVidas = new VistaVidas();
-				return vistaVidas;
-			}
-			else return vistaVidas;
+			return new VistaVidas();
 		
 		case Identificaciones.armas:
-			if (armas == null) {
-				armas = new VistaIndicadorArmas();
-				return armas;
-			}
-			else return armas;
+			return new VistaIndicadorArmas();
 		default:
 			System.out.println(ID);
 			throw new IdInexistente("ID Inexistente");
