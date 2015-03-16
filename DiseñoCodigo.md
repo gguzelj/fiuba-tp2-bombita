@@ -1,0 +1,15 @@
+Menciones Importantes respecto al código:
+
+-Mapa -> Singleton
+Para la clase Mapa, debido a que necesitamos una sola instancia y además que sea una variable global para que pueda ser invocada desde todos lados, lo implementamos
+mediante el patrón de diseño Singleton.
+El mapa va a contener todos los casilleros. Los va a almecenar en una coleccion del tipo Map con la implementación HashMap de la siguiente forma:
+
+Map {"key":"value"}  -> {"coordenada":"casillero"} -> ej: {"[1,1]":"unCasillero"}.
+
+Con esto ganamos perfomance ya que muchas veces le vamos a pedir un casillero con la coordenada como clave, por lo tanto no tengo que iterar sobre la colección.
+Para representar la coordenada utilizamos un ArrayList
+
+&lt;Integer&gt;
+
+. Esta no va a formar parte de nuestro dominio.
